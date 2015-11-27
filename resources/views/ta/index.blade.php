@@ -11,9 +11,9 @@
 		<thead>
 			<tr>
 				<th>Periode</th>
-				<th>Start</th>
-				<th>End</th>
-				<th>Active</th>
+				<th>Awal</th>
+				<th>Akhir</th>
+				<th>Aktif</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -24,7 +24,7 @@
 				<td>{{ $t->periode }}</td>
 				<td>{{ $t->start }}</td>
 				<td>{{ $t->end }}</td>
-				<td>{!! $t->active ? '<span class="fa fa-check"></span>' : '' !!}</td>
+				<td>{!! $t->active ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td>
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => 'ta/'.$t->id]) !!}
 		        		<a href="/ta/{{ $t->id }}/edit" class="btn btn-success btn-xs">Edit</a>

@@ -34,6 +34,9 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('ta', 'App\Ta');
         $router->model('tingkat', 'App\Tingkat');
         $router->model('kelas', 'App\Kelas');
+        $router->model('riwayatPendidikan', 'App\RiwayatPendidikan');
+        $router->model('riwayatKepegawaian', 'App\RiwayatKepegawaian');
+        $router->model('keluargaKaryawan', 'App\KeluargaKaryawan');
     }
 
     /**

@@ -5,7 +5,8 @@ body {
 
 .main-content {
 	margin-top: 40px;
-	min-height: 485px;
+	min-height: 445px;
+	margin-bottom: 40px;
 }
 
 .footer {
@@ -39,7 +40,14 @@ thead {
 	border-top: solid 2px #ddd;
 }
 
-.img-thumbnail, .thumbnail, .well, .panel, .alert, .container .jumbotron, .container-fluid .jumbotron {
+.img-thumbnail, 
+.thumbnail, 
+.well, 
+.panel, 
+.alert, 
+.container .jumbotron, 
+.container-fluid .jumbotron,
+.panel-heading {
 	border-radius: 0;
 }
 
@@ -63,3 +71,8 @@ thead {
   background-position: center center;
   background-repeat: no-repeat;
 }
+
+/*.navbar-inverse {
+	background-color: #5cb85c;
+	border-color: #398439;
+}*/

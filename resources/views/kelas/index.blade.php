@@ -13,7 +13,7 @@
 				<th>Tahun Ajaran</th>
 				<th>Tingkat</th>
 				<th>Nama</th>
-				<th>Wali</th>
+				<th>Wali Kelas</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>

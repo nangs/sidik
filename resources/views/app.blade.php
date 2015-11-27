@@ -13,8 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
+    <!-- <link href="/fa/css/font-awesome.min.css" rel="stylesheet"> -->
  
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
@@ -44,15 +43,8 @@
                 </ul>
             </div>
         @endif
-    
-    	<div class="row">
-            <div class="col-md-2">
-                @include('_menu')
-            </div>   
-            <div class="col-md-10">
-                @yield('content')
-            </div>   
-        </div>
+
+        @yield('content')
 
     </div>
     
@@ -68,7 +60,6 @@
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
 
     @yield('script')
     

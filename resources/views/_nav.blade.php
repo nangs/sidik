@@ -7,23 +7,40 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Sistem Informasi Pendidikan Ma'had As Sunnah Tasikmalaya</a>
+            <a class="navbar-brand" href="/">SIDIK Ma'had As Sunnah</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
                 
-                @if (Auth::check())
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Table Lookup <strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/ta">Tahun Ajaran</a></li>
+                        <li><a href="/bagian">Bagian</a></li>
+                        <li><a href="/tingkat">Tingkat</a></li>
+                        <li><a href="/kelas">Kelas</a></li>
+                        <li><a href="/mapel">Mata Pelajaran</a></li>
+                    </ul>
+                </li>
 
+                <li><a href="/siswa">Buku Induk Siswa</a></li>
+                <li><a href="/karyawan">Guru & Karyawan</a></li>
+
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Invetaris <strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/ta">Tanah</a></li>
+                        <li><a href="/bagian">Gedung</a></li>
+                        <li><a href="/tingkat">Peralatan Mesin</a></li>
+                        <li><a href="/kelas">Asset Tetap Lainnya</a></li>
+                        <li><a href="/mapel">Jalan - Irigasi - Jaringan</a></li>
+                        <li><a href="/mapel">Barang</a></li>
+                        <li><a href="/mapel">Ruangan</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li><a href="/user/{{ Auth::user()->id }}">Profile ({{ Auth::user()->name }})</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
-
-                @else
-
-                <li><a href="/auth/login">Login</a></li>
-                <li><a href="/auth/register">Register</a></li>
-
-                @endif
-
             </ul>
         </div><!--/.navbar-collapse -->
     </div>

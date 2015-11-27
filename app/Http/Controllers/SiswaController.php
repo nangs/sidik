@@ -15,7 +15,9 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('siswa.index', ['siswas' => Siswa::paginate(10)]);
+        return view('siswa.index', [
+            'siswas' => Siswa::all()
+        ]);
     }
 
     /**
@@ -36,8 +38,22 @@ class SiswaController extends Controller
      */
     public function store(SiswaRequest $request)
     {
-        Siswa::create($request->all());
-        return redirect('/siswa');
+        $data = $request->all();
+
+        if ($request->hasFile('img')) {
+            
+            $file = $request->file('img');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['foto'] = $fileName;
+
+        }
+
+        $siswa = Siswa::create($data);
+
+        return redirect('/siswa/'.$siswa->id);
     }
 
     /**
@@ -71,8 +87,22 @@ class SiswaController extends Controller
      */
     public function update(SiswaRequest $request, Siswa $siswa)
     {
-        $siswa->update($request->all());
-        return redirect('siswa/');
+        $data = $request->all();
+
+        if ($request->hasFile('img')) {
+            
+            $file = $request->file('img');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['foto'] = $fileName;
+
+        }
+
+        $siswa->update($data);
+
+        return redirect('/siswa/'.$siswa->id);
     }
 
     /**
@@ -84,6 +114,6 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa)
     {
         $siswa->delete();
-        return redirect('siswa/');
+        return redirect('/siswa');
     }
 }

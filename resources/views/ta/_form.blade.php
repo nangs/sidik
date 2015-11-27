@@ -8,23 +8,24 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('start', 'Start:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('start', 'Awal:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::text('start', $ta->start, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('end', 'End:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('end', 'Akhir:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::text('end', $ta->end, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('active', 'Active:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('active', 'Aktif:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('active', [0 => 'Tidak', 1 => 'Ya'], $ta->active, ['class' => 'form-control']) !!}	
+			<input type="radio" name="active" value="1" {{ $ta->active ? 'checked' : '' }} /> Ya  <br />
+			<input type="radio" name="active" value="0" {{ $ta->active ? '' : 'checked' }} /> Tidak 
 		</div>
 	</div>
 

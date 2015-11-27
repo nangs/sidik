@@ -1,4 +1,4 @@
-{!! Form::model($karyawan, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method]) !!}
+{!! Form::model($karyawan, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method, 'files' => true]) !!}
 
 	<div class="form-group">
 		{!! Form::label('nama', 'Nama:', ['class' => 'col-md-2 control-label']) !!}
@@ -11,6 +11,50 @@
 		{!! Form::label('nik', 'NIK:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::text('nik', $karyawan->nik, ['class' => 'form-control', 'placeholder' => 'NIK']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('tempat_lahir', 'Tempat Lahir:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('tempat_lahir', $karyawan->tempat_lahir, ['class' => 'form-control', 'placeholder' => 'Tempat Lahir']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('tgl_lahir', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('tgl_lahir', $karyawan->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('jns_kelamin', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			<input type="radio" name="jns_kelamin" value="1" {{ $karyawan->jns_kelamin ? 'checked' : '' }} /> Laki - Laki  <br />
+			<input type="radio" name="jns_kelamin" value="0" {{ $karyawan->jns_kelamin ? '' : 'checked' }} /> Perempuan 
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('gol_darah', 'Golongan Darah:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('gol_darah', App\Karyawan::golDarahList(), $karyawan->gol_darah, ['class' => 'form-control']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('nikah', 'Status Pernikahan:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			<input type="radio" name="nikah" value="1" {{ $karyawan->nikah ? 'checked' : '' }} /> Menikah  <br />
+			<input type="radio" name="nikah" value="0" {{ $karyawan->nikah ? '' : 'checked' }} /> Belum Menikah 
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('jml_anak', 'Jumlah Anak:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('jml_anak', $karyawan->jml_anak, ['class' => 'form-control', 'placeholder' => 'Jumlah Anak']) !!}
 		</div>
 	</div>
 
@@ -29,7 +73,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('phone', 'Telepon:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('phone', 'Telepon/HP:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::text('phone', $karyawan->phone, ['class' => 'form-control', 'placeholder' => 'Telepon']) !!}
 		</div>
@@ -43,23 +87,16 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('jns_kelamin', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('golongan', 'Golongan:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('jns_kelamin', [0 => 'Perempuan', 1 => 'Laki - Laki'], $karyawan->jns_kelamin, ['class' => 'form-control']) !!}	
+			{!! Form::select('golongan', App\Karyawan::golonganList(), $karyawan->golongan, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('tempat_lahir', 'Tempat Lahir:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('img', 'Foto:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tempat_lahir', $karyawan->tempat_lahir, ['class' => 'form-control', 'placeholder' => 'Tempat Lahir']) !!}
-		</div>
-	</div>
-
-	<div class="form-group">
-		{!! Form::label('tgl_lahir', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
-		<div class="col-md-10">
-			{!! Form::text('tgl_lahir', $karyawan->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::file('img') !!}	
 		</div>
 	</div>
 

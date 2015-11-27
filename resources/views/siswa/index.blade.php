@@ -7,29 +7,27 @@
 	<h1>Daftar Siswa</h1>
 	<hr />
 
-	<input type="text" class="form-control" placeholder="Cari" /><br />
-
-	<table class="table table-striped">
+	<table class="table table-striped" id="siswa-list">
 		<thead>
 			<tr>
-				<th>NIS</th>
 				<th>Nama</th>
+				<th>NIS</th>
+				<th>NISN</th>
 				<th>Jenis Kelamin</th>
-				<th>Tempat Lahir</th>
-				<th>Tanggal Lahir</th>
+				<th>Tempat, Tanggal Lahir</th>
 				<th>Wali</th>
-				<th>Aksi</th>
+				<th data-orderable="false">Aksi</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			@foreach ($siswas as $s)
 			<tr>
+				<td><a href="/siswa/{{ $s->id }}">{{ $s->nama }}</a></td>
 				<td>{{ $s->nis }}</td>
-				<td>{{ $s->nama }}</td>
+				<td>{{ $s->nisn }}</td>
 				<td>{{ $s->jns_kelamin == 1 ? 'L' : 'P' }}</td>
-				<td>{{ $s->tempat_lahir }}</td>
-				<td>{{ $s->tgl_lahir }}</td>
+				<td>{{ $s->tempat_lahir }}<br />{{ $s->tgl_lahir }}</td>
 				<td>{{ $s->wali->nama }}</td>
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => 'siswa/'.$s->id]) !!}
@@ -42,17 +40,27 @@
 		</tbody>
 	</table>
 
-	{!! $siswas->render() !!}
+@stop
 
+@section('css')
+	
+	<link href="/DataTables/datatables.min.css" rel="stylesheet">
+	
 @stop
 
 @section('script')
 
+	<script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+
 	<script type="text/javascript">
+		
 		$('.delete').click(function() {
 			if(confirm('Anda yakin?')) { return true; };
 			return false;
 		});
+
+		$('#siswa-list').DataTable();
+
 	</script>
 
 @stop

@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('wali_id', 'Wali:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('wali_id', 'Wali Kelas:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::select('wali_id', App\Karyawan::lists('nama', 'id'), $kelas->wali_id, ['class' => 'form-control']) !!}	
 		</div>

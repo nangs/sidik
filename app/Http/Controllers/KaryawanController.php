@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\KaryawanRequest;
 use App\Http\Controllers\Controller;
 use App\Karyawan;
+use Request;
 use Auth;
 
 class KaryawanController extends Controller
@@ -16,7 +17,9 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return view('karyawan.index', ['karyawans' => Karyawan::paginate(10)]);
+        return view('karyawan.index', [
+            'karyawans' => Karyawan::all()
+        ]);
     }
 
     /**
@@ -37,8 +40,22 @@ class KaryawanController extends Controller
      */
     public function store(KaryawanRequest $request)
     {
-        Karyawan::create($request->all());
-        return redirect('/karyawan');
+        $data = $request->all();
+
+        if ($request->hasFile('img')) {
+            
+            $file = $request->file('img');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['foto'] = $fileName;
+
+        }
+
+        $k = Karyawan::create($data);
+
+        return redirect('/karyawan/'.$k->id);
     }
 
     /**
@@ -72,8 +89,22 @@ class KaryawanController extends Controller
      */
     public function update(KaryawanRequest $request, Karyawan $karyawan)
     {
-        $karyawan->update($request->all());
-        return redirect('karyawan/');
+        $data = $request->all();
+
+        if ($request->hasFile('img')) {
+            
+            $file = $request->file('img');
+            
+            $fileName = time().'-'.$file->getClientOriginalName();
+            $file->move('uploads', $fileName);
+
+            $data['foto'] = $fileName;
+
+        }
+
+        $karyawan->update($data);
+
+        return redirect('karyawan/'.$karyawan->id);
     }
 
     /**
