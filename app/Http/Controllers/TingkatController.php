@@ -15,7 +15,7 @@ class TingkatController extends Controller
      */
     public function index()
     {
-        return view('tingkat.index', ['tingkats' => Tingkat::paginate(10)]);
+        return view('tingkat.index', ['tingkats' => Tingkat::orderBy('id', 'ASC')->paginate(6)]);
     }
 
     /**

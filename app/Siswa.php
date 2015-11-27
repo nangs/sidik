@@ -18,7 +18,7 @@ class Siswa extends Model
         'status_anak', 'anak_ke', 'sdr_kandung', 'sdr_angkat', 'sdr_tiri',
         'alamat', 'alamat_kos', 'tinggal_dengan', 'phone', 'jarak_ke_sekolah', 'transportasi',
         'gol_darah', 'tinggi', 'berat', 'riwayat_penyakit', 'kelainan', 'hobby',
-    	'wali_id'
+    	'wali_id', 'active'
     ];
 
     public function wali()

@@ -51,6 +51,14 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label('active', 'Aktif:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			<input type="radio" name="active" value="1" {{ $siswa->active ? 'checked' : '' }} /> Ya  <br />
+			<input type="radio" name="active" value="0" {{ $siswa->active ? '' : 'checked' }} /> Tidak 
+		</div>
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('img', 'Foto:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::file('img') !!}	

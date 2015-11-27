@@ -14,8 +14,9 @@
 				<th>NIS</th>
 				<th>NISN</th>
 				<th>Jenis Kelamin</th>
-				<th>Tempat, Tanggal Lahir</th>
-				<th>Wali</th>
+				<th>Tempat Lahir</th>
+				<th>Tanggal Lahir</th>
+				<th>Active</th>
 				<th data-orderable="false">Aksi</th>
 			</tr>
 		</thead>
@@ -27,8 +28,9 @@
 				<td>{{ $s->nis }}</td>
 				<td>{{ $s->nisn }}</td>
 				<td>{{ $s->jns_kelamin == 1 ? 'L' : 'P' }}</td>
-				<td>{{ $s->tempat_lahir }}<br />{{ $s->tgl_lahir }}</td>
-				<td>{{ $s->wali->nama }}</td>
+				<td>{{ $s->tempat_lahir }}</td>
+				<td>{{ $s->tgl_lahir }}</td>
+				<td>{!! $s->active ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td>
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => 'siswa/'.$s->id]) !!}
 		        		<a href="/siswa/{{ $s->id }}/edit" class="btn btn-success btn-xs">Edit</a>

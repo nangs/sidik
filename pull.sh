@@ -1,1 +1,1 @@
-git pull https://github.com/udibagas/sekolah.git
+git pull https://github.com/udibagas/sidik.git

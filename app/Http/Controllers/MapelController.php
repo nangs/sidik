@@ -15,7 +15,7 @@ class MapelController extends Controller
      */
     public function index()
     {
-        return view('mapel.index', ['mapels' => Mapel::paginate(10)]);
+        return view('mapel.index', ['mapels' => Mapel::orderBy('kode', 'ASC')->paginate(10)]);
     }
 
     /**
