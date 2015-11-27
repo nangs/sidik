@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth'], function() {
 	});
 
 	Route::get('/home', function () {
-	    return rediret('/');
+	    return view('home');
 	});
 
 	Route::resource('karyawan', 'KaryawanController');

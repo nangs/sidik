@@ -15,7 +15,7 @@ class BagianController extends Controller
      */
     public function index()
     {
-        return view('bagian.index', ['bagians' => Bagian::paginate(10)]);
+        return view('bagian.index', ['bagians' => Bagian::orderBy('kode', 'ASC')->paginate(10)]);
     }
 
     /**

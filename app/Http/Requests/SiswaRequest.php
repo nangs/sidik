@@ -30,7 +30,7 @@ class SiswaRequest extends Request
             'jns_kelamin'   => 'required',
             'tempat_lahir'  => 'required',
             'tgl_lahir'     => 'date|required',
-            'wali_id'       => 'required'
+            // 'wali_id'       => 'required'
         ];
     }
 }

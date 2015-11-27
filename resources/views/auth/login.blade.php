@@ -1,4 +1,4 @@
-@extends('login')
+@extends('blank')
 
 @section('content')
 
@@ -14,7 +14,7 @@
 		<!-- <hr /> -->
 
 		<p class="text-center">
-			{!! Form::submit('Login', ['class' => 'btn btn-success form-control']) !!}
+			{!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
 			<!-- <a href="/password/email" class="btn btn-default">Forgot Password</a> -->
 		</p>
 
