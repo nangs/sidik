@@ -28,15 +28,26 @@ class RouteServiceProvider extends ServiceProvider
 
         $router->model('karyawan', 'App\Karyawan');
         $router->model('bagian', 'App\Bagian');
+        $router->model('jabatan', 'App\Jabatan');
         $router->model('mapel', 'App\Mapel');
         $router->model('wali', 'App\Wali');
         $router->model('siswa', 'App\Siswa');
+        $router->model('tagihan', 'App\Tagihan');
         $router->model('ta', 'App\Ta');
         $router->model('tingkat', 'App\Tingkat');
         $router->model('kelas', 'App\Kelas');
         $router->model('riwayatPendidikan', 'App\RiwayatPendidikan');
         $router->model('riwayatKepegawaian', 'App\RiwayatKepegawaian');
+        $router->model('riwayatMengajar', 'App\RiwayatMengajar');
+        $router->model('pengalamanKerja', 'App\PengalamanKerja');
         $router->model('keluargaKaryawan', 'App\KeluargaKaryawan');
+        $router->model('jenisUjian', 'App\JenisUjian');
+        $router->model('jenisInventaris', 'App\JenisInventaris');
+        $router->model('kategoriBuku', 'App\KategoriBuku');
+        $router->model('tagsBuku', 'App\TagsBuku');
+        $router->model('kalenderAkademik', 'App\KalenderAkademik');
+        $router->model('invTanah', 'App\InvTanah');
+        $router->model('invBangunan', 'App\InvBangunan');
     }
 
     /**

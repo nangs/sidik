@@ -7,7 +7,11 @@
 		<tr>
 			<th>Nama</th>
 			<th>Jenis Kelamin</th>
+			<th>Tempat Lahir</th>
+			<th>Tanggal Lahir</th>
+			<th>Usia</th>
 			<th>Hub. Keluarga</th>
+			<th>Status</th>
 			<th>Aksi</th>
 		</tr>
 	</thead>
@@ -17,7 +21,11 @@
 		<tr>
 			<td>{{ $k->nama }}</td>
 			<td>{{ $k->jns_kelamin ? 'Laki - Laki' : 'Perempuan' }}</td>
+			<td>{{ $k->tempat_lahir }}</td>
+			<td>{{ $k->tgl_lahir != '0000-00-00' ? $k->tgl_lahir : '' }}</td>
+			<td>{{ $k->status && $k->tgl_lahir != '0000-00-00' ? $k->umur() : '' }}</td>
 			<td>{{ $k->hub_keluarga }}</td>
+			<td>{{ $k->status ? 'Hidup' : 'Meninggal' }}</td>
 			<td>
 				{!! Form::open(['method' => 'DELETE', 'url' => 'keluargaKaryawan/'.$k->id]) !!}
 	        		<a href="/keluargaKaryawan/{{ $k->id }}/edit" class="btn btn-success btn-xs">Edit</a>

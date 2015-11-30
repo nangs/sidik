@@ -16,8 +16,12 @@ class RiwayatPendidikanController extends Controller
      */
     public function create()
     {
+        $r = Request::all();
         $riwayatPendidikan = new RiwayatPendidikan;
-        $riwayatPendidikan->karyawan_id = Request::get('karyawan_id');
+        $riwayatPendidikan->karyawan_id = isset ($r['karyawan_id']) ? $r['karyawan_id'] : 0;
+        $riwayatPendidikan->siswa_id = isset ($r['siswa_id']) ? $r['siswa_id'] : 0;
+        $riwayatPendidikan->formal = isset ($r['formal']) ? $r['formal'] : 0;
+
         return view('riwayatPendidikan.create', ['riwayatPendidikan' => $riwayatPendidikan]);
     }
 
@@ -30,7 +34,12 @@ class RiwayatPendidikanController extends Controller
     public function store(RiwayatPendidikanRequest $request)
     {
         $d = RiwayatPendidikan::create($request->all());
-        return redirect('/karyawan/'.$d->karyawan_id);
+        
+        $route = $d->karyawan_id > 0 
+            ? '/karyawan/'.$d->karyawan_id 
+            : '/siswa/'.$d->siswa_id;
+
+        return redirect($route);
     }
 
     /**
@@ -54,7 +63,12 @@ class RiwayatPendidikanController extends Controller
     public function update(RiwayatPendidikanRequest $request, RiwayatPendidikan $riwayatPendidikan)
     {
         $riwayatPendidikan->update($request->all());
-        return redirect('karyawan/'.$riwayatPendidikan->karyawan_id);
+
+        $route = $riwayatPendidikan->karyawan_id > 0 
+            ? '/karyawan/'.$riwayatPendidikan->karyawan_id 
+            : '/siswa/'.$riwayatPendidikan->siswa_id;
+
+        return redirect($route);
     }
 
     /**
@@ -65,8 +79,12 @@ class RiwayatPendidikanController extends Controller
      */
     public function destroy(RiwayatPendidikan $riwayatPendidikan)
     {
-        $karyawan_id = $riwayatPendidikan->karyawan_id;
+        $route = $riwayatPendidikan->karyawan_id > 0 
+            ? '/karyawan/'.$riwayatPendidikan->karyawan_id 
+            : '/siswa/'.$riwayatPendidikan->siswa_id;
+
         $riwayatPendidikan->delete();
-        return redirect('karyawan/'.$karyawan_id);
+
+        return redirect($route);
     }
 }

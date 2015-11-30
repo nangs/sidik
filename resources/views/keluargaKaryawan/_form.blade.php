@@ -23,11 +23,34 @@
 			<input type="radio" name="jns_kelamin" value="0" {{ $keluargaKaryawan->jns_kelamin ? '' : 'checked' }} /> Perempuan 
 		</div>
 	</div>
+
+	<div class="form-group">
+		{!! Form::label('tempat_lahir', 'Tempat Lahir:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('tempat_lahir', $keluargaKaryawan->tempat_lahir, ['class' => 'form-control', 'placeholder' => 'Tempat Lahir']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('tgl_lahir', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('tgl_lahir', $keluargaKaryawan->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+		</div>
+	</div>
+
 	
 	<div class="form-group">
 		{!! Form::label('hub_keluarga', 'Hub. Keluarga:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::select('hub_keluarga', App\KeluargaKaryawan::listHubungan(), $keluargaKaryawan->jenjang, ['class' => 'form-control']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('status', 'Status:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			<input type="radio" name="status" value="1" {{ $keluargaKaryawan->status ? 'checked' : '' }} /> Hidup  <br />
+			<input type="radio" name="status" value="0" {{ $keluargaKaryawan->status ? '' : 'checked' }} /> Meninggal 
 		</div>
 	</div>
 

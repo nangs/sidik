@@ -8,7 +8,15 @@ class KeluargaKaryawan extends Model
 {
     protected $table = 'keluarga_karyawan';
 
-    protected $fillable = ['karyawan_id', 'nama', 'hub_keluarga', 'jns_kelamin', 'status'];
+    protected $fillable = [
+        'karyawan_id', 
+        'nama', 
+        'hub_keluarga', 
+        'jns_kelamin', 
+        'status',
+        'tempat_lahir',
+        'tgl_lahir'
+    ];
 
     public function karyawan()
     {
@@ -24,5 +32,14 @@ class KeluargaKaryawan extends Model
     		'Istri'		=> 'Istri',
     		'Anak'		=> 'Anak',
     	];
+    }
+
+    public function umur()
+    {
+        $now = new \DateTime("now");
+        $tgl_lahir = new \DateTime($this->tgl_lahir);
+        $interval = $tgl_lahir->diff($now);
+
+        return $interval->format('%y tahun %m bulan %d hari');
     }
 }

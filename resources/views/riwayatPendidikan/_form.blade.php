@@ -1,6 +1,10 @@
 {!! Form::model($riwayatPendidikan, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method]) !!}
 	
 	{!! Form::hidden('karyawan_id', $riwayatPendidikan->karyawan_id) !!}
+	{!! Form::hidden('siswa_id', $riwayatPendidikan->siswa_id) !!}
+	{!! Form::hidden('formal', $riwayatPendidikan->formal) !!}
+
+	@if ($riwayatPendidikan->karyawan_id)
 
 	<div class="form-group">
 		{!! Form::label('karyawan_id', 'Karyawan:', ['class' => 'col-md-2 control-label']) !!}
@@ -8,13 +12,30 @@
 			{!! Form::select('karyawan', App\Karyawan::lists('nama', 'id'), $riwayatPendidikan->karyawan_id, ['class' => 'form-control', 'disabled' => true]) !!}	
 		</div>
 	</div>
+
+	@endif
+
+	@if ($riwayatPendidikan->siswa_id)
+
+	<div class="form-group">
+		{!! Form::label('siswa_id', 'Siswa:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('siswa', App\Siswa::lists('nama', 'id'), $riwayatPendidikan->siswa_id, ['class' => 'form-control', 'disabled' => true]) !!}	
+		</div>
+	</div>
+
+	@endif
 	
+	@if ($riwayatPendidikan->formal)
+
 	<div class="form-group">
 		{!! Form::label('jenjang', 'Jenjang:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::select('jenjang', App\RiwayatPendidikan::listJenjang(), $riwayatPendidikan->jenjang, ['class' => 'form-control']) !!}
 		</div>
 	</div>
+
+	@endif
 
 	<div class="form-group">
 		{!! Form::label('institusi', 'Institusi:', ['class' => 'col-md-2 control-label']) !!}
@@ -30,6 +51,8 @@
 		</div>
 	</div>
 
+	@if ($riwayatPendidikan->formal)
+
 	<div class="form-group">
 		{!! Form::label('fakultas', 'Fakultas:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
@@ -44,10 +67,33 @@
 		</div>
 	</div>
 
+	@endif
+
+	<div class="form-group">
+		{!! Form::label('masuk', 'Tahun Masuk:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('masuk', $riwayatPendidikan->masuk, ['class' => 'form-control', 'placeholder' => 'Tahun Masuk']) !!}
+		</div>
+	</div>
+
 	<div class="form-group">
 		{!! Form::label('lulus', 'Tahun Lulus:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::text('lulus', $riwayatPendidikan->lulus, ['class' => 'form-control', 'placeholder' => 'Tahun Lulus']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('lama', 'Masa Belajar:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::text('lama', $riwayatPendidikan->lama, ['class' => 'form-control', 'placeholder' => 'Masa Belajar']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('keterangan', 'Keterangan/Kompetensi:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::textarea('keterangan', $riwayatPendidikan->keterangan, ['class' => 'form-control', 'placeholder' => 'Keterangan', 'rows' => 3]) !!}
 		</div>
 	</div>
 

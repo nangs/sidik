@@ -33,7 +33,8 @@ class KaryawanRequest extends Request
             'kota_asal'     => 'required',
             'alamat'        => 'required',
             'phone'         => 'required',
-            'email'         => 'email'
+            'email'         => 'email',
+            'guru'          => 'boolean'
         ];
     }
 }

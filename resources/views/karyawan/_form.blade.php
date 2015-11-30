@@ -94,6 +94,21 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label('guru', 'Status Pernikahan:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			<input type="radio" name="guru" value="1" {{ $karyawan->guru ? 'checked' : '' }} /> Ya  <br />
+			<input type="radio" name="guru" value="0" {{ $karyawan->guru ? '' : 'checked' }} /> Tidak 
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('mapel', 'Mata Pelajaran:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('mapel[]', App\Mapel::lists('nama', 'id'), $karyawan->mapels()->lists('mapel_id')->toArray(), ['class' => 'form-control', 'multiple' => true, 'id' => 'mapel']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('img', 'Foto:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::file('img') !!}	
@@ -109,3 +124,17 @@
 	</div>
 
 {!! Form::close() !!}
+
+@section('css')
+<link href="/select2/dist/css/select2.min.css" rel="stylesheet">
+@stop
+
+@section('script')
+
+<script type="text/javascript" src="/select2/dist/js/select2.min.js"></script>
+
+<script type="text/javascript">
+	$('#mapel').select2();
+</script>
+
+@stop

@@ -25,11 +25,16 @@ class RiwayatPendidikanRequest extends Request
     public function rules()
     {
         return [
-            'karyawan_id'   => 'required',
-            'jenjang'       => 'required',
+            // 'karyawan_id'   => 'required',
+            // 'siswa_id'      => 'required',
+            // 'jenjang'       => 'required',
+            // 'lama'          => 'required',
             'institusi'     => 'required|max:255',
+            'keterangan'    => 'max:255',
             'kota'          => 'required',
-            'lulus'         => 'required'
+            'masuk'         => 'required',
+            'lulus'         => 'required',
+            'formal'        => 'boolean',
         ];
     }
 }

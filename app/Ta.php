@@ -9,4 +9,14 @@ class Ta extends Model
     protected $table = 'ta';
 
     protected $fillable = ['periode', 'start', 'end', 'active'];
+
+    public function tagihans()
+    {
+        return $this->hasMany('App\Tagihan');
+    }
+
+    public function kalenderAkademiks()
+    {
+        return $this->hasMany('App\KalenderAkademik');
+    }
 }

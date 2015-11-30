@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Route::group(['middleware' => 'auth'], function() {
 	
 	Route::get('/', function () {
@@ -25,19 +23,35 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::resource('karyawan', 'KaryawanController');
 	Route::resource('bagian', 'BagianController');
-	Route::resource('mapel', 'MapelController');
 	Route::resource('wali', 'WaliController');
 	Route::resource('siswa', 'SiswaController');
+	Route::resource('tagihan', 'TagihanController');
+	Route::resource('kelas', 'KelasController');
+	Route::resource('jenisInventaris', 'JenisInventarisController');
+	Route::resource('kategoriBuku', 'KategoriBukuController');
+	Route::resource('tagsBuku', 'TagsBukuController');
+	Route::resource('invTanah', 'InvTanahController');
+	Route::resource('invBangunan', 'InvBangunanController');
 
 	Route::resource('ta', 'TaController', [
+		'except' => ['show']
+	]);
+
+	Route::resource('jabatan', 'JabatanController', [
+		'except' => ['show']
+	]);
+
+	Route::resource('mapel', 'MapelController', [
+		'except' => ['show']
+	]);
+
+	Route::resource('jenisUjian', 'JenisUjianController', [
 		'except' => ['show']
 	]);
 
 	Route::resource('tingkat', 'TingkatController', [
 		'except' => ['show']
 	]);
-
-	Route::resource('kelas', 'KelasController');
 
 	Route::resource('riwayatPendidikan', 'RiwayatPendidikanController', [
 		'except' => ['index', 'show']
@@ -47,9 +61,24 @@ Route::group(['middleware' => 'auth'], function() {
 		'except' => ['index', 'show']
 	]);
 
+	Route::resource('riwayatMengajar', 'RiwayatMengajarController', [
+		'except' => ['index', 'show']
+	]);
+
+	Route::resource('pengalamanKerja', 'PengalamanKerjaController', [
+		'except' => ['index', 'show']
+	]);
+
 	Route::resource('keluargaKaryawan', 'KeluargaKaryawanController', [
 		'except' => ['index','show']
 	]);
+
+	Route::resource('kalenderAkademik', 'KalenderAkademikController', [
+		'except' => ['show']
+	]);
+
+	Route::get('/kalenderAkademik/event', 'KalenderAkademikController@event');
+	Route::get('/kalenderAkademik/kalender', 'KalenderAkademikController@kalender');
 
 });
 

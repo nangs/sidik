@@ -13,12 +13,34 @@
 				<th>Nama</th>
 				<th>NIS</th>
 				<th>NISN</th>
-				<th>Jenis Kelamin</th>
+				<th>Jns Kelamin</th>
 				<th>Tempat Lahir</th>
 				<th>Tanggal Lahir</th>
-				<th>Active</th>
-				<th data-orderable="false">Aksi</th>
+				<th>Aktif</th>
+				<th style="width:120px;" data-orderable="false">Aksi</th>
 			</tr>
+			{!! Form::open(['method' => 'GET']) !!}
+			<tr>
+				<td>
+					{!! Form::text('nama', '', ['class' => 'form-control', 'placeholder' => 'Nama']) !!}
+				</td>
+				<td><input type="text" placeholder="NIS" name="nis" class="form-control" /></td>
+				<td><input type="text" placeholder="NISN" name="nisn" class="form-control" /></td>
+				<td>
+					{!! Form::select('jns_kelamin', ['all' => 'All', '1' => 'L', '0' => 'P'], 'all', ['class' => 'form-control']) !!}
+				</td>
+				<td><input type="text" placeholder="Tempat Lahir" name="tempat_lahir" class="form-control" /></td>
+				<td><input type="text" placeholder="Tgl Lahir" name="tgl_lahir" class="form-control" /></td>
+				<td>
+					{!! Form::select('jns_kelamin', ['all' => 'All', '1' => 'Y', '0' => 'T'], 'all', ['class' => 'form-control']) !!}
+				</td>
+
+				<td>
+					{!! Form::submit('Filter', ['class' => 'btn btn-success']) !!} 
+					<a href="/siswa" class="btn btn-success"><span class="fa fa-refresh"></span></a>
+				</td>
+			</tr>
+			{!! Form::close() !!}
 		</thead>
 
 		<tbody>
@@ -42,11 +64,13 @@
 		</tbody>
 	</table>
 
+	{!! $siswas->render() !!}
+
 @stop
 
 @section('css')
 	
-	<link href="/DataTables/datatables.min.css" rel="stylesheet">
+	<!-- <link href="/DataTables/datatables.min.css" rel="stylesheet"> -->
 	
 @stop
 
@@ -61,7 +85,7 @@
 			return false;
 		});
 
-		$('#siswa-list').DataTable();
+		// $('#siswa-list').DataTable();
 
 	</script>
 

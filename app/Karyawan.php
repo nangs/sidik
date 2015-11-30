@@ -23,7 +23,8 @@ class Karyawan extends Model
         'golongan',
         'gol_darah',
         'nikah',
-        'jml_anak'
+        'jml_anak',
+        'guru'
     ];
 
     public function riwayatPendidikans()
@@ -34,6 +35,16 @@ class Karyawan extends Model
     public function riwayatKepegawaians()
     {
         return $this->hasMany('App\RiwayatKepegawaian');
+    }
+
+    public function riwayatMengajars()
+    {
+        return $this->hasMany('App\RiwayatMengajar');
+    }
+
+    public function pengalamanKerjas()
+    {
+        return $this->hasMany('App\PengalamanKerja');
     }
 
     public function keluargas()
@@ -84,5 +95,19 @@ class Karyawan extends Model
             'AB'    => 'AB',
             'O'     => 'O',
         ];
+    }
+
+    public function umur()
+    {
+        $now = new \DateTime("now");
+        $tgl_lahir = new \DateTime($this->tgl_lahir);
+        $interval = $tgl_lahir->diff($now);
+
+        return $interval->format('%y tahun %m bulan %d hari');
+    }
+
+    public function mapels()
+    {
+        return $this->belongsToMany('App\Mapel', 'guru_mapel', 'karyawan_id', 'mapel_id');
     }
 }

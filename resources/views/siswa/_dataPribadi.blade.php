@@ -6,6 +6,7 @@
 		<tr><th>Nama Lengkap</th><td>: {{ $siswa->nama }}</td></tr>
 		<tr><th>Nama Panggilan</th><td>: {{ $siswa->panggilan }}</td></tr>
 		<tr><th>Tempat, Tanggal Lahir</th><td>: {{ $siswa->tempat_lahir }}, {{ $siswa->tgl_lahir }}</td></tr>
+		<tr><th>Umur</th><td>: {{ $siswa->umur() }}</td></tr>
 		<tr><th>Jenis Kelamin</th><td>: {{ $siswa->jns_kelamin ? 'Laki - Laki' : 'Perempuan' }}</td></tr>
 		<tr><th>Aktif</th><td>: {!! $siswa->active ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td></tr>
 

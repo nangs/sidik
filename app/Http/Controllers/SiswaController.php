@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SiswaRequest;
 use App\Http\Controllers\Controller;
 use App\Siswa;
+use Request;
 
 class SiswaController extends Controller
 {
@@ -16,7 +17,12 @@ class SiswaController extends Controller
     public function index()
     {
         return view('siswa.index', [
-            'siswas' => Siswa::all()
+            'siswas' => Siswa::where('nama', 'LIKE', '%'.Request::get('nama', '').'%')
+                            // ->where('nis', 'LIKE', '%'.Request::get('nis', '').'%')
+                            // ->where('nisn', 'LIKE', '%'.Request::get('nisn', '').'%')
+                            // ->where('jns_kelamin', Request::get('jns_kelamin', 1))
+                            ->orderBy('nama', 'ASC')
+                            ->paginate(10)
         ]);
     }
 

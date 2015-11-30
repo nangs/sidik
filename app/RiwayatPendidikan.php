@@ -9,13 +9,18 @@ class RiwayatPendidikan extends Model
     protected $table = 'riwayat_pendidikan';
 
     protected $fillable = [
-    	'karyawan_id', 
+        'karyawan_id', 
+    	'siswa_id', 
     	'jenjang', 
     	'institusi', 
     	'kota', 
     	'fakultas', 
     	'jurusan', 
-    	'lulus'
+        'masuk',
+        'lulus',
+    	'keterangan',
+        'formal',
+        'lama'
     ];
 
     public static function listJenjang()
@@ -34,6 +39,11 @@ class RiwayatPendidikan extends Model
     }
 
     public function karyawan()
+    {
+        return $this->belongsTo('App\Karyawan');
+    }
+
+    public function siswa()
     {
     	return $this->belongsTo('App\Karyawan');
     }

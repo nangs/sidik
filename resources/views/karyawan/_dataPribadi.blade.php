@@ -8,6 +8,7 @@
 			<tr><th style="width:200px;">Nama</th><td>: {{ $karyawan->nama }}</td></tr>
 			<tr><th>NIK</th><td>: {{ $karyawan->nik }}</td></tr>
 			<tr><th>Tempat, Tanggal Lahir</th><td>: {{ $karyawan->tempat_lahir }}, {{ $karyawan->tgl_lahir }}</td></tr>
+			<tr><th>Umur</th><td>: {{ $karyawan->umur() }}</td></tr>
 			<tr><th>Jenis Kelamin</th><td>: {{ $karyawan->jns_kelamin ? 'Laki - Laki' : 'Perempuan' }}</td></tr>
 			<tr><th>Golongan Darah</th><td>: {{ $karyawan->gol_darah }}</td></tr>
 			<tr><th>Status Pernikahan</th><td>: {{ $karyawan->nikah ? 'Menikah' : 'Belum Menikah' }}</td></tr>
@@ -17,6 +18,8 @@
 			<tr><th>Telepon/HP</th><td>: {{ $karyawan->phone }}</td></tr>
 			<tr><th>Email</th><td>: <a href="mailto:{{ $karyawan->email }}">{{ $karyawan->email }}</a></td></tr>
 			<tr><th>Golongan</th><td>: {{ $karyawan->golongan }}</td></tr>
+			<tr><th>Guru</th><td>: {!! $karyawan->guru ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td></tr>
+			<tr><th>Mata Pelajaran</th><td>: {{ implode($karyawan->mapels()->lists('nama')->toArray(), ', ') }}</td></tr>
 
 		</tbody>
 	</table>

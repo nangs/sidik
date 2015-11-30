@@ -21,6 +21,7 @@
 				<th>Alamat</th>
 				<th>Telepon/HP, Email</th>
 				<th>Golongan</th>
+				<th>Guru</th>
 				<th style="width:100px;" data-orderable="false">Aksi</th>
 			</tr>
 		</thead>
@@ -39,6 +40,7 @@
 				<td>{{ $k->alamat }}</td>
 				<td>{{ $k->phone }}<br /><a href="mailto:{{ $k->email }}">{{ $k->email }}</a></td>
 				<td>{{ $k->golongan }}</td>
+				<td>{!! $k->guru ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td>
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => 'karyawan/'.$k->id]) !!}
 		        		<a href="/karyawan/{{ $k->id }}/edit" class="btn btn-success btn-xs">Edit</a>

@@ -25,4 +25,26 @@ class Siswa extends Model
     {
     	return $this->belongsTo('App\Wali');
     }
+
+    public function urutan()
+    {
+        return [
+            'Nol', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan', 'Sepuluh',
+            'Sebelas', 'Dua belas', 'Tiga belas', 'Empat belas', 'Lima belas'
+        ];
+    }
+
+    public function umur()
+    {
+        $now = new \DateTime("now");
+        $tgl_lahir = new \DateTime($this->tgl_lahir);
+        $interval = $tgl_lahir->diff($now);
+
+        return $interval->format('%y tahun %m bulan %d hari');
+    }
+
+    public function tagihans()
+    {
+        return $this->hasMany('App\Tagihan');
+    } 
 }

@@ -1,0 +1,56 @@
+TODO:
+
+
+AKADEMIK
+
+- Jadwal Ujian
+- Jadwal Pelajaran
+
+SISWA
+
+- riwayat pendidikan
+- beasiswa
+- prestasi : th, lomba, tingkat, juara, jenis
+- absensi : tgl, (A,I,S), ket
+- pelanggaran : tgl, level, nama pelanggaran, point
+- Nilai berdasarkan jenis ujian
+- Ortu & wali
+
+KARYAWAN
+
+- Bagian
+- Jabatan
+- View dipisah : pribadi, pekerjaan, keluarga, riwayat di bawah semua
+- Absensi
+- info gaji & tunjangan
+
+MODUL BELAJAR ONLINE
+
+- Bab
+- sub bab
+- materi
+
+KEUANGAN
+- reminder tagihan by email
+
+PROFIL SEKOLAH
+
+PERPUSTAKAAN
+
+FORUM
+
+TUGAS/UJIAN ONLINE
+
+PENDAFTARAN ONLINE
+
+MULTI LOGIN
+- login by karyawan, guru, siswa, ortu/wali
+
+INVENTARIS
+- jenis_inv
+- Tanah : inv_tanah
+- bangunan : inv_bangunan
+- jaringan
+- inv_barang
+- inv_habis_pakai = stok, jenis, nama, satuan => penggunaan_inv_hbs_pakai
+- ruangan: ukuran, kapasitas -> asset
