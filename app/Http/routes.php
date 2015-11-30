@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('tagsBuku', 'TagsBukuController');
 	Route::resource('invTanah', 'InvTanahController');
 	Route::resource('invBangunan', 'InvBangunanController');
+	Route::resource('ruangan', 'RuanganController');
 
 	Route::resource('ta', 'TaController', [
 		'except' => ['show']

@@ -25,7 +25,7 @@ class TagsBukuRequest extends Request
     public function rules()
     {
         return [
-            'nama'  => 'required|max:30'
+            'nama'  => 'required|max:30|unique:tags_buku'
         ];
     }
 }

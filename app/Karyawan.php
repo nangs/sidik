@@ -110,4 +110,9 @@ class Karyawan extends Model
     {
         return $this->belongsToMany('App\Mapel', 'guru_mapel', 'karyawan_id', 'mapel_id');
     }
+
+    public function ruangans()
+    {
+        return $this->hasMany('App\Ruangan', 'penanggungjawab_id');
+    }
 }

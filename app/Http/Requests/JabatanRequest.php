@@ -25,7 +25,7 @@ class JabatanRequest extends Request
     public function rules()
     {
         return [
-            'bagian_id' => 'required',
+            'bagian_id' => 'required|integer',
             'nama'      => 'required',
             'tugas'     => 'required'
         ];

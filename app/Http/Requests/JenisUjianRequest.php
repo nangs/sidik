@@ -25,8 +25,8 @@ class JenisUjianRequest extends Request
     public function rules()
     {
         return [
-            'kode'  => 'required|max:10',
-            'nama'  => 'required|max:30',
+            'kode'  => 'required|max:10|unique:jenis_ujian',
+            'nama'  => 'required|max:30|unique:jenis_ujian',
             'bobot' => 'required|numeric',
         ];
     }

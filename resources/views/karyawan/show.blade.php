@@ -74,7 +74,7 @@
 
 		<div role="tabpanel" class="tab-pane" id="5">
 			<br />
-			@include('karyawan._mapelDiampu')
+			
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="2">

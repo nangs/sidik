@@ -25,11 +25,11 @@ class KalenderAkademikRequest extends Request
     public function rules()
     {
         return [
-            'ta_id'         => 'required',
+            'ta_id'         => 'required|integer',
             'dari'          => 'date|required',
             'sampai'        => 'date|required',
             'kegiatan'      => 'required|max:100',
-            'warna'         => 'required'
+            'warna'         => 'required|in:red,green,blue,yellow'
         ];
     }
 }

@@ -64,7 +64,7 @@
                         <!-- TODO : GET FROM DB -->
                         <li><a href="/invBarang?jenis=PM">Peralatan Mesin</a></li>
                         <li><a href="/invBarang?jenis=PM">Jalan - Irigasi - Jaringan</a></li>
-                        <li><a href="/invBarang?jenis=PM">Ruangan</a></li>
+                        <li><a href="/ruangan">Ruangan</a></li>
                         <li><a href="/invBarang?jenis=PM">Barang</a></li>
                         <li><a href="/invBarang?jenis=PM">Asset Tetap Lainnya (BUKU)</a></li>
                         <li><a href="/invBarang?jenis=PM">ATK</a></li>

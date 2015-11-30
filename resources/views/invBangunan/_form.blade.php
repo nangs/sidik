@@ -3,7 +3,7 @@
 	<div class="form-group">
 		{!! Form::label('tanah_id', 'Tanah:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('tanah_id',App\InvTanah::lists('nama', 'id'), $invBangunan->tanah_id, ['class' => 'form-control']) !!}
+			{!! Form::select('tanah_id', App\InvTanah::lists('nama', 'id'), $invBangunan->tanah_id, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 
@@ -93,7 +93,7 @@
 	<div class="form-group">
 		{!! Form::label('kondisi', 'Kondisi:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('kondisi',App\InvBangunan::kondisi, $invBangunan->kondisi, ['class' => 'form-control']) !!}
+			{!! Form::select('kondisi', App\InvBangunan::kondisiList(), $invBangunan->kondisi, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 

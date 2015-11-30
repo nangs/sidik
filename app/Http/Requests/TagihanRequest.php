@@ -25,17 +25,17 @@ class TagihanRequest extends Request
     public function rules()
     {
         return [
-            'siswa_id'      => 'required',
-            'ta_id'         => 'required',
+            'siswa_id'      => 'required|integer',
+            'ta_id'         => 'required|integer',
             'jenis'         => 'required|max:30',
-            'semester'      => 'required',
+            'semester'      => 'required|in:1,2',
             // 'bulan'         => 'required',
             'jatuh_tempo'   => 'date',
             'tanggal_bayar' => 'date',
             'status'        => 'boolean',
             'keterangan'    => 'max:255',
             'nomor'         => 'required|max:30',
-            'jumlah'        => 'required'
+            'jumlah'        => 'required|numeric'
         ];
     }
 }

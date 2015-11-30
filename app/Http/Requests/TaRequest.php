@@ -25,7 +25,7 @@ class TaRequest extends Request
     public function rules()
     {
         return [
-            'periode'   => 'required',
+            'periode'   => 'required|unique:ta',
             'start'     => 'required|date',
             'end'       => 'required|date',
             'active'    => 'boolean',

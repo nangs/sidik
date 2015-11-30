@@ -26,7 +26,7 @@ class AddTtlOnKeluargaKaryawan extends Migration
     public function down()
     {
         Schema::table('keluarga_karyawan', function (Blueprint $table) {
-            //
+            $table->dropColumn(['tempat_lahir', 'tgl_lahir']);
         });
     }
 }

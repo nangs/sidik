@@ -25,12 +25,12 @@ class RiwayatMengajarRequest extends Request
     public function rules()
     {
         return [
-            'karyawan_id'   => 'required',
+            'karyawan_id'   => 'required|integer',
             'mapel'         => 'required',
             // 'tingkat'       => 'required',
             'institusi'     => 'required',
-            'dari'          => 'required',
-            'sampai'        => 'required',
+            'dari'          => 'required|integer',
+            'sampai'        => 'required|integer',
             'durasi'        => 'required',
             'keterangan'    => 'max:255',
         ];

@@ -25,7 +25,7 @@ class RenameTransportasi extends Migration
     public function down()
     {
         Schema::table('siswa', function (Blueprint $table) {
-            //
+            $table->renameColumn('transportasi', 'transortasi');
         });
     }
 }

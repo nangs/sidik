@@ -48,6 +48,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('kalenderAkademik', 'App\KalenderAkademik');
         $router->model('invTanah', 'App\InvTanah');
         $router->model('invBangunan', 'App\InvBangunan');
+        $router->model('ruangan', 'App\Ruangan');
     }
 
     /**

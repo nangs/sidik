@@ -109,7 +109,8 @@ class KalenderAkademikController extends Controller
                 'start'     => $d->dari,
                 'end'       => $d->sampai,
                 'color'     => $d->warna,
-                'allDay'    => true
+                'allDay'    => true,
+                // 'url'       => 'http://www.facebook.com/'
             ];
 
         }

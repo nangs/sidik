@@ -14,14 +14,22 @@ class InvBangunan extends Model
     	'rekanan', 'kondisi', 'material_lantai', 'material_tembok', 'material_atap', 'nilai_asset'
     ];
 
-    const kondisi = [
-    	'Baik'			=> 'Baik',
-    	'Rusak Ringan'	=> 'Rusak Ringan',
-    	'Rusak Berat'	=> 'Rusak Berat',
-    ];
-
     public function tanah()
     {
     	return $this->belongsTo('App\InvTanah', 'tanah_id');
+    }
+
+    public function ruangans()
+    {
+        return $this->hasMany('App\Ruangan', 'bangunan_id');
+    }
+
+    public static function kondisiList()
+    {
+        return [
+            'Baik'          => 'Baik',
+            'Rusak Ringan'  => 'Rusak Ringan',
+            'Rusak Berat'   => 'Rusak Berat',
+        ];
     }
 }

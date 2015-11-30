@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 
 class RuanganRequest extends Request
 {
@@ -13,7 +14,7 @@ class RuanganRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,14 @@ class RuanganRequest extends Request
     public function rules()
     {
         return [
-            //
+            'bangunan_id'           => 'required|integer', 
+            'penanggungjawab_id'    => 'required|integer', 
+            'kode'                  => 'required|max:10|unique:ruangan', 
+            'nama'                  => 'required|max:30',
+            'luas'                  => 'integer|required', 
+            'kapasitas'             => 'integer|required', 
+            'penggunaan'            => 'required', 
+            'kondisi'               => 'required|in:Baik,Rusak Ringan,Rusak Berat'
         ];
     }
 }

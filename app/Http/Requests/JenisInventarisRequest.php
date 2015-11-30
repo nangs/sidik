@@ -25,7 +25,7 @@ class JenisInventarisRequest extends Request
     public function rules()
     {
         return [
-            'kode'       => 'required|max:10',
+            'kode'       => 'required|max:10|unique:jenis_inventaris',
             'nama'       => 'required|max:30',
             'keterangan' => 'max:255',
         ];

@@ -25,8 +25,8 @@ class MapelRequest extends Request
     public function rules()
     {
         return [
-            'kode'  => 'required',
-            'nama'  => 'required',
+            'kode'  => 'required|unique:mapel',
+            'nama'  => 'required|unique:mapel',
         ];
     }
 }

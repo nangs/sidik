@@ -25,7 +25,7 @@ class PengalamanKerjaRequest extends Request
     public function rules()
     {
         return [
-            'karyawan_id'   => 'required',
+            'karyawan_id'   => 'required|integer',
             'institusi'     => 'required',
             'dari'          => 'date|required',
             'sampai'        => 'date|required',

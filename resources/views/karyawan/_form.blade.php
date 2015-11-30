@@ -94,7 +94,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('guru', 'Status Pernikahan:', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('guru', 'Guru:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			<input type="radio" name="guru" value="1" {{ $karyawan->guru ? 'checked' : '' }} /> Ya  <br />
 			<input type="radio" name="guru" value="0" {{ $karyawan->guru ? '' : 'checked' }} /> Tidak 

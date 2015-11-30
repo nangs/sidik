@@ -25,7 +25,7 @@
 	<div class="form-group">
 		{!! Form::label('bulan', 'Bulan:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('bulan', App\Tagihan::bulan, $tagihan->bulan, ['class' => 'form-control']) !!}
+			{!! Form::select('bulan', App\Tagihan::bulanList(), $tagihan->bulan, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 

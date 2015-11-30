@@ -25,7 +25,7 @@ class TingkatRequest extends Request
     public function rules()
     {
         return [
-            'nama'          => 'required',
+            'nama'          => 'required|unique:tingkat',
             'keterangan'    => 'max:255'
         ];
     }

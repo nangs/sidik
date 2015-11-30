@@ -27,7 +27,7 @@ class WaliRequest extends Request
         return [
             'nama'          => 'required',
             'alamat'        => 'required',
-            'email'         => 'email',
+            'email'         => 'email|unique:wali',
             'phone'         => 'required',
             'jns_kelamin'   => 'required',
             'hub_keluarga'  => 'required'

@@ -25,7 +25,7 @@ class RiwayatKepegawaianRequest extends Request
     public function rules()
     {
         return [
-            'karyawan_id'       => 'required',
+            'karyawan_id'       => 'required|integer',
             'jenis'             => 'required',
             'nomor_sk'          => 'required',
             'tanggal_sk'        => 'date|required',

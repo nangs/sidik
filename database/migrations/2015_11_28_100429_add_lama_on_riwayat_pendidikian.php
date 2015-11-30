@@ -25,7 +25,7 @@ class AddLamaOnRiwayatPendidikian extends Migration
     public function down()
     {
         Schema::table('riwayat_pendidikan', function (Blueprint $table) {
-            //
+            $table->dropColumn('lama');
         });
     }
 }

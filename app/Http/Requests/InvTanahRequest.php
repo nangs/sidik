@@ -25,11 +25,11 @@ class InvTanahRequest extends Request
     public function rules()
     {
         return [
-            'kode'                  => 'required', 
+            'kode'                  => 'required|unique:inv_tanah', 
             'nama'                  => 'required', 
-            'luas_total'            => 'numeric', 
-            'luas_bangunan'         => 'numeric', 
-            'luas_kosong'           => 'numeric',
+            'luas_total'            => 'integer', 
+            'luas_bangunan'         => 'integer', 
+            'luas_kosong'           => 'integer',
             'lokasi'                => 'required', 
             'batas_utara'           => 'required', 
             'batas_selatan'         => 'required', 

@@ -25,9 +25,9 @@ class SiswaRequest extends Request
     public function rules()
     {
         return [
-            'nis'           => 'required|max:255',
+            'nis'           => 'required|max:255|unique:siswa',
             'nama'          => 'required|max:255',
-            'jns_kelamin'   => 'required',
+            'jns_kelamin'   => 'boolean',
             'tempat_lahir'  => 'required',
             'tgl_lahir'     => 'date|required',
             // 'wali_id'       => 'required'

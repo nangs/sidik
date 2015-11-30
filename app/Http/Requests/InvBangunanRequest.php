@@ -24,15 +24,17 @@ class InvBangunanRequest extends Request
      */
     public function rules()
     {
+        $invBangunan = $this->route('invBangunan');
+
         return [
             'tanah_id' => 'required',
-            'kode' => 'required', 
-            'nama' => 'required', 
-            'luas' => 'numeric|required', 
-            'jumlah_lantai' => 'numeric|required', 
-            'tahun_pembangunan' => 'numeric|required', 
-            'tahun_selesai' => 'numeric|required', 
-            'tahun_pakai' => 'numeric|required', 
+            'kode' => 'required|unique:inv_bangunan,kode,'.$invBangunan->id, 
+            'nama' => 'required|unique:inv_bangunan,nama,'.$invBangunan->id, 
+            'luas' => 'integer|required', 
+            'jumlah_lantai' => 'integer|required', 
+            'tahun_pembangunan' => 'integer|required', 
+            'tahun_selesai' => 'integer|required', 
+            'tahun_pakai' => 'integer|required', 
             'alamat' => 'required', 
             'nomor_imb' => 'required', 
             'tgl_imb' => 'date|required', 
@@ -44,7 +46,7 @@ class InvBangunanRequest extends Request
             'material_lantai' => 'required', 
             'material_tembok' => 'required', 
             'material_atap' => 'required', 
-            'nilai_asset' => 'numeric', 
+            'nilai_asset' => 'integer', 
         ];
     }
 }

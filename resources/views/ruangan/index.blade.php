@@ -2,9 +2,9 @@
 
 @section('content')
 	
-	<a href="/bagian/create" class="btn btn-success pull-right">Tambah Bagian</a>
+	<a href="/ruangan/create" class="btn btn-success pull-right">Tambah Ruangan</a>
 
-	<h1>Daftar Bagian</h1>
+	<h1>Daftar Ruangan</h1>
 	<hr />
 
 	<table class="table table-striped">
@@ -12,18 +12,30 @@
 			<tr>
 				<th>Kode</th>
 				<th>Nama</th>
+				<th>Bangunan</th>
+				<th>Luas (m<sup>2</sup>)</th>
+				<th>Kapasitas (orang)</th>
+				<th>Penggunaan</th>
+				<th>Penanggungjawab</th>
+				<th>Kondisi</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
 
 		<tbody>
-			@foreach ($bagians as $b)
+			@foreach ($ruangans as $b)
 			<tr>
 				<td>{{ $b->kode }}</td>
 				<td>{{ $b->nama }}</td>
+				<td>{{ $b->bangunan->nama }}</td>
+				<td>{{ $b->luas }}</td>
+				<td>{{ $b->kapasitas }}</td>
+				<td>{{ $b->penggunaan }}</td>
+				<td>{{ $b->penanggungjawab->nama }}</td>
+				<td>{{ $b->kondisi }}</td>
 				<td>
-					{!! Form::open(['method' => 'DELETE', 'url' => 'bagian/'.$b->id]) !!}
-		        		<a href="/bagian/{{ $b->id }}/edit" class="btn btn-success btn-xs">Edit</a>
+					{!! Form::open(['method' => 'DELETE', 'url' => 'ruangan/'.$b->id]) !!}
+		        		<a href="/ruangan/{{ $b->id }}/edit" class="btn btn-success btn-xs">Edit</a>
 		        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs delete']) !!}
 	        		{!! Form::close() !!}
 				</td>
@@ -32,7 +44,7 @@
 		</tbody>
 	</table>
 
-	{!! $bagians->render() !!}
+	{!! $ruangans->render() !!}
 
 @stop
 

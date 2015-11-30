@@ -29,7 +29,7 @@ class AddFieldKaryawan extends Migration
     public function down()
     {
         Schema::table('karyawan', function (Blueprint $table) {
-            //
+            $table->dropColumn(['nikah', 'jml_anak', 'gol_darah', 'golongan', 'agama']);
         });
     }
 }

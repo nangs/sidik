@@ -12,11 +12,13 @@
 @section('script')
 
 	<script type="text/javascript" src="/fullcalendar/fullcalendar.min.js"></script>
-	<script type="text/javascript" src="/highcharts/highcharts.src.js"></script>
+	<script type="text/javascript" src="/Highcharts/js/highcharts.js"></script>
 
 	<script type="text/javascript">
 		
 		$('#kalender').fullCalendar({
+			editable: true,
+			eventLimit: true,
 			header: {
 				left: 'prev, next',
 				center: 'title',

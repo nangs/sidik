@@ -24,16 +24,18 @@ class KaryawanRequest extends Request
      */
     public function rules()
     {
+        $karyawan = $this->route('karyawan');
+
         return [
-            'nik'           => 'required|max:255',
+            'nik'           => 'required|max:255|unique:karyawan,nik,'.$karyawan->id,
             'nama'          => 'required|max:255',
-            'jns_kelamin'   => 'required',
+            'jns_kelamin'   => 'boolean',
             'tempat_lahir'  => 'required',
             'tgl_lahir'     => 'date|required',
             'kota_asal'     => 'required',
             'alamat'        => 'required',
             'phone'         => 'required',
-            'email'         => 'email',
+            'email'         => 'email|unique:karyawan,email,'.$karyawan->id,
             'guru'          => 'boolean'
         ];
     }

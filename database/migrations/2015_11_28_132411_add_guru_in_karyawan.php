@@ -25,7 +25,7 @@ class AddGuruInKaryawan extends Migration
     public function down()
     {
         Schema::table('karyawan', function (Blueprint $table) {
-            //
+            $table->dropColumn('guru');
         });
     }
 }

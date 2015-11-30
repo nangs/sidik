@@ -25,10 +25,10 @@ class KeluargaKaryawanRequest extends Request
     public function rules()
     {
         return [
-            'karyawan_id'   => 'required',
+            'karyawan_id'   => 'required|integer',
             'nama'          => 'required',
             'hub_keluarga'  => 'required',
-            'jns_kelamin'   => 'required|boolean',
+            'jns_kelamin'   => 'boolean',
             'status'        => 'boolean'
         ];
     }

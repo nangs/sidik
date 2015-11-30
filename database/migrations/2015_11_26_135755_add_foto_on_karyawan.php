@@ -25,7 +25,7 @@ class AddFotoOnKaryawan extends Migration
     public function down()
     {
         Schema::table('karyawan', function (Blueprint $table) {
-            //
+            $table->dropColumn('foto');
         });
     }
 }

@@ -27,7 +27,7 @@ class KelasRequest extends Request
         return [
             'ta_id'         => 'required',
             'tingkat_id'    => 'required',
-            'nama'          => 'required',
+            'nama'          => 'required|unique:kelas',
         ];
     }
 }

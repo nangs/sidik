@@ -31,7 +31,7 @@
 				<td>{{ $k->nomor }}</td>
 				<td>{{ $k->ta->periode }}</td>
 				<td>{{ $k->semester }}</td>
-				<td>{{ App\Tagihan::bulan[$k->bulan] }}</td>
+				<td>{{ App\Tagihan::bulanList()[$k->bulan] }}</td>
 				<td>{{ $k->jenis }}</td>
 				<td><a href="/siswa/{{ $k->siswa_id }}">{{ $k->siswa->nama }}</a></td>
 				<td>{{ number_format($k->jumlah, 0, ',', '.') }}</td>

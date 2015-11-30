@@ -49,7 +49,13 @@ class AddFieldsOnSiswa extends Migration
     public function down()
     {
         Schema::table('siswa', function (Blueprint $table) {
-            //
+            $table->dropColumn([
+                'nisn', 'wn', 'suku', 'status_anak', 'gol_darah', 'riwayat_penyakit',
+                'kelainan', 'hobby', 'tinggi', 'berat', 'panggilan', 'agama', 
+                'anak_ke', 'sdr_kandung', 'sdr_angkat', 'sdr_tiri', 'bahasa', 'foto',
+                'active', 'alamat', 'alamat_kos', 'phone', 'tinggal_dengan', 
+                'jarak_ke_sekolah', 'transortasi'
+            ]);
         });
     }
 }

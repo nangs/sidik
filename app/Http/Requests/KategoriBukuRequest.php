@@ -25,8 +25,8 @@ class KategoriBukuRequest extends Request
     public function rules()
     {
         return [
-            'kode'       => 'required|max:10',
-            'nama'       => 'required|max:30',
+            'kode'       => 'required|max:10|unique:kategori_buku',
+            'nama'       => 'required|max:30|unique:kategori_buku',
             'keterangan' => 'max:255',
         ];
     }
