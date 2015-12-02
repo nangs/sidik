@@ -24,8 +24,14 @@ class InvTanahRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($invTanah = $this->route('invTanah')) {
+            $id = $invTanah->id;
+        }
+
         return [
-            'kode'                  => 'required|unique:inv_tanah', 
+            'kode'                  => 'required|unique:inv_tanah,kode,'.$id, 
             'nama'                  => 'required', 
             'luas_total'            => 'integer', 
             'luas_bangunan'         => 'integer', 

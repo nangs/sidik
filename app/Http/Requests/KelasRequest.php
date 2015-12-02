@@ -24,10 +24,17 @@ class KelasRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($kelas = $this->route('kelas')) {
+            $id = $kelas->id;
+        }
+
         return [
-            'ta_id'         => 'required',
-            'tingkat_id'    => 'required',
-            'nama'          => 'required|unique:kelas',
+            'ta_id'         => 'required|integer',
+            'tingkat_id'    => 'required|integer',
+            'nama'          => 'required|unique:kelas,nama,'.$id,
+            'ruang_id'      => 'required|integer'
         ];
     }
 }

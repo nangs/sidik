@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1>Tambah Wali Siswa</h1>
+	<h1>Tambah Orang Tua/Wali Siswa</h1>
 	<hr />
 
 	@include('wali/_form', ['method' => 'POST', 'url' => 'wali'])

@@ -24,9 +24,15 @@ class JenisUjianRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($jenisUjian = $this->route('jenisUjian')) {
+            $id = $jenisUjian->id;
+        }
+
         return [
-            'kode'  => 'required|max:10|unique:jenis_ujian',
-            'nama'  => 'required|max:30|unique:jenis_ujian',
+            'kode'  => 'required|max:10|unique:jenis_ujian,kode,'.$id,
+            'nama'  => 'required|max:30|unique:jenis_ujian,kode,'.$id,
             'bobot' => 'required|numeric',
         ];
     }

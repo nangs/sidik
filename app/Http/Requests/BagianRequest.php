@@ -24,11 +24,15 @@ class BagianRequest extends Request
      */
     public function rules()
     {
-        $bagian = $this->route('bagian');
+        $id = 0;
+        
+        if ($bagian = $this->route('bagian')) {
+            $id = $bagian->id;
+        }
 
         return [
-            'kode'  => 'required|max:10|unique:bagian,kode,'.$bagian->id,
-            'nama'  => 'required|max:255|unique:bagian,nama,'.$bagian->id
+            'kode'  => 'required|max:10|unique:bagian,kode,'.$id,
+            'nama'  => 'required|max:255|unique:bagian,nama,'.$id
         ];
     }
 }

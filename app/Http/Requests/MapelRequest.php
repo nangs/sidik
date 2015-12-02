@@ -24,9 +24,15 @@ class MapelRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($mapel = $this->route('mapel')) {
+            $id = $mapel->id;
+        }
+
         return [
-            'kode'  => 'required|unique:mapel',
-            'nama'  => 'required|unique:mapel',
+            'kode'  => 'required|unique:mapel,kode'.$id,
+            'nama'  => 'required|unique:mapel,nama'.$id,
         ];
     }
 }

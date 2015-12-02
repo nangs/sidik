@@ -19,8 +19,8 @@
 	<div class="form-group">
 		{!! Form::label('jns_kelamin', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="jns_kelamin" value="1" {{ $keluargaKaryawan->jns_kelamin ? 'checked' : '' }} /> Laki - Laki  <br />
-			<input type="radio" name="jns_kelamin" value="0" {{ $keluargaKaryawan->jns_kelamin ? '' : 'checked' }} /> Perempuan 
+			{!! Form::radio('jns_kelamin', 1, $keluargaKaryawan->jns_kelamin ==  1) !!} Laki - Laki<br />
+			{!! Form::radio('jns_kelamin', 0, $keluargaKaryawan->jns_kelamin ==  0) !!} Perempuan
 		</div>
 	</div>
 
@@ -49,8 +49,8 @@
 	<div class="form-group">
 		{!! Form::label('status', 'Status:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="status" value="1" {{ $keluargaKaryawan->status ? 'checked' : '' }} /> Hidup  <br />
-			<input type="radio" name="status" value="0" {{ $keluargaKaryawan->status ? '' : 'checked' }} /> Meninggal 
+			{!! Form::radio('status', 1, $keluargaKaryawan->status ==  1) !!} Hidup<br />
+			{!! Form::radio('status', 0, $keluargaKaryawan->status ==  0) !!} Meninggal
 		</div>
 	</div>
 

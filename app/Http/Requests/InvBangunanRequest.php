@@ -24,12 +24,16 @@ class InvBangunanRequest extends Request
      */
     public function rules()
     {
-        $invBangunan = $this->route('invBangunan');
+        $id = 0;
+
+        if ($invBangunan = $this->route('invBangunan')) {
+            $id = $invBangunan->id;
+        }
 
         return [
             'tanah_id' => 'required',
-            'kode' => 'required|unique:inv_bangunan,kode,'.$invBangunan->id, 
-            'nama' => 'required|unique:inv_bangunan,nama,'.$invBangunan->id, 
+            'kode' => 'required|unique:inv_bangunan,kode,'.$id, 
+            'nama' => 'required|unique:inv_bangunan,nama,'.$id, 
             'luas' => 'integer|required', 
             'jumlah_lantai' => 'integer|required', 
             'tahun_pembangunan' => 'integer|required', 

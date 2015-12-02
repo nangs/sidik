@@ -24,8 +24,14 @@ class TaRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($ta = $this->route('ta')) {
+            $id = $ta->id;
+        }
+
         return [
-            'periode'   => 'required|unique:ta',
+            'periode'   => 'required|unique:ta,periode,'.$id,
             'start'     => 'required|date',
             'end'       => 'required|date',
             'active'    => 'boolean',

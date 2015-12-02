@@ -10,7 +10,9 @@
 	<div class="form-group">
 		{!! Form::label('tingkat_id', 'Tingkat:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('tingkat_id', App\Tingkat::lists('nama', 'id'), $kelas->tingkat_id, ['class' => 'form-control']) !!}	
+			{!! Form::select('tingkat_id', 
+			App\Tingkat::selectRaw('CONCAT(nama, " - ", keterangan) as nm, id')->lists('nm', 'id'), 
+			$kelas->tingkat_id, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 
@@ -25,6 +27,13 @@
 		{!! Form::label('wali_id', 'Wali Kelas:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::select('wali_id', App\Karyawan::lists('nama', 'id'), $kelas->wali_id, ['class' => 'form-control']) !!}	
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('ruang_id', 'Ruang:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('ruang_id', App\Ruangan::lists('kode', 'id'), $kelas->ruang_id, ['class' => 'form-control']) !!}	
 		</div>
 	</div>
 

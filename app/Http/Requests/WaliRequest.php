@@ -24,13 +24,28 @@ class WaliRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($wali = $this->route('wali')) {
+            $id = $wali->id;
+        }
+
         return [
             'nama'          => 'required',
             'alamat'        => 'required',
-            'email'         => 'email|unique:wali',
+            'email'         => 'email|unique:wali,email,'.$id,
             'phone'         => 'required',
             'jns_kelamin'   => 'required',
-            'hub_keluarga'  => 'required'
+            'hub_keluarga'  => 'required',
+            'tempat_lahir'  => 'required', 
+            'tgl_lahir'     => 'date|required', 
+            'agama'         => 'required', 
+            'wn'            => 'required', 
+            'pendidikan_terakhir'   => 'required',
+            'pekerjaan'     => 'required', 
+            'penghasilan'   => 'integer', 
+            'status'        => 'boolean', 
+            // 'is_wali'       => 'boolean'
         ];
     }
 }

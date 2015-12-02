@@ -24,7 +24,7 @@
 	<div class="form-group">
 		<label class="col-md-2 control-label">Luas (m<sup>2</sup>):</label>
 		<div class="col-md-10">
-			{!! Form::text('luas', $invBangunan->luas, ['class' => 'form-control', 'placeholder' => 'Luas']) !!}
+			{!! Form::input('number', 'luas', $invBangunan->luas, ['class' => 'form-control', 'placeholder' => 'Luas']) !!}
 		</div>
 	</div>
 
@@ -40,13 +40,13 @@
 		<div class="col-md-10">
 			<div class="row">
 				<div class="col-md-4">
-					{!! Form::text('tahun_pembangunan', $invBangunan->tahun_pembangunan, ['class' => 'form-control', 'placeholder' => 'Pembangunan']) !!}
+					{!! Form::input('number', 'tahun_pembangunan', $invBangunan->tahun_pembangunan, ['class' => 'form-control', 'placeholder' => 'Pembangunan']) !!}
 				</div>
 				<div class="col-md-4">
-					{!! Form::text('tahun_selesai', $invBangunan->tahun_selesai, ['class' => 'form-control', 'placeholder' => 'Selesai']) !!}
+					{!! Form::input('number', 'tahun_selesai', $invBangunan->tahun_selesai, ['class' => 'form-control', 'placeholder' => 'Selesai']) !!}
 				</div>
 				<div class="col-md-4">
-					{!! Form::text('tahun_pakai', $invBangunan->tahun_pakai, ['class' => 'form-control', 'placeholder' => 'Pakai']) !!}
+					{!! Form::input('number', 'tahun_pakai', $invBangunan->tahun_pakai, ['class' => 'form-control', 'placeholder' => 'Pakai']) !!}
 				</div>
 			</div>
 		</div>
@@ -100,7 +100,7 @@
 	<div class="form-group">
 		{!! Form::label('jumlah_lantai', 'Jumlah Lantai:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('jumlah_lantai', $invBangunan->jumlah_lantai, ['class' => 'form-control', 'placeholder' => 'Jumlah Lantai']) !!}
+			{!! Form::input('number', 'jumlah_lantai', $invBangunan->jumlah_lantai, ['class' => 'form-control', 'placeholder' => 'Jumlah Lantai']) !!}
 		</div>
 	</div>
 
@@ -124,7 +124,7 @@
 	<div class="form-group">
 		{!! Form::label('nilai_asset', 'Nilai Asset (Rp):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('nilai_asset', $invBangunan->nilai_asset, ['class' => 'form-control', 'placeholder' => 'Nilai Asset']) !!}
+			{!! Form::number('number', 'nilai_asset', $invBangunan->nilai_asset, ['class' => 'form-control', 'placeholder' => 'Nilai Asset']) !!}
 		</div>
 	</div>
 

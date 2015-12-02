@@ -24,9 +24,15 @@ class KategoriBukuRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($kategoriBuku = $this->route('kategoriBuku')) {
+            $id = $kategoriBuku->id;
+        }
+
         return [
-            'kode'       => 'required|max:10|unique:kategori_buku',
-            'nama'       => 'required|max:30|unique:kategori_buku',
+            'kode'       => 'required|max:10|unique:kategori_buku,kode,'.$id,
+            'nama'       => 'required|max:30|unique:kategori_buku,nama'.$id,
             'keterangan' => 'max:255',
         ];
     }

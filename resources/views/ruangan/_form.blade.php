@@ -24,14 +24,14 @@
 	<div class="form-group">
 		<label class="col-md-2 control-label">Luas (m<sup>2</sup>):</label>
 		<div class="col-md-10">
-			{!! Form::text('luas', $ruangan->luas, ['class' => 'form-control', 'placeholder' => 'Luas']) !!}
+			{!! Form::input('number', 'luas', $ruangan->luas, ['class' => 'form-control', 'placeholder' => 'Luas']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('kapasitas', 'Kapasitas (orang):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('kapasitas', $ruangan->kapasitas, ['class' => 'form-control', 'placeholder' => 'Kapasitas (orang)']) !!}
+			{!! Form::input('number', 'kapasitas', $ruangan->kapasitas, ['class' => 'form-control', 'placeholder' => 'Kapasitas (orang)']) !!}
 		</div>
 	</div>
 

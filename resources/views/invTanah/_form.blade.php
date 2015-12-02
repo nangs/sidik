@@ -19,13 +19,13 @@
 		<div class="col-md-10">
 			<div class="row">
 				<div class="col-md-4">
-					{!! Form::text('luas_total', $invTanah->luas_total, ['class' => 'form-control', 'placeholder' => 'Luas Total']) !!}
+					{!! Form::input('number', 'luas_total', $invTanah->luas_total, ['class' => 'form-control', 'placeholder' => 'Luas Total']) !!}
 				</div>
 				<div class="col-md-4">
-					{!! Form::text('luas_bangunan', $invTanah->luas_bangunan, ['class' => 'form-control', 'placeholder' => 'Luas Bangunan']) !!}
+					{!! Form::input('number', 'luas_bangunan', $invTanah->luas_bangunan, ['class' => 'form-control', 'placeholder' => 'Luas Bangunan']) !!}
 				</div>
 				<div class="col-md-4">
-					{!! Form::text('luas_kosong', $invTanah->luas_kosong, ['class' => 'form-control', 'placeholder' => 'Luas Kosong']) !!}
+					{!! Form::input('number', 'luas_kosong', $invTanah->luas_kosong, ['class' => 'form-control', 'placeholder' => 'Luas Kosong']) !!}
 				</div>
 			</div>
 		</div>
@@ -106,7 +106,7 @@
 	<div class="form-group">
 		{!! Form::label('nilai_asset', 'Nilai Asset (Rp):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('nilai_asset', $invTanah->nilai_asset, ['class' => 'form-control', 'placeholder' => 'Nilai Asset']) !!}
+			{!! Form::input('number', 'nilai_asset', $invTanah->nilai_asset, ['class' => 'form-control', 'placeholder' => 'Nilai Asset']) !!}
 		</div>
 	</div>
 

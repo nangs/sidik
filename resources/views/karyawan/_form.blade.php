@@ -31,8 +31,8 @@
 	<div class="form-group">
 		{!! Form::label('jns_kelamin', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="jns_kelamin" value="1" {{ $karyawan->jns_kelamin ? 'checked' : '' }} /> Laki - Laki  <br />
-			<input type="radio" name="jns_kelamin" value="0" {{ $karyawan->jns_kelamin ? '' : 'checked' }} /> Perempuan 
+			{!! Form::radio('jns_kelamin', 1, $karyawan->jns_kelamin ==  1) !!} Laki - Laki<br />
+			{!! Form::radio('jns_kelamin', 0, $karyawan->jns_kelamin ==  0) !!} Perempuan
 		</div>
 	</div>
 
@@ -46,15 +46,15 @@
 	<div class="form-group">
 		{!! Form::label('nikah', 'Status Pernikahan:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="nikah" value="1" {{ $karyawan->nikah ? 'checked' : '' }} /> Menikah  <br />
-			<input type="radio" name="nikah" value="0" {{ $karyawan->nikah ? '' : 'checked' }} /> Belum Menikah 
+			{!! Form::radio('nikah', 1, $karyawan->nikah ==  1) !!} Menikah<br />
+			{!! Form::radio('nikah', 0, $karyawan->nikah ==  0) !!} Belum Menikah
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('jml_anak', 'Jumlah Anak:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('jml_anak', $karyawan->jml_anak, ['class' => 'form-control', 'placeholder' => 'Jumlah Anak']) !!}
+			{!! Form::input('number', 'jml_anak', $karyawan->jml_anak, ['class' => 'form-control', 'placeholder' => 'Jumlah Anak']) !!}
 		</div>
 	</div>
 
@@ -82,7 +82,7 @@
 	<div class="form-group">
 		{!! Form::label('email', 'Email:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('email', $karyawan->email, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+			{!! Form::email('email', $karyawan->email, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
 		</div>
 	</div>
 
@@ -96,8 +96,8 @@
 	<div class="form-group">
 		{!! Form::label('guru', 'Guru:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="guru" value="1" {{ $karyawan->guru ? 'checked' : '' }} /> Ya  <br />
-			<input type="radio" name="guru" value="0" {{ $karyawan->guru ? '' : 'checked' }} /> Tidak 
+			{!! Form::radio('guru', 1, $karyawan->guru ==  1) !!} Ya<br />
+			{!! Form::radio('guru', 0, $karyawan->guru ==  0) !!} Tidak
 		</div>
 	</div>
 

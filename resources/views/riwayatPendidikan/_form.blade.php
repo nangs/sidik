@@ -72,14 +72,14 @@
 	<div class="form-group">
 		{!! Form::label('masuk', 'Tahun Masuk:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('masuk', $riwayatPendidikan->masuk, ['class' => 'form-control', 'placeholder' => 'Tahun Masuk']) !!}
+			{!! Form::input('number', 'masuk', $riwayatPendidikan->masuk, ['class' => 'form-control', 'placeholder' => 'Tahun Masuk']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('lulus', 'Tahun Lulus:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('lulus', $riwayatPendidikan->lulus, ['class' => 'form-control', 'placeholder' => 'Tahun Lulus']) !!}
+			{!! Form::input('number', 'lulus', $riwayatPendidikan->lulus, ['class' => 'form-control', 'placeholder' => 'Tahun Lulus']) !!}
 		</div>
 	</div>
 

@@ -8,7 +8,7 @@ class Kelas extends Model
 {
     protected $table = 'kelas';
 
-    protected $fillable = ['ta_id', 'tingkat_id', 'nama', 'wali_id'];
+    protected $fillable = ['ta_id', 'tingkat_id', 'nama', 'wali_id', 'ruang_id'];
 
     public function ta()
     {
@@ -22,6 +22,16 @@ class Kelas extends Model
 
     public function wali()
     {
-    	return $this->belongsTo('App\Karyawan', 'wali_id');
+        return $this->belongsTo('App\Karyawan', 'wali_id');
+    }
+
+    public function ruang()
+    {
+    	return $this->belongsTo('App\Ruangan', 'ruang_id');
+    }
+
+    public function siswas()
+    {
+        return $this->belongsToMany('App\Siswa', 'kelas_siswa', 'kelas_id', 'siswa_id');
     }
 }

@@ -46,9 +46,9 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Kelas $kelas)
     {
-        //
+        return view('kelas.show', ['kelas' => $kelas]);
     }
 
     /**

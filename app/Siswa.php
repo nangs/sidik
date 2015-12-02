@@ -9,21 +9,27 @@ class Siswa extends Model
     protected $table = 'siswa';
 
     protected $fillable = [
-    	'nis', 'nisn',
-    	'nama', 'panggilan',
-    	'jns_kelamin',
-        'foto',
-        'wn', 'suku', 'bahasa',
-    	'tempat_lahir', 'tgl_lahir',
+    	'nis', 'nisn', 'nama', 'panggilan', 'jns_kelamin', 'foto', 'wn', 'suku', 'bahasa', 
+        'tempat_lahir', 'tgl_lahir',
         'status_anak', 'anak_ke', 'sdr_kandung', 'sdr_angkat', 'sdr_tiri',
         'alamat', 'alamat_kos', 'tinggal_dengan', 'phone', 'jarak_ke_sekolah', 'transportasi',
         'gol_darah', 'tinggi', 'berat', 'riwayat_penyakit', 'kelainan', 'hobby',
-    	'wali_id', 'active'
+    	'wali_id', 'active', 'ibu_id', 'ayah_id'
     ];
 
     public function wali()
     {
-    	return $this->belongsTo('App\Wali');
+        return $this->belongsTo('App\Wali', 'wali_id');
+    }
+
+    public function ayah()
+    {
+        return $this->belongsTo('App\Wali', 'ayah_id');
+    }
+
+    public function ibu()
+    {
+    	return $this->belongsTo('App\Wali', 'ibu_id');
     }
 
     public function urutan()
@@ -46,5 +52,10 @@ class Siswa extends Model
     public function tagihans()
     {
         return $this->hasMany('App\Tagihan');
-    } 
+    }
+
+    public function kelass()
+    {
+        return $this->belongsToMany('App\Kelas', 'kelas_siswa', 'siswa_id', 'kelas_id');
+    }
 }

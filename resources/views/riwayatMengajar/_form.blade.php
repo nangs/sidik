@@ -33,14 +33,14 @@
 	<div class="form-group">
 		{!! Form::label('dari', 'Dari Tahun:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('dari', $riwayatMengajar->dari, ['class' => 'form-control', 'placeholder' => 'Dari Tahun']) !!}
+			{!! Form::input('number', 'dari', $riwayatMengajar->dari, ['class' => 'form-control', 'placeholder' => 'Dari Tahun']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('sampai', 'Sampai Tahun:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('sampai', $riwayatMengajar->sampai, ['class' => 'form-control', 'placeholder' => 'Sampai Tahun']) !!}
+			{!! Form::input('number', 'sampai', $riwayatMengajar->sampai, ['class' => 'form-control', 'placeholder' => 'Sampai Tahun']) !!}
 		</div>
 	</div>
 

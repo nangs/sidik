@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
 
-class TingkatRequest extends Request
+class JadwalPelajaranRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class TingkatRequest extends Request
      */
     public function authorize()
     {
-        return Auth::check();
+        return false;
     }
 
     /**
@@ -24,15 +23,8 @@ class TingkatRequest extends Request
      */
     public function rules()
     {
-        $id = 0;
-
-        if ($tingkat = $this->route('tingkat')) {
-            $id = $tingkat->id;
-        }
-
         return [
-            'nama'          => 'required|unique:tingkat,nama,'.$id,
-            'keterangan'    => 'max:255'
+            //
         ];
     }
 }

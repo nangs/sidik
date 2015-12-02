@@ -25,7 +25,7 @@
 		<tbody>
 			@foreach ($ruangans as $b)
 			<tr>
-				<td>{{ $b->kode }}</td>
+				<td><a href="/ruangan/{{ $b->id }}">{{ $b->kode }}</a></td>
 				<td>{{ $b->nama }}</td>
 				<td>{{ $b->bangunan->nama }}</td>
 				<td>{{ $b->luas }}</td>

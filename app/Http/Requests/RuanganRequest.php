@@ -24,15 +24,22 @@ class RuanganRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($ruangan = $this->route('ruangan')) {
+            $id = $ruangan->id;
+        }
+
         return [
             'bangunan_id'           => 'required|integer', 
             'penanggungjawab_id'    => 'required|integer', 
-            'kode'                  => 'required|max:10|unique:ruangan', 
+            'kode'                  => 'required|max:10|unique:ruangan,kode,'.$id, 
             'nama'                  => 'required|max:30',
             'luas'                  => 'integer|required', 
             'kapasitas'             => 'integer|required', 
             'penggunaan'            => 'required', 
             'kondisi'               => 'required|in:Baik,Rusak Ringan,Rusak Berat'
         ];
+
     }
 }

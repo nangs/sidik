@@ -24,8 +24,14 @@ class TagsBukuRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($tagsBuku = $this->route('tagsBuku')) {
+            $id = $tagsBuku->id;
+        }
+
         return [
-            'nama'  => 'required|max:30|unique:tags_buku'
+            'nama'  => 'required|max:30|unique:tags_buku,nama,'.$id
         ];
     }
 }

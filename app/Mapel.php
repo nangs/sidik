@@ -10,7 +10,7 @@ class Mapel extends Model
 
     protected $fillable = ['kode', 'nama'];
 
-    public function mapels()
+    public function gurus()
     {
         return $this->belongsToMany('App\Karyawan', 'guru_mapel', 'mapel_id', 'karyawan_id');
     }

@@ -17,15 +17,15 @@
 	<div class="form-group">
 		{!! Form::label('semester', 'Semester:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="semester" value="1" {{ $tagihan->semester ? 'checked' : '' }} /> 1  <br />
-			<input type="radio" name="semester" value="2" {{ $tagihan->semester ? '' : 'checked' }} /> 2 
+			{!! Form::radio('semester', 1, $tagihan->semester ==  1) !!} 1<br />
+			{!! Form::radio('semester', 2, $tagihan->semester ==  2) !!} 2
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('bulan', 'Bulan:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('bulan', App\Tagihan::bulanList(), $tagihan->bulan, ['class' => 'form-control']) !!}
+			{!! Form::selectMonth('bulan', $tagihan->bulan, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 
@@ -46,7 +46,7 @@
 	<div class="form-group">
 		{!! Form::label('jumlah', 'Jumlah:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('jumlah', $tagihan->jumlah, ['class' => 'form-control', 'placeholder' => 'Jumlah']) !!}
+			{!! Form::input('number', 'jumlah', $tagihan->jumlah, ['class' => 'form-control', 'placeholder' => 'Jumlah']) !!}
 		</div>
 	</div>
 
@@ -67,8 +67,8 @@
 	<div class="form-group">
 		{!! Form::label('status', 'Status:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="status" value="1" {{ $tagihan->status ? 'checked' : '' }} /> Lunas  <br />
-			<input type="radio" name="status" value="0" {{ $tagihan->status ? '' : 'checked' }} /> Belum Lunas 
+			{!! Form::radio('status', 1, $tagihan->status ==  1) !!} Lunas<br />
+			{!! Form::radio('status', 0, $tagihan->status ==  0) !!} Belum Lunas
 		</div>
 	</div>
 

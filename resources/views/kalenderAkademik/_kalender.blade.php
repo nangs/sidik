@@ -17,7 +17,7 @@
 	<script type="text/javascript">
 		
 		$('#kalender').fullCalendar({
-			editable: true,
+			// editable: true,
 			eventLimit: true,
 			header: {
 				left: 'prev, next',

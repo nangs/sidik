@@ -14,6 +14,7 @@
 				<th>Tingkat</th>
 				<th>Nama</th>
 				<th>Wali Kelas</th>
+				<th>Ruang</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -23,8 +24,9 @@
 			<tr>
 				<td>{{ $k->ta->periode }}</td>
 				<td>{{ $k->tingkat->nama }} ({{ $k->tingkat->keterangan }})</td>
-				<td>{{ $k->nama }}</td>
+				<td><a href="/kelas/{{ $k->id }}">{{ $k->nama }}</a></td>
 				<td>{{ $k->wali->nama }}</td>
+				<td>{{ $k->ruang ? $k->ruang->kode .' ('.$k->ruang->nama.')' : '' }}</td>
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => 'kelas/'.$k->id]) !!}
 		        		<a href="/kelas/{{ $k->id }}/edit" class="btn btn-success btn-xs">Edit</a>

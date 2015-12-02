@@ -24,9 +24,15 @@ class JenisInventarisRequest extends Request
      */
     public function rules()
     {
+        $id = 0;
+
+        if ($jenisInventaris = $this->route('jenisInventaris')) {
+            $id = $jenisInventaris->id;
+        }
+
         return [
-            'kode'       => 'required|max:10|unique:jenis_inventaris',
-            'nama'       => 'required|max:30',
+            'kode'       => 'required|max:10|unique:jenis_inventaris,kode,'.$id,
+            'nama'       => 'required|max:30|unique:jenis_inventaris,nama,'.$id,
             'keterangan' => 'max:255',
         ];
     }

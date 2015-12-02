@@ -45,16 +45,16 @@
 	<div class="form-group">
 		{!! Form::label('jns_kelamin', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="jns_kelamin" value="1" {{ $siswa->jns_kelamin ? 'checked' : '' }} /> Laki - Laki  <br />
-			<input type="radio" name="jns_kelamin" value="0" {{ $siswa->jns_kelamin ? '' : 'checked' }} /> Perempuan 
+			{!! Form::radio('jns_kelamin', 1, $siswa->jns_kelamin ==  1) !!} Laki - Laki<br />
+			{!! Form::radio('jns_kelamin', 0, $siswa->jns_kelamin ==  0) !!} Perempuan
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('active', 'Aktif:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="active" value="1" {{ $siswa->active ? 'checked' : '' }} /> Ya  <br />
-			<input type="radio" name="active" value="0" {{ $siswa->active ? '' : 'checked' }} /> Tidak 
+			{!! Form::radio('active', 1, $siswa->active ==  1) !!} Ya<br />
+			{!! Form::radio('active', 0, $siswa->active ==  0) !!} Tidak
 		</div>
 	</div>
 
@@ -70,8 +70,8 @@
 	<div class="form-group">
 		{!! Form::label('wn', 'Kewarganegaraan:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="wn" value="WNI" {{ $siswa->wn == 'WNI' ? 'checked' : '' }} /> WNI  <br />
-			<input type="radio" name="wn" value="WNA" {{ $siswa->wn == 'WNA' ? 'checked' : '' }} /> WNA 
+			{!! Form::radio('wn', 'WNI', $siswa->wn ==  'WNI') !!} WNI<br />
+			{!! Form::radio('wn', 'WNA', $siswa->wn ==  'WNA') !!} WNA
 		</div>
 	</div>
 
@@ -94,16 +94,16 @@
 	<div class="form-group">
 		{!! Form::label('status_anak', 'Status Anak:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="status_anak" value="Kandung" {{ $siswa->status_anak == 'Kandung' ? 'checked' : '' }} /> Kandung  <br />
-			<input type="radio" name="status_anak" value="Tiri" {{ $siswa->status_anak == 'Tiri' ? 'checked' : '' }} /> Tiri <br />
-			<input type="radio" name="status_anak" value="Angkat" {{ $siswa->status_anak == 'Angkat' ? 'checked' : '' }} /> Angkat 
+			{!! Form::radio('status_anak', 'Kandung', $siswa->status_anak ==  'Kandung') !!} Kandung<br />
+			{!! Form::radio('status_anak', 'Tiri', $siswa->status_anak ==  'Tiri') !!} Tiri<br />
+			{!! Form::radio('status_anak', 'Angkat', $siswa->status_anak ==  'Angkat') !!} Angkat
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('anak_ke', 'Anak Ke:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('anak_ke', $siswa->anak_ke, ['class' => 'form-control', 'placeholder' => 'Anak Ke']) !!}
+			{!! Form::input('number', 'anak_ke', $siswa->anak_ke, ['class' => 'form-control', 'placeholder' => 'Anak Ke']) !!}
 		</div>
 	</div>
 
@@ -112,19 +112,33 @@
 		<div class="col-md-10">
 			<div class="row">
 				<div class="col-md-4">
-					{!! Form::text('sdr_kandung', $siswa->sdr_kandung, ['class' => 'form-control', 'placeholder' => 'Kandung']) !!}
+					{!! Form::input('number', 'sdr_kandung', $siswa->sdr_kandung, ['class' => 'form-control', 'placeholder' => 'Kandung']) !!}
 				</div>
 				<div class="col-md-4">
-					{!! Form::text('sdr_tiri', $siswa->sdr_tiri, ['class' => 'form-control', 'placeholder' => 'Tiri']) !!}
+					{!! Form::input('number', 'sdr_tiri', $siswa->sdr_tiri, ['class' => 'form-control', 'placeholder' => 'Tiri']) !!}
 				</div>
 				<div class="col-md-4">
-					{!! Form::text('sdr_angkat', $siswa->sdr_angkat, ['class' => 'form-control', 'placeholder' => 'Angkat']) !!}
+					{!! Form::input('number', 'sdr_angkat', $siswa->sdr_angkat, ['class' => 'form-control', 'placeholder' => 'Angkat']) !!}
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<h3 class="text-muted">Orang Tua/Wali</h3><hr />
+
+	<div class="form-group">
+		{!! Form::label('ayah_id', 'Ayah:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('ayah_id', App\Wali::where('jns_kelamin', 1)->lists('nama', 'id'), $siswa->ayah_id, ['class' => 'form-control']) !!}	
+		</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('ibu_id', 'Ibu:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('ibu_id', App\Wali::where('jns_kelamin', 0)->lists('nama', 'id'), $siswa->ibu_id, ['class' => 'form-control']) !!}	
+		</div>
+	</div>
 
 	<div class="form-group">
 		{!! Form::label('wali_id', 'Wali:', ['class' => 'col-md-2 control-label']) !!}
@@ -166,7 +180,7 @@
 	<div class="form-group">
 		{!! Form::label('jarak_ke_sekolah', 'Jarak Ke Sekolah (km):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('jarak_ke_sekolah', $siswa->jarak_ke_sekolah, ['class' => 'form-control', 'placeholder' => 'Jarak Ke Sekolah']) !!}
+			{!! Form::input('number', 'jarak_ke_sekolah', $siswa->jarak_ke_sekolah, ['class' => 'form-control', 'placeholder' => 'Jarak Ke Sekolah']) !!}
 		</div>
 	</div>
 
@@ -189,14 +203,14 @@
 	<div class="form-group">
 		{!! Form::label('tinggi', 'Tinggi (cm):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tinggi', $siswa->tinggi, ['class' => 'form-control', 'placeholder' => 'Tinggi (cm)']) !!}
+			{!! Form::input('number', 'tinggi', $siswa->tinggi, ['class' => 'form-control', 'placeholder' => 'Tinggi (cm)']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('berat', 'Berat (kg):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('berat', $siswa->berat, ['class' => 'form-control', 'placeholder' => 'Berat (kg)']) !!}
+			{!! Form::input('number', 'berat', $siswa->berat, ['class' => 'form-control', 'placeholder' => 'Berat (kg)']) !!}
 		</div>
 	</div>
 
@@ -240,7 +254,7 @@
 <script type="text/javascript" src="/select2/dist/js/select2.min.js"></script>
 
 <script type="text/javascript">
-	$('select[name=wali_id]').select2();
+	$('select[name=wali_id], select[name=ayah_id], select[name=ibu_id]').select2();
 </script>
 
 @stop

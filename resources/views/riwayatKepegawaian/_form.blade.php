@@ -54,7 +54,7 @@
 	<div class="form-group">
 		{!! Form::label('gapok', 'Gapok:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('gapok', $riwayatKepegawaian->gapok, ['class' => 'form-control', 'placeholder' => 'Gapok']) !!}
+			{!! Form::input('number', 'gapok', $riwayatKepegawaian->gapok, ['class' => 'form-control', 'placeholder' => 'Gapok']) !!}
 		</div>
 	</div>
 

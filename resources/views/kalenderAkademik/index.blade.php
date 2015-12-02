@@ -3,7 +3,7 @@
 @section('content')
 	
 	<div class=" pull-right">
-		<a href="/kalenderAkademik/kalender" class="btn btn-success">Lihat Kalander Akademik</a>
+		<a href="/kalenderAkademik/kalender" class="btn btn-primary">Lihat Kalander Akademik</a>
 		<a href="/kalenderAkademik/create" class="btn btn-success">Tambah Kalander Akademik</a> 
 	</div>
 

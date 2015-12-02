@@ -27,6 +27,7 @@
 				<td>{!! $t->active ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td>
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => 'ta/'.$t->id]) !!}
+		        		<a href="/kalenderAkademik/kalender" class="btn btn-primary btn-xs">Lihat Kalender Akademik</a>
 		        		<a href="/ta/{{ $t->id }}/edit" class="btn btn-success btn-xs">Edit</a>
 		        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs delete']) !!}
 	        		{!! Form::close() !!}

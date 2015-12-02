@@ -20,7 +20,7 @@
 			<td>{{ $k->nomor }}</td>
 			<td>{{ $k->ta->periode }}</td>
 			<td>{{ $k->semester }}</td>
-			<td>{{ App\Tagihan::bulan[$k->bulan] }}</td>
+			<td>{{ App\Tagihan::bulanList()[$k->bulan] }}</td>
 			<td>{{ $k->jenis }}</td>
 			<td>{{ number_format($k->jumlah, 0, ',', '.') }}</td>
 			<td>{{ $k->jatuh_tempo }}</td>
