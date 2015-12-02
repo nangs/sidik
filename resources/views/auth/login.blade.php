@@ -1,23 +1,36 @@
 @extends('blank')
 
 @section('content')
+	
+	<div class="row">
+		
+		<div class="col-md-7 col-md-offset-1">
+			<img src="/images/assunnah1.jpg" style="max-width:100%;" />
+		</div>
 
-	<h3 class="text-center">Ma'had As Sunnah Login</h3>
-	<hr />
+		<div class="col-md-3">
 
-	{!! Form::open(['class' => 'form-horizontal']) !!}
+			<h3>Ihya' As Sunnah - Login</h3>
+			<hr />
 
-		<p>{!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}</p>
-		<p>{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}</p>
-		<p class="text-center">{!! Form::checkbox('remember') !!} Remember Me</p>
+			{!! Form::open(['class' => 'form-horizontal']) !!}
 
-		<!-- <hr /> -->
+				<p>{!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}</p>
+				<p>{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}</p>
+				<p>{!! Form::checkbox('remember') !!} Remember Me</p>
 
-		<p class="text-center">
-			{!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
-			<!-- <a href="/password/email" class="btn btn-default">Forgot Password</a> -->
-		</p>
+				<hr />
 
-	{!! Form::close() !!}
+				<p>
+					{!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
+					<!-- <a href="/password/email" class="btn btn-default">Forgot Password</a> -->
+				</p>
+
+			{!! Form::close() !!}
+
+		</div>
+
+	</div>
+	
 
 @stop

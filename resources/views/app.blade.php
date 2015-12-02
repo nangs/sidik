@@ -53,7 +53,7 @@
     <div class="footer-end">
 	    <div class="container">
 			<footer>
-				<p>&copy; Ma'had As Sunnah {{ date('Y') }}</p>
+				<p>&copy; Ihya' As Sunnah {{ date('Y') }}</p>
 			</footer>
 	    </div>
     </div>   	

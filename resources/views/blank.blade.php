@@ -32,26 +32,22 @@
     
     <div class="container main-content">
 
-        <div class="col-md-4 col-md-offset-4">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-	        @if (count($errors) > 0)
-	            <div class="alert alert-danger">
-	                <ul>
-	                    @foreach ($errors->all() as $error)
-	                        <li>{{ $error }}</li>
-	                    @endforeach
-	                </ul>
-	            </div>
-	        @endif
+        	
+        @yield('content')
 
-	        	
-	        @yield('content')
+        <!-- <hr />
 
-	        <hr />
-
-	        <p class="text-center text-muted">&copy; {{ date('Y') }} - As Sunnah</p>
-
-        </div>
+        <p class="text-center text-muted">&copy; {{ date('Y') }} - As Sunnah</p> -->
 
     </div>
     
