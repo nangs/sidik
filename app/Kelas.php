@@ -34,4 +34,9 @@ class Kelas extends Model
     {
         return $this->belongsToMany('App\Siswa', 'kelas_siswa', 'kelas_id', 'siswa_id');
     }
+
+    public function jadwalPelajarans()
+    {
+        return $this->hasMany('App\JadwalPelajaran');
+    }
 }

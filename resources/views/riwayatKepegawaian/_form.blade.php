@@ -26,14 +26,14 @@
 	<div class="form-group">
 		{!! Form::label('tanggal_sk', 'Tanggal SK:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tanggal_sk', $riwayatKepegawaian->tanggal_sk, ['class' => 'form-control', 'placeholder' => 'Tanggal SK']) !!}
+			{!! Form::input('date', 'tanggal_sk', $riwayatKepegawaian->tanggal_sk, ['class' => 'form-control', 'placeholder' => 'Tanggal SK']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('tmt', 'TMT:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tmt', $riwayatKepegawaian->tmt, ['class' => 'form-control', 'placeholder' => 'TMT']) !!}
+			{!! Form::input('date', 'tmt', $riwayatKepegawaian->tmt, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 

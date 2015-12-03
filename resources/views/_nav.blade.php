@@ -18,6 +18,7 @@
                         <li><a href="/tingkat">Tingkat</a></li>
                         <li><a href="/kelas">Kelas</a></li>
                         <li><a href="/mapel">Mata Pelajaran</a></li>
+                        <li><a href="/jamPelajaran">Jam Pelajaran</a></li>
                         <li><a href="/jenisUjian">Jenis Ujian</a></li>
                         <li><a href="/jadwalPelajaran">Jadwal Pelajaran</a></li>
                         <li><a href="/jadwalUjian">Jadwal Ujian</a></li>
@@ -87,7 +88,7 @@
                     </ul>
                 </li>
 
-                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">KBM <strong class="caret"></strong></a>
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">E-Learning<strong class="caret"></strong></a>
                     <ul class="dropdown-menu">
                         <li><a href="/kbmBab">Bab</a></li>
                         <li><a href="/kbmSubBab">Sub Bab</a></li>

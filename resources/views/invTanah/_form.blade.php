@@ -66,7 +66,7 @@
 					{!! Form::text('sertifikat_nomor', $invTanah->sertifikat_nomor, ['class' => 'form-control', 'placeholder' => 'Nomor']) !!}
 				</div>
 				<div class="col-md-4">
-					{!! Form::text('sertifikat_tgl', $invTanah->sertifikat_tgl, ['class' => 'form-control', 'placeholder' => 'Tanggal (yyyy-mm-dd)']) !!}
+					{!! Form::input('date', 'sertifikat_tgl', $invTanah->sertifikat_tgl, ['class' => 'form-control', 'placeholder' => 'Tanggal (yyyy-mm-dd)']) !!}
 				</div>
 				<div class="col-md-4">
 					{!! Form::text('sertifikat_hak', $invTanah->sertifikat_hak, ['class' => 'form-control', 'placeholder' => 'Hak']) !!}
@@ -99,7 +99,7 @@
 	<div class="form-group">
 		{!! Form::label('tgl_dapat', 'Tanggal Dapat:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tgl_dapat', $invTanah->tgl_dapat, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'tgl_dapat', $invTanah->tgl_dapat, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 

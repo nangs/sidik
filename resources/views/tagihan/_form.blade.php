@@ -53,14 +53,14 @@
 	<div class="form-group">
 		{!! Form::label('jatuh_tempo', 'Jatuh Tempo:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('jatuh_tempo', $tagihan->jatuh_tempo, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'jatuh_tempo', $tagihan->jatuh_tempo, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('tanggal_bayar', 'Tanggal Bayar:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tanggal_bayar', $tagihan->tanggal_bayar, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'tanggal_bayar', $tagihan->tanggal_bayar, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 

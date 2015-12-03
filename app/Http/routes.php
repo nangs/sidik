@@ -26,7 +26,16 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('wali', 'WaliController');
 	Route::resource('siswa', 'SiswaController');
 	Route::resource('tagihan', 'TagihanController');
+
+	// Kelas
 	Route::resource('kelas', 'KelasController');
+	Route::get('/kelas/createJadwal/{kelas}', 'KelasController@createJadwal');
+	Route::get('/kelas/editJadwal/{kelas}', 'KelasController@editJadwal');
+	Route::get('/kelas/addSiswa/{kelas}', 'KelasController@addSiswa');
+	Route::post('/kelas/storeJadwal/{kelas}', 'KelasController@storeJadwal');
+	Route::post('/kelas/saveSiswa/{kelas}', 'KelasController@saveSiswa');
+	Route::patch('/kelas/updateJadwal/{kelas}', 'KelasController@updateJadwal');
+
 	Route::resource('jenisInventaris', 'JenisInventarisController');
 	Route::resource('kategoriBuku', 'KategoriBukuController');
 	Route::resource('tagsBuku', 'TagsBukuController');
@@ -75,6 +84,14 @@ Route::group(['middleware' => 'auth'], function() {
 	]);
 
 	Route::resource('kalenderAkademik', 'KalenderAkademikController', [
+		'except' => ['show']
+	]);
+
+	Route::resource('jamPelajaran', 'JamPelajaranController', [
+		'except' => ['show']
+	]);
+
+	Route::resource('jadwalPelajaran', 'JadwalPelajaranController', [
 		'except' => ['show']
 	]);
 

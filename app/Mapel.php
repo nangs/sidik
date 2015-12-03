@@ -14,4 +14,9 @@ class Mapel extends Model
     {
         return $this->belongsToMany('App\Karyawan', 'guru_mapel', 'mapel_id', 'karyawan_id');
     }
+
+    public function jadwalPelajarans()
+    {
+        return $this->hasMany('App\JadwalPelajaran');
+    }
 }

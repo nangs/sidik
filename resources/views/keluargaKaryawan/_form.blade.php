@@ -34,7 +34,7 @@
 	<div class="form-group">
 		{!! Form::label('tgl_lahir', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tgl_lahir', $keluargaKaryawan->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'tgl_lahir', $keluargaKaryawan->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 

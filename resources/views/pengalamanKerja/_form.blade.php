@@ -19,14 +19,14 @@
 	<div class="form-group">
 		{!! Form::label('dari', 'Dari:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('dari', $pengalamanKerja->dari, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'dari', $pengalamanKerja->dari, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('sampai', 'Sampai:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('sampai', $pengalamanKerja->sampai, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'sampai', $pengalamanKerja->sampai, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 

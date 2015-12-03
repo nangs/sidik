@@ -19,4 +19,9 @@ class Ta extends Model
     {
         return $this->hasMany('App\KalenderAkademik');
     }
+
+    public function jadwalPelajarans()
+    {
+        return $this->hasMany('App\JadwalPelajaran');
+    }
 }

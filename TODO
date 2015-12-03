@@ -1,8 +1,6 @@
 TODO:
 
-- jadwal pelajaran (baru migration. model view controller request belum)
-- kelas -> siswa
-- kelas -> jadwal
+- jadwal pelajaran, create per kelas, per hari
 - kelas -> nilai
 - kelas -> absensi
 - view index siswa

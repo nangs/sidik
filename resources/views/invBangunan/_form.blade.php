@@ -60,7 +60,7 @@
 					{!! Form::text('nomor_imb', $invBangunan->nomor_imb, ['class' => 'form-control', 'placeholder' => 'Nomor IMB']) !!}
 				</div>
 				<div class="col-md-6">
-					{!! Form::text('tgl_imb', $invBangunan->tgl_imb, ['class' => 'form-control', 'placeholder' => 'Tanggal IMB']) !!}
+					{!! Form::input('date', 'tgl_imb', $invBangunan->tgl_imb, ['class' => 'form-control', 'placeholder' => 'Tanggal IMB']) !!}
 				</div>
 			</div>
 		</div>

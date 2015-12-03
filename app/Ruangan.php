@@ -22,4 +22,9 @@ class Ruangan extends Model
     {
     	return $this->belongsTo('App\Karyawan');
     }
+
+    public function jadwalPelajarans()
+    {
+        return $this->hasMany('App\JadwalPelajaran');
+    }
 }

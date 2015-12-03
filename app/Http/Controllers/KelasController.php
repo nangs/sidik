@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Http\Requests\KelasRequest;
+// use App\Http\Requests\JadwalPelajaranRequest;
 use App\Http\Controllers\Controller;
+use App\JadwalPelajaran;
 use App\Kelas;
 
 class KelasController extends Controller
@@ -85,5 +89,73 @@ class KelasController extends Controller
     {
         $kelas->delete();
         return redirect('/kelas');
+    }
+
+    public function createJadwal(Kelas $kelas)
+    {
+        return view('jadwalPelajaran.create', [
+            'kelas'             => $kelas, 
+            'jadwalPelajaran'   => new JadwalPelajaran
+        ]);
+    }
+
+    public function editJadwal(Kelas $kelas)
+    {
+        return view('jadwalPelajaran.edit', [
+            'kelas'             => $kelas, 
+            'jadwalPelajaran'   => new JadwalPelajaran
+        ]);
+    }
+
+    public function storeJadwal(Request $request, Kelas $kelas)
+    {
+        foreach ($kelas->tingkat->jamPelajarans as $jam) 
+        {
+            $jadwal = new JadwalPelajaran;
+            $jadwal->ta_id      = $kelas->ta_id;
+            $jadwal->tingkat_id = $kelas->tingkat_id;
+            $jadwal->kelas_id   = $kelas->id;
+            $jadwal->hari       = $request->input('hari');
+            $jadwal->jam_id     = $jam->id;
+            $jadwal->mapel_id   = $request->input('mapel_id')[$jam->id];
+            $jadwal->guru_id    = $request->input('guru_id')[$jam->id];
+            $jadwal->ruang_id   = $request->input('ruang_id')[$jam->id];
+            $jadwal->keterangan = $request->input('keterangan')[$jam->id];
+
+            $jadwal->save();
+        }
+
+        return redirect('/kelas/'.$kelas->id);
+    }
+
+    public function updateJadwal(Request $request, Kelas $kelas)
+    {
+        foreach ($kelas->jadwalPelajarans as $jadwal) 
+        {
+            // $jadwal->ta_id      = $kelas->ta_id;
+            // $jadwal->tingkat_id = $kelas->tingkat_id;
+            // $jadwal->kelas_id   = $kelas->id;
+            $jadwal->hari       = $request->input('hari');
+            // $jadwal->jam_id     = $jadwal->jam_id;
+            $jadwal->mapel_id   = $request->input('mapel_id')[$jadwal->jam_id];
+            $jadwal->guru_id    = $request->input('guru_id')[$jadwal->jam_id];
+            $jadwal->ruang_id   = $request->input('ruang_id')[$jadwal->jam_id];
+            $jadwal->keterangan = $request->input('keterangan')[$jadwal->jam_id];
+
+            $jadwal->save();
+        }
+
+        return redirect('/kelas/'.$kelas->id);
+    }
+
+    public function addSiswa(Kelas $kelas)
+    {
+        return view('siswa.formPerKelas', ['kelas' => $kelas]);
+    }
+
+    public function saveSiswa(Request $request, Kelas $kelas)
+    {
+        $kelas->siswas()->sync($request->input('siswa'));
+        return redirect('/kelas/'.$kelas->id);
     }
 }

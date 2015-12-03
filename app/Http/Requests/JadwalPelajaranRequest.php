@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 
 class JadwalPelajaranRequest extends Request
 {
@@ -13,7 +14,7 @@ class JadwalPelajaranRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,15 @@ class JadwalPelajaranRequest extends Request
     public function rules()
     {
         return [
-            //
+            'ta_id'         => 'required|integer', 
+            'tingkat_id'    => 'required|integer', 
+            'kelas_id'      => 'required|integer', 
+            'jam_id'        => 'required|integer', 
+            'ruang_id'      => 'required|integer',
+            'hari'          => 'required|integer', 
+            'guru_id'       => 'required|integer', 
+            'mapel_id'      => 'required|integer', 
+            'keterangan'    => 'max:255'
         ];
     }
 }

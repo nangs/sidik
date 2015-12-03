@@ -115,4 +115,9 @@ class Karyawan extends Model
     {
         return $this->hasMany('App\Ruangan', 'penanggungjawab_id');
     }
+
+    public function jadwalPelajarans()
+    {
+        return $this->hasMany('App\JadwalPelajaran');
+    }
 }

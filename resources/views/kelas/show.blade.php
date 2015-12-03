@@ -41,12 +41,13 @@
 		
 		<div role="tabpanel" class="tab-pane active" id="11">
 			<br />
+			<p><a href="/kelas/addSiswa/{{ $kelas->id }}" class="btn btn-success">Update Daftar Siswa</a></p>
 			@include('siswa._indexKelas')
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="12">
 			<br />
-			include('jadwalPelajaran._list', ['jadwals' => $kelas->jadwals])
+			@include('jadwalPelajaran._perKelas')
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="13">

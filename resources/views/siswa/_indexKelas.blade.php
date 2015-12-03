@@ -8,7 +8,6 @@
 			<th>Tempat Lahir</th>
 			<th>Tanggal Lahir</th>
 			<th>Aktif</th>
-			<th style="width:120px;" data-orderable="false">Aksi</th>
 		</tr>
 	</thead>
 
@@ -22,12 +21,6 @@
 			<td>{{ $s->tempat_lahir }}</td>
 			<td>{{ $s->tgl_lahir }}</td>
 			<td>{!! $s->active ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td>
-			<td>
-				{!! Form::open(['method' => 'DELETE', 'url' => 'siswa/'.$s->id]) !!}
-	        		<a href="/siswa/{{ $s->id }}/edit" class="btn btn-success btn-xs">Edit</a>
-	        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs delete']) !!}
-        		{!! Form::close() !!}
-			</td>
 		</tr>
 		@endforeach
 	</tbody>

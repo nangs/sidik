@@ -49,6 +49,8 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('invTanah', 'App\InvTanah');
         $router->model('invBangunan', 'App\InvBangunan');
         $router->model('ruangan', 'App\Ruangan');
+        $router->model('jamPelajaran', 'App\JamPelajaran');
+        $router->model('jadwalPelajaran', 'App\JadwalPelajaran');
     }
 
     /**

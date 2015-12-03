@@ -14,4 +14,14 @@ class Tingkat extends Model
     {
     	return $value;
     }
+
+    public function jamPelajarans()
+    {
+    	return $this->hasMany('App\JamPelajaran');
+    }
+
+    public function jadwalPelajarans()
+    {
+        return $this->hasMany('App\JadwalPelajaran');
+    }
 }

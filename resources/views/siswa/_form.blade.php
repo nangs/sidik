@@ -38,7 +38,7 @@
 	<div class="form-group">
 		{!! Form::label('tgl_lahir', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('tgl_lahir', $siswa->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'tgl_lahir', $siswa->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 
@@ -201,14 +201,14 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('tinggi', 'Tinggi (cm):', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('tinggi', 'Tinggi Badan (cm):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::input('number', 'tinggi', $siswa->tinggi, ['class' => 'form-control', 'placeholder' => 'Tinggi (cm)']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('berat', 'Berat (kg):', ['class' => 'col-md-2 control-label']) !!}
+		{!! Form::label('berat', 'Berat Badan (kg):', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::input('number', 'berat', $siswa->berat, ['class' => 'form-control', 'placeholder' => 'Berat (kg)']) !!}
 		</div>

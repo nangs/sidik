@@ -10,14 +10,14 @@
 	<div class="form-group">
 		{!! Form::label('dari', 'Dari Tanggal:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('dari', $kalenderAkademik->dari, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'dari', $kalenderAkademik->dari, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 
 	<div class="form-group">
 		{!! Form::label('sampai', 'Sampai Tanggal:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::text('sampai', $kalenderAkademik->sampai, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+			{!! Form::input('date', 'sampai', $kalenderAkademik->sampai, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 		</div>
 	</div>
 

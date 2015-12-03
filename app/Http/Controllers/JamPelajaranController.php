@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\JadwalPelajaranRequest;
+use App\Http\Requests\JamPelajaranRequest;
 use App\Http\Controllers\Controller;
-use App\JadwalPelajaran;
+use App\JamPelajaran;
 
-class JadwalPelajaranController extends Controller
+class JamPelajaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class JadwalPelajaranController extends Controller
      */
     public function index()
     {
-        return view('jadwalPelajaran.index', ['jadwalPelajarans' => JadwalPelajaran::paginate(10)]);
+        return view('jamPelajaran.index', ['jamPelajarans' => JamPelajaran::paginate(10)]);
     }
 
     /**
@@ -25,7 +25,7 @@ class JadwalPelajaranController extends Controller
      */
     public function create()
     {
-        return view('jadwalPelajaran.create', ['jadwalPelajaran' => new JadwalPelajaran]);
+        return view('jamPelajaran.create', ['jamPelajaran' => new JamPelajaran]);
     }
 
     /**
@@ -34,10 +34,10 @@ class JadwalPelajaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(JadwalPelajaranRequest $request)
+    public function store(JamPelajaranRequest $request)
     {
-        JadwalPelajaran::create($request->all());
-        return redirect('/jadwalPelajaran');
+        JamPelajaran::create($request->all());
+        return redirect('/jamPelajaran');
     }
 
     /**
@@ -46,9 +46,9 @@ class JadwalPelajaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(JadwalPelajaran $jadwalPelajaran)
+    public function show(JamPelajaran $jamPelajaran)
     {
-        return view('jadwalPelajaran.show', ['jadwalPelajaran' => $jadwalPelajaran]);
+        return view('jamPelajaran.show', ['jamPelajaran' => $jamPelajaran]);
     }
 
     /**
@@ -57,9 +57,9 @@ class JadwalPelajaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JadwalPelajaran $jadwalPelajaran)
+    public function edit(JamPelajaran $jamPelajaran)
     {
-        return view('jadwalPelajaran.edit', ['jadwalPelajaran' => $jadwalPelajaran]);
+        return view('jamPelajaran.edit', ['jamPelajaran' => $jamPelajaran]);
     }
 
     /**
@@ -69,10 +69,10 @@ class JadwalPelajaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(JadwalPelajaranRequest $request, JadwalPelajaran $jadwalPelajaran)
+    public function update(JamPelajaranRequest $request, JamPelajaran $jamPelajaran)
     {
-        $jadwalPelajaran->update($request->all());
-        return redirect('/jadwalPelajaran');
+        $jamPelajaran->update($request->all());
+        return redirect('/jamPelajaran');
     }
 
     /**
@@ -81,9 +81,9 @@ class JadwalPelajaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JadwalPelajaran $jadwalPelajaran)
+    public function destroy(JamPelajaran $jamPelajaran)
     {
-        $jadwalPelajaran->delete();
-        return redirect('/jadwalPelajaran');
+        $jamPelajaran->delete();
+        return redirect('/jamPelajaran');
     }
 }
