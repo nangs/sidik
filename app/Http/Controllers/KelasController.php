@@ -91,7 +91,7 @@ class KelasController extends Controller
         return redirect('/kelas');
     }
 
-    public function createJadwal(Kelas $kelas)
+    public function createJadwal(Kelas $kelas, Request $request)
     {
         return view('jadwalPelajaran.create', [
             'kelas'             => $kelas, 
@@ -113,6 +113,7 @@ class KelasController extends Controller
         {
             $jadwal = new JadwalPelajaran;
             $jadwal->ta_id      = $kelas->ta_id;
+            $jadwal->jenjang_id = $kelas->jenjang_id;
             $jadwal->tingkat_id = $kelas->tingkat_id;
             $jadwal->kelas_id   = $kelas->id;
             $jadwal->hari       = $request->input('hari');
@@ -133,9 +134,10 @@ class KelasController extends Controller
         foreach ($kelas->jadwalPelajarans as $jadwal) 
         {
             // $jadwal->ta_id      = $kelas->ta_id;
+            // $jadwal->jenjang_id = $kelas->jenjang_id;
             // $jadwal->tingkat_id = $kelas->tingkat_id;
             // $jadwal->kelas_id   = $kelas->id;
-            $jadwal->hari       = $request->input('hari');
+            // $jadwal->hari       = $request->input('hari');
             // $jadwal->jam_id     = $jadwal->jam_id;
             $jadwal->mapel_id   = $request->input('mapel_id')[$jadwal->jam_id];
             $jadwal->guru_id    = $request->input('guru_id')[$jadwal->jam_id];

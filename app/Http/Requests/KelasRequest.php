@@ -34,7 +34,8 @@ class KelasRequest extends Request
             'ta_id'         => 'required|integer',
             'tingkat_id'    => 'required|integer',
             'nama'          => 'required|unique:kelas,nama,'.$id,
-            'ruang_id'      => 'required|integer'
+            'ruang_id'      => 'required|integer',
+            'jenjang_id'    => 'required|integer',
         ];
     }
 }

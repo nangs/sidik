@@ -10,6 +10,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<th>Jenjang</th>
 				<th>Tingkat</th>
 				<th>Jam</th>
 				<th>Dari Jam</th>
@@ -21,7 +22,8 @@
 		<tbody>
 			@foreach ($jamPelajarans as $b)
 			<tr>
-				<td>{{ $b->tingkat->nama }} ({{ $b->tingkat->keterangan }})</td>
+				<td>{{ $b->jenjang->nama }}</td>
+				<td>{{ $b->tingkat->nama }}</td>
 				<td>{{ $b->jam }}</td>
 				<td>{{ $b->dari }}</td>
 				<td>{{ $b->sampai }}</td>

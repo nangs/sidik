@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -15,13 +15,14 @@
                 <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Akademik <strong class="caret"></strong></a>
                     <ul class="dropdown-menu">
                         <li><a href="/ta">Tahun Ajaran</a></li>
+                        <li><a href="/jenjang">Jenjang</a></li>
                         <li><a href="/tingkat">Tingkat</a></li>
                         <li><a href="/kelas">Kelas</a></li>
                         <li><a href="/mapel">Mata Pelajaran</a></li>
                         <li><a href="/jamPelajaran">Jam Pelajaran</a></li>
                         <li><a href="/jenisUjian">Jenis Ujian</a></li>
-                        <li><a href="/jadwalPelajaran">Jadwal Pelajaran</a></li>
-                        <li><a href="/jadwalUjian">Jadwal Ujian</a></li>
+                        <li><a href="/ujian">Jadwal Ujian</a></li>
+                        <!-- <li><a href="/jadwalPelajaran">Jadwal Pelajaran</a></li> -->
                         <li><a href="/kalenderAkademik">Kalander Akademik</a></li>
                     </ul>
                 </li>

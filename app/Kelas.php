@@ -8,11 +8,16 @@ class Kelas extends Model
 {
     protected $table = 'kelas';
 
-    protected $fillable = ['ta_id', 'tingkat_id', 'nama', 'wali_id', 'ruang_id'];
+    protected $fillable = ['ta_id', 'tingkat_id', 'nama', 'wali_id', 'ruang_id', 'jenjang_id'];
 
     public function ta()
     {
-    	return $this->belongsTo('App\Ta');
+        return $this->belongsTo('App\Ta');
+    }
+
+    public function jenjang()
+    {
+    	return $this->belongsTo('App\Jenjang');
     }
 
     public function tingkat()

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Auth;
 
-class JamPelajaranRequest extends Request
+class JenjangRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,8 @@ class JamPelajaranRequest extends Request
     public function rules()
     {
         return [
-            'tingkat_id'    => 'required',
-            'jam'           => 'required',
-            'dari'          => 'required',
-            'sampai'        => 'required',
-            'jenjang_id'    => 'required|integer'
+            'nama'          => 'required|max:20',
+            'keterangan'    => 'required|max:50',
         ];
     }
 }

@@ -1,6 +1,15 @@
 {!! Form::model($tingkat, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method]) !!}
 
 	<div class="form-group">
+		{!! Form::label('jenjang_id', 'Jenjang:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('jenjang_id', 
+			[null => '- Pilih Jenjang -'] + App\Jenjang::lists('nama', 'id')->toArray(), 
+			$tingkat->jenjang_id, ['class' => 'form-control']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('nama', 'Nama:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::text('nama', $tingkat->nama, ['class' => 'form-control', 'placeholder' => 'Nama']) !!}

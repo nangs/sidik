@@ -12,8 +12,12 @@
 				<td>: {{ $kelas->ta->periode }}</td>
 			</tr>
 			<tr>
+				<th>Jenjang</th>
+				<td>: {{ $kelas->jenjang->nama }}</td>
+			</tr>
+			<tr>
 				<th>Tingkat</th>
-				<td>: {{ $kelas->tingkat->nama }} ({{ $kelas->tingkat->keterangan }})</td>
+				<td>: {{ $kelas->tingkat->nama }}</td>
 			</tr>
 			<tr>
 				<th>Wali Kelas</th>

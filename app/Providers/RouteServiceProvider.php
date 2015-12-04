@@ -34,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('siswa', 'App\Siswa');
         $router->model('tagihan', 'App\Tagihan');
         $router->model('ta', 'App\Ta');
+        $router->model('jenjang', 'App\Jenjang');
         $router->model('tingkat', 'App\Tingkat');
         $router->model('kelas', 'App\Kelas');
         $router->model('riwayatPendidikan', 'App\RiwayatPendidikan');
@@ -51,6 +52,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('ruangan', 'App\Ruangan');
         $router->model('jamPelajaran', 'App\JamPelajaran');
         $router->model('jadwalPelajaran', 'App\JadwalPelajaran');
+        $router->model('ujian', 'App\Ujian');
     }
 
     /**

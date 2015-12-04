@@ -8,11 +8,16 @@ class Tingkat extends Model
 {
     protected $table = 'tingkat';
 
-    protected $fillable = ['nama', 'keterangan'];
+    protected $fillable = ['nama', 'keterangan', 'jenjang_id'];
 
     public function getNamaAttribute($value)
     {
     	return $value;
+    }
+
+    public function jenjang()
+    {
+    	return $this->belongsTo('App\Jenjang');
     }
 
     public function jamPelajarans()

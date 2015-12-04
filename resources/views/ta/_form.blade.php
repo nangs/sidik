@@ -24,8 +24,8 @@
 	<div class="form-group">
 		{!! Form::label('active', 'Aktif:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			<input type="radio" name="active" value="1" {{ $ta->active ? 'checked' : '' }} /> Ya  <br />
-			<input type="radio" name="active" value="0" {{ $ta->active ? '' : 'checked' }} /> Tidak 
+			{!! Form::radio('active', 1, $ta->active == 1) !!} Ya <br />
+			{!! Form::radio('active', 0, $ta->active == 0) !!} Tidak
 		</div>
 	</div>
 

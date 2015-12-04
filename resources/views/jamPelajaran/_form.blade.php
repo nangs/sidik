@@ -1,9 +1,20 @@
 {!! Form::model($jamPelajaran, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method]) !!}
 
 	<div class="form-group">
+		{!! Form::label('jenjang_id', 'Jenjang:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('jenjang_id', 
+			[null => '- Pilih Jenjang -'] + App\Jenjang::lists('nama', 'id')->toArray(), 
+			$jamPelajaran->jenjang_id, ['class' => 'form-control']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('tingkat_id', 'Tingkat:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
-			{!! Form::select('tingkat_id', App\Tingkat::selectRaw('CONCAT(nama, " - ", keterangan) as nm, id')->lists('nm', 'id'), $jamPelajaran->tingkat_id, ['class' => 'form-control']) !!}
+			{!! Form::select('tingkat_id', 
+			[null => '- Pilih Tingkat -'] + App\Tingkat::selectRaw('CONCAT(nama, " - ", keterangan) as nm, id')->lists('nm', 'id')->toArray(), 
+			$jamPelajaran->tingkat_id, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 

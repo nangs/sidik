@@ -2,15 +2,14 @@
 
 @section('content')
 	
-	<a href="/tingkat/create" class="btn btn-success pull-right">Tambah Tingkat</a>
+	<a href="/jenjang/create" class="btn btn-success pull-right">Tambah Jenjang</a>
 
-	<h1>Daftar Tingkat</h1>
+	<h1>Daftar Jenjang</h1>
 	<hr />
 
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Jenjang</th>
 				<th>Nama</th>
 				<th>Keterangan</th>
 				<th>Aksi</th>
@@ -18,14 +17,13 @@
 		</thead>
 
 		<tbody>
-			@foreach ($tingkats as $b)
+			@foreach ($jenjangs as $b)
 			<tr>
-				<td>{{ $b->jenjang->nama }}</td>
 				<td>{{ $b->nama }}</td>
 				<td>{{ $b->keterangan }}</td>
 				<td>
-					{!! Form::open(['method' => 'DELETE', 'url' => 'tingkat/'.$b->id]) !!}
-		        		<a href="/tingkat/{{ $b->id }}/edit" class="btn btn-success btn-xs">Edit</a>
+					{!! Form::open(['method' => 'DELETE', 'url' => 'jenjang/'.$b->id]) !!}
+		        		<a href="/jenjang/{{ $b->id }}/edit" class="btn btn-success btn-xs">Edit</a>
 		        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs delete']) !!}
 	        		{!! Form::close() !!}
 				</td>
@@ -34,7 +32,7 @@
 		</tbody>
 	</table>
 
-	{!! $tingkats->render() !!}
+	{!! $jenjangs->render() !!}
 
 @stop
 

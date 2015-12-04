@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('invTanah', 'InvTanahController');
 	Route::resource('invBangunan', 'InvBangunanController');
 	Route::resource('ruangan', 'RuanganController');
+	Route::resource('ujian', 'UjianController');
 
 	Route::resource('ta', 'TaController', [
 		'except' => ['show']
@@ -60,6 +61,10 @@ Route::group(['middleware' => 'auth'], function() {
 	]);
 
 	Route::resource('tingkat', 'TingkatController', [
+		'except' => ['show']
+	]);
+
+	Route::resource('jenjang', 'JenjangController', [
 		'except' => ['show']
 	]);
 
@@ -102,3 +107,4 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::controller('auth', 'Auth\AuthController');
 Route::controller('password', 'Auth\PasswordController');
+Route::controller('batik', 'Auth\BatikController');

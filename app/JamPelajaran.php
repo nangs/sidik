@@ -8,7 +8,7 @@ class JamPelajaran extends Model
 {
     protected $table = 'jam_pelajaran';
 
-    protected $fillable = ['tingkat_id', 'jam', 'dari', 'sampai'];
+    protected $fillable = ['tingkat_id', 'jam', 'dari', 'sampai', 'jenjang_id'];
 
     public function tingkat()
     {
@@ -18,5 +18,10 @@ class JamPelajaran extends Model
     public function jadwalPelajarans()
     {
         return $this->hasMany('App\JadwalPelajaran', 'jam_id');
+    }
+
+    public function jenjang()
+    {
+    	return $this->belongsTo('App\Jenjang');
     }
 }

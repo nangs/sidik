@@ -8,6 +8,15 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label('jenjang_id', 'Jenjang:', ['class' => 'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!! Form::select('jenjang_id', 
+			[null => '- Pilih Jenjang -'] + App\Jenjang::lists('nama', 'id')->toArray(), 
+			$jadwalPelajaran->jenjang_id, ['class' => 'form-control']) !!}
+		</div>
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('tingkat_id', 'Tingkat:', ['class' => 'col-md-2 control-label']) !!}
 		<div class="col-md-10">
 			{!! Form::select('tingkat_id', App\Tingkat::selectRaw('CONCAT(nama, " - ", keterangan) as nm, id')->lists('nm', 'id'), $jadwalPelajaran->tingkat_id, ['class' => 'form-control']) !!}

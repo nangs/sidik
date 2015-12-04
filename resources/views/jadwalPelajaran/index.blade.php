@@ -11,6 +11,7 @@
 		<thead>
 			<tr>
 				<th>Tahun Ajaran</th>
+				<th>Jenjang</th>
 				<th>Tingkat</th>
 				<th>Kelas</th>
 				<th>Hari</th>
@@ -27,6 +28,7 @@
 			@foreach ($jadwalPelajarans as $b)
 			<tr>
 				<td>{{ $b->ta->periode }}</td>
+				<td>{{ $b->jenjang->nama }}</td>
 				<td>{{ $b->tingkat->nama }} ({{ $b->tingkat->keterangan }})</td>
 				<td><a href="/kelas/{{ $b->kelas_id }}">{{ $b->kelas->nama }}</a></td>
 				<td>{{ $b->hariList()[$b->hari] }}</td>

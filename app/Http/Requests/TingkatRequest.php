@@ -32,7 +32,8 @@ class TingkatRequest extends Request
 
         return [
             'nama'          => 'required|unique:tingkat,nama,'.$id,
-            'keterangan'    => 'max:255'
+            'keterangan'    => 'max:255',
+            'jenjang_id'    => 'required|integer'
         ];
     }
 }

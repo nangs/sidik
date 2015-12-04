@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TingkatRequest;
+use App\Http\Requests\JenjangRequest;
 use App\Http\Controllers\Controller;
-use App\Tingkat;
+use App\Jenjang;
 
-class TingkatController extends Controller
+class JenjangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TingkatController extends Controller
      */
     public function index()
     {
-        return view('tingkat.index', ['tingkats' => Tingkat::orderBy('id', 'ASC')->paginate(10)]);
+        return view('jenjang.index', ['jenjangs' => Jenjang::orderBy('id', 'ASC')->paginate(10)]);
     }
 
     /**
@@ -25,7 +25,7 @@ class TingkatController extends Controller
      */
     public function create()
     {
-        return view('tingkat.create', ['tingkat' => new Tingkat]);
+        return view('jenjang.create', ['jenjang' => new Jenjang]);
     }
 
     /**
@@ -34,10 +34,10 @@ class TingkatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TingkatRequest $request)
+    public function store(JenjangRequest $request)
     {
-        Tingkat::create($request->all());
-        return redirect('/tingkat');
+        Jenjang::create($request->all());
+        return redirect('/jenjang');
     }
 
     /**
@@ -57,9 +57,9 @@ class TingkatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tingkat $tingkat)
+    public function edit(Jenjang $jenjang)
     {
-        return view('tingkat.edit', ['tingkat' => $tingkat]);
+        return view('jenjang.edit', ['jenjang' => $jenjang]);
     }
 
     /**
@@ -69,10 +69,10 @@ class TingkatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TingkatRequest $request, Tingkat $tingkat)
+    public function update(JenjangRequest $request, Jenjang $jenjang)
     {
-        $tingkat->update($request->all());
-        return redirect('/tingkat');
+        $jenjang->update($request->all());
+        return redirect('/jenjang');
     }
 
     /**
@@ -81,9 +81,9 @@ class TingkatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tingkat $tingkat)
+    public function destroy(Jenjang $jenjang)
     {
-        $tingkat->delete();
-        return redirect('/tingkat');
+        $jenjang->delete();
+        return redirect('/jenjang');
     }
 }

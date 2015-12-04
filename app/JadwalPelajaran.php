@@ -10,7 +10,7 @@ class JadwalPelajaran extends Model
 
     protected $fillable = [
     	'ta_id', 'tingkat_id', 'kelas_id', 'jam_id', 'ruang_id',
-    	'hari', 'guru_id', 'mapel_id', 'keterangan'
+    	'hari', 'guru_id', 'mapel_id', 'keterangan', 'jenjang_id'
     ];
 
     public static function hariList()
@@ -34,6 +34,11 @@ class JadwalPelajaran extends Model
     public function tingkat()
     {
     	return $this->belongsTo('App\Tingkat');
+    }
+
+    public function jenjang()
+    {
+    	return $this->belongsTo('App\Jenjang');
     }
 
     public function kelas()

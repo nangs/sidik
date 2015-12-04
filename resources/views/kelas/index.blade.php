@@ -11,6 +11,7 @@
 		<thead>
 			<tr>
 				<th>Tahun Ajaran</th>
+				<th>Jenjang</th>
 				<th>Tingkat</th>
 				<th>Nama</th>
 				<th>Wali Kelas</th>
@@ -23,7 +24,8 @@
 			@foreach ($kelass as $k)
 			<tr>
 				<td>{{ $k->ta->periode }}</td>
-				<td>{{ $k->tingkat->nama }} ({{ $k->tingkat->keterangan }})</td>
+				<td>{{ $k->jenjang->nama }}</td>
+				<td>{{ $k->tingkat->nama }}</td>
 				<td><a href="/kelas/{{ $k->id }}">{{ $k->nama }}</a></td>
 				<td>{{ $k->wali->nama }}</td>
 				<td>{{ $k->ruang ? $k->ruang->kode .' ('.$k->ruang->nama.')' : '' }}</td>

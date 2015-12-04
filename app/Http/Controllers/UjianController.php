@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TingkatRequest;
-use App\Http\Controllers\Controller;
-use App\Tingkat;
+// use Illuminate\Http\Request;
 
-class TingkatController extends Controller
+use App\Http\Requests\UjianRequest;
+use App\Http\Controllers\Controller;
+use App\Ujian;
+
+class UjianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,7 @@ class TingkatController extends Controller
      */
     public function index()
     {
-        return view('tingkat.index', ['tingkats' => Tingkat::orderBy('id', 'ASC')->paginate(10)]);
+        return view('ujian.index', ['ujians' => Ujian::orderBy('ta_id', 'ASC')->paginate(10)]);
     }
 
     /**
@@ -25,7 +27,7 @@ class TingkatController extends Controller
      */
     public function create()
     {
-        return view('tingkat.create', ['tingkat' => new Tingkat]);
+        return view('ujian.create', ['ujian' => new Ujian]);
     }
 
     /**
@@ -34,10 +36,10 @@ class TingkatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TingkatRequest $request)
+    public function store(UjianRequest $request)
     {
-        Tingkat::create($request->all());
-        return redirect('/tingkat');
+        Ujian::create($request->all());
+        return redirect('/ujian');
     }
 
     /**
@@ -46,9 +48,9 @@ class TingkatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ujian $ujian)
     {
-        //
+        return view('ujian.show', ['ujian' => $ujian]);
     }
 
     /**
@@ -57,9 +59,9 @@ class TingkatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tingkat $tingkat)
+    public function edit(Ujian $ujian)
     {
-        return view('tingkat.edit', ['tingkat' => $tingkat]);
+        return view('ujian.edit', ['ujian' => $ujian]);
     }
 
     /**
@@ -69,10 +71,10 @@ class TingkatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TingkatRequest $request, Tingkat $tingkat)
+    public function update(UjianRequest $request, Ujian $ujian)
     {
-        $tingkat->update($request->all());
-        return redirect('/tingkat');
+        $ujian->update($request->all());
+        return redirect('/ujian');
     }
 
     /**
@@ -81,9 +83,9 @@ class TingkatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tingkat $tingkat)
+    public function destroy(Ujian $ujian)
     {
-        $tingkat->delete();
-        return redirect('/tingkat');
+        $ujian->delete();
+        return redirect('/ujian');
     }
 }
