@@ -120,4 +120,9 @@ class Karyawan extends Model
     {
         return $this->hasMany('App\JadwalPelajaran');
     }
+
+    public function scopeGuru($query)
+    {
+        return $query->where('guru', 1);
+    }
 }

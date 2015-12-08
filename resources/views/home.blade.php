@@ -19,7 +19,7 @@
     	<div class="col-md-4 text-center">
             <div id="chart4"></div>
         </div>
-        <div class="col-md-8 text-center">
+        <div class="col-md-4 text-center">
             <div id="chart5"></div>
         </div>
     	<div class="col-md-4 text-center">
@@ -33,6 +33,8 @@
 @section('script')
     
     <script type="text/javascript" src="/Highcharts/js/highcharts.js"></script>
+    <script type="text/javascript" src="/Highcharts/js/modules/funnel.js"></script>
+    <script type="text/javascript" src="/Highcharts/js/modules/exporting.js"></script>
 
     <script type="text/javascript">
 
@@ -224,8 +226,8 @@
                 }, {
                     name: "Perempuan",
                     y: 24.03,
-                    sliced: true,
-                    selected: true
+                    // sliced: true,
+                    // selected: true
                 }]
             }]
         });
@@ -276,6 +278,44 @@
             }, {
                 name: 'SMA',
                 data: [4.9, 5.2, 7.7]
+            }]
+        });
+
+        $('#chart6').highcharts({
+            chart: {
+                type: 'funnel',
+                marginRight: 100
+            },
+            title: {
+                text: 'Input Output Siswa',
+                x: -50
+            },
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> ({point.y:,.0f})',
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                        softConnector: true
+                    },
+                    neckWidth: '30%',
+                    neckHeight: '25%'
+
+                    //-- Other available options
+                    // height: pixels or percent
+                    // width: pixels or percent
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                name: 'Jumlah Siswa',
+                data: [
+                    ['Pendaftar',   15654],
+                    ['Diterima',       4064],
+                    ['Lulusan', 2987],
+                ]
             }]
         });
             

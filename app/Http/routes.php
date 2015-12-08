@@ -107,4 +107,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::controller('auth', 'Auth\AuthController');
 Route::controller('password', 'Auth\PasswordController');
-Route::controller('batik', 'Auth\BatikController');
+Route::controller('batik', 'BatikController');
+
+// PSB
+Route::resource('psb', 'PsbController');

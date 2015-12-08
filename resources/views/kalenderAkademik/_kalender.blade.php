@@ -1,6 +1,51 @@
-<div id="kalender"></div>
-<div id="chart"></div>
-
+<div class="row">
+	<div class="col-md-6">
+		<div id="kalender1"></div>
+	</div>
+	<div class="col-md-6">
+		<div id="kalender2"></div>
+	</div>
+</div><hr />
+<div class="row">
+	<div class="col-md-6">
+		<div id="kalender3"></div>
+	</div>
+	<div class="col-md-6">
+		<div id="kalender4"></div>
+	</div>
+</div><hr />
+<div class="row">
+	<div class="col-md-6">
+		<div id="kalender5"></div>
+	</div>
+	<div class="col-md-6">
+		<div id="kalender6"></div>
+	</div>
+</div><hr />
+<div class="row">
+	<div class="col-md-6">
+		<div id="kalender7"></div>
+	</div>
+	<div class="col-md-6">
+		<div id="kalender8"></div>
+	</div>
+</div><hr />
+<div class="row">
+	<div class="col-md-6">
+		<div id="kalender9"></div>
+	</div>
+	<div class="col-md-6">
+		<div id="kalender10"></div>
+	</div>
+</div><hr />
+<div class="row">
+	<div class="col-md-6">
+		<div id="kalender11"></div>
+	</div>
+	<div class="col-md-6">
+		<div id="kalender12"></div>
+	</div>
+</div>
 
 
 @section('css')
@@ -15,39 +60,35 @@
 
 	<script type="text/javascript">
 		
-		$('#kalender').fullCalendar({
-			// viewDisplay   : function(view) {
-		 //      var now = new Date(); 
-		 //      var end = new Date();
-		 //      end.setMonth(now.getMonth() + 11); //Adjust as needed
-
-		 //      var cal_date_string = view.start.getMonth()+'/'+view.start.getFullYear();
-		 //      var cur_date_string = now.getMonth()+'/'+now.getFullYear();
-		 //      var end_date_string = end.getMonth()+'/'+end.getFullYear();
-
-		 //      if(cal_date_string == cur_date_string) { jQuery('.fc-button-prev').addClass("fc-state-disabled"); }
-		 //      else { jQuery('.fc-button-prev').removeClass("fc-state-disabled"); }
-
-		 //      if(end_date_string == cal_date_string) { jQuery('.fc-button-next').addClass("fc-state-disabled"); }
-		 //      else { jQuery('.fc-button-next').removeClass("fc-state-disabled"); }
-		 //    },
-			// editable: true,
-			eventLimit: true,
-			header: {
-				left: 'prev, next',
-				center: 'title',
-				right: 'today'
-			},
-			defaultView: 'month',
-			timeFormat: 'HH:mm',
-			axisFormat: 'HH:mm',
-			titleFormat: {
-				week: 'd[ yyyy] { -[ MMM] d MMM yyyy}',
-				day: 'dddd, d MMM yyyy'
-			},
-			lazyFetching: true,
-			events: '/kalenderAkademik/event'
-		});
+		for(i=1;i<=12;i++)
+		{
+			$('#kalender'+i).fullCalendar({
+				eventLimit: true,
+				// views: {
+				// 	agendaSixMonth :{
+				// 		type: 'agenda',
+				// 		duration: {months: 6},
+				// 	}
+				// },
+				header: {
+					left: 'prev, next',
+					center: 'title',
+					right: 'today'
+				},
+				// defaultView: 'month',
+				timeFormat: 'HH:mm',
+				axisFormat: 'HH:mm',
+				titleFormat: {
+					week: 'd[ yyyy] { -[ MMM] d MMM yyyy}',
+					day: 'dddd, d MMM yyyy'
+				},
+				lazyFetching: true,
+				start: {{ strtotime('-2 Months') }},
+				end: {{ strtotime('-1 Month') }},
+				events: '/kalenderAkademik/event'
+			});
+		}
+		
 
 	</script>
 

@@ -1,5 +1,13 @@
 TODO:
 
+
+PSB
+- model, view, controller, request
+- relation
+- report => berdasarkan jenjang, tingkat, jenis kelamin, provinsi, kota, penghasilan orang tua, asal sekolah, has prestasi, has beasiswa
+
+=================================================
+
 - jadwal pelajaran, create per kelas, per hari
 - kelas -> nilai
 - kelas -> absensi

@@ -60,7 +60,7 @@
 						{!! Form::select('mapel_id['.$jam->id.']', [null => '- Pilih Mata Pelajaran -'] + App\Mapel::lists('nama', 'id')->toArray(), $jadwalPelajaran->mapel_id, ['class' => 'form-control']) !!}
 					</td>
 					<td>
-						{!! Form::select('guru_id['.$jam->id.']', [null => '- Pilih Guru -'] + App\Karyawan::where('guru', 1)->lists('nama', 'id')->toArray(), $jadwalPelajaran->guru_id, ['class' => 'form-control']) !!}
+						{!! Form::select('guru_id['.$jam->id.']', [null => '- Pilih Guru -'] + App\Karyawan::guru()->lists('nama', 'id')->toArray(), $jadwalPelajaran->guru_id, ['class' => 'form-control']) !!}
 					</td>
 					<td>
 						{!! Form::select('ruang_id['.$jam->id.']', [null => '- Pilih Ruangan -'] + App\Ruangan::selectRaw('CONCAT(kode, " - ", nama) as nama, id')->lists('nama', 'id')->toArray(), $jadwalPelajaran->ruang_id, ['class' => 'form-control']) !!}

@@ -54,7 +54,7 @@ class KaryawanController extends Controller
         }
 
         $k = Karyawan::create($data);
-        $k->mapels()->sync($request->get('mapel'));
+        $k->mapels()->sync($request->get('mapel', []));
 
         return redirect('/karyawan/'.$k->id);
     }
@@ -104,7 +104,7 @@ class KaryawanController extends Controller
         }
 
         $karyawan->update($data);
-        $karyawan->mapels()->sync($request->get('mapel'));
+        $karyawan->mapels()->sync($request->get('mapel', []));
 
         return redirect('karyawan/'.$karyawan->id);
     }

@@ -18,7 +18,6 @@ class CreateJadwalUjian extends Migration
             $table->integer('jenjang_id')->unsigned();
             $table->integer('tingkat_id')->unsigned();
             $table->integer('jenis_id')->unsigned();
-            $table->integer('mapel_id')->unsigned();
             $table->date('dari');
             $table->date('sampai');
             $table->timestamps();

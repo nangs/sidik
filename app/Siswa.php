@@ -58,4 +58,9 @@ class Siswa extends Model
     {
         return $this->belongsToMany('App\Kelas', 'kelas_siswa', 'siswa_id', 'kelas_id');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 }
