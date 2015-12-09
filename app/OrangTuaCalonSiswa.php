@@ -45,7 +45,7 @@ class OrangTuaCalonSiswa extends Model
     public static function pekerjaanList()
     {
     	return [
-    		null => '- Pilih Pekerjaan',
+    		null => '- Pilih Pekerjaan -',
     		1 	 => 'Tidak Bekerja',
     		2	 => 'Nelayan',
     		3	 => 'Petani',
@@ -76,6 +76,7 @@ class OrangTuaCalonSiswa extends Model
     public static function agamaList()
     {
         return [
+            null        => '- Pilih Agama -',
             'Islam'     => 'Islam',
             'Kristen'   => 'Kristen',
             'Katolik'   => 'Katolik',

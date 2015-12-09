@@ -64,19 +64,6 @@ class CalonSiswa extends Model
     	return [0 => 'Perempuan', 1 => 'Laki - Laki'];
     }
 
-    public static function jenisTinggalList()
-    {
-    	return [
-    		null => '- Pilih Jenis Tinggal',
-    		1 	 => 'Bersama Orang Tua',
-    		2 	 => 'Bersama Wali',
-    		3 	 => 'Kos',
-    		4 	 => 'Asrama',
-    		5 	 => 'Panti Asuhan',
-    		9 	 => 'Lainnya',
-    	];
-    }
-
     public static function kebutuhanKhususList()
     {
     	return [

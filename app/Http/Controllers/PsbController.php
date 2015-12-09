@@ -4,8 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// use all requests required
 use App\Http\Requests\PsbRequest;
+
 use App\Http\Controllers\Controller;
+
+// use all models required
+use App\PrestasiCalonSiswa;
+use App\BeasiswaCalonSiswa;
+use App\OrangTuaCalonSiswa;
+use App\AlamatCalonSiswa;
+use App\AsalSekolah;
+use App\CalonSiswa;
 use App\Psb;
 
 class PsbController extends Controller
@@ -27,7 +37,15 @@ class PsbController extends Controller
      */
     public function create()
     {
-        return view('psb.create', ['psb' => new Psb]);
+        return view('psb.create', [
+            'psb'               => new Psb,
+            'calonSiswa'        => new CalonSiswa,
+            'asalSekolah'       => new AsalSekolah,
+            'ortu'              => new OrangTuaCalonSiswa,
+            'alamatCalonSiswa'  => new AlamatCalonSiswa,
+            'beasiswa'          => new BeasiswaCalonSiswa,
+            'prestasi'          => new PrestasiCalonSiswa,
+        ]);
     }
 
     /**

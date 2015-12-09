@@ -19,7 +19,7 @@ class AlamatCalonSiswa extends Model
     	return $this->belongsTo('App\CalonSiswa');
     }
 
-    public static function jarakList()
+    public static function transportasiList()
     {
     	return [
     		null => '- Pilih Alat Transportasi -',
@@ -32,6 +32,19 @@ class AlamatCalonSiswa extends Model
     		7 	 => 'Andong/Bendi/Sado/Dokar/Delman/Becak',
     		8 	 => 'Perahu Penyebrangan/Rakit/Getek',
     		99   => 'Lainnya'
-    	]
+    	];
+    }
+
+    public static function jenisTinggalList()
+    {
+        return [
+            null => '- Pilih Jenis Tinggal -',
+            1    => 'Bersama Orang Tua',
+            2    => 'Bersama Wali',
+            3    => 'Kos',
+            4    => 'Asrama',
+            5    => 'Panti Asuhan',
+            9    => 'Lainnya',
+        ];
     }
 }
