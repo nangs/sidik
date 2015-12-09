@@ -84,3 +84,63 @@ thead {
 /*.form-horizontal .control-label {
 	padding-top: 0;
 }*/
+
+.shipping-schema{
+    margin-top: 50px;
+}
+.step-line{
+    display: block;
+    border-bottom: 2px solid #bbb;
+    width: 75%;
+    z-index: 0;
+    margin-bottom: -21px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+.shipping-schema ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    position: relative;
+}
+.shipping-schema ul li{
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    text-align: center;
+    color: #bbb;
+    font-size: 11px;
+}
+
+.shipping-schema .schema3 li{
+    width: 33.3333%;
+}
+.shipping-schema .schema5 li{
+    width: 20%;
+}
+.shipping-schema ul li .single-step{
+    display: inline-block;
+    border: 2px solid #bbb;
+    border-radius: 100%;
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    color: #bbb;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #fff;
+}
+.shipping-status-active .single-step{
+    /*background-color: #0078c7 !important;*/
+    background-color: green !important;
+    color: #fff !important;
+}
+.shipping-status-active {
+    color: #333 !important;
+}
+.shipping-schema ul li p{
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: bold;
+}
