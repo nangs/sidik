@@ -21,6 +21,23 @@
 
 <script type="text/javascript">
 	// $('select').select2();
+
+	$(function() {
+		$( "#tglbayar" ).datepicker({
+			// changeMonth: true,
+			// changeYear: true,
+			showButtonPanel: true,
+			dateFormat: 'yy-mm-dd'
+		});
+
+		$( "#tgllahir" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			minDate: '-20y',
+			maxDate: '-5y',
+			dateFormat: 'yy-mm-dd'
+		});
+	});
 </script>
 
 @stop

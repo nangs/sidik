@@ -96,6 +96,13 @@
 				{!! Form::select('alamatCalonSiswa[alat_trasnportasi_ke_sekolah]', App\AlamatCalonSiswa::transportasiList(), $alamatCalonSiswa->alat_trasnportasi_ke_sekolah, ['class' => 'form-control']) !!}
 			</div>
 		</div>
+
+		<div class="form-group">
+			{!! Form::label('alamatCalonSiswa[email]', 'Email:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::text('alamatCalonSiswa[email]', $alamatCalonSiswa->email, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+			</div>
+		</div>
 		
 	</div>
 

@@ -26,16 +26,14 @@ class PsbController extends Controller
     public function getAdmin()
     {
         return view('psb.admin', [
-            'psbsSD' => Psb::where('tahun_ajaran', Ta::active()->first()->periode)->SD()->get(),
-            'psbsSMP' => Psb::where('tahun_ajaran', Ta::active()->first()->periode)->SMP()->get(),
-            'psbsSMA' => Psb::where('tahun_ajaran', Ta::active()->first()->periode)->SMA()->get(),
+            'psbs' => Psb::with('calonSiswa')->sekarang()->get(),
         ]);
     }
 
     // chart, jumlah yg daftar per step, per tingkat, per jenjang, 
     public function getJurnal()
     {
-        return view('psb.jurnal');
+        return view('psb.jurnal', ['psb' => Psb::with('calonSiswa')->get()]);
     }
 
     // untuk pembelian formulir
@@ -44,60 +42,37 @@ class PsbController extends Controller
         return view('psb.step1', [
             'psb'               => new Psb,
             'calonSiswa'        => new CalonSiswa,
-            'ortu'              => new OrangTuaCalonSiswa,
+            'Wali'              => new OrangTuaCalonSiswa,
         ]);
     }
 
     // submit pembelian formulir redirect ke step 2
-    public function postStep1(Request $request)
+    public function postStep1(PsbRequest $request)
     {
-        // TODO : validation, better move to another request file
-        $this->validate($request, [
-            // PSB
-            'psb.jenjang'               => 'required|numeric',
-            'psb.tingkat'               => 'required|numeric',
-            'psb.tahun_ajaran'          => 'required',
-            'psb.metode_pembayaran'     => 'required',
-            'psb.tanggal_pembayaran'    => 'date|required',
-            'psb.jumlah_pembayaran'     => 'required|numeric',
-            // Data Siswa
-            'calonSiswa.nama'           => 'required',
-            'calonSiswa.jenis_kelamin'  => 'boolean',
-            'calonSiswa.nisn'           => 'required',
-            'calonSiswa.tempat_lahir'   => 'required',
-            'calonSiswa.tanggal_lahir'  => 'date|required',
-            'calonSiswa.tinggi_badan'   => 'numeric',
-            'calonSiswa.berat_badan'    => 'numeric',
-            'calonSiswa.jumlah_saudara' => 'numeric',
-            // Data Wali Calon Siswa
-            'ortu.nama'                 => 'required',
-            'ortu.tahun_lahir'          => 'numeric',
-            'ortu.agama'                => 'required',
-            'ortu.pekerjaan'            => 'required',
-            'ortu.penghasilan_bulanan'  => 'required',
-            'ortu.pendidikan'           => 'required',
-            'ortu.alamat'               => 'required',
-            'ortu.rt'                   => 'required',
-            'ortu.rw'                   => 'required',
-            'ortu.kelurahan'            => 'required',
-            'ortu.kode_pos'             => 'required',
-            'ortu.kecamatan'            => 'required',
-            'ortu.kota'                 => 'required',
-            'ortu.provinsi'             => 'required',
-            'ortu.hp'                   => 'required',
-            'ortu.email'                => 'email'
-        ]);
+        // $this->validate($request, []);
 
-        $psb = Psb::create($request->get('psb'));
-
-        $dataCalonSiswa             = $request->get('calonSiswa');
-        $dataCalonSiswa['psb_id']   = $psb->id;
-        $calonSiswa                 = CalonSiswa::create($dataCalonSiswa);
+        $psb            = Psb::create($request->get('psb'));
+        $calonSiswa     = $psb->calonSiswa()->create($request->get('calonSiswa'));
+        $waliCalonSiswa = $calonSiswa->ortu()->create($request->get('Wali'));
         
-        $dataOrtu                   = $request->get('ortu');
-        $dataOrtu['calon_siswa_id'] = $calonSiswa->id;
-        $dataOrtu['is_wali']        = 1;
-        $ortuCalonSiswa             = OrangTuaCalonSiswa::create($dataOrtu);
+        $dataAyah = $dataIbu = $request->get('Wali');
+        $dataAyah['hubungan']   = 'Ayah';
+        $dataIbu['hubungan']    = 'Ibu';
+        $dataIbu['nama']        = 'Nama Ibu';
+
+        $ayahCalonSiswa = $calonSiswa->ortu()->create($dataAyah);
+        $ibuCalonSiswa  = $calonSiswa->ortu()->create($dataIbu);
+
+        // isi alamat calon siswa berdasarkan alamat orang tua
+        $dataAlamat = $request->get('Wali');
+        $unset      = ['email', 'nama', 'pekerjaan', 'pendidikan', 'penghasilan_bulanan'];
+        
+        foreach ($unset as $u) {
+            unset($dataAlamat[$u]);
+        }
+
+        $dataAlamat['jenis_tinggal'] = 1; // bersama orang tua
+        $alamatCalonSiswa            = $calonSiswa->alamat()->create($dataAlamat);
 
         // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
 
@@ -110,19 +85,39 @@ class PsbController extends Controller
         return view('psb.step2', [
             'psb'               => $psb,
             'calonSiswa'        => $psb->calonSiswa,
-            'ortu'              => $psb->calonSiswa->ortu()->wali()->first(),
-            'alamatCalonSiswa'  => new AlamatCalonSiswa,
+            'Wali'              => $psb->calonSiswa->ortu()->wali()->first(),
+            'Ayah'              => $psb->calonSiswa->ortu()->ayah()->first(),
+            'Ibu'               => $psb->calonSiswa->ortu()->ibu()->first(),
+            'alamatCalonSiswa'  => $psb->calonSiswa->alamat,
             'asalSekolah'       => new AsalSekolah,
             'beasiswa'          => new BeasiswaCalonSiswa,
             'prestasi'          => new PrestasiCalonSiswa,
         ]);
     }
 
-    public function postStep2(Psb $psb)
+    public function patchStep2(Psb $psb, PsbRequest $request)
     {
-        // TODO: simpan datanya
+        // dd($request);
 
-        return redirect('/psb/step3');
+        // TODO: simpan datanya
+        // $psb->save($request->get('psb'));
+        $psb->calonSiswa()->update($request->get('calonSiswa'));
+        $psb->calonSiswa->ortu()->wali()->update($request->get('Wali'));
+        $psb->calonSiswa->ortu()->ayah()->update($request->get('Ayah'));
+        $psb->calonSiswa->ortu()->ibu()->update($request->get('Ibu'));
+        $psb->calonSiswa->alamat()->update($request->get('alamatCalonSiswa'));
+        
+        if ($request->get('asalSekolah') && $request->get('asalSekolah')['nama'] !== ''){
+            $asalSekolah = AsalSekolah::create($request->get('asalSekolah'));
+
+            $dataCalonSiswa = $request->get('calonSiswa');
+            $dataCalonSiswa['asal_sekolah_id'] = $asalSekolah->id;
+            $psb->calonSiswa()->update($dataCalonSiswa);
+        }
+
+        // data beasiswa & prestasi
+
+        return redirect('/psb/step3/'.$psb->id);
     }
 
     // tampilkan data sedang diverifikasi, jika data sudah diverifikasi tampilkan jadwal test & wawancara
@@ -135,11 +130,10 @@ class PsbController extends Controller
     {
         // TODO: simpan datanya
 
-        return redirect('/psb/step4');
+        return redirect('/psb/step4'.$psb->id);
     }
 
-    // tampilkan status selesai, tampilkan pengumuman, jurnal 
-    // alias : show
+    // tampilkan status selesai, tampilkan pengumuman. TODO : sesuaikan step
     public function getStep4(Psb $psb)
     {
         return view('psb.step4', ['psb' => $psb]);
@@ -186,6 +180,7 @@ class PsbController extends Controller
         $calonSiswa = CalonSiswa::where('nisn', $request->nisn)->first();
         
         if ($calonSiswa) {
+            // TODO : redirect ke step yang sesuai
             return redirect('/psb/step2/'.$calonSiswa->psb_id);
         } else {
             return view('errors.404');

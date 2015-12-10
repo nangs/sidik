@@ -39,7 +39,7 @@
 		<div class="form-group">
 			{!! Form::label('psb[tanggal_pembayaran]', 'Tanggal Pembayaran:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::input('date', 'psb[tanggal_pembayaran]', $psb->tanggal_pembayaran, ['class' => 'form-control']) !!}
+				{!! Form::text('psb[tanggal_pembayaran]', $psb->tanggal_pembayaran, ['class' => 'form-control', 'id' => 'tglbayar']) !!}
 			</div>
 		</div>
 

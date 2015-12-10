@@ -2,9 +2,13 @@
 	
 	<!-- include('psb._formPsb') -->
 	@include('psb._formCalonSiswa')
-	@include('psb._formAsalSekolah')
-	@include('psb._formBeasiswa')
-	@include('psb._formPrestasi')
+
+	@if ($psb->jenjang > 1)
+		@include('psb._formAsalSekolah')
+	@endif
+
+	include('psb._formBeasiswa')
+	include('psb._formPrestasi')
 	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ayah'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ibu'])
@@ -27,6 +31,16 @@
 
 <script type="text/javascript">
 	// $('select').select2();
+
+	$(function() {
+		$( "#tgllahir" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			minDate: '-20y',
+			maxDate: '-5y',
+			dateFormat: 'yy-mm-dd'
+		});
+	});
 </script>
 
 @stop

@@ -130,14 +130,14 @@ return [
             'jumlah_saudara' => 'Jumlah Saudara',
         ],
 
-        'ortu'  => [
-            'nama'                  => 'Nama Orang Tua',
-            'tahun_lahir'           => 'Tahun Lahir Orang Tua',
-            'agama'                 => 'Agama Orang Tua',
-            'pekerjaan'             => 'Pekerjaan Orang Tua',
-            'penghasilan_bulanan'   => 'Penghasilan Bulanan Orang Tua',
-            'pendidikan'            => 'Pendidikan Orang Tua',
-            'alamat'                => 'Alamat Oarang Tua',
+        'Wali'  => [
+            'nama'                  => 'Nama Wali',
+            'tahun_lahir'           => 'Tahun Lahir Wali',
+            'agama'                 => 'Agama Wali',
+            'pekerjaan'             => 'Pekerjaan Wali',
+            'penghasilan_bulanan'   => 'Penghasilan Bulanan Wali',
+            'pendidikan'            => 'Pendidikan Wali',
+            'alamat'                => 'Alamat Wali',
             'rt'                    => 'RT',
             'rw'                    => 'RW',
             'kelurahan'             => 'Kelurahan',
@@ -146,7 +146,69 @@ return [
             'kota'                  => 'Kota',
             'provinsi'              => 'Provinsi',
             'hp'                    => 'HP',
-            'email'                 => 'Email Orang Tua'
+            'email'                 => 'Email Wali'
+        ],
+
+        'Ayah'  => [
+            'nama'                  => 'Nama Ayah',
+            'tahun_lahir'           => 'Tahun Lahir Ayah',
+            'agama'                 => 'Agama Ayah',
+            'pekerjaan'             => 'Pekerjaan Ayah',
+            'penghasilan_bulanan'   => 'Penghasilan Bulanan Ayah',
+            'pendidikan'            => 'Pendidikan Ayah',
+            'alamat'                => 'Alamat Ayah',
+            'rt'                    => 'RT',
+            'rw'                    => 'RW',
+            'kelurahan'             => 'Kelurahan',
+            'kode_pos'              => 'Kode Pos',
+            'kecamatan'             => 'Kecamatan',
+            'kota'                  => 'Kota',
+            'provinsi'              => 'Provinsi',
+            'hp'                    => 'HP',
+            'email'                 => 'Email Ayah'
+        ],
+
+        'Ibu'  => [
+            'nama'                  => 'Nama Ibu',
+            'tahun_lahir'           => 'Tahun Lahir Ibu',
+            'agama'                 => 'Agama Ibu',
+            'pekerjaan'             => 'Pekerjaan Ibu',
+            'penghasilan_bulanan'   => 'Penghasilan Bulanan Ibu',
+            'pendidikan'            => 'Pendidikan Ibu',
+            'alamat'                => 'Alamat Ibu',
+            'rt'                    => 'RT',
+            'rw'                    => 'RW',
+            'kelurahan'             => 'Kelurahan',
+            'kode_pos'              => 'Kode Pos',
+            'kecamatan'             => 'Kecamatan',
+            'kota'                  => 'Kota',
+            'provinsi'              => 'Provinsi',
+            'hp'                    => 'HP',
+            'email'                 => 'Email Ibu'
+        ],
+
+        'asalSekolah' => [
+            'nama'      => 'Nama',
+            'nss'       => 'NSS',
+            'npsn'      => 'NPSN',
+            'alamat'    => 'Alamat',
+            'kecamatan' => 'Kecamatan',
+            'kota'      => 'Kota',
+            'propinsi'  => 'Propinsi',
+        ],
+
+        'alamatCalonSiswa' => [
+            'alamat'       => 'Alamat',
+            'rt'           => 'RT',
+            'rw'           => 'RW',
+            'kelurahan'    => 'Kelurahan',
+            'kode_pos'     => 'Kode Pos',
+            'kecamatan'    => 'Kecamatan',
+            'kota'         => 'Kota',
+            'provinsi'     => 'Propinsi',
+            'email'        => 'Email',
+            'jarak_tempat_tinggal_ke_sekolah'  => 'Jarak Tempat Tinggal ke Sekolah',
+            'alat_trasnportasi_ke_sekolah'     => 'Alat Transportasi ke Sekolah',
         ]
     ],
 

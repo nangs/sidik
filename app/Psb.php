@@ -30,6 +30,11 @@ class Psb extends Model
         return $query->where('jenjang', 3);
     }
 
+    public function scopeSekarang($query)
+    {
+        return $query->where('tahun_ajaran', \App\Ta::active()->first()->periode);
+    }
+
     public function calonSiswa()
     {
     	return $this->hasOne('App\CalonSiswa');

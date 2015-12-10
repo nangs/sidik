@@ -10,13 +10,19 @@
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active">
-			<a href="#1" aria-controls="1" role="tab" data-toggle="tab">SD <span class="badge">{{count($psbsSD)}}</span></a>
+			<a href="#1" aria-controls="1" role="tab" data-toggle="tab">
+				SD <span class="badge">{{\App\Psb::sekarang()->SD()->count('id')}}</span>
+			</a>
 		</li>
 		<li role="presentation">
-			<a href="#5" aria-controls="5" role="tab" data-toggle="tab">SMP <span class="badge">{{count($psbsSMP)}}</span></a>
+			<a href="#5" aria-controls="5" role="tab" data-toggle="tab">
+				SMP <span class="badge">{{\App\Psb::sekarang()->SMP()->count('id')}}</span>
+			</a>
 		</li>
 		<li role="presentation">
-			<a href="#6" aria-controls="6" role="tab" data-toggle="tab">SMA <span class="badge">{{count($psbsSMA)}}</span></a>
+			<a href="#6" aria-controls="6" role="tab" data-toggle="tab">
+				SMA <span class="badge">{{\App\Psb::sekarang()->SMA()->count('id')}}</span>
+			</a>
 		</li>
 	</ul>
 
@@ -24,17 +30,17 @@
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="1">
 			<br />
-			@include('psb._list', ['jenjang' => 'SD', 'psbs' => $psbsSD])
+			@include('psb._list', ['jenjang' => 1])
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="5">
 			<br />
-			@include('psb._list', ['jenjang' => 'SMP', 'psbs' => $psbsSMP])
+			@include('psb._list', ['jenjang' => 2])
 		</div>
 
 		<div role="tabpanel" class="tab-pane" id="6">
 			<br />
-			@include('psb._list', ['jenjang' => 'SMA', 'psbs' => $psbsSMA])
+			@include('psb._list', ['jenjang' => 3])
 		</div>
 	</div>	
 
@@ -57,7 +63,7 @@
 			return false;
 		});
 
-		$('#psb-list-SD, #psb-list-SMP, #psb-list-SMA').DataTable();
+		$('#psb-list-1, #psb-list-2, #psb-list-3').DataTable();
 
 	</script>
 

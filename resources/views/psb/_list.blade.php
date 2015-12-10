@@ -1,7 +1,6 @@
 <table class="table table-striped" id="psb-list-{{$jenjang}}">
 	<thead>
 		<tr>
-			<!-- <th>ID</th> -->
 			<th>Tingkat</th>
 			<th>Nama Calon Siswa</th>
 			<th>NISN Calon Siswa</th>
@@ -15,8 +14,8 @@
 
 	<tbody>
 		@foreach ($psbs as $s)
+		@if($jenjang == $s->jenjang)
 		<tr>
-			<!-- <td><a href="/psb/{{ $s->id }}">{{ $s->id }}</a></td> -->
 			<td>{{ App\Psb::TingkatList()[$s->tingkat] }}</td>
 			<td><a href="/calonSiswa/show/{{ $s->calonSiswa->id }}">{{ $s->calonSiswa->nama }}</a></td>
 			<td>{{ $s->calonSiswa->nisn }}</td>
@@ -48,6 +47,7 @@
         		{!! Form::close() !!}
 			</td>
 		</tr>
+		@endif
 		@endforeach
 	</tbody>
 </table>

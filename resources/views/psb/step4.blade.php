@@ -13,11 +13,11 @@
 				<span class="single-step">2</span>
 				<p>PENGISIAN FORMULIR<br/></p>
 			</li>
-			<li class="">
+			<li class="shipping-status-active">
 				<span class="single-step">3</span>
 				<p>TEST &amp; WAWANCARA<br/></p>
 			</li>
-			<li class="">
+			<li class="shipping-status-active">
 				<span class="single-step">4</span>
 				<p>SELESAI<br/></p>
 			</li>
@@ -26,16 +26,15 @@
 
 	<hr />
 
-	@if ($psb->status_pembayaran == 0)
+	<!-- if ($psb->status_pembayaran == 0) -->
 
 	<div class="alert alert-success text-center">
 		<h4>
-			Data telah kami simpan di database kami. 
-			Pembayaran Anda sedang dikonfirmasi. 
-			Setelah pembayaran kami terima Anda dapat melengkapi formulir pendaftaran di halaman ini. 
-			Simpan alamat URL berikut untuk melengkapi formulir pendaftaran di kemudian hari: <br /><br />
+			Proses pendaftaran telah selesai. 
+			Anda dapat melihat pengumuman di halaman ini setelah kami melakukan seleksi. 
+			Simpan alamat URL berikut untuk melihat pengumuman di kemudian hari: <br /><br />
 
-			<a href="/psb/step2/{{ $psb->id }}">{{ url('/psb/step2/'.$psb->id)}}</a>
+			<a href="/psb/step4/{{ $psb->id }}">{{ url('/psb/step4/'.$psb->id)}}</a>
 
 			<br /><br />
 
@@ -48,13 +47,13 @@
 		</h4>
 	</div>
 
-	@else
+	<!-- else
 
-		@include('_error')
+		include('_error')
 
-		@include('psb/_formStep2', ['method' => 'PATCH', 'url' => '/psb/step2/'.$psb->id])
+		include('psb/_formStep2', ['method' => 'POST', 'url' => '/psb/step2'])
 
-	@endif
+	endif -->
 	
 
 @stop

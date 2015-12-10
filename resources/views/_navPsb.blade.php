@@ -26,12 +26,11 @@
                 <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin <strong class="caret"></strong></a>
                     <ul class="dropdown-menu">
                         <li><a href="/psb/admin">Calon Siswa</a></li>
-                        <li><a href="/syaratPsb">Syarat dan Ketentuan</a></li>
                         <li><a href="/ta">Tahun Ajaran</a></li>
                         <li><a href="/rekening">Daftar Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="/user/{{ Auth::user()->id }}"><span class="fa fa-user"></span></a></li>
+                <!-- <li><a href="/user/{{ Auth::user()->id }}"><span class="fa fa-user"></span></a></li> -->
                 <li><a href="/auth/logout"><span class="fa fa-sign-out"></span></a></li>
                 @endif
             </ul>

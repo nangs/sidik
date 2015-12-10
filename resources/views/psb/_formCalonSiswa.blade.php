@@ -52,7 +52,7 @@
 		<div class="form-group">
 			{!! Form::label('calonSiswa[tanggal_lahir]', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::input('date', 'calonSiswa[tanggal_lahir]', $calonSiswa->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+				{!! Form::text('calonSiswa[tanggal_lahir]', $calonSiswa->tgl_lahir, ['class' => 'form-control', 'id' => 'tgllahir']) !!}
 			</div>
 		</div>
 

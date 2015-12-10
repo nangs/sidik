@@ -2,8 +2,9 @@ TODO:
 
 
 PSB
-- model, view, controller, request
-- relation
+- step 2, 3, 4
+- jquery ui untuk autocomplete
+- nama lokasi dari database
 - report => berdasarkan jenjang, tingkat, jenis kelamin, provinsi, kota, penghasilan orang tua, asal sekolah, has prestasi, has beasiswa
 
 =================================================

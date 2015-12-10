@@ -14,6 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
  
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
@@ -48,6 +49,7 @@
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/jquery-ui/jquery-ui.min.js"></script>
 
     @yield('script')
     

@@ -23,14 +23,131 @@ class PsbRequest extends Request
      */
     public function rules()
     {
-        return [
-            'tahun_ajaran'          => 'required',
-            'jenjang'               => 'required|integer',
-            'tingkat'               => 'required|integer',
-            'keterangan'            => 'max:255',
-            'tanggal_pembayaran'    => 'date|required', 
-            'metode_pembayaran'     => 'required|in:Tunai,Setor Tunai Bank,Transfer ATM,Intenet Banking,SMS Banking',
-            'jumlah_pembayaran'     => 'required|numerical', 
+        $rules['POST'] = [
+            // PSB
+            'psb.jenjang'               => 'required|numeric',
+            'psb.tingkat'               => 'required|numeric',
+            'psb.tahun_ajaran'          => 'required',
+            'psb.metode_pembayaran'     => 'required',
+            'psb.tanggal_pembayaran'    => 'date|required',
+            'psb.jumlah_pembayaran'     => 'required|numeric',
+            // Data Siswa
+            'calonSiswa.nama'           => 'required',
+            'calonSiswa.jenis_kelamin'  => 'boolean',
+            'calonSiswa.nisn'           => 'required',
+            'calonSiswa.tempat_lahir'   => 'required',
+            'calonSiswa.tanggal_lahir'  => 'date|required',
+            'calonSiswa.tinggi_badan'   => 'numeric',
+            'calonSiswa.berat_badan'    => 'numeric',
+            'calonSiswa.jumlah_saudara' => 'numeric',
+            // Data Wali Calon Siswa
+            'Wali.nama'                 => 'required',
+            'Wali.tahun_lahir'          => 'numeric',
+            'Wali.agama'                => 'required',
+            'Wali.pekerjaan'            => 'required',
+            // 'Wali.penghasilan_bulanan'  => 'required',
+            'Wali.pendidikan'           => 'required',
+            'Wali.alamat'               => 'required',
+            'Wali.rt'                   => 'required',
+            'Wali.rw'                   => 'required',
+            'Wali.kelurahan'            => 'required',
+            'Wali.kode_pos'             => 'required',
+            'Wali.kecamatan'            => 'required',
+            'Wali.kota'                 => 'required',
+            'Wali.provinsi'             => 'required',
+            'Wali.hp'                   => 'required',
+            'Wali.email'                => 'email',
         ];
+
+        $rules['PATCH'] = [
+            // Data Siswa
+            'calonSiswa.nama'           => 'required',
+            'calonSiswa.jenis_kelamin'  => 'boolean',
+            'calonSiswa.nisn'           => 'required',
+            'calonSiswa.tempat_lahir'   => 'required',
+            'calonSiswa.tanggal_lahir'  => 'date|required',
+            'calonSiswa.tinggi_badan'   => 'numeric',
+            'calonSiswa.berat_badan'    => 'numeric',
+            'calonSiswa.jumlah_saudara' => 'numeric',
+
+            // Data Wali Calon Siswa
+            'Wali.nama'                 => 'required',
+            'Wali.tahun_lahir'          => 'numeric',
+            'Wali.agama'                => 'required',
+            'Wali.pekerjaan'            => 'required',
+            // 'Wali.penghasilan_bulanan'  => 'required',
+            'Wali.pendidikan'           => 'required',
+            'Wali.alamat'               => 'required',
+            'Wali.rt'                   => 'required',
+            'Wali.rw'                   => 'required',
+            'Wali.kelurahan'            => 'required',
+            'Wali.kode_pos'             => 'required',
+            'Wali.kecamatan'            => 'required',
+            'Wali.kota'                 => 'required',
+            'Wali.provinsi'             => 'required',
+            'Wali.hp'                   => 'required',
+            'Wali.email'                => 'email',
+
+            // DATA AYAH
+            'Ayah.nama'                 => 'required',
+            'Ayah.tahun_lahir'          => 'numeric',
+            'Ayah.agama'                => 'required',
+            'Ayah.pekerjaan'            => 'required',
+            // 'Ayah.penghasilan_bulanan'  => 'required',
+            'Ayah.pendidikan'           => 'required',
+            'Ayah.alamat'               => 'required',
+            'Ayah.rt'                   => 'required',
+            'Ayah.rw'                   => 'required',
+            'Ayah.kelurahan'            => 'required',
+            'Ayah.kode_pos'             => 'required',
+            'Ayah.kecamatan'            => 'required',
+            'Ayah.kota'                 => 'required',
+            'Ayah.provinsi'             => 'required',
+            // 'Ayah.hp'                   => 'required',
+            'Ayah.email'                => 'email',
+
+            // DATA IBU
+            'Ibu.nama'                 => 'required',
+            'Ibu.tahun_lahir'          => 'numeric',
+            'Ibu.agama'                => 'required',
+            'Ibu.pekerjaan'            => 'required',
+            // 'Ibu.penghasilan_bulanan'  => 'required',
+            'Ibu.pendidikan'           => 'required',
+            'Ibu.alamat'               => 'required',
+            'Ibu.rt'                   => 'required',
+            'Ibu.rw'                   => 'required',
+            'Ibu.kelurahan'            => 'required',
+            'Ibu.kode_pos'             => 'required',
+            'Ibu.kecamatan'            => 'required',
+            'Ibu.kota'                 => 'required',
+            'Ibu.provinsi'             => 'required',
+            // 'Ibu.hp'                => 'required',
+            'Ibu.email'                => 'email',
+
+            // ALAMAT CALON SISWA
+            'alamatCalonSiswa.alamat'       => 'required',
+            'alamatCalonSiswa.rt'           => 'required',
+            'alamatCalonSiswa.rw'           => 'required',
+            'alamatCalonSiswa.kelurahan'    => 'required',
+            'alamatCalonSiswa.kode_pos'     => 'required',
+            'alamatCalonSiswa.kecamatan'    => 'required',
+            'alamatCalonSiswa.kota'         => 'required',
+            'alamatCalonSiswa.provinsi'     => 'required',
+            'alamatCalonSiswa.jarak_tempat_tinggal_ke_sekolah'  => 'numeric|required',
+            'alamatCalonSiswa.alat_trasnportasi_ke_sekolah'     => 'required',
+            // 'alamatCalonSiswa.hp'        => 'required',
+            'alamatCalonSiswa.email'        => 'email',
+
+            // ASAL SEKOLAH
+            // 'asalSekolah.nama'      => 'required',
+            // 'asalSekolah.nss'       => 'required',
+            // 'asalSekolah.npsn'      => 'required',
+            // 'asalSekolah.alamat'    => 'required',
+            // 'asalSekolah.kecamatan' => 'required',
+            // 'asalSekolah.kota'      => 'required',
+            // 'asalSekolah.propinsi'  => 'required',
+        ];
+
+        return $rules[$this->method];
     }
 }

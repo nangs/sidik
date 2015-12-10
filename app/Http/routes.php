@@ -17,9 +17,9 @@ Route::group(['middleware' => 'auth'], function() {
  //    	return view('home');
 	// });
 
-	Route::get('/home', function () {
-	    return view('home');
-	});
+	// Route::get('/home', function () {
+	//     return view('home');
+	// });
 
 	Route::resource('karyawan', 'KaryawanController');
 	Route::resource('bagian', 'BagianController');
@@ -114,6 +114,9 @@ Route::controller('password', 'Auth\PasswordController');
 Route::controller('batik', 'BatikController');
 
 // MODUL PSB
+Route::get('/', 'PsbController@getStep1');
+Route::get('/home', 'PsbController@getStep1');
+
 Route::group(['prefix' => 'psb'], function() {
 
 	Route::get('/', 'PsbController@getStep1');
@@ -123,8 +126,8 @@ Route::group(['prefix' => 'psb'], function() {
 	Route::get('step4/{psb}', 'PsbController@getStep4');
 	
 
-	Route::post('step1/{psb}', 'PsbController@postStep1');
-	Route::post('step2/{psb}', 'PsbController@postStep2');
+	Route::post('step1', 'PsbController@postStep1');
+	Route::patch('step2/{psb}', 'PsbController@patchStep2');
 	Route::post('step3/{psb}', 'PsbController@postStep3');
 
 	Route::get('cari', 'PsbController@getCari');
