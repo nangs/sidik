@@ -6,7 +6,7 @@
 
 	<div class="panel-body">
 
-		{!! Form::hidden('hubungan', $hubungan) !!}
+		{!! Form::hidden('ortu[hubungan]', $hubungan) !!}
 
 		<div class="form-group">
 			{!! Form::label('ortu[nama]', 'Nama:', ['class' => 'col-md-2 control-label']) !!}
@@ -44,9 +44,9 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('ortu[penghasilan]', 'Penghasilan:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('ortu[penghasilan_bulanan]', 'Penghasilan:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::select('ortu[penghasilan]', App\OrangTuaCalonSiswa::penghasilanList(), $ortu->penghasilan, ['class' => 'form-control']) !!}
+				{!! Form::select('ortu[penghasilan_bulanan]', App\OrangTuaCalonSiswa::penghasilanList(), $ortu->penghasilan_bulanan, ['class' => 'form-control']) !!}
 			</div>
 		</div>
 
@@ -114,9 +114,16 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('ortu[telepon_rumah]', 'HP:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('ortu[hp]', 'HP:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
 				{!! Form::text('ortu[hp]', $ortu->hp, ['class' => 'form-control', 'placeholder' => 'HP']) !!}
+			</div>
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('ortu[email]', 'Email:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::text('ortu[email]', $ortu->email, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
 			</div>
 		</div>
 		

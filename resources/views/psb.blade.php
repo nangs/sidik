@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Ma'had Ihya' As Sunnah | @yield('title')</title>
+    <title>Ma'had Ihya' As Sunnah | Penerimaan Siswa Baru</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -30,22 +30,21 @@
 
   <body>
     
-    <div class="container">
+    @include('_navPsb')
 
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+    <div class="container main-content">
 
-        	
         @yield('content')
 
     </div>
+
+    <div class="footer-end">
+        <div class="container">
+            <footer>
+                <p>&copy; MIAS {{ date('Y') }} - PSB Online By : <a href="mailto:udibagas@gmail.com">Udibagas</a></p>
+            </footer>
+        </div>
+    </div>   
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>

@@ -1,12 +1,13 @@
 {!! Form::model($psb, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method, 'files' => true]) !!}
 	
-	@include('psb._formAsalSekolah')
+	<!-- include('psb._formPsb') -->
 	@include('psb._formCalonSiswa')
+	@include('psb._formAsalSekolah')
 	@include('psb._formBeasiswa')
 	@include('psb._formPrestasi')
+	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ayah'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ibu'])
-	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
 	@include('psb._formAlamat')
 
 	<hr />

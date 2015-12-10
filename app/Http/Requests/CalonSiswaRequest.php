@@ -13,7 +13,7 @@ class CalonSiswaRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class CalonSiswaRequest extends Request
     public function rules()
     {
         return [
-            //
+            'nis'               => 'required', 
+            'nisn'              => 'required', 
+            'nik'               => 'required', 
+            'nama'              => 'required', 
+            'jenis_kelamin'     => 'boolean',
+            'tempat_lahir'      => 'required', 
+            'tanggal_lahir'     => 'date|required',
+            'tinggi_badan'      => 'numeric', 
+            'berat_badan'       => 'numeric', 
+            // 'psb_id'            => 'required'
         ];
     }
 }

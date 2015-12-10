@@ -35,7 +35,7 @@ class CreateCalonSiswa extends Migration
             $table->date('tanggal_lahir');
             $table->smallInteger('tinggi_badan')->unsigned();
             $table->smallInteger('berat_badan')->unsigned();
-            $table->smallInteger('berkebutuhan_khusus ')->unsigned();
+            $table->smallInteger('berkebutuhan_khusus')->unsigned();
             $table->smallInteger('jumlah_saudara')->unsigned();
             $table->integer('psb_id')->unsigned();
             $table->timestamps();

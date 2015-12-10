@@ -54,6 +54,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('jadwalPelajaran', 'App\JadwalPelajaran');
         $router->model('ujian', 'App\Ujian');
         $router->model('psb', 'App\Psb');
+        $router->model('rekening', 'App\Rekening');
     }
 
     /**

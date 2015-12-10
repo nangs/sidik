@@ -24,13 +24,13 @@ class PsbRequest extends Request
     public function rules()
     {
         return [
-            // 'nomor_pendaftaran'     => 'required',
-            // 'tanggal_pendaftaran'   => 'required|date',
-            'jenjang_id'            => 'required|integer',
-            'tingkat_id'            => 'required|integer',
-            'step'                  => 'required|integer',
-            'status'                => 'required|boolean',
-            'keterangan'            => 'max:255'
+            'tahun_ajaran'          => 'required',
+            'jenjang'               => 'required|integer',
+            'tingkat'               => 'required|integer',
+            'keterangan'            => 'max:255',
+            'tanggal_pembayaran'    => 'date|required', 
+            'metode_pembayaran'     => 'required|in:Tunai,Setor Tunai Bank,Transfer ATM,Intenet Banking,SMS Banking',
+            'jumlah_pembayaran'     => 'required|numerical', 
         ];
     }
 }

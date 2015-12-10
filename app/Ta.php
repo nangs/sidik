@@ -24,4 +24,9 @@ class Ta extends Model
     {
         return $this->hasMany('App\JadwalPelajaran');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 }

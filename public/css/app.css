@@ -7,6 +7,10 @@ body {
   /*color: #676a6c;*/
 }
 
+.table {
+    font-size: 13px;
+}
+
 .main-content {
 	margin-top: 40px;
 	min-height: 490px;
@@ -55,38 +59,8 @@ thead {
 	border-radius: 0;
 }
 
-.text-ellipsis {
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
-.img-200 {
-	width: 200px;
-}
-
-.thumbnail > a {
-	height: 100px;
-}
-
-.center-cropped {
-  width: auto;
-  height: 120px;
-  background-size: auto 150px;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-/*.navbar-inverse {
-	background-color: #5cb85c;
-	border-color: #398439;
-}*/
-
-/*.form-horizontal .control-label {
-	padding-top: 0;
-}*/
-
-.shipping-schema{
-    margin-top: 50px;
+.shipping-schema {
+    /*margin-top: 50px;*/
 }
 .step-line{
     display: block;

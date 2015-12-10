@@ -7,80 +7,80 @@
 	<div class="panel-body">
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[nama]', 'Nama Lengkap:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[nama]', 'Nama Lengkap:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::text('calon_siswa[nama]', $calonSiswa->nama, ['class' => 'form-control', 'placeholder' => 'Nama Lengkap']) !!}
+				{!! Form::text('calonSiswa[nama]', $calonSiswa->nama, ['class' => 'form-control', 'placeholder' => 'Nama Lengkap']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[jenis_kelamin]', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[jenis_kelamin]', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::radio('calon_siswa[jenis_kelamin]', 1, $calonSiswa->jns_kelamin ==  1) !!} Laki - Laki &nbsp; &nbsp;
-				{!! Form::radio('calon_siswa[jenis_kelamin]', 0, $calonSiswa->jns_kelamin ==  0) !!} Perempuan
+				{!! Form::radio('calonSiswa[jenis_kelamin]', 1, $calonSiswa->jenis_kelamin ==  1) !!} Laki - Laki &nbsp; &nbsp;
+				{!! Form::radio('calonSiswa[jenis_kelamin]', 0, $calonSiswa->jenis_kelamin ==  0) !!} Perempuan
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[nisn]', 'NISN:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[nisn]', 'NISN:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::text('calon_siswa[nisn]', $calonSiswa->nisn, ['class' => 'form-control', 'placeholder' => 'NISN']) !!}
+				{!! Form::text('calonSiswa[nisn]', $calonSiswa->nisn, ['class' => 'form-control', 'placeholder' => 'NISN']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[nis]', 'NIS:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[nis]', 'NIS:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::text('calon_siswa[nis]', $calonSiswa->nis, ['class' => 'form-control', 'placeholder' => 'NIS']) !!}
+				{!! Form::text('calonSiswa[nis]', $calonSiswa->nis, ['class' => 'form-control', 'placeholder' => 'NIS']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[nik]', 'NIK:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[nik]', 'NIK:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::text('calon_siswa[nik]', $calonSiswa->nik, ['class' => 'form-control', 'placeholder' => 'NIK']) !!}
+				{!! Form::text('calonSiswa[nik]', $calonSiswa->nik, ['class' => 'form-control', 'placeholder' => 'NIK']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[tempat_lahir]', 'Tempat Lahir:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[tempat_lahir]', 'Tempat Lahir:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::text('calon_siswa[tempat_lahir]', $calonSiswa->tempat_lahir, ['class' => 'form-control', 'placeholder' => 'Tempat Lahir']) !!}
+				{!! Form::text('calonSiswa[tempat_lahir]', $calonSiswa->tempat_lahir, ['class' => 'form-control', 'placeholder' => 'Tempat Lahir']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[tanggal_lahir]', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[tanggal_lahir]', 'Tanggal Lahir:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::input('date', 'calon_siswa[tanggal_lahir]', $calonSiswa->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+				{!! Form::input('date', 'calonSiswa[tanggal_lahir]', $calonSiswa->tgl_lahir, ['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[tinggi_badan]', 'Tinggi Badan (cm):', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[tinggi_badan]', 'Tinggi Badan (cm):', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::input('number', 'calon_siswa[tinggi_badan]', $calonSiswa->tinggi_badan, ['class' => 'form-control', 'placeholder' => 'Tinggi Badan (cm)']) !!}
+				{!! Form::input('number', 'calonSiswa[tinggi_badan]', $calonSiswa->tinggi_badan, ['class' => 'form-control', 'placeholder' => 'Tinggi Badan (cm)']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[berat_badan]', 'Berat Badan (kg):', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[berat_badan]', 'Berat Badan (kg):', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::input('number', 'calon_siswa[berat_badan]', $calonSiswa->berat, ['class' => 'form-control', 'placeholder' => 'Berat Badan (kg)']) !!}
+				{!! Form::input('number', 'calonSiswa[berat_badan]', $calonSiswa->berat, ['class' => 'form-control', 'placeholder' => 'Berat Badan (kg)']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[jumlah_saudara]', 'Jumlah Saudara:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[jumlah_saudara]', 'Jumlah Saudara:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::input('number', 'calon_siswa[jumlah_saudara]', $calonSiswa->jumlah_saudara, ['class' => 'form-control', 'placeholder' => 'Jumlah Saudara']) !!}
+				{!! Form::input('number', 'calonSiswa[jumlah_saudara]', $calonSiswa->jumlah_saudara, ['class' => 'form-control', 'placeholder' => 'Jumlah Saudara']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('calon_siswa[berkebutuhan_khusus]', 'Berkebutuhan Khusus:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('calonSiswa[berkebutuhan_khusus]', 'Berkebutuhan Khusus:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::select('calon_siswa[berkebutuhan_khusus]', App\CalonSiswa::kebutuhanKhususList(), $calonSiswa->berkebutuhan_khusus, ['class' => 'form-control']) !!}
+				{!! Form::select('calonSiswa[berkebutuhan_khusus]', App\CalonSiswa::kebutuhanKhususList(), $calonSiswa->berkebutuhan_khusus, ['class' => 'form-control']) !!}
 			</div>
 		</div>
 

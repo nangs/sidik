@@ -44,7 +44,7 @@ class CalonSiswa extends Model
     	return $this->hasMany('App\PrestasiCalonSiswa');
     }
 
-    public function orangTua()
+    public function ortu()
     {
     	return $this->hasMany('App\OrangTuaCalonSiswa');
     }

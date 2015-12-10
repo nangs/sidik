@@ -13,9 +13,9 @@
 
 Route::group(['middleware' => 'auth'], function() {
 	
-	Route::get('/', function () {
-    	return view('home');
-	});
+	// Route::get('/', function () {
+ //    	return view('home');
+	// });
 
 	Route::get('/home', function () {
 	    return view('home');
@@ -49,6 +49,10 @@ Route::group(['middleware' => 'auth'], function() {
 	]);
 
 	Route::resource('jabatan', 'JabatanController', [
+		'except' => ['show']
+	]);
+
+	Route::resource('rekening', 'RekeningController', [
 		'except' => ['show']
 	]);
 
@@ -109,5 +113,30 @@ Route::controller('auth', 'Auth\AuthController');
 Route::controller('password', 'Auth\PasswordController');
 Route::controller('batik', 'BatikController');
 
-// PSB
-Route::resource('psb', 'PsbController');
+// MODUL PSB
+Route::group(['prefix' => 'psb'], function() {
+
+	Route::get('/', 'PsbController@getStep1');
+	Route::get('step1', 'PsbController@getStep1');
+	Route::get('step2/{psb}', 'PsbController@getStep2');
+	Route::get('step3/{psb}', 'PsbController@getStep3');
+	Route::get('step4/{psb}', 'PsbController@getStep4');
+	
+
+	Route::post('step1/{psb}', 'PsbController@postStep1');
+	Route::post('step2/{psb}', 'PsbController@postStep2');
+	Route::post('step3/{psb}', 'PsbController@postStep3');
+
+	Route::get('cari', 'PsbController@getCari');
+	Route::get('jurnal', 'PsbController@getJurnal');
+	Route::get('syarat', 'PsbController@getSyarat');
+
+	// Khusus Admin
+	Route::group(['middleware' => 'auth'], function() {
+
+		Route::get('admin', 'PsbController@getAdmin');
+		Route::get('sudahBayar/{psb}', 'PsbController@getSudahBayar');
+
+	});
+
+});

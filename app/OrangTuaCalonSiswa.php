@@ -9,9 +9,9 @@ class OrangTuaCalonSiswa extends Model
     protected $table = 'orang_tua_calon_siswa';
 
     protected $fillable = [
-    	'calon_siswa_id', 'hubungan', 'nama', 'pendidikan', 'pekerjaan', 'penghasilan_bulanan',
+    	'calon_siswa_id', 'hubungan', 'nama', 'tahun_lahir', 'pendidikan', 'pekerjaan', 'penghasilan_bulanan',
     	'alamat', 'rt', 'rw', 'kode_pos', 'kelurahan', 'kecamatan', 'kota', 'provinsi',
-    	'telepon_rumah', 'hp', 'agama', 'is_wali'
+    	'telepon_rumah', 'hp', 'agama', 'is_wali', 'email'
     ];
 
     public function calonSiswa()
@@ -65,7 +65,7 @@ class OrangTuaCalonSiswa extends Model
     public static function penghasilanList()
     {
     	return [
-    		null => '- Pilih Penghasilan -',
+    		null => '- Pilih Penghasilan Bulanan -',
     		1	 => 'Kurang Dari 1.000.000',
     		2	 => '1.000.000 - 2.000.000',
     		3	 => '2.000.000 - 3.000.000',
@@ -84,5 +84,20 @@ class OrangTuaCalonSiswa extends Model
             'Budha'     => 'Budha',
             'Konghuchu' => 'Konghuchu',
         ];
+    }
+
+    public function scopeWali($query)
+    {
+        return $query->where('hubungan', 'Wali');
+    }
+
+    public function scopeAyah($query)
+    {
+        return $query->where('hubungan', 'Ayah');
+    }
+
+    public function scopeIbu($query)
+    {
+        return $query->where('hubungan', 'Ibu');
     }
 }
