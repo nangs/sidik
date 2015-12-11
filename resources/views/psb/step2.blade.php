@@ -50,7 +50,7 @@
 
 	@else
 
-		@include('_error')
+		<!-- include('_error') -->
 
 		@include('psb/_formStep2', ['method' => 'PATCH', 'url' => '/psb/step2/'.$psb->id])
 

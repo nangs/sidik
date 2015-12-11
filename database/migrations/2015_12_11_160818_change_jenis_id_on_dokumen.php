@@ -14,7 +14,7 @@ class ChangeJenisIdOnDokumen extends Migration
     {
         Schema::table('dokumen_calon_siswa', function (Blueprint $table) {
             $table->dropColumn(['jenis']);
-            // $table->string('nama', 100);
+            $table->string('nama', 100);
         });
     }
 

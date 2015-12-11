@@ -8,6 +8,8 @@
 			<th data-orderable="false">Asal/Tujuan Pembayaran</th>
 			<th>Status Pembayaran</th>
 			<th>Status Data</th>
+			<th>Status Test, Wawancara</th>
+			<th>Diterima</th>
 			<th data-orderable="false">Aksi</th>
 		</tr>
 	</thead>
@@ -34,7 +36,7 @@
 			<td>
 				@if ($s->status_pembayaran)
 				<span class="label label-success">Lunas</span><br />
-				<i>{{$s->waktu_verifikasi_pembayaran}}</i>
+				<!-- <i>{{$s->waktu_verifikasi_pembayaran}}</i> -->
 				@else
 				<span class="label label-default">Belum Diverifikasi</span>
         		@endif
@@ -42,19 +44,40 @@
 			<td>
 				@if ($s->status_verifikasi_data)
 				<span class="label label-success">Lengkap</span><br />
-				<i>{{$s->waktu_verifikasi_data}}</i>
+				<!-- <i>{{$s->waktu_verifikasi_data}}</i> -->
 				@else
 				<span class="label label-default">Belum Diverifikasi</span>
         		@endif
 			</td>
 			<td>
+				@if ($s->status_test)
+				<span class="label label-success">Sudah Test</span><br />
+				@else
+				<span class="label label-default">Belum Test</span>
+        		@endif
+			</td>
+			<td>
+				@if ($s->status)
+				<span class="label label-success">Ya</span><br />
+				@else
+				<span class="label label-default">Tidak</span>
+        		@endif
+			</td>
+			<td>
 				{!! Form::open(['method' => 'DELETE', 'url' => 'psb/'.$s->id, 'class' => 'form-inline']) !!}
 					@if ($s->status_pembayaran == 0)
-	        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-xs">Sudah Bayar</a>
+	        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-sm">Sudah Bayar</a>
+
+        			@elseif ($s->status_verifikasi_data == 0)
+	        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Data OK</a>
+
+        			@elseif ($s->status_test == 0)
+	        		<a href="/psb/testOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Test OK</a>
+
+        			@elseif ($s->status == 0)
+	        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-danger bayar btn-sm">Terima</a>
         			@endif
-        			@if ($s->status_verifikasi_data == 0)
-	        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success bayar btn-xs">Data OK</a>
-        			@endif
+
 	        		<!-- <a href="/psb/{{ $s->id }}/edit" class="btn btn-success btn-xs">Edit</a> -->
 	        		<!-- {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs delete']) !!} -->
         		{!! Form::close() !!}

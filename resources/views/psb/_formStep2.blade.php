@@ -18,7 +18,9 @@
 
 	<hr />
 
-	{!! Form::submit('Simpan', ['class' => 'btn btn-success', 'style' => 'width:100%']) !!}
+	<div  class="text-center">
+		{!! Form::submit('SIMPAN', ['class' => 'btn btn-success btn-lg']) !!}
+	</div>
 
 {!! Form::close() !!}
 

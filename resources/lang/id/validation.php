@@ -210,7 +210,13 @@ return [
             'email'        => 'Email',
             'jarak_tempat_tinggal_ke_sekolah'  => 'Jarak Tempat Tinggal ke Sekolah',
             'alat_transportasi_ke_sekolah'     => 'Alat Transportasi ke Sekolah',
-        ]
+        ],
+
+        'kk'        => 'Kartu Keluarga',
+        'akta'      => 'Akta Kelahiran',
+        'foto'      => 'Pas Foto',
+        'rapor'     => 'Rapor',
+        'sk_sehat'  => 'Surat Keterangan Sehat'
     ],
 
 ];

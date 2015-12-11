@@ -146,6 +146,13 @@ class PsbRequest extends Request
             'asalSekolah.kecamatan' => 'required_unless:psb.jenjang,1',
             'asalSekolah.kota'      => 'required_unless:psb.jenjang,1',
             'asalSekolah.propinsi'  => 'required_unless:psb.jenjang,1',
+
+            // DOKUMEN
+            'kk'        => 'required',
+            'akta'      => 'required',
+            'foto'      => 'required',
+            'rapor'     => 'required_unless:psb.jenjang,1',
+            'sk_sehat'  => 'required',
         ];
 
         return $rules[$this->method];

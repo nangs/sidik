@@ -22,20 +22,6 @@ use Carbon;
 
 class PsbController extends Controller
 {
-    // untuk admin/panitia PSB, pake datatables
-    public function getAdmin()
-    {
-        return view('psb.admin', [
-            'psbs' => Psb::with('calonSiswa')->sekarang()->get(),
-        ]);
-    }
-
-    // chart, jumlah yg daftar per step, per tingkat, per jenjang, 
-    public function getJurnal()
-    {
-        return view('psb.jurnal', ['psb' => Psb::with('calonSiswa')->get()]);
-    }
-
     // untuk pembelian formulir
     public function getStep1()
     {
@@ -46,7 +32,7 @@ class PsbController extends Controller
         ]);
     }
 
-    // submit pembelian formulir redirect ke step 2
+    // step 1, submit pembelian formulir
     public function postStep1(PsbRequest $request)
     {
         // $this->validate($request, []);
@@ -76,12 +62,29 @@ class PsbController extends Controller
 
         // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
 
+        $psb->update(['step' => 2]);
         return redirect('/psb/step2/'.$psb->id);
     }
 
-    // jika sudah bayar tampilkan formulir lengkap, jika blm tampilkan status pembayaran blm dikonfirmasi
+    // step 2, isi formulir
+    public function getSudahBayar(Psb $psb)
+    {
+        $psb->status_pembayaran             = 1;
+        $psb->waktu_verifikasi_pembayaran   = Carbon::now();
+        $psb->save();
+
+        return redirect('/psb/admin');
+    }
+
+    // step 2 jika sudah bayar tampilkan formulir lengkap, jika blm tampilkan status pembayaran blm dikonfirmasi
     public function getStep2(Psb $psb)
     {
+        //  kalo step > 2 arahkan ke step yg sesuai
+
+        if ($psb->step > 2) {
+            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
+        }
+
         return view('psb.step2', [
             'psb'               => $psb,
             'calonSiswa'        => $psb->calonSiswa,
@@ -95,6 +98,7 @@ class PsbController extends Controller
         ]);
     }
 
+    // step 2, submit formulir
     public function patchStep2(Psb $psb, PsbRequest $request)
     {
         // dd($request->prestasi);
@@ -150,21 +154,47 @@ class PsbController extends Controller
             }
 
         }
-
+        $psb->update(['step' => 3]);
         return redirect('/psb/step3/'.$psb->id);
+    }
+
+    // step 3, silakan test & wawancara
+    public function getDataOk(Psb $psb)
+    {
+        $psb->status_verifikasi_data  = 1;
+        $psb->waktu_verifikasi_data   = Carbon::now();
+        $psb->save();
+
+        return redirect('/psb/admin');
     }
 
     // tampilkan data sedang diverifikasi, jika data sudah diverifikasi tampilkan jadwal test & wawancara
     public function getStep3(Psb $psb)
     {
+        if ($psb->step > 3) {
+            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
+        }
+
         return view('psb.step3', ['psb' => $psb]);
     }
 
-    public function postStep3(Psb $psb)
+    // step 4, tunggu pengumuman
+    public function getTestOk(Psb $psb)
     {
-        // TODO: simpan datanya
+        $psb->status_test  = 1;
+        $psb->step         = 4;
+        $psb->save();
 
-        return redirect('/psb/step4'.$psb->id);
+        return redirect('/psb/admin');
+    }
+
+    // step 4, pengumuman
+    public function getDiterima(Psb $psb)
+    {
+        $psb->status  = 1;
+        $psb->save();
+
+        return redirect('/psb/admin');
     }
 
     // tampilkan status selesai, tampilkan pengumuman. TODO : sesuaikan step
@@ -176,30 +206,6 @@ class PsbController extends Controller
     public function getShow(Psb $psb)
     {
         return view('psb.show', ['psb' => $psb]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Psb $psb)
-    {
-        return view('psb.edit', ['psb' => $psb]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(PsbRequest $request, Psb $psb)
-    {
-        $psb->update($request->all());
-        return redirect('/psb');
     }
 
     /**
@@ -220,32 +226,28 @@ class PsbController extends Controller
         
         if ($psb) {
             // TODO : redirect ke step yang sesuai
-            return redirect('/psb/step2/'.$psb->id);
+            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
         } else {
             return view('errors.404');
         }
     }
 
-    public function getSudahBayar(Psb $psb)
-    {
-        $psb->status_pembayaran             = 1;
-        $psb->waktu_verifikasi_pembayaran   = Carbon::now();
-        $psb->save();
-
-        return redirect('/psb/admin');
-    }
-
-    public function getDataOk(Psb $psb)
-    {
-        $psb->status_verifikasi_data  = 1;
-        $psb->waktu_verifikasi_data   = Carbon::now();
-        $psb->save();
-
-        return redirect('/psb/admin');
-    }
-
     public function getSyarat()
     {
         return view('psb.syarat');
+    }
+
+    // untuk admin/panitia PSB, pake datatables
+    public function getAdmin()
+    {
+        return view('psb.admin', [
+            'psbs' => Psb::with('calonSiswa')->sekarang()->get()->sortBy('calonSiswa.nama'),
+        ]);
+    }
+
+    // chart, jumlah yg daftar per step, per tingkat, per jenjang, 
+    public function getJurnal()
+    {
+        return view('psb.jurnal', ['psb' => Psb::with('calonSiswa')->get()]);
     }
 }

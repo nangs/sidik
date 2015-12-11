@@ -26,34 +26,40 @@
 
 	<hr />
 
-	<!-- if ($psb->status_pembayaran == 0) -->
-
 	<div class="alert alert-success text-center">
 		<h4>
-			Proses pendaftaran telah selesai. 
-			Anda dapat melihat pengumuman di halaman ini setelah kami melakukan seleksi. 
-			Simpan alamat URL berikut untuk melihat pengumuman di kemudian hari: <br /><br />
+			@if ($psb->status_test == 1)
 
-			<a href="/psb/step4/{{ $psb->id }}">{{ url('/psb/step4/'.$psb->id)}}</a>
+				Proses pendaftaran telah selesai. 
+				Anda dapat melihat pengumuman di halaman ini setelah kami melakukan seleksi. 
+				Simpan alamat URL berikut untuk melihat pengumuman di kemudian hari: <br /><br />
 
-			<br /><br />
+				<a href="/psb/step4/{{ $psb->id }}">{{ url('/psb/step4/'.$psb->id) }}</a>
 
-			Atau masukkan Nomor Pendaftaran Calon Siswa di form pencarian Nomor Pendaftaran:
+				<br /><br />
 
-			<br /><br />
+				Atau masukkan Nomor Pendaftaran Calon Siswa di form pencarian Nomor Pendaftaran:
 
-			Nomor Pendaftaran: {{ strtotime($psb->created_at)}}
+				<br /><br />
+
+				Nomor Pendaftaran: {{ strtotime($psb->created_at) }}
+
+			@else
+
+				@if ($psb->status == 1)
+
+					SELAMAT! Anda diterima di Ma'had Ihya' As Sunnah Tasikmalaya Tahun Ajaran ... di jenjang ... tingkat ...
+
+				@else
+
+					Maaf, setelah melakukan beberapa proses seleksi Anda tidak diterima di Ma'had Ihya' As Sunnah Tasikmalaya.
+
+				@endif
+
+			@endif
 
 		</h4>
 	</div>
-
-	<!-- else
-
-		include('_error')
-
-		include('psb/_formStep2', ['method' => 'POST', 'url' => '/psb/step2'])
-
-	endif -->
 	
 
 @stop

@@ -110,8 +110,8 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Route::controller('auth', 'Auth\AuthController');
-Route::controller('password', 'Auth\PasswordController');
-Route::controller('batik', 'BatikController');
+// Route::controller('password', 'Auth\PasswordController');
+// Route::controller('batik', 'BatikController');
 
 // MODUL PSB
 Route::get('/', 'PsbController@getStep1');
@@ -128,7 +128,6 @@ Route::group(['prefix' => 'psb'], function() {
 
 	Route::post('step1', 'PsbController@postStep1');
 	Route::patch('step2/{psb}', 'PsbController@patchStep2');
-	Route::post('step3/{psb}', 'PsbController@postStep3');
 
 	Route::get('cari', 'PsbController@getCari');
 	Route::get('jurnal', 'PsbController@getJurnal');
@@ -141,6 +140,8 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::get('admin', 'PsbController@getAdmin');
 		Route::get('sudahBayar/{psb}', 'PsbController@getSudahBayar');
 		Route::get('dataOk/{psb}', 'PsbController@getDataOk');
+		Route::get('testOk/{psb}', 'PsbController@getTestOk');
+		Route::get('diterima/{psb}', 'PsbController@getDiterima');
 
 	});
 
