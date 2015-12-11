@@ -24,9 +24,9 @@ class OrangTuaCalonSiswa extends Model
     	return ['Ayah', 'Ibu', 'Kakak', 'Paman', 'Kakek', 'Bibi', 'Nenek', 'Lainnya'];
     }
 
-    public static function pendidikanList()
+    public static function pendidikanList($index = 9999)
     {
-    	return [
+    	$list = [
     		null => '- Pilih Pendidikan -',
     		1	 => 'Tidak Sekolah',
     		2	 => 'Putus SD',
@@ -40,11 +40,13 @@ class OrangTuaCalonSiswa extends Model
     		10 	 => 'S2',
     		11 	 => 'S3',
     	];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 
-    public static function pekerjaanList()
+    public static function pekerjaanList($index = 9999)
     {
-    	return [
+    	$list = [
     		null => '- Pilih Pekerjaan -',
     		1 	 => 'Tidak Bekerja',
     		2	 => 'Nelayan',
@@ -60,17 +62,22 @@ class OrangTuaCalonSiswa extends Model
     		12	 => 'Pensiunan',
     		99	 => 'Lain - Lain',
     	];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 
-    public static function penghasilanList()
+    public static function penghasilanList($index = 9999)
     {
-    	return [
+    	$list = [
     		null => '- Pilih Penghasilan Bulanan -',
     		1	 => 'Kurang Dari 1.000.000',
     		2	 => '1.000.000 - 2.000.000',
     		3	 => '2.000.000 - 3.000.000',
     		4 	 => 'Lebih dari 3.000.000',
+            0    => 'Tidak Berpenghasilan',
     	];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 
     public static function agamaList()

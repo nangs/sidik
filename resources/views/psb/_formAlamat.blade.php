@@ -91,9 +91,9 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('alamatCalonSiswa[alat_trasnportasi_ke_sekolah]', 'Alat Transportasi ke Sekolah:', ['class' => 'col-md-2 control-label']) !!}
+			{!! Form::label('alamatCalonSiswa[alat_transportasi_ke_sekolah]', 'Alat Transportasi ke Sekolah:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::select('alamatCalonSiswa[alat_trasnportasi_ke_sekolah]', App\AlamatCalonSiswa::transportasiList(), $alamatCalonSiswa->alat_trasnportasi_ke_sekolah, ['class' => 'form-control']) !!}
+				{!! Form::select('alamatCalonSiswa[alat_transportasi_ke_sekolah]', App\AlamatCalonSiswa::transportasiList(), $alamatCalonSiswa->alat_transportasi_ke_sekolah, ['class' => 'form-control']) !!}
 			</div>
 		</div>
 

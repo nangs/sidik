@@ -11,7 +11,7 @@ class AlamatCalonSiswa extends Model
     protected $fillable = [
     	'calon_siswa_id', 'jenis_tinggal', 'nama', 'pendidikan', 'pekerjaan', 'penghasilan_bulanan',
     	'alamat', 'rt', 'rw', 'kode_pos', 'kelurahan', 'kecamatan', 'kota', 'provinsi',
-    	'telepon_rumah', 'hp', 'jarak_tempat_tinggal_ke_sekolah', 'alat_trasnportasi_ke_sekolah', 'email'
+    	'telepon_rumah', 'hp', 'jarak_tempat_tinggal_ke_sekolah', 'alat_transportasi_ke_sekolah', 'email'
     ];
 
     public function calonSiswa()
@@ -19,10 +19,10 @@ class AlamatCalonSiswa extends Model
     	return $this->belongsTo('App\CalonSiswa');
     }
 
-    public static function transportasiList()
+    public static function transportasiList($index = 9999)
     {
-    	return [
-    		null => '- Pilih Alat Transportasi -',
+    	$list = [
+    		null    => '- Pilih Alat Transportasi -',
     		1	 => 'Jalan Kaki',
     		2	 => 'Kendaraan Pribadi',
     		3 	 => 'Kendaraan Umum/Angkot/Pete - Pete',
@@ -31,13 +31,16 @@ class AlamatCalonSiswa extends Model
     		6 	 => 'Ojek',
     		7 	 => 'Andong/Bendi/Sado/Dokar/Delman/Becak',
     		8 	 => 'Perahu Penyebrangan/Rakit/Getek',
-    		99   => 'Lainnya'
+    		99   => 'Lainnya',
+            0    => '-'
     	];
+
+        return (isset($list[$index])) ? $list[$index] : $list;
     }
 
-    public static function jenisTinggalList()
+    public static function jenisTinggalList($index = 9999)
     {
-        return [
+        $list = [
             null => '- Pilih Jenis Tinggal -',
             1    => 'Bersama Orang Tua',
             2    => 'Bersama Wali',
@@ -46,5 +49,7 @@ class AlamatCalonSiswa extends Model
             5    => 'Panti Asuhan',
             9    => 'Lainnya',
         ];
+
+        return (isset($list[$index])) ? $list[$index] : $list;
     }
 }

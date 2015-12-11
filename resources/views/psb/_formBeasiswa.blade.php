@@ -15,10 +15,10 @@
 		<tbody>
 			@for ($i=0;$i<6;$i++)
 			<tr>
-				<td>{!! Form::select('beasiswa[jenis][]', App\BeasiswaCalonSiswa::jenisList(), $beasiswa->jenis, ['class' => 'form-control']) !!}</td>
-				<td>{!! Form::text('beasiswa[sumber][]', $beasiswa->sumber, ['class' => 'form-control', 'placeholder' => 'Sumber']) !!}</td>
-				<td>{!! Form::input('number', 'beasiswa[tahun_mulai][]', $beasiswa->tahun_mulai, ['class' => 'form-control', 'placeholder' => 'Tahun Mulai']) !!}</td>
-				<td>{!! Form::input('number', 'beasiswa[tahun_selesai][]', $beasiswa->tahun_selesai, ['class' => 'form-control', 'placeholder' => 'Tahun Mulai']) !!}</td>
+				<td>{!! Form::select('beasiswa['.$i.'][jenis]', App\BeasiswaCalonSiswa::jenisList(), $beasiswa->jenis, ['class' => 'form-control']) !!}</td>
+				<td>{!! Form::text('beasiswa['.$i.'][sumber]', $beasiswa->sumber, ['class' => 'form-control', 'placeholder' => 'Sumber']) !!}</td>
+				<td>{!! Form::input('number', 'beasiswa['.$i.'][tahun_mulai]', $beasiswa->tahun_mulai, ['class' => 'form-control', 'placeholder' => 'Tahun Mulai']) !!}</td>
+				<td>{!! Form::input('number', 'beasiswa['.$i.'][tahun_selesai]', $beasiswa->tahun_selesai, ['class' => 'form-control', 'placeholder' => 'Tahun Mulai']) !!}</td>
 			</tr>
 			@endfor
 		</tbody>

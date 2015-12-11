@@ -133,12 +133,14 @@ Route::group(['prefix' => 'psb'], function() {
 	Route::get('cari', 'PsbController@getCari');
 	Route::get('jurnal', 'PsbController@getJurnal');
 	Route::get('syarat', 'PsbController@getSyarat');
+	Route::get('show/{psb}', 'PsbController@getShow');
 
 	// Khusus Admin
 	Route::group(['middleware' => 'auth'], function() {
 
 		Route::get('admin', 'PsbController@getAdmin');
 		Route::get('sudahBayar/{psb}', 'PsbController@getSudahBayar');
+		Route::get('dataOk/{psb}', 'PsbController@getDataOk');
 
 	});
 

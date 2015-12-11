@@ -16,11 +16,11 @@
 		<tbody>
 			@for ($i=0;$i<5;$i++)
 			<tr>
-				<td>{!! Form::input('number', 'prestasi[tahun][]', $prestasi->tahun, ['class' => 'form-control', 'placeholder' => 'Tahun']) !!}</td>
-				<td>{!! Form::text('prestasi[lomba][]', $prestasi->lomba, ['class' => 'form-control', 'placeholder' => 'Lomba']) !!}</td>
-				<td>{!! Form::input('number', 'prestasi[juara_ke][]', $prestasi->juara_ke, ['class' => 'form-control', 'placeholder' => 'Juara Ke']) !!}</td>
-				<td>{!! Form::select('prestasi[tingkat][]', App\PrestasiCalonSiswa::tingkatList(), $prestasi->tingkat, ['class' => 'form-control']) !!}</td>
-				<td>{!! Form::select('prestasi[jenis][]', App\PrestasiCalonSiswa::jenisList(), $prestasi->jenis, ['class' => 'form-control']) !!}</td>
+				<td>{!! Form::input('number', 'prestasi['.$i.'][tahun]', $prestasi->tahun, ['class' => 'form-control', 'placeholder' => 'Tahun']) !!}</td>
+				<td>{!! Form::text('prestasi['.$i.'][lomba]', $prestasi->lomba, ['class' => 'form-control', 'placeholder' => 'Lomba']) !!}</td>
+				<td>{!! Form::input('number', 'prestasi['.$i.'][juara_ke]', $prestasi->juara_ke, ['class' => 'form-control', 'placeholder' => 'Juara Ke']) !!}</td>
+				<td>{!! Form::select('prestasi['.$i.'][tingkat]', App\PrestasiCalonSiswa::tingkatList(), $prestasi->tingkat, ['class' => 'form-control']) !!}</td>
+				<td>{!! Form::select('prestasi['.$i.'][jenis]', App\PrestasiCalonSiswa::jenisList(), $prestasi->jenis, ['class' => 'form-control']) !!}</td>
 			</tr>
 			@endfor
 		</tbody>

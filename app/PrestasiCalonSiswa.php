@@ -17,20 +17,22 @@ class PrestasiCalonSiswa extends Model
     	return $this->belongsTo('App\CalonSiswa');
     }
 
-    public static function jenisList()
+    public static function jenisList($index = 9999)
     {
-    	return [
+    	$list = [
     		null => '- Pilih Jenis Prestasi -',
     		1	 => 'Sain',
     		2	 => 'Seni',
     		3	 => 'Olah Raga',
     		4	 => 'Lain - Lain',
     	];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 
-    public static function tingkatList()
+    public static function tingkatList($index = 9999)
     {
-    	return [
+    	$list = [
     		null => '- Pilih Tingkat -',
     		1	 => 'Sekolah',
     		2	 => 'Kecamatan',
@@ -39,5 +41,7 @@ class PrestasiCalonSiswa extends Model
     		5	 => 'Nasional',
     		6	 => 'Internasional',
     	];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 }

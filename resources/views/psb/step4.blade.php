@@ -38,11 +38,11 @@
 
 			<br /><br />
 
-			Atau masukkan NISN Calon Siswa di form pencarian NISN:
+			Atau masukkan Nomor Pendaftaran Calon Siswa di form pencarian Nomor Pendaftaran:
 
 			<br /><br />
 
-			NISN: {{$psb->calonSiswa->nisn}}
+			Nomor Pendaftaran: {{ strtotime($psb->created_at)}}
 
 		</h4>
 	</div>

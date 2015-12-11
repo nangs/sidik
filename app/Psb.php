@@ -40,19 +40,21 @@ class Psb extends Model
     	return $this->hasOne('App\CalonSiswa');
     }
 
-    public static function jenjangList()
+    public static function jenjangList($index = 9999)
     {
-        return [
+        $list = [
             null    => '- Pilih Jenjang -',
             1       => 'SD',
             2       => 'SMP',
             3       => 'SMA',
         ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 
-    public static function tingkatList()
+    public static function tingkatList($index = 9999)
     {
-        return [
+        $list = [
             null    => '- Pilih Tingkat -',
             1       => 'I',
             2       => 'II',
@@ -67,11 +69,13 @@ class Psb extends Model
             11       => 'XI',
             12       => 'XII',
         ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 
-    public static function metodePembayaranList()
+    public static function metodePembayaranList($index = 9999)
     {
-        return [
+        $list = [
             null                => '- Pilih Metode Pembayaran -',
             'Tunai'             => 'Tunai',
             'Setor Tunai Bank'  => 'Setor Tunai Bank',
@@ -79,6 +83,8 @@ class Psb extends Model
             'Intenet Banking'   => 'Internet Banking',
             'SMS Banking'       => 'SMS Banking'
         ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 
     public function rekeningTujuan()

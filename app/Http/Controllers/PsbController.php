@@ -97,10 +97,9 @@ class PsbController extends Controller
 
     public function patchStep2(Psb $psb, PsbRequest $request)
     {
-        // dd($request);
+        // dd($request->prestasi);
 
-        // TODO: simpan datanya
-        // $psb->save($request->get('psb'));
+        // simpan datanya
         $psb->calonSiswa()->update($request->get('calonSiswa'));
         $psb->calonSiswa->ortu()->wali()->update($request->get('Wali'));
         $psb->calonSiswa->ortu()->ayah()->update($request->get('Ayah'));
@@ -116,6 +115,41 @@ class PsbController extends Controller
         }
 
         // data beasiswa & prestasi
+        foreach ($request->get('beasiswa') as $b) {
+            if ($b['jenis'] !== '') {
+                $psb->calonSiswa->beasiswa()->create($b);
+            }
+        }
+
+        foreach ($request->get('prestasi') as $b) {
+            if ($b['tahun'] !== '') {
+                $psb->calonSiswa->prestasi()->create($b);
+            }
+        }
+
+        // upload dokumen
+        $docs = [
+            'rapor'     => 'Rapor 2 Semester Terakhir', 
+            'kk'        => 'Kartu Keluarga', 
+            'akta'      => 'Akta Kelahiran', 
+            'foto'      => 'Pas Foto', 
+            'sk_sehat'  => 'Surat Keterangan Sehat'
+        ];
+
+        foreach ($docs as $k => $v) {
+
+            if ($request->hasFile($k)) {
+            
+                $file = $request->file($k);
+                
+                $fileName = time().'-'.$file->getClientOriginalName();
+                $file->move('uploads', $fileName);
+
+                $psb->calonSiswa->dokumen()->create(['nama' => $v, 'file' => $fileName]);
+
+            }
+
+        }
 
         return redirect('/psb/step3/'.$psb->id);
     }
@@ -137,6 +171,11 @@ class PsbController extends Controller
     public function getStep4(Psb $psb)
     {
         return view('psb.step4', ['psb' => $psb]);
+    }
+
+    public function getShow(Psb $psb)
+    {
+        return view('psb.show', ['psb' => $psb]);
     }
 
     /**
@@ -177,11 +216,11 @@ class PsbController extends Controller
 
     public function getCari(Request $request)
     {
-        $calonSiswa = CalonSiswa::where('nisn', $request->nisn)->first();
+        $psb = Psb::where('created_at', date('Y-m-d H:i:s', $request->nomor_pendaftaran))->first();
         
-        if ($calonSiswa) {
+        if ($psb) {
             // TODO : redirect ke step yang sesuai
-            return redirect('/psb/step2/'.$calonSiswa->psb_id);
+            return redirect('/psb/step2/'.$psb->id);
         } else {
             return view('errors.404');
         }
@@ -191,6 +230,15 @@ class PsbController extends Controller
     {
         $psb->status_pembayaran             = 1;
         $psb->waktu_verifikasi_pembayaran   = Carbon::now();
+        $psb->save();
+
+        return redirect('/psb/admin');
+    }
+
+    public function getDataOk(Psb $psb)
+    {
+        $psb->status_verifikasi_data  = 1;
+        $psb->waktu_verifikasi_data   = Carbon::now();
         $psb->save();
 
         return redirect('/psb/admin');

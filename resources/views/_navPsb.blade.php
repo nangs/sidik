@@ -13,7 +13,7 @@
             
             {!! Form::open(['class' => 'navbar-form navbar-left', 'url' => '/psb/cari', 'method' => 'GET']) !!}
                 <div class="form-group">
-                    <input type="text" name="nisn" placeholder="Cari NISN" class="form-control" style="width:300px;">
+                    <input type="text" name="nomor_pendaftaran" placeholder="Cari Nomor Pendaftaran" class="form-control" style="width:300px;">
                 </div>
                 <button type="submit" class="btn btn-success">Cari</button>
             {!! Form::close() !!}

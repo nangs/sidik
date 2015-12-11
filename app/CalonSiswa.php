@@ -49,6 +49,21 @@ class CalonSiswa extends Model
     	return $this->hasMany('App\OrangTuaCalonSiswa');
     }
 
+    // public function wali()
+    // {
+    //     return $this->belongsTo('App\OrangTuaCalonSiswa', 'wali_id');
+    // }
+
+    // public function ayah()
+    // {
+    //     return $this->belongsTo('App\OrangTuaCalonSiswa', 'ayah_id');
+    // }
+
+    // public function ibu()
+    // {
+    //     return $this->belongsTo('App\OrangTuaCalonSiswa', 'ibu_id');
+    // }
+
     public function alamat()
     {
     	return $this->hasOne('App\AlamatCalonSiswa');
@@ -64,9 +79,9 @@ class CalonSiswa extends Model
     	return [0 => 'Perempuan', 1 => 'Laki - Laki'];
     }
 
-    public static function kebutuhanKhususList()
+    public static function kebutuhanKhususList($index = 9999)
     {
-    	return [
+    	$list = [
     		1 	 => 'Tidak Berkebutuhan Khusus',
     		2 	 => 'Netra (A)',
     		3 	 => 'Rungu (B)',
@@ -88,5 +103,16 @@ class CalonSiswa extends Model
     		19 	 => 'Terpencil/Terbelakang (Bencana Alam/Sosial)',
     		20 	 => 'Tidak Mampu Ekonomi',
     	];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public function umur()
+    {
+        $now = new \DateTime("now");
+        $tanggal_lahir = new \DateTime($this->tanggal_lahir);
+        $interval = $tanggal_lahir->diff($now);
+
+        return $interval->format('%y tahun %m bulan %d hari');
     }
 }

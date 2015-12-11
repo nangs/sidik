@@ -17,9 +17,9 @@ class BeasiswaCalonSiswa extends Model
     	return $this->belongsTo('App\CalonSiswa');
     }
 
-    public static function jenisList()
+    public static function jenisList($index = 9999)
     {
-    	return [
+    	$list = [
     		null => '- Pilih Jenis Beasiswa -',
     		1	 => 'Anak Berprestasi',
     		2	 => 'Anak Miskin',
@@ -27,5 +27,7 @@ class BeasiswaCalonSiswa extends Model
     		4	 => 'Unggulan',
     		5	 => 'Lain - Lain',
     	];
+        
+        return isset($list[$index]) ? $list[$index] : $list;
     }
 }

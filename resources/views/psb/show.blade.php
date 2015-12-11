@@ -1,125 +1,87 @@
-@extends('app')
+@extends('psb')
 
 @section('content')
 	
-	<a href="/siswa/{{ $siswa->id }}/edit" class="btn btn-success pull-right">Edit Data Siswa</a>
+	<!-- <a href="/siswa/{{ $psb->calonSiswa->id }}/edit" class="btn btn-success pull-right">Edit Data Siswa</a> -->
 
-	<h1>Detail Siswa : {{ $siswa->nama }}</h1>
+	<h1>Detail Calon Siswa : {{ $psb->calonSiswa->nama }}</h1>
 	<hr />
 
-	<div class="row">
-		<div class="col-md-3">
-			<img src="/uploads/{{ $siswa->foto }}" class="img img-thumbnail" />
-		</div>
-		<div class="col-md-9">
+
 			
-			<!-- Nav tabs -->
-			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Data Pribadi</a></li>
-				<li role="presentation"><a href="#5" aria-controls="5" role="tab" data-toggle="tab">Alamat</a></li>
-				<li role="presentation"><a href="#6" aria-controls="6" role="tab" data-toggle="tab">Jasmani & Kesehatan</a></li>
-				<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Data Ayah</a></li>
-				<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">Data Ibu</a></li>
-				<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">Data Wali</a></li>
-			</ul>
-
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane active" id="1">
-					<br />
-					@include('siswa._dataPribadi')
-				</div>
-
-				<div role="tabpanel" class="tab-pane" id="5">
-					<br />
-					@include('siswa._alamat')
-				</div>
-
-				<div role="tabpanel" class="tab-pane" id="6">
-					<br />
-					@include('siswa._jasmani')
-				</div>
-
-				<div role="tabpanel" class="tab-pane" id="2">
-					<br />
-					@if ($siswa->ayah)
-						@include('wali._single', ['wali' => $siswa->ayah, 'hub' => 'ayah'])
-					@endif
-				</div>
-
-				<div role="tabpanel" class="tab-pane" id="3">
-					<br />
-					@if ($siswa->ibu)
-						@include('wali._single', ['wali' => $siswa->ibu, 'hub' => 'ibu'])
-					@endif
-				</div>
-
-				<div role="tabpanel" class="tab-pane" id="4">
-					<br />
-					@if ($siswa->wali)
-						@include('wali._single', ['wali' => $siswa->wali, 'hub' => 'wali'])
-					@endif
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-	<br />
-	<br />
-
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
-
-		<li role="presentation" class="active"><a href="#11" aria-controls="11" role="tab" data-toggle="tab">Tagihan</a></li>
-		<li role="presentation"><a href="#12" aria-controls="12" role="tab" data-toggle="tab">Jadwal</a></li>
-		<li role="presentation"><a href="#13" aria-controls="13" role="tab" data-toggle="tab">Nilai</a></li>
-		<li role="presentation"><a href="#14" aria-controls="14" role="tab" data-toggle="tab">Absensi</a></li>
-		<li role="presentation"><a href="#15" aria-controls="15" role="tab" data-toggle="tab">Pelanggaran</a></li>
-		<li role="presentation"><a href="#16" aria-controls="16" role="tab" data-toggle="tab">Prestasi</a></li>
-		<li role="presentation"><a href="#17" aria-controls="17" role="tab" data-toggle="tab">Beasiswa</a></li>
-	
+		<li role="presentation" class="active"><a href="#0" aria-controls="0" role="tab" data-toggle="tab">Data PSB</a></li>
+		<li role="presentation"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Data Calon Siswa</a></li>
+		<li role="presentation"><a href="#9" aria-controls="9" role="tab" data-toggle="tab">Dokumen</a></li>
+		<li role="presentation"><a href="#5" aria-controls="5" role="tab" data-toggle="tab">Asal Sekolah</a></li>
+		<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Data Ayah</a></li>
+		<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">Data Ibu</a></li>
+		<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">Data Wali</a></li>
+		<li role="presentation"><a href="#6" aria-controls="6" role="tab" data-toggle="tab">Alamat</a></li>
+		<li role="presentation"><a href="#7" aria-controls="6" role="tab" data-toggle="tab">Beasiswa</a></li>
+		<li role="presentation"><a href="#8" aria-controls="6" role="tab" data-toggle="tab">Prestasi</a></li>
 	</ul>
 
 	<!-- Tab panes -->
 	<div class="tab-content">
-		
-		<div role="tabpanel" class="tab-pane active" id="11">
+		<div role="tabpanel" class="tab-pane active" id="0">
 			<br />
-			@include('tagihan._index')
+			@include('psb._psb')
 		</div>
 
-		<div role="tabpanel" class="tab-pane" id="12">
+		<div role="tabpanel" class="tab-pane" id="1">
 			<br />
-			jadwal
+			@include('psb._calonSiswa', ['calonSiswa' => $psb->calonSiswa])
 		</div>
 
-		<div role="tabpanel" class="tab-pane" id="13">
+		<div role="tabpanel" class="tab-pane" id="9">
 			<br />
-			nilai
+			@include('psb._dokumen', ['dokumen' => $psb->calonSiswa->dokumen])
 		</div>
 
-		<div role="tabpanel" class="tab-pane" id="14">
+		<div role="tabpanel" class="tab-pane" id="5">
 			<br />
-			nilai
+			@if ($psb->calonSiswa->asalSekolah)
+			@include('psb._asalSekolah', ['asalSekolah' => $psb->calonSiswa->asalSekolah])
+			@endif
 		</div>
 
-		<div role="tabpanel" class="tab-pane" id="15">
+		<div role="tabpanel" class="tab-pane" id="2">
 			<br />
-			nilai
+			@include('psb._ortu', ['ortu' => $psb->calonSiswa->ortu()->ayah()->first()])
 		</div>
 
-		<div role="tabpanel" class="tab-pane" id="16">
+		<div role="tabpanel" class="tab-pane" id="3">
 			<br />
-			nilai
+			@include('psb._ortu', ['ortu' => $psb->calonSiswa->ortu()->ibu()->first()])
 		</div>
 
-		<div role="tabpanel" class="tab-pane" id="17">
+		<div role="tabpanel" class="tab-pane" id="4">
 			<br />
-			nilai
+			@include('psb._ortu', ['ortu' => $psb->calonSiswa->ortu()->wali()->first()])
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="6">
+			<br />
+			@if ($psb->calonSiswa->alamat)
+			@include('psb._alamatCalonSiswa', ['alamat' => $psb->calonSiswa->alamat])
+			@endif
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="7">
+			<br />
+			@if ($psb->calonSiswa->beasiswa)
+			@include('psb._beasiswa', ['beasiswa' => $psb->calonSiswa->beasiswa])
+			@endif
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="8">
+			<br />
+			@if ($psb->calonSiswa->prestasi)
+			@include('psb._prestasi', ['prestasi' => $psb->calonSiswa->prestasi])
+			@endif
 		</div>
 
 	</div>
-
 @stop

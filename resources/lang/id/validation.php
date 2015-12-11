@@ -60,6 +60,7 @@ return [
     'regex'                => 'The :attribute format is invalid.',
     'required'             => ':attribute harus diisi.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
+    'required_unless'      => ':attribute harus diisi.',
     'required_with'        => 'The :attribute field is required when :values is present.',
     'required_with_all'    => 'The :attribute field is required when :values is present.',
     'required_without'     => 'The :attribute field is required when :values is not present.',
@@ -121,13 +122,13 @@ return [
 
         'calonSiswa' => [
             'nama'           => 'Nama Calon Siswa',
-            'jenis_kelamin'  => 'Jenis Kelamin',
-            'nisn'           => 'NISN',
-            'tempat_lahir'   => 'Tempat Lahir',
-            'tanggal_lahir'  => 'Tanggal Lahir',
-            'tinggi_badan'   => 'Tinggi Badan',
-            'berat_badan'    => 'Berat Badan',
-            'jumlah_saudara' => 'Jumlah Saudara',
+            'jenis_kelamin'  => 'Jenis Kelamin Calon Siswa',
+            'nisn'           => 'NISN Calon Siswa',
+            'tempat_lahir'   => 'Tempat Lahir Calon Siswa',
+            'tanggal_lahir'  => 'Tanggal Lahir Calon Siswa',
+            'tinggi_badan'   => 'Tinggi Badan Calon Siswa',
+            'berat_badan'    => 'Berat Badan Calon Siswa',
+            'jumlah_saudara' => 'Jumlah Saudara Calon Siswa',
         ],
 
         'Wali'  => [
@@ -188,13 +189,13 @@ return [
         ],
 
         'asalSekolah' => [
-            'nama'      => 'Nama',
-            'nss'       => 'NSS',
-            'npsn'      => 'NPSN',
-            'alamat'    => 'Alamat',
-            'kecamatan' => 'Kecamatan',
-            'kota'      => 'Kota',
-            'propinsi'  => 'Propinsi',
+            'nama'      => 'Nama Sekolah',
+            'nss'       => 'NSS Sekolah',
+            'npsn'      => 'NPSN Sekolah',
+            'alamat'    => 'Alamat Sekolah',
+            'kecamatan' => 'Kecamatan Sekolah',
+            'kota'      => 'Kota Sekolah',
+            'propinsi'  => 'Propinsi Sekolah',
         ],
 
         'alamatCalonSiswa' => [
@@ -208,7 +209,7 @@ return [
             'provinsi'     => 'Propinsi',
             'email'        => 'Email',
             'jarak_tempat_tinggal_ke_sekolah'  => 'Jarak Tempat Tinggal ke Sekolah',
-            'alat_trasnportasi_ke_sekolah'     => 'Alat Transportasi ke Sekolah',
+            'alat_transportasi_ke_sekolah'     => 'Alat Transportasi ke Sekolah',
         ]
     ],
 

@@ -20,7 +20,7 @@
 				{!! Form::radio('calonSiswa[jenis_kelamin]', 0, $calonSiswa->jenis_kelamin ==  0) !!} Perempuan
 			</div>
 		</div>
-
+		
 		<div class="form-group">
 			{!! Form::label('calonSiswa[nisn]', 'NISN:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">

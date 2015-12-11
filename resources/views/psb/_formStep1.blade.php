@@ -27,7 +27,8 @@
 			// changeMonth: true,
 			// changeYear: true,
 			showButtonPanel: true,
-			dateFormat: 'yy-mm-dd'
+			dateFormat: 'yy-mm-dd',
+			maxDate: '0d',
 		});
 
 		$( "#tgllahir" ).datepicker({
@@ -36,6 +37,16 @@
 			minDate: '-20y',
 			maxDate: '-5y',
 			dateFormat: 'yy-mm-dd'
+		});
+
+		$( "#birds" ).autocomplete({
+			source: "search.php",
+			minLength: 2,
+			select: function( event, ui ) {
+				log( ui.item ?
+				"Selected: " + ui.item.value + " aka " + ui.item.id :
+				"Nothing selected, input was " + this.value );
+			}
 		});
 	});
 </script>
