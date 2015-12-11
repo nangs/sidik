@@ -15,7 +15,7 @@
 	</ul>
 	<hr />
 	
-	<h4>Syarat-syarat Lain</h4><hr />
+	<h4>Syarat - Syarat Lain</h4><hr />
 	<ul>
 		<li>Membayar uang pendaftaran</li>
 		<li>Diantar oleh orang tua / wali kecuali Program Tadribud Du’at</li>
@@ -32,9 +32,9 @@
 		REK : 1436 2015 47 AN. SMAIT ASSUNNAH (Untuk jenjang SMA dan TBA) 
 		<br /><br />
 
-		<li>Konfirmasi SMS ke : 08155143572 Bag.Keuangan Ustadz Faris</li>
-		<li>Form pendaftaran bisa di unduh di www.miastasikmalaya.com</li>
-		<li>Bukti transfer, Form pendaftaran dan syarat administrasi dikirim via Email : panitiapsbmias@gmail.com</li>
+		<li>Konfirmasi via website di <a href="{{ url('/psb') }}">{{ url('/sb') }}</a></li>
+		<li>Mengisi Formulir Pendaftaran dengan melengkapi syarat administrasi di <a href="{{ url('/psb') }}">{{ url('/psb') }}</a> setelah pembayaran dikonfirmasi oleh panitia PSB</li>
+		<!-- <li>Bukti transfer, Form pendaftaran dan syarat administrasi dikirim via Email : panitiapsbmias@gmail.com</li> -->
 	</ul>
 	<hr />
 
