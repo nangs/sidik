@@ -57,10 +57,12 @@
         		@endif
 			</td>
 			<td>
-				@if ($s->status)
+				@if ($s->status == 1)
 				<span class="label label-success">Ya</span><br />
+				@elseif ($s->status == 2)
+				<span class="label label-danger">Tidak</span>
 				@else
-				<span class="label label-default">Tidak</span>
+				<span class="label label-default">Belum Dikonfirmasi</span>
         		@endif
 			</td>
 			<td>
@@ -74,8 +76,9 @@
         			@elseif ($s->status_test == 0)
 	        		<a href="/psb/testOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Test OK</a>
 
-        			@elseif ($s->status == 0)
-	        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-danger bayar btn-sm">Terima</a>
+        			@elseif ($s->status_test == 1 && $s->status == 0)
+	        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-success bayar btn-sm">Terima</a>
+	        		<a href="/psb/ditolak/{{ $s->id }}" class="btn btn-danger bayar btn-sm">Tolak</a>
         			@endif
 
 	        		<!-- <a href="/psb/{{ $s->id }}/edit" class="btn btn-success btn-xs">Edit</a> -->

@@ -60,9 +60,16 @@ class PsbController extends Controller
         $dataAlamat['jenis_tinggal'] = 1; // bersama orang tua
         $alamatCalonSiswa            = $calonSiswa->alamat()->create($dataAlamat);
 
-        // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
 
         $psb->update(['step' => 2]);
+
+        // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
+        // Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
+        //     $m->from('hello@app.com', 'Your Application');
+
+        //     $m->to($user->email, $user->name)->subject('Your Reminder!');
+        // });
+
         return redirect('/psb/step2/'.$psb->id);
     }
 
@@ -154,7 +161,16 @@ class PsbController extends Controller
             }
 
         }
+
         $psb->update(['step' => 3]);
+
+        // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
+        // Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
+        //     $m->from('hello@app.com', 'Your Application');
+
+        //     $m->to($user->email, $user->name)->subject('Your Reminder!');
+        // });
+
         return redirect('/psb/step3/'.$psb->id);
     }
 
@@ -192,6 +208,15 @@ class PsbController extends Controller
     public function getDiterima(Psb $psb)
     {
         $psb->status  = 1;
+        $psb->save();
+
+        return redirect('/psb/admin');
+    }
+
+    // step 4, pengumuman
+    public function getDitolak(Psb $psb)
+    {
+        $psb->status  = 2;
         $psb->save();
 
         return redirect('/psb/admin');

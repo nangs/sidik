@@ -48,9 +48,9 @@
 
 				@if ($psb->status == 1)
 
-					SELAMAT! Anda diterima di Ma'had Ihya' As Sunnah Tasikmalaya Tahun Ajaran ... di jenjang ... tingkat ...
+					SELAMAT! Anda diterima di Ma'had Ihya' As Sunnah Tasikmalaya Tahun Ajaran ... di jenjang ... tingkat ... Silakan melakukan daftar ulang pada tanggal ... sampai ...
 
-				@else
+				@else ($psb->status == 2)
 
 					Maaf, setelah melakukan beberapa proses seleksi Anda tidak diterima di Ma'had Ihya' As Sunnah Tasikmalaya.
 

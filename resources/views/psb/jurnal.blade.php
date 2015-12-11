@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1 class="text-center">Jurnal Harian PSB Ma'had Ihya' As Sunnah Tahun Ajaran 2015/2016</h1>
+	<h1 class="text-center">Jurnal Harian PSB MIAS TA 2015/2016 (Dummy Data)</h1>
 	<hr />
 
     <div class="row" style="margin-top:50px;">
@@ -28,8 +28,6 @@
         @endfor
     	
     </div>
-
-    <div id="chart6" style="margin-top:50px;"></div>
 
 @stop
 
@@ -94,59 +92,59 @@
             }]
         });
 
+        // $('#chart2').highcharts({
+        //     chart: {
+        //         type: 'column'
+        //     },
+        //     title: {
+        //         text: 'Jumla Siswa Berdasarkan Jenjang'
+        //     },
+        //     subtitle: {
+        //         // text: ''
+        //     },
+        //     xAxis: {
+        //         categories: [
+        //             'PAUD',
+        //             'TK',
+        //             'SD',
+        //             'SMP',
+        //             'SMA',
+        //         ],
+        //         crosshair: true
+        //     },
+        //     yAxis: {
+        //         min: 0,
+        //         title: {
+        //             text: 'Jumlah Siswa'
+        //         }
+        //     },
+        //     tooltip: {
+        //         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        //         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        //             '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+        //         footerFormat: '</table>',
+        //         shared: true,
+        //         useHTML: true
+        //     },
+        //     plotOptions: {
+        //         column: {
+        //             pointPadding: 0.2,
+        //             borderWidth: 0
+        //         }
+        //     },
+        //     series: [{
+        //         name: 'Jumlah Siswa',
+        //         data: [49.9, 71.5, 106.4, 129.2, 144.0]
+
+        //     }]
+        // });
+
         $('#chart2').highcharts({
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Jumla Siswa Berdasarkan Jenjang'
-            },
-            subtitle: {
-                // text: ''
-            },
-            xAxis: {
-                categories: [
-                    'PAUD',
-                    'TK',
-                    'SD',
-                    'SMP',
-                    'SMA',
-                ],
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Jumlah Siswa'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Jumlah Siswa',
-                data: [49.9, 71.5, 106.4, 129.2, 144.0]
-
-            }]
-        });
-
-        $('#chart3').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Jumla Siswa Berdasarkan Tingkat'
+                text: 'Jumla Pendaftar Berdasarkan Tingkat'
             },
             subtitle: {
                 // text: ''
@@ -171,7 +169,7 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Jumlah Siswa'
+                    text: 'Jumlah Pendaftar'
                 }
             },
             tooltip: {
@@ -199,7 +197,7 @@
             }]
         });
 
-        $('#chart4').highcharts({
+        $('#chart3').highcharts({
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -207,7 +205,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Jumlah Siswa Berdasarkan Jenis Kelamin'
+                text: 'Jumlah Pendaftar Berdasarkan Jenis Kelamin'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -237,7 +235,7 @@
             }]
         });
 
-        $('#chart6').highcharts({
+        $('#chart4').highcharts({
             chart: {
                 type: 'funnel',
                 marginRight: 100
@@ -268,13 +266,13 @@
             series: [{
                 name: 'Jumlah Pendaftar',
                 data: [
-                    ['Pembelian Formulir',   15654],
-                    ['Formulir Telah Dibayar',       4064],
-                    ['Formulir Diisi', 2987],
-                    ['Data Diverifikasi', 2987],
-                    ['Test Bakat & Minat', 2987],
-                    ['Test Wawancara', 2987],
+                    ['Konfirmasi Pembayaran Formulir', 15654],
+                    ['Formulir Telah Dibayar', 4064],
+                    ['Formulir Telah Diisi', 2987],
+                    ['Data Telah Diverifikasi', 2987],
+                    ['Sudah Test', 2987],
                     ['Diterima', 2987],
+                    ['Ditolak', 2987],
                 ]
             }]
         });
