@@ -225,6 +225,10 @@ class PsbController extends Controller
     // tampilkan status selesai, tampilkan pengumuman. TODO : sesuaikan step
     public function getStep4(Psb $psb)
     {
+        if ($psb->step < 4) {
+            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
+        }
+
         return view('psb.step4', ['psb' => $psb]);
     }
 
