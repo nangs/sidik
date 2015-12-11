@@ -50,7 +50,7 @@
 			@else
 
 			Data Anda telah diverivikasi. 
-			Silakan melakukan test wawancara pada tanggal ... - ... pukul ... - .... di Ma'had Ihya' As Sunnah dengan membawa kelengkapan dokumen sebagai berikut:
+			Silakan melakukan test & wawancara pada tanggal 21 - 31 Desember 2015 pukul 07:00 - 11:00 WIB di Ma'had Ihya' As Sunnah dengan membawa kelengkapan dokumen sebagai berikut:
 				
 			<br /><br />
 
