@@ -28,7 +28,7 @@ class PsbController extends Controller
     public function getStep1()
     {
         return view('psb.step1', [
-            'psb'               => new Psb,
+            'psb'               => new Psb(['jumlah_pembayaran' => 250000]),
             'calonSiswa'        => new CalonSiswa,
             'Wali'              => new OrangTuaCalonSiswa,
             'user'              => new User,

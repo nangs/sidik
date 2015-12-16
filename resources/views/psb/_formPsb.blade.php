@@ -34,7 +34,7 @@
 		<div class="form-group @if ($errors->has('psb.metode_pembayaran')) has-error @endif">
 			{!! Form::label('psb[metode_pembayaran]', 'Metode Pembayaran:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::select('psb[metode_pembayaran]', App\Psb::metodePembayaranList(), $psb->metode_pembayaran, ['class' => 'form-control']) !!}
+				{!! Form::select('psb[metode_pembayaran]', App\Psb::metodePembayaranList(), $psb->metode_pembayaran, ['class' => 'form-control', 'id' => 'metode-pembayaran']) !!}
 				@if ($errors->has('psb.metode_pembayaran')) <p class="help-block">{{ $errors->first('psb.metode_pembayaran') }}</p> @endif
 			</div>
 		</div>
@@ -50,42 +50,44 @@
 		<div class="form-group @if ($errors->has('psb.jumlah_pembayaran')) has-error @endif">
 			{!! Form::label('psb[jumlah_pembayaran]', 'Jumlah Pembayaran:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::input('number', 'psb[jumlah_pembayaran]', $psb->jumlah_pembayaran, ['class' => 'form-control']) !!}
+				{!! Form::input('number', 'psb[jumlah_pembayaran]', $psb->jumlah_pembayaran, ['class' => 'form-control', 'readonly' => true]) !!}
 				@if ($errors->has('psb.jumlah_pembayaran')) <p class="help-block">{{ $errors->first('psb.jumlah_pembayaran') }}</p> @endif
 			</div>
 		</div>
 
-		<div class="form-group @if ($errors->has('psb.bank_asal')) has-error @endif">
-			{!! Form::label('psb[bank_asal]', 'Bank Asal:', ['class' => 'col-md-2 control-label']) !!}
-			<div class="col-md-10">
-				{!! Form::text('psb[bank_asal]', $psb->bank_asal, ['class' => 'form-control', 'placeholder' => 'Bank Asal']) !!}
-				@if ($errors->has('psb.bank_asal')) <p class="help-block">{{ $errors->first('psb.bank_asal') }}</p> @endif
+		<div id="rekening">
+			<div class="form-group @if ($errors->has('psb.bank_asal')) has-error @endif">
+				{!! Form::label('psb[bank_asal]', 'Bank Asal:', ['class' => 'col-md-2 control-label']) !!}
+				<div class="col-md-10">
+					{!! Form::text('psb[bank_asal]', $psb->bank_asal, ['class' => 'form-control', 'placeholder' => 'Bank Asal']) !!}
+					@if ($errors->has('psb.bank_asal')) <p class="help-block">{{ $errors->first('psb.bank_asal') }}</p> @endif
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group @if ($errors->has('psb.rekening_asal')) has-error @endif">
-			{!! Form::label('psb[rekening_asal]', 'Nomor Rekening Asal:', ['class' => 'col-md-2 control-label']) !!}
-			<div class="col-md-10">
-				{!! Form::text('psb[rekening_asal]', $psb->rekening_asal, ['class' => 'form-control', 'placeholder' => 'Nomor Rekening Asal']) !!}
-				@if ($errors->has('psb.rekening_asal')) <p class="help-block">{{ $errors->first('psb.rekening_asal') }}</p> @endif
+			<div class="form-group @if ($errors->has('psb.rekening_asal')) has-error @endif">
+				{!! Form::label('psb[rekening_asal]', 'Nomor Rekening Asal:', ['class' => 'col-md-2 control-label']) !!}
+				<div class="col-md-10">
+					{!! Form::text('psb[rekening_asal]', $psb->rekening_asal, ['class' => 'form-control', 'placeholder' => 'Nomor Rekening Asal']) !!}
+					@if ($errors->has('psb.rekening_asal')) <p class="help-block">{{ $errors->first('psb.rekening_asal') }}</p> @endif
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group @if ($errors->has('psb.pemegang_rekening_asal')) has-error @endif">
-			{!! Form::label('psb[pemegang_rekening_asal]', 'Pemegang Rekening:', ['class' => 'col-md-2 control-label']) !!}
-			<div class="col-md-10">
-				{!! Form::text('psb[pemegang_rekening_asal]', $psb->pemegang_rekening_asal, ['class' => 'form-control', 'placeholder' => 'Pemegang Rekening Asal']) !!}
-				@if ($errors->has('psb.pemegang_rekening_asal')) <p class="help-block">{{ $errors->first('psb.pemegang_rekening_asal') }}</p> @endif
+			<div class="form-group @if ($errors->has('psb.pemegang_rekening_asal')) has-error @endif">
+				{!! Form::label('psb[pemegang_rekening_asal]', 'Pemegang Rekening:', ['class' => 'col-md-2 control-label']) !!}
+				<div class="col-md-10">
+					{!! Form::text('psb[pemegang_rekening_asal]', $psb->pemegang_rekening_asal, ['class' => 'form-control', 'placeholder' => 'Pemegang Rekening Asal']) !!}
+					@if ($errors->has('psb.pemegang_rekening_asal')) <p class="help-block">{{ $errors->first('psb.pemegang_rekening_asal') }}</p> @endif
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group @if ($errors->has('psb.rekening_tujuan_id')) has-error @endif">
-			{!! Form::label('psb[rekening_tujuan_id]', 'Rekening Tujuan:', ['class' => 'col-md-2 control-label']) !!}
-			<div class="col-md-10">
-				{!! Form::select('psb[rekening_tujuan_id]', 
-				[null => '- Pilih Rekening Tujuan -'] + App\Rekening::selectRaw('CONCAT(bank," - ", pemegang, " - ", nomor) AS nama, id')->lists('nama', 'id')->toArray(), 
-				$psb->rekening_tujuan_id, ['class' => 'form-control', 'placeholder' => 'Rekening Tujuan']) !!}
-				@if ($errors->has('psb.rekening_tujuan_id')) <p class="help-block">{{ $errors->first('psb.rekening_tujuan_id') }}</p> @endif
+			<div class="form-group @if ($errors->has('psb.rekening_tujuan_id')) has-error @endif">
+				{!! Form::label('psb[rekening_tujuan_id]', 'Rekening Tujuan:', ['class' => 'col-md-2 control-label']) !!}
+				<div class="col-md-10">
+					{!! Form::select('psb[rekening_tujuan_id]', 
+					[null => '- Pilih Rekening Tujuan -'] + App\Rekening::selectRaw('CONCAT(bank," - ", pemegang, " - ", nomor) AS nama, id')->lists('nama', 'id')->toArray(), 
+					$psb->rekening_tujuan_id, ['class' => 'form-control', 'placeholder' => 'Rekening Tujuan']) !!}
+					@if ($errors->has('psb.rekening_tujuan_id')) <p class="help-block">{{ $errors->first('psb.rekening_tujuan_id') }}</p> @endif
+				</div>
 			</div>
 		</div>
 

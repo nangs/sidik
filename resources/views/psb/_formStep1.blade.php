@@ -30,8 +30,6 @@
 
 	$(function() {
 		$( "#tglbayar" ).datepicker({
-			// changeMonth: true,
-			// changeYear: true,
 			showButtonPanel: true,
 			dateFormat: 'yy-mm-dd',
 			maxDate: '0d',
@@ -45,16 +43,32 @@
 			dateFormat: 'yy-mm-dd'
 		});
 
-		$( "#birds" ).autocomplete({
-			source: "search.php",
-			minLength: 2,
-			select: function( event, ui ) {
-				log( ui.item ?
-				"Selected: " + ui.item.value + " aka " + ui.item.id :
-				"Nothing selected, input was " + this.value );
+		// $( "#birds" ).autocomplete({
+		// 	source: "search.php",
+		// 	minLength: 2,
+		// 	select: function( event, ui ) {
+		// 		log( ui.item ?
+		// 		"Selected: " + ui.item.value + " aka " + ui.item.id :
+		// 		"Nothing selected, input was " + this.value );
+		// 	}
+		// });
+
+
+		$('#metode-pembayaran').change(function() {
+			// console.log(this);
+			if (this.value == 'Tunai') {
+				$('#rekening').hide('slow');
+			} else {
+				$('#rekening').show('slow');
 			}
 		});
+
+		// $('#metode-pembayaran').on('change', function(e) {
+		// 	console.log(this);
+		// });
+
 	});
+
 </script>
 
 @stop
