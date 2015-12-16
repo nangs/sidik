@@ -55,7 +55,6 @@
 
 
 		$('#metode-pembayaran').change(function() {
-			// console.log(this);
 			if (this.value == 'Tunai') {
 				$('#rekening').hide('slow');
 			} else {
@@ -63,9 +62,21 @@
 			}
 		});
 
-		// $('#metode-pembayaran').on('change', function(e) {
-		// 	console.log(this);
-		// });
+		// var jenjang = {
+		// 	'value' : 1,
+		// 	'label' : 'I',
+		// 	'childs' : []
+		// }
+
+		$('#jenjang').change(function() {
+			if (this.value == 1) {
+				$('#tingkat').html('<option value="1">I</option> <option value="2">II</option> <option value="3">III</option> <option value="4">IV</option> <option value="5">V</option> <option value="6">VI</option> ');
+			} else if (this.value == 2) {
+				$('#tingkat').html('<option value="7">VII</option> <option value="8">VIII</option> <option value="9">IX</option> ');
+			} else if (this.value == 3) {
+				$('#tingkat').html('<option value="10">X</option> <option value="11">XI</option> <option value="12">XII</option> ');
+			}
+		});
 
 	});
 

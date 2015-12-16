@@ -89,7 +89,7 @@
 
         		@else
 
-        			@if ($s->status_pembayaran == 1)
+        			@if ($s->status_pembayaran == 1 && $s->step == 2)
 	        		<a href="/psb/step2/{{ $s->id }}" class="btn btn-success btn-sm">Isi Formulir</a>
         			@endif
 
