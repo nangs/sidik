@@ -28,17 +28,21 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
                     @if (Auth::user()->role == 'admin')
-                <!-- <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin <strong class="caret"></strong></a>
+                    <!-- <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin <strong class="caret"></strong></a>
                     <ul class="dropdown-menu"> -->
                         <li><a href="/psb/admin">Calon Santri</a></li>
                         <li><a href="/ta">Tahun Ajaran</a></li>
                         <li><a href="/rekening">Daftar Rekening</a></li>
                     <!-- </ul>
-                </li> -->
+                    </li> -->
                     @endif
-                <!-- <li><a href="/user/{{ Auth::user()->id }}"><span class="fa fa-user"></span></a></li> -->
-                <li><a href="/psb/step1">Daftarkan Santri Baru</a></li>
-                <li><a href="/psb/admin">Calon santri yang saya daftarkan</a></li>
+
+                    @if(Auth::user()->role == 'pendaftar')
+                    <!-- <li><a href="/user/{{ Auth::user()->id }}"><span class="fa fa-user"></span></a></li> -->
+                    <li><a href="/psb/step1">Daftarkan Santri Baru</a></li>
+                    <li><a href="/psb/admin">Calon santri yang saya daftarkan</a></li>
+                    @endif
+
                 <li><a href="/auth/logout"><span class="fa fa-sign-out"></span> Logout - {{Auth::user()->name}} ({{Auth::user()->role}})</a></li>
                 @endif
 
