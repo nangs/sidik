@@ -16,9 +16,11 @@ use App\OrangTuaCalonSiswa;
 use App\AlamatCalonSiswa;
 use App\AsalSekolah;
 use App\CalonSiswa;
+use App\User;
 use App\Psb;
 use App\Ta;
 use Carbon;
+use Auth;
 
 class PsbController extends Controller
 {
@@ -29,6 +31,7 @@ class PsbController extends Controller
             'psb'               => new Psb,
             'calonSiswa'        => new CalonSiswa,
             'Wali'              => new OrangTuaCalonSiswa,
+            'user'              => new User,
         ]);
     }
 
@@ -60,15 +63,23 @@ class PsbController extends Controller
         $dataAlamat['jenis_tinggal'] = 1; // bersama orang tua
         $alamatCalonSiswa            = $calonSiswa->alamat()->create($dataAlamat);
 
-
-        $psb->update(['step' => 2]);
-
         // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
         // Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
         //     $m->from('hello@app.com', 'Your Application');
 
         //     $m->to($user->email, $user->name)->subject('Your Reminder!');
         // });
+
+        $user = User::create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('password')),
+            'role' => 'pendaftar'
+        ]);
+
+        $psb->update(['step' => 2, 'user_id' => $user->id]);
+
+        Auth::login($user);
 
         return redirect('/psb/step2/'.$psb->id);
     }

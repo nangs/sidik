@@ -1,5 +1,22 @@
 TODO:
 
+Modul PSB
+
+Modul untuk penerimaan siswa baru untuk jenjang SD, SMP, SMA. Pendaftar bisa mendaftarkan lebih dari 1 calon siswa
+
+Ada 3 jenis pengunjung website:
+- Pengunjung : pengunjung yang akan melakukan pendaftaran. Bisa melihat halaman depan yaitu berisi syarat, button login, button daftar
+
+jumbotron => Selamat datang di website PSB online MIAS tahun ajaran 2016/2017
+- Untuk melakukan pendaftaran silakan klik tombol berikut
+
+atau login jika anda pernah melakukan pendaftaran
+
+
+
+
+Syarat pendaftaran
+
 
 PSB
 - step 4
@@ -7,60 +24,14 @@ PSB
 - jquery ui untuk autocomplete
 - nama lokasi dari database
 
-=================================================
+- form register
+- link user -> siswa
 
-- jadwal pelajaran, create per kelas, per hari
-- kelas -> nilai
-- kelas -> absensi
-- view index siswa
+tampilan
+1. guest => form daftar, jurnal, syarat
+2. pendaftar => profile, jurnal, syarat, status
+3. admin psb => grid, jurnal, per calon siswa
 
-INVENTARIS
-- ruangan -> asset
-- jaringan
-- inv_barang
-- inv_habis_pakai = stok, jenis, nama, satuan => penggunaan_inv_hbs_pakai
 
-AKADEMIK
 
-- Jadwal Ujian
-
-SISWA
-
-- riwayat pendidikan
-- beasiswa
-- prestasi : th, lomba, tingkat, juara, jenis
-- absensi : tgl, (A,I,S), ket
-- pelanggaran : tgl, level, nama pelanggaran, point
-- Nilai berdasarkan jenis ujian
-- Ortu & wali
-
-KARYAWAN
-
-- Bagian
-- Jabatan
-- View dipisah : pribadi, pekerjaan, keluarga, riwayat di bawah semua
-- Absensi
-- info gaji & tunjangan
-
-MODUL BELAJAR ONLINE
-
-- Bab
-- sub bab
-- materi
-
-KEUANGAN
-- reminder tagihan by email
-
-PROFIL SEKOLAH
-
-PERPUSTAKAAN
-
-FORUM
-
-TUGAS/UJIAN ONLINE
-
-PENDAFTARAN ONLINE
-
-MULTI LOGIN
-- login by karyawan, guru, siswa, ortu/wali
 

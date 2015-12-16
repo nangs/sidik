@@ -114,8 +114,9 @@ Route::controller('auth', 'Auth\AuthController');
 // Route::controller('batik', 'BatikController');
 
 // MODUL PSB
-Route::get('/', 'PsbController@getStep1');
-Route::get('/home', 'PsbController@getStep1');
+Route::get('/', 'HomeController@getIndex');
+
+Route::get('/home', 'HomeController@getIndex');
 
 Route::group(['prefix' => 'psb'], function() {
 

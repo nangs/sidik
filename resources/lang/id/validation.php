@@ -52,7 +52,7 @@ return [
     'min'                  => [
         'numeric' => 'The :attribute must be at least :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => 'The :attribute must be at least :min characters.',
+        'string'  => ':attribute harus minimal :min karakter.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
@@ -212,11 +212,18 @@ return [
             'alat_transportasi_ke_sekolah'     => 'Alat Transportasi ke Sekolah',
         ],
 
+        // DOKUMEN
         'kk'        => 'Kartu Keluarga',
         'akta'      => 'Akta Kelahiran',
         'foto'      => 'Pas Foto',
         'rapor'     => 'Rapor',
-        'sk_sehat'  => 'Surat Keterangan Sehat'
+        'sk_sehat'  => 'Surat Keterangan Sehat',
+
+        // USER
+        'name'                  => 'Nama Pendaftar',
+        'email'                 => 'Email Pendaftar',
+        'password'              => 'Password Pendaftar',
+        'password_confirmation' => 'Konfirmasi Password'
     ],
 
 ];

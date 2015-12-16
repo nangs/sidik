@@ -31,6 +31,13 @@ class PsbRequest extends Request
             'psb.metode_pembayaran'     => 'required',
             'psb.tanggal_pembayaran'    => 'date|required',
             'psb.jumlah_pembayaran'     => 'required|numeric',
+
+            // Bank
+            'psb.bank_asal'              => 'required',
+            'psb.rekening_asal'          => 'required',
+            'psb.pemegang_rekening_asal' => 'required',
+            'psb.rekening_tujuan_id'     => 'required',
+
             // Data Siswa
             'calonSiswa.nama'           => 'required',
             'calonSiswa.jenis_kelamin'  => 'boolean',
@@ -57,6 +64,11 @@ class PsbRequest extends Request
             'Wali.provinsi'             => 'required',
             'Wali.hp'                   => 'required',
             'Wali.email'                => 'email',
+
+            // User
+            'name'                     => 'required',
+            'email'                    => 'required|email|max:255|unique:users',
+            'password'                 => 'required|confirmed|min:6',
         ];
 
         $rules['PATCH'] = [
