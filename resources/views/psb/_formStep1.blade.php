@@ -3,7 +3,10 @@
 	@include('psb._formPsb')
 	@include('psb._formCalonSiswa')
 	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
-	@include('psb._formUser')
+
+	@if (!Auth::check())
+		@include('psb._formUser')
+	@endif
 
 	<hr />
 

@@ -89,7 +89,9 @@
 
         		@else
 
-        			Lengkapi data
+        			@if ($s->status_pembayaran == 1)
+	        		<a href="/psb/step2/{{ $s->id }}" class="btn btn-success btn-sm">Isi Formulir</a>
+        			@endif
 
         		@endif
 			</td>

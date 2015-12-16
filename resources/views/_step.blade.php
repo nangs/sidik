@@ -3,7 +3,7 @@
 	<ul>
 		<li class="shipping-status{{ ($step >= 1) ? '-active' : '' }}">
 			<span class="single-step">1</span>
-			<p>PENDAFTARAN<br/><!-- time/status --></p>
+			<p>PEMBAYARAN BIAYA PENDAFTARAN<br/><!-- time/status --></p>
 		</li>
 		<li class="shipping-status{{ ($step >= 2) ? '-active' : '' }}">
 			<span class="single-step">2</span>

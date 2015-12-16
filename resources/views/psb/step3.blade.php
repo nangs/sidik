@@ -7,25 +7,14 @@
 	<hr />
 
 
-	<div class="alert alert-success">
+	<div class="alert alert-success text-center">
 		<h4>
 
 			@if ($psb->status_verifikasi_data == 0)
 
 			Data telah kami simpan di database kami. 
 			Data akan kami verifikasi. 
-			Setelah data terverifikasi Anda dapat melihat jadwal test & wawancara di halaman ini. 
-			Simpan alamat URL berikut untuk melihat jadwal test & wawancara di kemudian hari: <br /><br />
-
-			<a href="/psb/step3/{{ $psb->id }}">{{ url('/psb/step3/'.$psb->id)}}</a>
-
-			<br /><br />
-
-			Atau masukkan Nomor Pendaftaran Calon Siswa di form pencarian Nomor Pendaftaran:
-
-			<br /><br />
-
-			Nomor Pendaftaran: {{ strtotime($psb->created_at)}}
+			Setelah data terverifikasi Anda dapat melihat jadwal test & wawancara di halaman ini.
 
 			@else
 
@@ -51,21 +40,11 @@
 
 			<a href="/psb/step4/{{ $psb->id }}">{{ url('/psb/step4/'.$psb->id)}}</a>
 
-			<br /><br />
-
-			Atau masukkan Nomor Pendaftaran Calon Siswa di form pencarian Nomor Pendaftaran:
-
-			<br /><br />
-
-			Nomor Pendaftaran: {{ strtotime($psb->created_at)}}
-
-
 			@endif
 
 		</h4>
 	</div>
 
-	
-	
+	@include('psb._show')
 
 @stop

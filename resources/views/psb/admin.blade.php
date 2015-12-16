@@ -4,24 +4,24 @@
 	
 	<!-- <a href="/psb/step1" class="btn btn-success pull-right">Tambah Calon Siswa Baru</a> -->
 
-	<h1 style="margin-top:0;">Daftar Calon Siswa Baru</h1>
+	<h1 style="margin-top:0;">Daftar Calon Satri Baru</h1>
 	<hr />
 
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active">
 			<a href="#1" aria-controls="1" role="tab" data-toggle="tab">
-				SD <span class="badge">{{\App\Psb::sekarang()->SD()->count('id')}}</span>
+				SD <span class="badge">{{Auth::user()->role == 'admin' ? \App\Psb::sekarang()->SD()->count('id') : \App\Psb::mine()->sekarang()->SD()->count('id')}}</span>
 			</a>
 		</li>
 		<li role="presentation">
 			<a href="#5" aria-controls="5" role="tab" data-toggle="tab">
-				SMP <span class="badge">{{\App\Psb::sekarang()->SMP()->count('id')}}</span>
+				SMP <span class="badge">{{Auth::user()->role == 'admin' ? \App\Psb::sekarang()->SMP()->count('id') : \App\Psb::mine()->sekarang()->SMP()->count('id')}}</span>
 			</a>
 		</li>
 		<li role="presentation">
 			<a href="#6" aria-controls="6" role="tab" data-toggle="tab">
-				SMA <span class="badge">{{\App\Psb::sekarang()->SMA()->count('id')}}</span>
+				SMA <span class="badge">{{Auth::user()->role == 'admin' ? \App\Psb::sekarang()->SMA()->count('id') : \App\Psb::mine()->sekarang()->SMA()->count('id')}}</span>
 			</a>
 		</li>
 	</ul>

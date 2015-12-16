@@ -19,7 +19,7 @@ class HomeController extends Controller
     	$user = Auth::user();
 
     	if ($user->role == 'pendaftar') {
-    		return redirect('/psb/show/'.$user->psb->id);
+    		return redirect('/psb/admin/');
     	}
 
     	elseif ($user->role == 'admin') {

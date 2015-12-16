@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 
 class PsbRequest extends Request
 {
@@ -66,10 +67,16 @@ class PsbRequest extends Request
             'Wali.email'                => 'email',
 
             // User
-            'name'                     => 'required',
-            'email'                    => 'required|email|max:255|unique:users',
-            'password'                 => 'required|confirmed|min:6',
+            // 'name'                     => 'required',
+            // 'email'                    => 'required|email|max:255|unique:users',
+            // 'password'                 => 'required|confirmed|min:6',
         ];
+
+        if (!Auth::check()) {
+            $rules['POST']['name']      = 'required';
+            $rules['POST']['email']     = 'required|email|max:255|unique:users';
+            $rules['POST']['password']  = 'required|confirmed|min:6';
+        }
 
         $rules['PATCH'] = [
             // Data Siswa

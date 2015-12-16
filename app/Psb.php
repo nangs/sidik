@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Psb extends Model
 {
@@ -12,7 +13,7 @@ class Psb extends Model
     	'jenjang', 'tingkat', 'step', 'status', 'keterangan', 'tahun_ajaran',
         'tanggal_pembayaran', 'bank_asal', 'rekening_asal', 'rekening_tujuan_id',
         'pemegang_rekening_asal', 'metode_pembayaran',
-        'jumlah_pembayaran', 'bukti_pembayaran'
+        'jumlah_pembayaran', 'bukti_pembayaran', 'user_id'
     ];
 
     public function scopeSD($query)
@@ -33,6 +34,11 @@ class Psb extends Model
     public function scopeSekarang($query)
     {
         return $query->where('tahun_ajaran', \App\Ta::active()->first()->periode);
+    }
+
+    public function scopeMine($query)
+    {
+        return $query->where('user_id', Auth::user()->id);
     }
 
     public function calonSiswa()
@@ -90,6 +96,11 @@ class Psb extends Model
     public function rekeningTujuan()
     {
         return $this->belongsTo('App\Rekening', 'rekening_tujuan_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 
     // format nomor - pendaftaran : PSB-MIAS-2015/2016-{JENJANG}-{TINGKAT}-{ID}

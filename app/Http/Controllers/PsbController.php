@@ -70,16 +70,19 @@ class PsbController extends Controller
         //     $m->to($user->email, $user->name)->subject('Your Reminder!');
         // });
 
-        $user = User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
-            'role' => 'pendaftar'
-        ]);
+        $user = (!Auth::check()) 
+            ? User::create([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' => bcrypt($request->get('password')),
+                'role' => 'pendaftar'
+            ]) : Auth::user();
 
         $psb->update(['step' => 2, 'user_id' => $user->id]);
 
-        Auth::login($user);
+        if (!Auth::check()) {
+            Auth::login($user);
+        }
 
         return redirect('/psb/step2/'.$psb->id);
     }
@@ -280,9 +283,14 @@ class PsbController extends Controller
     // untuk admin/panitia PSB, pake datatables
     public function getAdmin()
     {
-        return view('psb.admin', [
-            'psbs' => Psb::with('calonSiswa')->sekarang()->get()->sortBy('calonSiswa.nama'),
-        ]);
+        $user = Auth::user();
+
+        $psbs = ($user->role == 'admin') 
+                    ? Psb::with('calonSiswa')->sekarang()->get()->sortBy('calonSiswa.nama')
+                    : Psb::with('calonSiswa')->mine()->sekarang()->get()->sortBy('calonSiswa.nama');
+
+
+        return view('psb.admin', ['psbs' => $psbs]);
     }
 
     // chart, jumlah yg daftar per step, per tingkat, per jenjang, 

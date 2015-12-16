@@ -11,18 +11,7 @@
 			@if ($psb->status_test == 1 && $psb->status == 0)
 
 				Proses pendaftaran telah selesai. 
-				Anda dapat melihat pengumuman di halaman ini setelah kami melakukan seleksi. 
-				Simpan alamat URL berikut untuk melihat pengumuman di kemudian hari: <br /><br />
-
-				<a href="/psb/step4/{{ $psb->id }}">{{ url('/psb/step4/'.$psb->id) }}</a>
-
-				<br /><br />
-
-				Atau masukkan Nomor Pendaftaran Calon Siswa di form pencarian Nomor Pendaftaran:
-
-				<br /><br />
-
-				Nomor Pendaftaran: {{ strtotime($psb->created_at) }}
+				Anda dapat melihat pengumuman di halaman ini setelah kami melakukan seleksi.
 
 			@else
 
@@ -40,6 +29,8 @@
 
 		</h4>
 	</div>
+
+	@include('psb._show')
 	
 
 @stop
