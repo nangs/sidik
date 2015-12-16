@@ -34,10 +34,10 @@ class PsbRequest extends Request
             'psb.jumlah_pembayaran'     => 'required|numeric',
 
             // Bank
-            'psb.bank_asal'              => 'required',
-            'psb.rekening_asal'          => 'required',
-            'psb.pemegang_rekening_asal' => 'required',
-            'psb.rekening_tujuan_id'     => 'required',
+            'psb.bank_asal'              => 'required_unless:psb.metode_pembayaran,Tunai',
+            'psb.rekening_asal'          => 'required_unless:psb.metode_pembayaran,Tunai',
+            'psb.pemegang_rekening_asal' => 'required_unless:psb.metode_pembayaran,Tunai',
+            'psb.rekening_tujuan_id'     => 'required_unless:psb.metode_pembayaran,Tunai',
 
             // Data Siswa
             'calonSiswa.nama'           => 'required',
