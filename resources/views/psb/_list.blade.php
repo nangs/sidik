@@ -96,7 +96,10 @@
 				{!! Form::open(['method' => 'DELETE', 'url' => 'psb/'.$s->id, 'class' => 'form-inline']) !!}
 					<div class="btn-group">
 						@if ($s->status_pembayaran == 0 && (Auth::user()->role == 'keuangan' || Auth::user()->role == 'admin'))
-		        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-sm">Sudah Bayar</a> 
+		        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-sm">Sudah Bayar</a>
+						
+						@elseif ($s->status_pembayaran == 1 && (Auth::user()->role == 'keuangan' || Auth::user()->role == 'admin'))
+		        		<a href="/psb/printTandaTerimaPembayaran/{{$s->id}}" class="btn btn-success btn-sm">Print Kwitansi</a>
 
 	        			@elseif ($s->status_verifikasi_data == 0 && (Auth::user()->role == 'data' || Auth::user()->role == 'admin'))
 		        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Data OK</a> 
@@ -112,7 +115,7 @@
 	        			@if (Auth::user()->role == 'admin')
 		        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm delete']) !!}
 		        		@endif
-		        		
+
 	        		</div>
         		{!! Form::close() !!}
 			</td>
