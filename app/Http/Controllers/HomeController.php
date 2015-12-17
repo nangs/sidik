@@ -13,28 +13,18 @@ class HomeController extends Controller
 {
     public function getIndex()
     {
-    	$roles = \App\User::roleList();
         $user  = Auth::user();
 
-        $data = [
-            [
-                'name'  => 'Laki - Laki',
-                'data'  => [1,2,3] // SD, SMP, SMA
-            ], [
-                'name'  => 'Perempuan',
-                'data'  => [1,2,3] // SD, SMP, SMA
-            ], [
-                'name'  => 'Total',
-                'data'  => [1,2,3] // SD, SMP, SMA
-            ], 
-        ];
-
         if (!Auth::check()) {
-    		return view('home1', ['data' => $data]);
+    		return view('home1');
     	}
 
         elseif ($user->role == 'pendaftar') {
-            return redirect('/psb/step'.$user->psb->step.'/'.$user->psb->id);
+            if ($user->psb) {
+                return redirect('/psb/step'.$user->psb->step.'/'.$user->psb->id);
+            } else {
+                return 'Anda tidak mendaftarkan siapa - siapa';
+            }
         }
 
         else {

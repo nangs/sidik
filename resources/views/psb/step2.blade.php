@@ -17,6 +17,13 @@
 				<br /><br />
 
 				<strong>Username/Password : {{$psb->calonSiswa->nama}}/{{strtotime($psb->calonSiswa->created_at)}}</strong>
+
+				@if ($psb->metode_pembayaran ==  'Tunai')
+				<br /><br />
+				Silakan klik tombol di bawah ini untuk mencetak nomor pendaftaran untuk diserahkan ke bagian keuangan
+				<br /><br />
+				<a href="/psb/printNomor/{{$psb->id}}" class="btn btn-success" target="_blank"><span class="fa fa-print"></span> Cetak Nomor Pendaftaran</a>
+				@endif
 			</h4>
 		</div>
 

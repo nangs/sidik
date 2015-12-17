@@ -132,6 +132,7 @@ Route::group(['prefix' => 'psb'], function() {
 	Route::group(['middleware' => 'auth'], function() {
 
 		// harus login untuk step 2 ke atas
+		Route::get('printNomor/{psb}', 'PsbController@getPrintNomor');
 		Route::get('step2/{psb}', 'PsbController@getStep2');
 		Route::get('step3/{psb}', 'PsbController@getStep3');
 		Route::get('step4/{psb}', 'PsbController@getStep4');

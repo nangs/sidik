@@ -236,6 +236,11 @@ class PsbController extends Controller
         return view('psb.show', ['psb' => $psb]);
     }
 
+    public function getPrintNomor(Psb $psb)
+    {
+        return view('psb.printNomor', ['psb' => $psb]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -251,6 +256,8 @@ class PsbController extends Controller
         // hapus data prestasi & beasiswa
         PrestasiCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         BeasiswaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
+        // hapus data user
+        User::find($psb->user_id)->delete();
         // hapus data siswa
         CalonSiswa::where('psb_id', $psb->id)->delete();
 
