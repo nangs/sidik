@@ -144,6 +144,7 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::get('dataOk/{psb}', 'PsbController@getDataOk');
 		Route::get('testOk/{psb}', 'PsbController@getTestOk');
 		Route::get('diterima/{psb}', 'PsbController@getDiterima');
+		Route::get('diterimaTba/{psb}', 'PsbController@getDiterimaTba');
 		Route::get('ditolak/{psb}', 'PsbController@getDitolak');
 
 		Route::delete('/{psb}', 'PsbController@destroy');

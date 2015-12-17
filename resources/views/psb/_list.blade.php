@@ -105,6 +105,9 @@
 
 	        			@elseif ($s->status_test == 1 && $s->status == 0 && (Auth::user()->role == 'seleksi' || Auth::user()->role == 'admin'))
 		        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-success bayar btn-sm">Terima</a> 
+		        			@if ($s->jenjang == 3)
+		        				<a href="/psb/diterimaTba/{{ $s->id }}" class="btn btn-success bayar btn-sm">Terima di TBA</a> 
+		        			@endif
 		        		<a href="/psb/ditolak/{{ $s->id }}" class="btn btn-danger bayar btn-sm">Tolak</a>
 	        			@endif
 

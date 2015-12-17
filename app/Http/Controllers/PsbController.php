@@ -203,6 +203,16 @@ class PsbController extends Controller
     }
 
     // step 4, pengumuman
+    public function getDiterimaTba(Psb $psb)
+    {
+        $psb->status  = 1;
+        $psb->tingkat = 13; // TBA
+        $psb->save();
+
+        return redirect('/psb/admin');
+    }
+
+    // step 4, pengumuman
     public function getDitolak(Psb $psb)
     {
         $psb->status  = 2;
