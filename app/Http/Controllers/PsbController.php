@@ -242,12 +242,8 @@ class PsbController extends Controller
     public function getAdmin()
     {
         $user = Auth::user();
-
-        $psbs = ($user->role == 'admin') 
-                    ? Psb::with('calonSiswa')->sekarang()->get()->sortBy('calonSiswa.nama')
-                    : Psb::with('calonSiswa')->mine()->sekarang()->get()->sortBy('calonSiswa.nama');
-
-
+        $psbs = Psb::with('calonSiswa')->sekarang()->get()->sortBy('calonSiswa.nama');
         return view('psb.admin', ['psbs' => $psbs]);
     }
+
 }

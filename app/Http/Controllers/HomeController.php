@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Psb;
 
 class HomeController extends Controller
 {
@@ -15,8 +16,21 @@ class HomeController extends Controller
     	$roles = \App\User::roleList();
         $user  = Auth::user();
 
+        $data = [
+            [
+                'name'  => 'Laki - Laki',
+                'data'  => [1,2,3] // SD, SMP, SMA
+            ], [
+                'name'  => 'Perempuan',
+                'data'  => [1,2,3] // SD, SMP, SMA
+            ], [
+                'name'  => 'Total',
+                'data'  => [1,2,3] // SD, SMP, SMA
+            ], 
+        ];
+
         if (!Auth::check()) {
-    		return view('home1');
+    		return view('home1', ['data' => $data]);
     	}
 
         elseif ($user->role == 'pendaftar') {
