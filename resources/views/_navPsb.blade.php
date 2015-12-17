@@ -33,6 +33,7 @@
                         <li><a href="/psb/admin">Calon Santri</a></li>
                         <li><a href="/ta">Tahun Ajaran</a></li>
                         <li><a href="/rekening">Daftar Rekening</a></li>
+                        <li><a href="/user">User</a></li>
                     <!-- </ul>
                     </li> -->
                     @endif

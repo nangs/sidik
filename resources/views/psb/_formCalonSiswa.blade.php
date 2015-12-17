@@ -22,6 +22,7 @@
 			</div>
 		</div>
 		
+		@if ($step == 2)
 		<div class="form-group @if ($errors->has('calonSiswa.nisn')) has-error @endif">
 			{!! Form::label('calonSiswa[nisn]', 'NISN:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
@@ -91,6 +92,32 @@
 			<div class="col-md-10">
 				{!! Form::select('calonSiswa[berkebutuhan_khusus]', App\CalonSiswa::kebutuhanKhususList(), $calonSiswa->berkebutuhan_khusus, ['class' => 'form-control']) !!}
 				@if ($errors->has('calonSiswa.berkebutuhan_khusus')) <p class="help-block">{{ $errors->first('calonSiswa.berkebutuhan_khusus') }}</p> @endif
+			</div>
+		</div>
+		@endif
+
+		{!! Form::hidden('psb[tahun_ajaran]', App\Ta::active()->first()->periode) !!}
+
+		<div class="form-group">
+			{!! Form::label('tahun_ajaran', 'Tahun Ajaran:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::text('tahun_ajaran', App\Ta::active()->first()->periode, ['class' => 'form-control', 'disabled' => true]) !!}
+			</div>
+		</div>
+
+		<div class="form-group @if ($errors->has('psb.jenjang')) has-error @endif">
+			{!! Form::label('psb[jenjang]', 'Jenjang:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::select('psb[jenjang]', App\Psb::jenjangList(), $psb->jenjang, ['class' => 'form-control', 'id' => 'jenjang']) !!}
+				@if ($errors->has('psb.jenjang')) <p class="help-block">{{ $errors->first('psb.jenjang') }}</p> @endif
+			</div>
+		</div>
+
+		<div class="form-group @if ($errors->has('psb.tingkat')) has-error @endif">
+			{!! Form::label('psb[tingkat]', 'Tingkat:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::select('psb[tingkat]', App\Psb::tingkatList(), $psb->tingkat, ['class' => 'form-control', 'id' => 'tingkat']) !!}
+				@if ($errors->has('psb.tingkat')) <p class="help-block">{{ $errors->first('psb.tingkat') }}</p> @endif
 			</div>
 		</div>
 

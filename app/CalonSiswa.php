@@ -82,6 +82,7 @@ class CalonSiswa extends Model
     public static function kebutuhanKhususList($index = 9999)
     {
     	$list = [
+            0    => '-',
     		1 	 => 'Tidak Berkebutuhan Khusus',
     		2 	 => 'Netra (A)',
     		3 	 => 'Rungu (B)',

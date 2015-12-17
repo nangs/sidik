@@ -220,10 +220,11 @@ return [
         'sk_sehat'  => 'Surat Keterangan Sehat',
 
         // USER
-        'name'                  => 'Nama Pendaftar',
-        'email'                 => 'Email Pendaftar',
-        'password'              => 'Password Pendaftar',
-        'password_confirmation' => 'Konfirmasi Password'
+        'name'                  => 'Nama',
+        'email'                 => 'Email',
+        'password'              => 'Password',
+        'password_confirmation' => 'Konfirmasi Password',
+        'role'                  => 'Role'
     ],
 
 ];

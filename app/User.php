@@ -39,6 +39,22 @@ class User extends Model implements AuthenticatableContract,
 
     public function psb()
     {
-        return $this->hasMany('App\Psb');
+        return $this->hasOne('App\Psb');
+    }
+
+    public function scopeNonPendaftar($query)
+    {
+        return $query->where('role', '!=', 'pendaftar');
+    }
+
+    public static function roleList()
+    {
+        return [
+            'pendaftar'         => 'pendaftar',
+            'admin'             => 'admin',
+            'keuangan'          => 'keuangan',
+            'data'              => 'data',
+            'test-wawancara'    => 'test-wawancara',
+        ];
     }
 }

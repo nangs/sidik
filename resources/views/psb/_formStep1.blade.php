@@ -1,12 +1,7 @@
 {!! Form::model($psb, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method, 'files' => true]) !!}
 	
-	@include('psb._formPsb')
 	@include('psb._formCalonSiswa')
-	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
-
-	@if (!Auth::check())
-		@include('psb._formUser')
-	@endif
+	@include('psb._formPsb')
 
 	<hr />
 
@@ -56,25 +51,19 @@
 
 		$('#metode-pembayaran').change(function() {
 			if (this.value == 'Tunai') {
-				$('#rekening').hide('slow');
+				$('#rekening').hide();
 			} else {
-				$('#rekening').show('slow');
+				$('#rekening').show();
 			}
 		});
 
-		// var jenjang = {
-		// 	'value' : 1,
-		// 	'label' : 'I',
-		// 	'childs' : []
-		// }
-
 		$('#jenjang').change(function() {
 			if (this.value == 1) {
-				$('#tingkat').html('<option value="1">I</option> <option value="2">II</option> <option value="3">III</option> <option value="4">IV</option> <option value="5">V</option> <option value="6">VI</option> ');
+				$('#tingkat').html('<option value="1">I</option> <option value="2">II</option> <option value="3">III</option> <option value="4">IV</option> <option value="5">V</option> <option value="6">VI</option>');
 			} else if (this.value == 2) {
-				$('#tingkat').html('<option value="7">VII</option> <option value="8">VIII</option> <option value="9">IX</option> ');
+				$('#tingkat').html('<option value="7">VII</option> <option value="8">VIII</option> <option value="9">IX</option>');
 			} else if (this.value == 3) {
-				$('#tingkat').html('<option value="10">X</option> <option value="11">XI</option> <option value="12">XII</option> ');
+				$('#tingkat').html('<option value="10">X</option> <option value="11">XI</option> <option value="12">XII</option>');
 			}
 		});
 

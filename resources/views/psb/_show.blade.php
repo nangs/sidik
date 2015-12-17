@@ -38,17 +38,23 @@
 
 	<div role="tabpanel" class="tab-pane" id="2">
 		<br />
-		@include('psb._ortu', ['ortu' => $psb->calonSiswa->ortu()->ayah()->first()])
+		@if ($ayah = $psb->calonSiswa->ortu()->ayah()->first())
+		@include('psb._ortu', ['ortu' => $ayah])
+		@endif
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="3">
 		<br />
-		@include('psb._ortu', ['ortu' => $psb->calonSiswa->ortu()->ibu()->first()])
+		@if ($ibu = $psb->calonSiswa->ortu()->ibu()->first())
+		@include('psb._ortu', ['ortu' => $ibu])
+		@endif;
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="4">
 		<br />
-		@include('psb._ortu', ['ortu' => $psb->calonSiswa->ortu()->wali()->first()])
+		@if ($wali = $psb->calonSiswa->ortu()->wali()->first())
+		@include('psb._ortu', ['ortu' => $wali])
+		@endif;
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="6">
@@ -60,14 +66,14 @@
 
 	<div role="tabpanel" class="tab-pane" id="7">
 		<br />
-		@if ($psb->calonSiswa->beasiswa)
+		@if ($psb->calonSiswa->beasiswa->count())
 		@include('psb._beasiswa', ['beasiswa' => $psb->calonSiswa->beasiswa])
 		@endif
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="8">
 		<br />
-		@if ($psb->calonSiswa->prestasi)
+		@if ($psb->calonSiswa->prestasi->count())
 		@include('psb._prestasi', ['prestasi' => $psb->calonSiswa->prestasi])
 		@endif
 	</div>

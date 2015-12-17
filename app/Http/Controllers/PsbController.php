@@ -28,41 +28,19 @@ class PsbController extends Controller
     public function getStep1()
     {
         return view('psb.step1', [
-            'psb'               => new Psb(['jumlah_pembayaran' => 250000]),
-            'calonSiswa'        => new CalonSiswa,
-            'Wali'              => new OrangTuaCalonSiswa,
-            'user'              => new User,
+            'psb'           => new Psb(['jumlah_pembayaran' => 250000, 'tanggal_pembayaran' => date('Y-m-d')]),
+            'calonSiswa'    => new CalonSiswa,
+            'user'          => new User,
+            'step'          => 1
         ]);
     }
 
     // step 1, submit pembelian formulir
     public function postStep1(PsbRequest $request)
     {
-        // $this->validate($request, []);
-
-        $psb            = Psb::create($request->get('psb'));
-        $calonSiswa     = $psb->calonSiswa()->create($request->get('calonSiswa'));
-        $waliCalonSiswa = $calonSiswa->ortu()->create($request->get('Wali'));
+        $psb        = Psb::create($request->get('psb'));
+        $calonSiswa = $psb->calonSiswa()->create($request->get('calonSiswa'));
         
-        $dataAyah = $dataIbu = $request->get('Wali');
-        $dataAyah['hubungan']   = 'Ayah';
-        $dataIbu['hubungan']    = 'Ibu';
-        $dataIbu['nama']        = 'Nama Ibu';
-
-        $ayahCalonSiswa = $calonSiswa->ortu()->create($dataAyah);
-        $ibuCalonSiswa  = $calonSiswa->ortu()->create($dataIbu);
-
-        // isi alamat calon siswa berdasarkan alamat orang tua
-        $dataAlamat = $request->get('Wali');
-        $unset      = ['email', 'nama', 'pekerjaan', 'pendidikan', 'penghasilan_bulanan'];
-        
-        foreach ($unset as $u) {
-            unset($dataAlamat[$u]);
-        }
-
-        $dataAlamat['jenis_tinggal'] = 1; // bersama orang tua
-        $alamatCalonSiswa            = $calonSiswa->alamat()->create($dataAlamat);
-
         // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
         // Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
         //     $m->from('hello@app.com', 'Your Application');
@@ -70,19 +48,15 @@ class PsbController extends Controller
         //     $m->to($user->email, $user->name)->subject('Your Reminder!');
         // });
 
-        $user = (!Auth::check()) 
-            ? User::create([
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'password' => bcrypt($request->get('password')),
-                'role' => 'pendaftar'
-            ]) : Auth::user();
+        $user =  User::create([
+            'name' => $calonSiswa->nama,
+            'email' => $calonSiswa->nama,
+            'password' => bcrypt(strtotime($calonSiswa->created_at)),
+            'role' => 'pendaftar'
+        ]);
 
         $psb->update(['step' => 2, 'user_id' => $user->id]);
-
-        if (!Auth::check()) {
-            Auth::login($user);
-        }
+        Auth::login($user);
 
         return redirect('/psb/step2/'.$psb->id);
     }
@@ -109,13 +83,14 @@ class PsbController extends Controller
         return view('psb.step2', [
             'psb'               => $psb,
             'calonSiswa'        => $psb->calonSiswa,
-            'Wali'              => $psb->calonSiswa->ortu()->wali()->first(),
-            'Ayah'              => $psb->calonSiswa->ortu()->ayah()->first(),
-            'Ibu'               => $psb->calonSiswa->ortu()->ibu()->first(),
-            'alamatCalonSiswa'  => $psb->calonSiswa->alamat,
+            'Wali'              => new OrangTuaCalonSiswa(['hubungan' => 'Wali']),
+            'Ayah'              => new OrangTuaCalonSiswa(['hubungan' => 'Ayah']),
+            'Ibu'               => new OrangTuaCalonSiswa(['hubungan' => 'Ibu']),
+            'alamatCalonSiswa'  => new AlamatCalonSiswa,
             'asalSekolah'       => new AsalSekolah,
             'beasiswa'          => new BeasiswaCalonSiswa,
             'prestasi'          => new PrestasiCalonSiswa,
+            'step'              => 2
         ]);
     }
 
@@ -126,8 +101,8 @@ class PsbController extends Controller
 
         // simpan datanya
         $psb->calonSiswa()->update($request->get('calonSiswa'));
-        $psb->calonSiswa->ortu()->wali()->update($request->get('Wali'));
-        $psb->calonSiswa->ortu()->ayah()->update($request->get('Ayah'));
+        $psb->calonSiswa->ortu()->create($request->get('Wali'));
+        $psb->calonSiswa->ortu()->create($request->get('Ayah'));
         $psb->calonSiswa->ortu()->ibu()->update($request->get('Ibu'));
         $psb->calonSiswa->alamat()->update($request->get('alamatCalonSiswa'));
         

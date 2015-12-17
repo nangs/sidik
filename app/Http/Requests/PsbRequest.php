@@ -42,41 +42,7 @@ class PsbRequest extends Request
             // Data Siswa
             'calonSiswa.nama'           => 'required',
             'calonSiswa.jenis_kelamin'  => 'boolean',
-            'calonSiswa.nisn'           => 'required_unless:psb.jenjang,1',
-            'calonSiswa.tempat_lahir'   => 'required',
-            'calonSiswa.tanggal_lahir'  => 'date|required',
-            'calonSiswa.tinggi_badan'   => 'numeric',
-            'calonSiswa.berat_badan'    => 'numeric',
-            'calonSiswa.jumlah_saudara' => 'numeric',
-            // Data Wali Calon Siswa
-            'Wali.nama'                 => 'required',
-            'Wali.tahun_lahir'          => 'numeric',
-            'Wali.agama'                => 'required',
-            'Wali.pekerjaan'            => 'required',
-            'Wali.penghasilan_bulanan'  => 'required',
-            'Wali.pendidikan'           => 'required',
-            'Wali.alamat'               => 'required',
-            'Wali.rt'                   => 'required',
-            'Wali.rw'                   => 'required',
-            'Wali.kelurahan'            => 'required',
-            // 'Wali.kode_pos'             => 'required',
-            'Wali.kecamatan'            => 'required',
-            'Wali.kota'                 => 'required',
-            'Wali.provinsi'             => 'required',
-            'Wali.hp'                   => 'required',
-            'Wali.email'                => 'email',
-
-            // User
-            // 'name'                     => 'required',
-            // 'email'                    => 'required|email|max:255|unique:users',
-            // 'password'                 => 'required|confirmed|min:6',
         ];
-
-        if (!Auth::check()) {
-            $rules['POST']['name']      = 'required';
-            $rules['POST']['email']     = 'required|email|max:255|unique:users';
-            $rules['POST']['password']  = 'required|confirmed|min:6';
-        }
 
         $rules['PATCH'] = [
             // Data Siswa

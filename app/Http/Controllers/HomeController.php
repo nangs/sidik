@@ -12,22 +12,14 @@ class HomeController extends Controller
 {
     public function getIndex()
     {
-    	if (!Auth::check()) {
+    	$roles = \App\User::roleList();
+
+        if (!Auth::check()) {
     		return view('home1');
     	}
 
-    	$user = Auth::user();
-
-    	if ($user->role == 'pendaftar') {
-    		return redirect('/psb/admin/');
-    	}
-
-    	elseif ($user->role == 'admin') {
-    		return redirect('/psb/admin');
-    	}
-
         else {
-            return "Anda bukan siapa - siapa.";
+            return redirect('/psb/admin/');
         }
     }
 }

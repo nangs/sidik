@@ -104,6 +104,10 @@ Route::group(['middleware' => 'auth'], function() {
 		'except' => ['show']
 	]);
 
+	Route::resource('user', 'UserController', [
+		'except' => ['show']
+	]);
+
 	Route::get('/kalenderAkademik/event', 'KalenderAkademikController@event');
 	Route::get('/kalenderAkademik/kalender', 'KalenderAkademikController@kalender');
 
