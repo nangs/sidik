@@ -23,7 +23,7 @@
 
 				<p>
 					{!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
-					<!-- <a href="/password/email" class="btn btn-default">Forgot Password</a> -->
+					<a href="/home" class="btn btn-info"><span class="fa fa-home"></span> Beranda</a>
 				</p>
 
 			{!! Form::close() !!}

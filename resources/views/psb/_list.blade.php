@@ -67,25 +67,25 @@
         		@endif
 			</td>
 			<td>
-				@if (Auth::user()->role == 'admin')
+				@if (Auth::user()->role != 'pendaftar')
 
 				{!! Form::open(['method' => 'DELETE', 'url' => 'psb/'.$s->id, 'class' => 'form-inline']) !!}
 					@if ($s->status_pembayaran == 0)
-	        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-sm">Sudah Bayar</a>
+	        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-sm">Sudah Bayar</a> 
 
         			@elseif ($s->status_verifikasi_data == 0)
-	        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Data OK</a>
+	        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Data OK</a> 
 
         			@elseif ($s->status_test == 0)
-	        		<a href="/psb/testOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Test OK</a>
+	        		<a href="/psb/testOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Test OK</a> 
 
         			@elseif ($s->status_test == 1 && $s->status == 0)
-	        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-success bayar btn-sm">Terima</a>
+	        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-success bayar btn-sm">Terima</a> 
 	        		<a href="/psb/ditolak/{{ $s->id }}" class="btn btn-danger bayar btn-sm">Tolak</a>
         			@endif
 
 	        		<!-- <a href="/psb/{{ $s->id }}/edit" class="btn btn-success btn-xs">Edit</a> -->
-	        		<!-- {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs delete']) !!} -->
+	        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm delete']) !!}
         		{!! Form::close() !!}
 
         		@else

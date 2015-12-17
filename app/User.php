@@ -55,6 +55,7 @@ class User extends Model implements AuthenticatableContract,
             'keuangan'          => 'keuangan',
             'data'              => 'data',
             'test-wawancara'    => 'test-wawancara',
+            'seleksi'           => 'seleksi'
         ];
     }
 }

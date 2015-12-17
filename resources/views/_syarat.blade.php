@@ -81,27 +81,27 @@
 					<tbody>
 						<tr>
 							<td>Biaya Pendaftaran</td>
-							<td class="text-right">Rp 250.000</td>
+							<td class="text-right">250.000</td>
 						</tr>
 						<tr>
 							<td>SDIT-TQ</td>
-							<td class="text-right">Rp 6.150.000</td>
+							<td class="text-right">6.150.000</td>
 						</tr>
 						<tr>
 							<td>SMPIT-TQ</td>
-							<td class="text-right">Rp 12.500.000</td>
+							<td class="text-right">12.500.000</td>
 						</tr>
 						<tr>
 							<td>SMAIT-TQ</td>
-							<td class="text-right">Rp 13.000.000</td>
+							<td class="text-right">13.000.000</td>
 						</tr>
 						<tr>
 							<td>TBAIT-TQ</td>
-							<td class="text-right">Rp 12.500.000</td>
+							<td class="text-right">12.500.000</td>
 						</tr>
 						<tr>
 							<td>TDIT-TQ & PGBAIT-TQ</td>
-							<td class="text-right">Rp 2.400.000</td>
+							<td class="text-right">2.400.000</td>
 						</tr>
 					</tbody>
 				</table>
