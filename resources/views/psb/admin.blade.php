@@ -2,9 +2,9 @@
 
 @section('content')
 	
-	<!-- <a href="/psb/step1" class="btn btn-success pull-right">Tambah Calon Siswa Baru</a> -->
+	<a href="/psb/admin" class="btn btn-success pull-right"><span class="fa fa-refresh"></span> Refresh Daftar</a>
 
-	<h1 style="margin-top:0;">Daftar Calon Satri Baru</h1>
+	<h1>Daftar Calon Satri Baru</h1>
 	<hr />
 
 	<!-- Nav tabs -->

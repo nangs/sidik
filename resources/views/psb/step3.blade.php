@@ -7,7 +7,7 @@
 	<hr />
 
 
-	<div class="alert alert-success text-center">
+	<div class="alert alert-success">
 		<h4>
 
 			@if ($psb->status_verifikasi_data == 0)
@@ -15,6 +15,10 @@
 			Data telah kami simpan di database kami. 
 			Data akan kami verifikasi. 
 			Setelah data terverifikasi Anda dapat melihat jadwal test & wawancara di halaman ini.
+			Gunakan informasi berikut untuk login untuk melanjutkan ke proses berikutnya:
+			<br /><br />
+
+			<strong>Username/Password : {{$psb->calonSiswa->nama}}/{{strtotime($psb->calonSiswa->created_at)}}</strong>
 
 			@else
 
@@ -34,11 +38,10 @@
 
 			<br /><br />
 
-			Setelah Anda melakukan test & wawancara hasilnya dapat Anda lihat pada URL berikut:
-
+			Gunakan informasi berikut untuk login untuk melihat pengumuman:
 			<br /><br />
 
-			<a href="/psb/step4/{{ $psb->id }}">{{ url('/psb/step4/'.$psb->id)}}</a>
+			<strong>Username/Password : {{$psb->calonSiswa->nama}}/{{strtotime($psb->calonSiswa->created_at)}}</strong>
 
 			@endif
 

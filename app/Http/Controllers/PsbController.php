@@ -103,10 +103,10 @@ class PsbController extends Controller
         $psb->calonSiswa()->update($request->get('calonSiswa'));
         $psb->calonSiswa->ortu()->create($request->get('Wali'));
         $psb->calonSiswa->ortu()->create($request->get('Ayah'));
-        $psb->calonSiswa->ortu()->ibu()->update($request->get('Ibu'));
-        $psb->calonSiswa->alamat()->update($request->get('alamatCalonSiswa'));
+        $psb->calonSiswa->ortu()->create($request->get('Ibu'));
+        $psb->calonSiswa->alamat()->create($request->get('alamatCalonSiswa'));
         
-        if ($request->get('asalSekolah') && $request->get('asalSekolah')['nama'] !== ''){
+        if ($request->get('asalSekolah') && $request->get('asalSekolah')['nama'] !== '') {
             $asalSekolah = AsalSekolah::create($request->get('asalSekolah'));
 
             $dataCalonSiswa = $request->get('calonSiswa');
@@ -238,23 +238,6 @@ class PsbController extends Controller
         return redirect('/psb');
     }
 
-    public function getCari(Request $request)
-    {
-        $psb = Psb::where('created_at', date('Y-m-d H:i:s', $request->nomor_pendaftaran))->first();
-        
-        if ($psb) {
-            // TODO : redirect ke step yang sesuai
-            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
-        } else {
-            return view('errors.404');
-        }
-    }
-
-    public function getSyarat()
-    {
-        return view('psb.syarat');
-    }
-
     // untuk admin/panitia PSB, pake datatables
     public function getAdmin()
     {
@@ -266,11 +249,5 @@ class PsbController extends Controller
 
 
         return view('psb.admin', ['psbs' => $psbs]);
-    }
-
-    // chart, jumlah yg daftar per step, per tingkat, per jenjang, 
-    public function getJurnal()
-    {
-        return view('psb.jurnal', ['psb' => Psb::with('calonSiswa')->get()]);
     }
 }
