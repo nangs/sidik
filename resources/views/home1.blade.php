@@ -76,9 +76,9 @@
 
 @section('script')
 
-	<script type="text/javascript" src="/Highcharts/js/highcharts.js"></script>
-    <script type="text/javascript" src="/Highcharts/js/modules/funnel.js"></script>
-    <script type="text/javascript" src="/Highcharts/js/modules/exporting.js"></script>
+	<!-- <script type="text/javascript" src="/Highcharts/js/highcharts.js"></script> -->
+    <!-- <script type="text/javascript" src="/Highcharts/js/modules/funnel.js"></script> -->
+    <!-- <script type="text/javascript" src="/Highcharts/js/modules/exporting.js"></script> -->
 
     <script type="text/javascript">
 
@@ -120,7 +120,7 @@
         //             borderWidth: 0
         //         }
         //     },
-        //     series: {!!json_encode($data)!!}
+        //     series: !!json_encode($data)!!
         // });
 
 	</script>
