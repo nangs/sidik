@@ -53,6 +53,8 @@ class Psb extends Model
             1       => 'SD',
             2       => 'SMP',
             3       => 'SMA',
+            4       => 'TD-PG',
+            5       => 'TAHFIZH',
         ];
 
         return isset($list[$index]) ? $list[$index] : $list;
@@ -71,9 +73,18 @@ class Psb extends Model
             7       => 'VII',
             8       => 'VIII',
             9       => 'IX',
-            10       => 'X',
-            11       => 'XI',
-            12       => 'XII',
+            10      => 'X',
+            11      => 'XI',
+            12      => 'XII',
+            13      => 'TBA',
+            14      => 'Semester 1',
+            15      => 'Semester 2',
+            16      => 'Semester 3',
+            17      => 'Semester 4',
+            18      => 'Semester 5',
+            19      => 'Semester 6',
+            20      => 'Semester 7',
+            21      => 'Semester 8',
         ];
 
         return isset($list[$index]) ? $list[$index] : $list;

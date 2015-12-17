@@ -20,7 +20,8 @@
 		<tr>
 			<td>
 				<a href="/psb/show/{{ $s->id }}">{{ $s->calonSiswa->nama }}</a><br />
-				{{ $s->calonSiswa->nisn }}
+				<strong>Password:</strong> {{strtotime($s->calonSiswa->created_at)}}<br />
+				<strong>NISN:</strong> {{ $s->calonSiswa->nisn }}
 			</td>
 			<td>{{ $s->calonSiswa->jenis_kelamin == 1 ? 'L' : 'P' }}</td>
 			<td>{{ App\Psb::TingkatList($s->tingkat) }}</td>

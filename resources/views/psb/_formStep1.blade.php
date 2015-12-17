@@ -63,7 +63,9 @@
 			} else if (this.value == 2) {
 				$('#tingkat').html('<option value="7">VII</option> <option value="8">VIII</option> <option value="9">IX</option>');
 			} else if (this.value == 3) {
-				$('#tingkat').html('<option value="10">X</option> <option value="11">XI</option> <option value="12">XII</option>');
+				$('#tingkat').html('<option value="10">X</option> <option value="11">XI</option> <option value="12">XII</option><option value="13">TBA</option>');
+			} else if (this.value > 3) {
+				$('#tingkat').html('<option value="14">Semester 1</option> <option value="15">Semester 2</option> <option value="16">Semester 3</option><option value="17">Semester 4</option><option value="18">Semester 5</option><option value="19">Semester 6</option><option value="20">Semester 7</option><option value="21">Semester 8</option>');
 			}
 		});
 
