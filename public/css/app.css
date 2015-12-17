@@ -44,8 +44,14 @@ a, a:hover {
 }
 
 thead {
+    background-color: #dff0d8;
+    border-top: solid 2px #ddd;
+}
+
+tfoot {
 	background-color: #dff0d8;
-	border-top: solid 2px #ddd;
+    border-top: solid 2px #ddd;
+	border-bottom: solid 2px #ddd;
 }
 
 /*.img-thumbnail, 

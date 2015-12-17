@@ -9,39 +9,27 @@
 
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active">
-			<a href="#1" aria-controls="1" role="tab" data-toggle="tab">
-				SD <span class="badge">{{\App\Psb::sekarang()->SD()->count('id')}}</span>
+		@foreach (\App\Psb::jenjangList() as $k => $v)
+		@if ($k > 0)
+		<li role="presentation" class="@if ($k == 1) active @endif">
+			<a href="#{{$k}}" aria-controls="{{$k}}" role="tab" data-toggle="tab">
+				{{$v}} <span class="badge">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</span>
 			</a>
 		</li>
-		<li role="presentation">
-			<a href="#5" aria-controls="5" role="tab" data-toggle="tab">
-				SMP <span class="badge">{{\App\Psb::sekarang()->SMP()->count('id')}}</span>
-			</a>
-		</li>
-		<li role="presentation">
-			<a href="#6" aria-controls="6" role="tab" data-toggle="tab">
-				SMA <span class="badge">{{\App\Psb::sekarang()->SMA()->count('id')}}</span>
-			</a>
-		</li>
+		@endif
+		@endforeach
 	</ul>
 
 	<!-- Tab panes -->
 	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="1">
+		@foreach (\App\Psb::jenjangList() as $k => $v)
+		@if ($k > 0)
+		<div role="tabpanel" class="tab-pane @if ($k == 1) active @endif" id="{{$k}}">
 			<br />
-			@include('psb._list', ['jenjang' => 1])
+			@include('psb._list', ['jenjang' => $k])
 		</div>
-
-		<div role="tabpanel" class="tab-pane" id="5">
-			<br />
-			@include('psb._list', ['jenjang' => 2])
-		</div>
-
-		<div role="tabpanel" class="tab-pane" id="6">
-			<br />
-			@include('psb._list', ['jenjang' => 3])
-		</div>
+		@endif
+		@endforeach
 	</div>	
 
 @stop

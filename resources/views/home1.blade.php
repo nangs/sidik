@@ -31,7 +31,42 @@
     	</div>
 
     	<div class="col-md-6">
-            <h3>Grafik Pendaftar Santri Baru MIAS</h3><hr />
+            <h3>Laporan PSB MIAS 2016/2017</h3><hr />
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>JENJANG</th>
+                        <th style="width:13%" class="text-center">Daftar</th>
+                        <th style="width:13%" class="text-center">Isi Formulir</th>
+                        <th style="width:13%" class="text-center">Test & Wawancara</th>
+                        <th style="width:13%" class="text-center">Diterima</th>
+                        <th style="width:13%" class="text-center">Tidak Diterima</th>
+                        <th style="width:13%" class="text-center">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (\App\Psb::jenjangList() as $k => $v)
+                    @if ($k > 0 )
+                    <tr>
+                        <th>{{$v}}</th>
+                        <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
+                        <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
+                        <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
+                        <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
+                        <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
+                        <th class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</th>
+                    </tr>
+                    @endif
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="6" class="text-right">TOTAL</th>
+                        <th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+                    </tr>
+                </tfoot>
+            </table>
     		<div id="chart1"></div>
     	</div>
 
@@ -47,46 +82,46 @@
 
     <script type="text/javascript">
 
-        $('#chart1').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Jumlah Pendaftar Berdasarkan Jenjang'
-            },
-            subtitle: {
-                // text: ''
-            },
-            xAxis: {
-                categories: [
-                    'SD',
-                    'SMP',
-                    'SMA',
-                ],
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Jumlah Pendaftar'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: {!!json_encode($data)!!}
-        });
+        // $('#chart1').highcharts({
+        //     chart: {
+        //         type: 'column'
+        //     },
+        //     title: {
+        //         text: 'Jumlah Pendaftar Berdasarkan Jenjang'
+        //     },
+        //     subtitle: {
+        //         // text: ''
+        //     },
+        //     xAxis: {
+        //         categories: [
+        //             'SD',
+        //             'SMP',
+        //             'SMA',
+        //         ],
+        //         crosshair: true
+        //     },
+        //     yAxis: {
+        //         min: 0,
+        //         title: {
+        //             text: 'Jumlah Pendaftar'
+        //         }
+        //     },
+        //     tooltip: {
+        //         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        //         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        //             '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
+        //         footerFormat: '</table>',
+        //         shared: true,
+        //         useHTML: true
+        //     },
+        //     plotOptions: {
+        //         column: {
+        //             pointPadding: 0.2,
+        //             borderWidth: 0
+        //         }
+        //     },
+        //     series: {!!json_encode($data)!!}
+        // });
 
 	</script>
 

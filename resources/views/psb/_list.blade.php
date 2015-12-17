@@ -52,7 +52,6 @@
 			<td>
 				@if ($s->status_pembayaran)
 				<span class="label label-success">Lunas</span><br />
-				<!-- <i>{{$s->waktu_verifikasi_pembayaran}}</i> -->
 				@else
 				<span class="label label-default">Belum Diverifikasi</span>
         		@endif
@@ -98,9 +97,6 @@
 						@if ($s->status_pembayaran == 0 && (Auth::user()->role == 'keuangan' || Auth::user()->role == 'admin'))
 		        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-sm">Sudah Bayar</a>
 						
-						@elseif ($s->status_pembayaran == 1 && (Auth::user()->role == 'keuangan' || Auth::user()->role == 'admin'))
-		        		<a href="/psb/printTandaTerimaPembayaran/{{$s->id}}" class="btn btn-success btn-sm">Print Kwitansi</a>
-
 	        			@elseif ($s->status_verifikasi_data == 0 && (Auth::user()->role == 'data' || Auth::user()->role == 'admin'))
 		        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Data OK</a> 
 
