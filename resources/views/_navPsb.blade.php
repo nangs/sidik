@@ -11,37 +11,22 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
-            @if (!Auth::check())
-            <!-- <ul class="nav navbar-nav">
-                <li><a href="/psb/step1">DAFTAR</a></li>
-            </ul> -->
-            @endif
+            <ul class="nav navbar-nav">
+                <li><a href="/home">Beranda</a></li>
+            </ul>
             
-            <!-- {!! Form::open(['class' => 'navbar-form navbar-left', 'url' => '/psb/cari', 'method' => 'GET']) !!}
-                <div class="form-group">
-                    <input type="text" name="nomor_pendaftaran" placeholder="Cari Nomor Pendaftaran" class="form-control" style="width:300px;">
-                </div>
-                <button type="submit" class="btn btn-success">Cari</button>
-            {!! Form::close() !!} -->
-            
-
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
                     @if (Auth::user()->role == 'admin')
-                    <!-- <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin <strong class="caret"></strong></a>
-                    <ul class="dropdown-menu"> -->
                         <li><a href="/psb/admin">Calon Santri</a></li>
                         <li><a href="/ta">Tahun Ajaran</a></li>
                         <li><a href="/rekening">Daftar Rekening</a></li>
                         <li><a href="/user">User</a></li>
-                    <!-- </ul>
-                    </li> -->
                     @endif
 
                     @if(Auth::user()->role == 'pendaftar')
-                    <!-- <li><a href="/user/{{ Auth::user()->id }}"><span class="fa fa-user"></span></a></li> -->
-                    <li><a href="/psb/step1">Daftarkan Santri Baru</a></li>
-                    <li><a href="/psb/admin">Calon santri yang saya daftarkan</a></li>
+                    <!-- <li><a href="/psb/step1">Daftarkan Santri Baru</a></li>
+                    <li><a href="/psb/admin">Calon santri yang saya daftarkan</a></li> -->
                     @endif
 
                 <li><a href="/auth/logout"><span class="fa fa-sign-out"></span> Logout - {{Auth::user()->name}} ({{Auth::user()->role}})</a></li>
@@ -51,7 +36,7 @@
 
                 {!! Form::open(['class' => 'navbar-form navbar-left', 'url' => '/auth/login', 'method' => 'POST']) !!}
                     <div class="form-group">
-                        <input type="text" name="email" placeholder="Email" class="form-control">
+                        <input type="text" name="email" placeholder="Email/Username" class="form-control">
                         <input type="password" name="password" placeholder="Password" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-success"><span class="fa fa-sign-in"></span> Login</button>

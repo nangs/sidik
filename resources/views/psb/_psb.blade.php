@@ -5,8 +5,12 @@
 		<tr><th>Tingkat</th><td>: {{ \App\Psb::tingkatList($psb->tingkat) }}</td></tr>
 		<tr><th>Metode Pembayaran</th><td>: {{ \App\Psb::metodePembayaranList($psb->metode_pembayaran) }}</td></tr>
 		<tr><th>Jumlah Pembayaran</th><td>: Rp {{ number_format($psb->jumlah_pembayaran, 0, ',', '.') }}</td></tr>
+		
+		@if ($psb->metode_pembayaran != 'Tunai')
 		<tr><th>Rekening Asal Pembayaran</th><td>: {{ $psb->bank_asal }} - {{ $psb->pemegang_rekening_asal }} - {{ $psb->rekening_asal }}</td></tr>
 		<tr><th>Rekening Tujuan Pembayaran</th><td>: {{ $psb->rekeningTujuan ? $psb->rekeningTujuan->bank.' - '.$psb->rekeningTujuan->pemegang.' - '.$psb->rekeningTujuan->nomor : '' }}</td></tr>
+		@endif
+
 		<tr><th>Status Pembayaran</th>
 			<td>: @if ($psb->status_pembayaran)
 					<span class="label label-success">Lunas</span> {{$psb->waktu_verifikasi_pembayaran}}

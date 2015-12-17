@@ -13,7 +13,7 @@
 				<th>Nama</th>
 				<th>Email/Username</th>
 				<th>Role</th>
-				<th>Aksi</th>
+				<th style="width:100px;">Aksi</th>
 			</tr>
 		</thead>
 

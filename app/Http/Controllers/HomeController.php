@@ -13,10 +13,15 @@ class HomeController extends Controller
     public function getIndex()
     {
     	$roles = \App\User::roleList();
+        $user  = Auth::user();
 
         if (!Auth::check()) {
     		return view('home1');
     	}
+
+        elseif ($user->role == 'pendaftar') {
+            return redirect('/psb/step'.$user->psb->step.'/'.$user->psb->id);
+        }
 
         else {
             return redirect('/psb/admin/');

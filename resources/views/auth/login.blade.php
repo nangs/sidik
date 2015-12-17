@@ -15,7 +15,7 @@
 
 			{!! Form::open(['class' => 'form-horizontal']) !!}
 
-				<p>{!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}</p>
+				<p>{!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email/Username']) !!}</p>
 				<p>{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}</p>
 				<p>{!! Form::checkbox('remember') !!} Remember Me</p>
 

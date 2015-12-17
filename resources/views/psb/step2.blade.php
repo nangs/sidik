@@ -13,6 +13,10 @@
 				Data telah kami simpan di database kami. 
 				Pembayaran Anda sedang dikonfirmasi. 
 				Setelah pembayaran kami terima Anda dapat melengkapi formulir pendaftaran di halaman ini.
+				Gunakan informasi berikut untuk login untuk melanjutkan ke proses berikutnya:
+				<br /><br />
+
+				<strong>Username/Password : {{$psb->calonSiswa->nama}}/{{strtotime($psb->calonSiswa->created_at)}}</strong>
 			</h4>
 		</div>
 

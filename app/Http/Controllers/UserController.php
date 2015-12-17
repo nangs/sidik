@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $data               = $request->all();
         $data['password']   = bcrypt($data['password']);
-        
+
         User::create($data);
 
         return redirect('/user');
@@ -75,7 +75,18 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $data = $request->all();
+
+        if ($data['password'] !== '') {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        else {
+            unset($data['password']);
+        }
+
+        $user->update($data);
+
         return redirect('/user');
     }
 
