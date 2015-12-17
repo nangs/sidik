@@ -257,7 +257,7 @@ class PsbController extends Controller
         PrestasiCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         BeasiswaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         // hapus data user
-        User::find($psb->user_id)->delete();
+        User::where('id', $psb->user_id)->delete();
         // hapus data siswa
         CalonSiswa::where('psb_id', $psb->id)->delete();
 
