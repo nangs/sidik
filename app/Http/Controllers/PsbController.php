@@ -235,15 +235,17 @@ class PsbController extends Controller
     public function destroy(Psb $psb)
     {
         // hapus data orang tua
-        Psb::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
+        OrangTuaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         // hapus data alamat
-
+        AlamatCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         // hapus data prestasi & beasiswa
-
+        PrestasiCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
+        BeasiswaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         // hapus data siswa
+        CalonSiswa::where('psb_id', $psb->id)->delete();
 
         $psb->delete();
-        return redirect('/psb');
+        return redirect('/psb/admin');
     }
 
     // untuk admin/panitia PSB, pake datatables

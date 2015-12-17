@@ -146,6 +146,8 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::get('diterima/{psb}', 'PsbController@getDiterima');
 		Route::get('ditolak/{psb}', 'PsbController@getDitolak');
 
+		Route::delete('/{psb}', 'PsbController@destroy');
+
 	});
 
 });
