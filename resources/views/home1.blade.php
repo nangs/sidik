@@ -36,7 +36,10 @@
             <table class="table table-hover table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>JENJANG</th>
+                        <th rowspan="2" class="text-center" style="vertical-align:middle;">JENJANG</th>
+                        <th colspan="6" class="text-center">PROSES</th>
+                    </tr>
+                    <tr>
                         <th style="width:13%" class="text-center">Daftar</th>
                         <th style="width:13%" class="text-center">Isi Formulir</th>
                         <th style="width:13%" class="text-center">Test & Wawancara</th>
@@ -49,7 +52,7 @@
                     @foreach (\App\Psb::jenjangList() as $k => $v)
                     @if ($k > 0 )
                     <tr>
-                        <th>{{$v}}</th>
+                        <th class="text-center">{{$v}}</th>
                         <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
                         <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
                         <td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
