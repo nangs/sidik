@@ -9,7 +9,7 @@
 		<tbody>
 			<tr>
 				<th>Nomor Pendaftaran</th>
-				<th>: {{strtotime($psb->calonSiswa->created_at)}}</th>
+				<th>: PSB-{{\App\Psb::jenjangList($psb->jenjang)}}-{{App\Ta::active()->first()->periode}}-{{strtotime($psb->calonSiswa->created_at)}}</th>
 			</tr>
 			<tr>
 				<th style="width:170px;">Nama Lengkap</th>

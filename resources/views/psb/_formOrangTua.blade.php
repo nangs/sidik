@@ -6,6 +6,17 @@
 
 	<div class="panel-body">
 
+		@if ($hubungan == 'Wali')
+		<div class="form-group">
+			{!! Form::label('', 'Data Wali:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::radio('datawali', 'Ayah', 0) !!} Sama Dengan Ayah &nbsp; &nbsp;
+				{!! Form::radio('datawali', 'Ibu', 0) !!} Sama Dengan Ibu  &nbsp; &nbsp;
+				{!! Form::radio('datawali', 'Wali', 0) !!} Berbeda dari Ayah & Ibu
+			</div>
+		</div>
+		@endif
+
 		{!! Form::hidden($hubungan.'[hubungan]', $hubungan) !!}
 
 		<div class="form-group @if ($errors->has($hubungan.'.nama')) has-error @endif">
@@ -27,7 +38,7 @@
 		<div class="form-group @if ($errors->has($hubungan.'.agama')) has-error @endif">
 			{!! Form::label($hubungan.'[agama]', 'Agama:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::select($hubungan.'[agama]', App\OrangTuaCalonSiswa::agamaList(), $$hubungan->agama, ['class' => 'form-control']) !!}
+				{!! Form::text($hubungan.'[agama]', $$hubungan->agama, ['class' => 'form-control', 'readonly' => true]) !!}
 				@if ($errors->has($hubungan.'.agama')) <p class="help-block">{{ $errors->first($hubungan.'.agama') }}</p> @endif
 			</div>
 		</div>

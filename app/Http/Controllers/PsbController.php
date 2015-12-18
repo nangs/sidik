@@ -97,9 +97,9 @@ class PsbController extends Controller
         return view('psb.step2', [
             'psb'               => $psb,
             'calonSiswa'        => $psb->calonSiswa,
-            'Wali'              => new OrangTuaCalonSiswa(['hubungan' => 'Wali']),
-            'Ayah'              => new OrangTuaCalonSiswa(['hubungan' => 'Ayah']),
-            'Ibu'               => new OrangTuaCalonSiswa(['hubungan' => 'Ibu']),
+            'Wali'              => new OrangTuaCalonSiswa(['hubungan' => 'Wali', 'agama' => 'Islam']),
+            'Ayah'              => new OrangTuaCalonSiswa(['hubungan' => 'Ayah', 'agama' => 'Islam']),
+            'Ibu'               => new OrangTuaCalonSiswa(['hubungan' => 'Ibu', 'agama' => 'Islam']),
             'alamatCalonSiswa'  => new AlamatCalonSiswa,
             'asalSekolah'       => new AsalSekolah,
             'beasiswa'          => new BeasiswaCalonSiswa,
@@ -111,7 +111,7 @@ class PsbController extends Controller
     // step 2, submit formulir
     public function patchStep2(Psb $psb, PsbRequest $request)
     {
-        // dd($request->prestasi);
+        // dd($request);
 
         // simpan datanya
         $psb->calonSiswa()->update($request->get('calonSiswa'));

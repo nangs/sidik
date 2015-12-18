@@ -39,7 +39,7 @@
 		});
 
 		// $( "#birds" ).autocomplete({
-		// 	source: "search.php",
+		// 	source: "search.php", // bisa url, bisa array/object
 		// 	minLength: 2,
 		// 	select: function( event, ui ) {
 		// 		log( ui.item ?

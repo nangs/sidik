@@ -11,9 +11,9 @@
 		@include('psb._formPrestasi')
 	@endif
 
-	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ayah'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ibu'])
+	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
 	@include('psb._formAlamat')
 
 	<hr />
@@ -37,6 +37,7 @@
 	// $('select').select2();
 
 	$(function() {
+
 		$( "#tgllahir" ).datepicker({
 			changeMonth: true,
 			changeYear: true,
@@ -44,6 +45,35 @@
 			maxDate: '-5y',
 			dateFormat: 'yy-mm-dd'
 		});
+
+		$('input[name=datawali]').change(function() {
+			var t = this;
+			if (this.value == 'Ayah' || this.value == 'Ibu') {
+				var o = {};
+			    var a = $('[name^='+this.value+']').serializeArray();
+			    $.each(a, function() {
+			        if (o[this.name] !== undefined) {
+			            if (!o[this.name].push) {
+			                o[this.name] = [o[this.name]];
+			            }
+			            o[this.name].push(this.value || '');
+			        } else {
+			            o[this.name] = this.value || '';
+			        }
+			    });
+			    // console.log(o);
+
+			    $.each(o, function(i,v) {
+			    	if (i != t.value+'[hubungan]') {
+			    		$('[name="'+i.replace(t.value, 'Wali')+'"]').val(v);
+			    	}
+			    });
+			} else {
+	    		$('[name^=Wali]').value = null;
+	    		$('[name="Wali[hubungan]"]').value = 'Wali';
+			}
+		});
+
 	});
 </script>
 

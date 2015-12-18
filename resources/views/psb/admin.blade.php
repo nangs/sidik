@@ -57,7 +57,7 @@
 						type: 'GET',
 						dataType: 'json',
 						success: function(j) {
-							
+
 							if (j.success == true) {
 								$('#list'+j.jenjang).html(j.html);
 								$('#psb-list-'+j.jenjang).DataTable();
@@ -79,6 +79,8 @@
 		fungsi('.tombol-confirm');
 
 		$('#psb-list-1, #psb-list-2, #psb-list-3, #psb-list-4, #psb-list-5').DataTable();
+
+		// {pageLength: 3} ==> for datatables
 
 	</script>
 
