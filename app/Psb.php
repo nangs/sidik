@@ -13,7 +13,7 @@ class Psb extends Model
     	'jenjang', 'tingkat', 'step', 'status', 'keterangan', 'tahun_ajaran',
         'tanggal_pembayaran', 'bank_asal', 'rekening_asal', 'rekening_tujuan_id',
         'pemegang_rekening_asal', 'metode_pembayaran',
-        'jumlah_pembayaran', 'bukti_pembayaran', 'user_id'
+        'jumlah_pembayaran', 'bukti_pembayaran', 'user_id', 'rapor', 'kk', 'akta', 'foto', 'sk_sehat'
     ];
 
     public function scopeSD($query)

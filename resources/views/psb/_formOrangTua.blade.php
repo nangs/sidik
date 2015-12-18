@@ -6,12 +6,22 @@
 
 	<div class="panel-body">
 
+		@if ($hubungan == 'Ibu')
+		<div class="form-group">
+			{!! Form::label('', 'Alamat Ibu:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::radio('alamatibu', 'sama', 0) !!} Sama dengan Ayah &nbsp; &nbsp;
+				{!! Form::radio('alamatibu', 'beda', 0) !!} Berbeda dari Ayah
+			</div>
+		</div>
+		@endif
+
 		@if ($hubungan == 'Wali')
 		<div class="form-group">
 			{!! Form::label('', 'Data Wali:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::radio('datawali', 'Ayah', 0) !!} Sama Dengan Ayah &nbsp; &nbsp;
-				{!! Form::radio('datawali', 'Ibu', 0) !!} Sama Dengan Ibu  &nbsp; &nbsp;
+				{!! Form::radio('datawali', 'Ayah', 0) !!} Sama dengan Ayah &nbsp; &nbsp;
+				{!! Form::radio('datawali', 'Ibu', 0) !!} Sama dengan Ibu  &nbsp; &nbsp;
 				{!! Form::radio('datawali', 'Wali', 0) !!} Berbeda dari Ayah & Ibu
 			</div>
 		</div>

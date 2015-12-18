@@ -46,6 +46,34 @@
 			dateFormat: 'yy-mm-dd'
 		});
 
+		// copy alamat ibu dari ayah
+		// $('input[name=alamatibu]').change(function() {
+		// 	var t = this;
+		// 	if (this.value == 'sama') {
+		// 		var o = {};
+		// 	    var a = $('[name^=Ayah]').serializeArray();
+		// 	    $.each(a, function() {
+		// 	        if (o[this.name] !== undefined) {
+		// 	            if (!o[this.name].push) {
+		// 	                o[this.name] = [o[this.name]];
+		// 	            }
+		// 	            o[this.name].push(this.value || '');
+		// 	        } else {
+		// 	            o[this.name] = this.value || '';
+		// 	        }
+		// 	    });
+		// 	    // console.log(o);
+
+		// 	    $.each(o, function(i,v) {
+		// 	    	var exclude = ['Ayah[nama]', ''];
+		// 	    	$('[name="'+i.replace(t.value, 'Ibu')+'"]').val(v);
+		// 	    });
+		// 	} else {
+	 //    		// TODO : kosongin form alamat
+		// 	}
+		// });
+
+		// copy data wali dari ayah / ibu
 		$('input[name=datawali]').change(function() {
 			var t = this;
 			if (this.value == 'Ayah' || this.value == 'Ibu') {

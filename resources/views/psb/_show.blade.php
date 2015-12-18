@@ -26,7 +26,8 @@
 
 	<div role="tabpanel" class="tab-pane" id="9">
 		<br />
-		@include('psb._dokumen', ['dokumen' => $psb->calonSiswa->dokumen])
+		<!-- include('psb._dokumen', ['dokumen' => $psb->calonSiswa->dokumen]) -->
+		@include('psb._dokumen')
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="5">

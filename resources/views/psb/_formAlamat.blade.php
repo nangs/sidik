@@ -6,6 +6,16 @@
 
 	<div class="panel-body">
 
+		<div class="form-group">
+			{!! Form::label('', 'Alamat Sama Dengan:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::radio('alamatsiswa', 'ayah', 0) !!}  Ayah &nbsp; &nbsp;
+				{!! Form::radio('alamatsiswa', 'ibu', 0) !!} Ibu &nbsp; &nbsp;
+				{!! Form::radio('alamatsiswa', 'wali', 0) !!} Wali &nbsp; &nbsp;
+				{!! Form::radio('alamatsiswa', 'beda', 0) !!} Berbeda
+			</div>
+		</div>
+
 		<div class="form-group @if ($errors->has('alamatCalonSiswa.jenis_tinggal')) has-error @endif">
 			{!! Form::label('alamatCalonSiswa[jenis_tinggal]', 'Jenis Tinggal:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">

@@ -114,6 +114,7 @@ class PsbController extends Controller
         // dd($request);
 
         // simpan datanya
+        $psb->update($request->get('psb'));
         $psb->calonSiswa()->update($request->get('calonSiswa'));
         $psb->calonSiswa->ortu()->create($request->get('Wali'));
         $psb->calonSiswa->ortu()->create($request->get('Ayah'));
@@ -142,28 +143,28 @@ class PsbController extends Controller
         }
 
         // upload dokumen
-        $docs = [
-            'rapor'     => 'Rapor 2 Semester Terakhir', 
-            'kk'        => 'Kartu Keluarga', 
-            'akta'      => 'Akta Kelahiran', 
-            'foto'      => 'Pas Foto', 
-            'sk_sehat'  => 'Surat Keterangan Sehat'
-        ];
+        // $docs = [
+        //     'rapor'     => 'Rapor 2 Semester Terakhir', 
+        //     'kk'        => 'Kartu Keluarga', 
+        //     'akta'      => 'Akta Kelahiran', 
+        //     'foto'      => 'Pas Foto', 
+        //     'sk_sehat'  => 'Surat Keterangan Sehat'
+        // ];
 
-        foreach ($docs as $k => $v) {
+        // foreach ($docs as $k => $v) {
 
-            if ($request->hasFile($k)) {
+        //     if ($request->hasFile($k)) {
             
-                $file = $request->file($k);
+        //         $file = $request->file($k);
                 
-                $fileName = time().'-'.$file->getClientOriginalName();
-                $file->move('uploads', $fileName);
+        //         $fileName = time().'-'.$file->getClientOriginalName();
+        //         $file->move('uploads', $fileName);
 
-                $psb->calonSiswa->dokumen()->create(['nama' => $v, 'file' => $fileName]);
+        //         $psb->calonSiswa->dokumen()->create(['nama' => $v, 'file' => $fileName]);
 
-            }
+        //     }
 
-        }
+        // }
 
         $psb->update(['step' => 3]);
 
