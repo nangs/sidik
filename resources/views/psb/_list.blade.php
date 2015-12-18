@@ -39,7 +39,6 @@
 			<td>{{ $s->calonSiswa->jenis_kelamin == 1 ? 'L' : 'P' }}</td>
 			<td>{{ App\Psb::TingkatList($s->tingkat) }}</td>
 
-			@if (Auth::user()->role == 'keuangan' || Auth::user()->role == 'admin')
 			<td>
 				{{ $s->metode_pembayaran }}<br />
 				<i>{{ $s->tanggal_pembayaran }}</i><br />
@@ -56,9 +55,7 @@
 				<span class="label label-default">Belum Diverifikasi</span>
         		@endif
 			</td>
-			@endif
 
-			@if (Auth::user()->role == 'data' || Auth::user()->role == 'admin')
 			<td>
 				@if ($s->status_verifikasi_data)
 				<span class="label label-success">Lengkap</span><br />
@@ -67,9 +64,7 @@
 				<span class="label label-default">Belum Diverifikasi</span>
         		@endif
 			</td>
-			@endif
 
-			@if (Auth::user()->role == 'test-wawancara' || Auth::user()->role == 'admin')
 			<td>
 				@if ($s->status_test)
 				<span class="label label-success">Sudah Test</span><br />
@@ -77,9 +72,7 @@
 				<span class="label label-default">Belum Test</span>
         		@endif
 			</td>
-			@endif
 
-			@if (Auth::user()->role == 'seleksi' || Auth::user()->role == 'admin')
 			<td>
 				@if ($s->status == 1)
 				<span class="label label-success">Ya</span><br />
@@ -89,34 +82,31 @@
 				<span class="label label-default">Belum Dikonfirmasi</span>
         		@endif
 			</td>
-			@endif
 
 			<td>
-				{!! Form::open(['method' => 'DELETE', 'url' => 'psb/'.$s->id, 'class' => 'form-inline']) !!}
-					<div class="btn-group">
-						@if ($s->status_pembayaran == 0 && (Auth::user()->role == 'keuangan' || Auth::user()->role == 'admin'))
-		        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success bayar btn-sm">Sudah Bayar</a>
-						
-	        			@elseif ($s->status_verifikasi_data == 0 && (Auth::user()->role == 'data' || Auth::user()->role == 'admin'))
-		        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Data OK</a> 
+				<div class="btn-group">
+					@if ($s->status_pembayaran == 0 && (Auth::user()->role == 'keuangan' || Auth::user()->role == 'admin'))
+	        		<a href="/psb/sudahBayar/{{ $s->id }}" class="btn btn-success tombol-confirm btn-sm">Sudah Bayar</a>
+					
+        			@elseif ($s->status_verifikasi_data == 0 && (Auth::user()->role == 'data' || Auth::user()->role == 'admin'))
+	        		<a href="/psb/dataOk/{{ $s->id }}" class="btn btn-success tombol-confirm btn-sm">Data OK</a> 
 
-	        			@elseif ($s->status_test == 0 && (Auth::user()->role == 'test-wawancara' || Auth::user()->role == 'admin'))
-		        		<a href="/psb/testOk/{{ $s->id }}" class="btn btn-success bayar btn-sm">Test OK</a> 
+        			@elseif ($s->status_test == 0 && (Auth::user()->role == 'test-wawancara' || Auth::user()->role == 'admin'))
+	        		<a href="/psb/testOk/{{ $s->id }}" class="btn btn-success tombol-confirm btn-sm">Test OK</a> 
 
-	        			@elseif ($s->status_test == 1 && $s->status == 0 && (Auth::user()->role == 'seleksi' || Auth::user()->role == 'admin'))
-		        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-success bayar btn-sm">Terima</a> 
-		        			@if ($s->jenjang == 3)
-		        				<a href="/psb/diterimaTba/{{ $s->id }}" class="btn btn-success bayar btn-sm">Terima di TBA</a> 
-		        			@endif
-		        		<a href="/psb/ditolak/{{ $s->id }}" class="btn btn-danger bayar btn-sm">Tolak</a>
+        			@elseif ($s->status_test == 1 && $s->status == 0 && (Auth::user()->role == 'seleksi' || Auth::user()->role == 'admin'))
+	        		<a href="/psb/diterima/{{ $s->id }}" class="btn btn-success tombol-confirm btn-sm">Terima</a> 
+	        			@if ($s->jenjang == 3)
+	        				<a href="/psb/diterimaTba/{{ $s->id }}" class="btn btn-success tombol-confirm btn-sm">Terima di TBA</a> 
 	        			@endif
+	        		<a href="/psb/ditolak/{{ $s->id }}" class="btn btn-danger tombol-confirm btn-sm">Tolak</a>
+        			@endif
 
-	        			@if (Auth::user()->role == 'admin')
-		        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm delete']) !!}
-		        		@endif
+        			@if (Auth::user()->role == 'admin')
+	        		<a href="/psb/delete/{{ $s->id }}" class="btn btn-danger tombol-confirm btn-sm"><span class="fa fa-trash"></span></a>
+	        		@endif
 
-	        		</div>
-        		{!! Form::close() !!}
+        		</div>
 			</td>
 		</tr>
 		@endif

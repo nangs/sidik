@@ -62,13 +62,27 @@ class PsbController extends Controller
     }
 
     // step 2, isi formulir
-    public function getSudahBayar(Psb $psb)
+    public function getSudahBayar(Psb $psb, Request $request)
     {
         $psb->status_pembayaran             = 1;
         $psb->waktu_verifikasi_pembayaran   = Carbon::now();
         $psb->save();
 
-        return redirect('/psb/admin');
+        if ($request->ajax()) {
+            return json_encode([
+                'success'   => true,
+                'jenjang'   => $psb->jenjang,
+                'html'      => view('psb._list', [
+                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
+                    'jenjang'   => $psb->jenjang
+                ])->render(),
+            ]);
+        }
+
+        else {
+            return redirect('/psb/admin');
+        }
+
     }
 
     // step 2 jika sudah bayar tampilkan formulir lengkap, jika blm tampilkan status pembayaran blm dikonfirmasi
@@ -164,13 +178,26 @@ class PsbController extends Controller
     }
 
     // step 3, silakan test & wawancara
-    public function getDataOk(Psb $psb)
+    public function getDataOk(Psb $psb, Request $request)
     {
         $psb->status_verifikasi_data  = 1;
         $psb->waktu_verifikasi_data   = Carbon::now();
         $psb->save();
 
-        return redirect('/psb/admin');
+        if ($request->ajax()) {
+            return json_encode([
+                'success'   => true,
+                'jenjang'   => $psb->jenjang,
+                'html'      => view('psb._list', [
+                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
+                    'jenjang'   => $psb->jenjang
+                ])->render(),
+            ]);
+        }
+
+        else {
+            return redirect('/psb/admin');
+        }
     }
 
     // tampilkan data sedang diverifikasi, jika data sudah diverifikasi tampilkan jadwal test & wawancara
@@ -184,41 +211,93 @@ class PsbController extends Controller
     }
 
     // step 4, tunggu pengumuman
-    public function getTestOk(Psb $psb)
+    public function getTestOk(Psb $psb, Request $request)
     {
         $psb->status_test  = 1;
         $psb->step         = 4;
         $psb->save();
 
-        return redirect('/psb/admin');
+        if ($request->ajax()) {
+            return json_encode([
+                'success'   => true,
+                'jenjang'   => $psb->jenjang,
+                'html'      => view('psb._list', [
+                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
+                    'jenjang'   => $psb->jenjang
+                ])->render(),
+            ]);
+        }
+
+        else {
+            return redirect('/psb/admin');
+        }
     }
 
     // step 4, pengumuman
-    public function getDiterima(Psb $psb)
+    public function getDiterima(Psb $psb, Request $request)
     {
         $psb->status  = 1;
         $psb->save();
 
-        return redirect('/psb/admin');
+        if ($request->ajax()) {
+            return json_encode([
+                'success'   => true,
+                'jenjang'   => $psb->jenjang,
+                'html'      => view('psb._list', [
+                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
+                    'jenjang'   => $psb->jenjang
+                ])->render(),
+            ]);
+        }
+
+        else {
+            return redirect('/psb/admin');
+        }
     }
 
     // step 4, pengumuman
-    public function getDiterimaTba(Psb $psb)
+    public function getDiterimaTba(Psb $psb, Request $request)
     {
         $psb->status  = 1;
         $psb->tingkat = 13; // TBA
         $psb->save();
 
-        return redirect('/psb/admin');
+        if ($request->ajax()) {
+            return json_encode([
+                'success'   => true,
+                'jenjang'   => $psb->jenjang,
+                'html'      => view('psb._list', [
+                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
+                    'jenjang'   => $psb->jenjang
+                ])->render(),
+            ]);
+        }
+
+        else {
+            return redirect('/psb/admin');
+        }
     }
 
     // step 4, pengumuman
-    public function getDitolak(Psb $psb)
+    public function getDitolak(Psb $psb, Request $request)
     {
         $psb->status  = 2;
         $psb->save();
 
-        return redirect('/psb/admin');
+        if ($request->ajax()) {
+            return json_encode([
+                'success'   => true,
+                'jenjang'   => $psb->jenjang,
+                'html'      => view('psb._list', [
+                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
+                    'jenjang'   => $psb->jenjang
+                ])->render(),
+            ]);
+        }
+
+        else {
+            return redirect('/psb/admin');
+        }
     }
 
     // tampilkan status selesai, tampilkan pengumuman. TODO : sesuaikan step
@@ -247,22 +326,34 @@ class PsbController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Psb $psb)
+    public function getDelete(Psb $psb, Request $request)
     {
-        // hapus data orang tua
         OrangTuaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
-        // hapus data alamat
         AlamatCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
-        // hapus data prestasi & beasiswa
         PrestasiCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         BeasiswaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
-        // hapus data user
         User::where('id', $psb->user_id)->delete();
-        // hapus data siswa
         CalonSiswa::where('psb_id', $psb->id)->delete();
 
+        $jenjang = $psb->jenjang;
+
         $psb->delete();
-        return redirect('/psb/admin');
+        
+
+        if ($request->ajax()) {
+            return json_encode([
+                'success'   => true,
+                'jenjang'   => $psb->jenjang,
+                'html'      => view('psb._list', [
+                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
+                    'jenjang'   => $psb->jenjang
+                ])->render(),
+            ]);
+        }
+
+        else {
+            return redirect('/psb/admin');
+        }
     }
 
     // untuk admin/panitia PSB, pake datatables

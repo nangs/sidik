@@ -26,7 +26,9 @@
 		@if ($k > 0)
 		<div role="tabpanel" class="tab-pane @if ($k == 1) active @endif" id="{{$k}}">
 			<br />
-			@include('psb._list', ['jenjang' => $k])
+			<div id="list{{$k}}">
+				@include('psb._list', ['jenjang' => $k])
+			</div>
 		</div>
 		@endif
 		@endforeach
@@ -46,12 +48,37 @@
 
 	<script type="text/javascript">
 		
-		$('.delete, .bayar').click(function() {
-			if(confirm('Anda yakin?')) { return true; };
-			return false;
-		});
+		var fungsi = function(e) {
+			$(e).click(function() {
+				if(confirm('Anda yakin?')) {
+					// console.log(this.href);
+					$.ajax({
+						url: this.href,
+						type: 'GET',
+						dataType: 'json',
+						success: function(j) {
+							
+							if (j.success == true) {
+								$('#list'+j.jenjang).html(j.html);
+								$('#psb-list-'+j.jenjang).DataTable();
+								fungsi('#psb-list-'+j.jenjang+' .tombol-confirm');
+							} else {
+								alert(j.message)
+							}
+							
+						}
+					});
 
-		$('#psb-list-1, #psb-list-2, #psb-list-3').DataTable();
+					return false;
+				};
+
+				return false;
+			});
+		};
+
+		fungsi('.tombol-confirm');
+
+		$('#psb-list-1, #psb-list-2, #psb-list-3, #psb-list-4, #psb-list-5').DataTable();
 
 	</script>
 
