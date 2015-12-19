@@ -1,7 +1,7 @@
 @extends('psb')
 
 @section('content')
-	
+
 	<a href="/user/create" class="btn btn-success pull-right">Tambah User</a>
 
 	<h1>Daftar User</h1>
@@ -13,7 +13,7 @@
 				<th>Nama</th>
 				<th>Email/Username</th>
 				<th>Role</th>
-				<th style="width:100px;">Aksi</th>
+				<th>Aksi</th>
 			</tr>
 		</thead>
 

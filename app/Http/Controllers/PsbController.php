@@ -40,7 +40,7 @@ class PsbController extends Controller
     {
         $psb        = Psb::create($request->get('psb'));
         $calonSiswa = $psb->calonSiswa()->create($request->get('calonSiswa'));
-        
+
         // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
         // Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
         //     $m->from('hello@app.com', 'Your Application');
@@ -120,7 +120,7 @@ class PsbController extends Controller
         $psb->calonSiswa->ortu()->create($request->get('Ayah'));
         $psb->calonSiswa->ortu()->create($request->get('Ibu'));
         $psb->calonSiswa->alamat()->create($request->get('alamatCalonSiswa'));
-        
+
         if ($request->get('asalSekolah') && $request->get('asalSekolah')['nama'] !== '') {
             $asalSekolah = AsalSekolah::create($request->get('asalSekolah'));
 
@@ -130,33 +130,33 @@ class PsbController extends Controller
         }
 
         // data beasiswa & prestasi
-        // foreach ($request->get('beasiswa') as $b) {
-        //     if ($b['jenis'] !== '') {
-        //         $psb->calonSiswa->beasiswa()->create($b);
-        //     }
-        // }
+        foreach ($request->get('beasiswa') as $b) {
+            if ($b['jenis'] !== '') {
+                $psb->calonSiswa->beasiswa()->create($b);
+            }
+        }
 
-        // foreach ($request->get('prestasi') as $b) {
-        //     if ($b['tahun'] !== '') {
-        //         $psb->calonSiswa->prestasi()->create($b);
-        //     }
-        // }
+        foreach ($request->get('prestasi') as $b) {
+            if ($b['tahun'] !== '') {
+                $psb->calonSiswa->prestasi()->create($b);
+            }
+        }
 
         // upload dokumen
         // $docs = [
-        //     'rapor'     => 'Rapor 2 Semester Terakhir', 
-        //     'kk'        => 'Kartu Keluarga', 
-        //     'akta'      => 'Akta Kelahiran', 
-        //     'foto'      => 'Pas Foto', 
+        //     'rapor'     => 'Rapor 2 Semester Terakhir',
+        //     'kk'        => 'Kartu Keluarga',
+        //     'akta'      => 'Akta Kelahiran',
+        //     'foto'      => 'Pas Foto',
         //     'sk_sehat'  => 'Surat Keterangan Sehat'
         // ];
 
         // foreach ($docs as $k => $v) {
 
         //     if ($request->hasFile($k)) {
-            
+
         //         $file = $request->file($k);
-                
+
         //         $fileName = time().'-'.$file->getClientOriginalName();
         //         $file->move('uploads', $fileName);
 
@@ -339,7 +339,7 @@ class PsbController extends Controller
         $jenjang = $psb->jenjang;
 
         $psb->delete();
-        
+
 
         if ($request->ajax()) {
             return json_encode([
