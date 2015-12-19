@@ -31,7 +31,10 @@ class BikinStatuses extends Migration
     public function down()
     {
         Schema::table('psb', function (Blueprint $table) {
-            //
+            $table->dropColumn([
+                'status_formulir', 'status_berkas', 'status_test'. 'status_wawancara',
+                'status_wawancara_ortu', 'status_penerimaan', 'status_tkd'
+            ]);
         });
     }
 }
