@@ -14,12 +14,12 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
- 
+
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
 
     @yield('css')
-    
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,16 +29,16 @@
   </head>
 
   <body>
-    
+
     <div class="container">
-        	
+
         @yield('content')
 
     </div>
 
     <script type="text/javascript">
-        window.print();
+        // window.print();
     </script>
-    
+
   </body>
 </html>

@@ -325,6 +325,11 @@ class PsbController extends Controller
         return view('psb.printNomor', ['psb' => $psb]);
     }
 
+    public function getPrintFormulir(Psb $psb)
+    {
+        return view('psb.printFormulir', ['psb' => $psb]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
