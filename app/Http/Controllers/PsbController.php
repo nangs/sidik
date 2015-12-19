@@ -130,16 +130,20 @@ class PsbController extends Controller
         }
 
         // data beasiswa & prestasi
-        foreach ($request->get('beasiswa') as $b) {
+        if ($request->get('beasiswa') !== null) {
+          foreach ($request->get('beasiswa') as $b) {
             if ($b['jenis'] !== '') {
-                $psb->calonSiswa->beasiswa()->create($b);
+              $psb->calonSiswa->beasiswa()->create($b);
             }
+          }
         }
 
-        foreach ($request->get('prestasi') as $b) {
-            if ($b['tahun'] !== '') {
-                $psb->calonSiswa->prestasi()->create($b);
-            }
+        if ($request->get('prestasi') !== null) {
+          foreach ($request->get('prestasi') as $b) {
+              if ($b['tahun'] !== '') {
+                  $psb->calonSiswa->prestasi()->create($b);
+              }
+          }
         }
 
         // upload dokumen
