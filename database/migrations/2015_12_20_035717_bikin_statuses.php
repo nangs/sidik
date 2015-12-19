@@ -15,8 +15,6 @@ class BikinStatuses extends Migration
         Schema::table('psb', function (Blueprint $table) {
             $table->boolean('status_formulir')->unsigned();
             $table->boolean('status_berkas')->unsigned();
-            $table->boolean('status_test')->unsigned();
-            $table->boolean('status_wawancara')->unsigned();
             $table->boolean('status_wawancara_ortu')->unsigned();
             $table->boolean('status_tkd')->unsigned();
             $table->boolean('status_penerimaan')->unsigned();
