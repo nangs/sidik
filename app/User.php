@@ -50,12 +50,14 @@ class User extends Model implements AuthenticatableContract,
     public static function roleList()
     {
         return [
-            'pendaftar'         => 'pendaftar',
-            'admin'             => 'admin',
-            'keuangan'          => 'keuangan',
-            'data'              => 'data',
-            'test-wawancara'    => 'test-wawancara',
-            'seleksi'           => 'seleksi'
+            'pendaftaran'               => 'pendaftaran',
+            'keuangan'                  => 'keuangan',
+            'data'                      => 'data',
+            'test-wawancara-santri'     => 'test-wawancara-santri',
+            'wawancara-orangtua'        => 'wawancara-orangtua',
+            'tkd'                       => 'tkd',
+            'seleksi'                   => 'seleksi',
+            'admin'                     => 'admin',
         ];
     }
 }

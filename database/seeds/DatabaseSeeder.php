@@ -16,6 +16,36 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UserTableSeeder::class);
 
+        DB::table('users')->insert([
+            'name'      => 'PSB MIAS',
+            'email'     => 'panitiapsbmias@gmail.com',
+            'password'  => bcrypt('password'),
+            'role'      => 'admin'
+        ]);
+
+        DB::table('ta')->insert(['periode' => '2016/2017', 'avtive' => 1]);
+
+        DB::table('rekening')->insert([
+            'nama'          => 'BNI Syariah',
+            'pemegang'      => 'SDIT ASSUNNAH',
+            'nomor'         => '1436 2015 25',
+            'keterangan'    => 'Untuk Jenjang SD'
+        ]);
+
+        DB::table('rekening')->insert([
+            'nama'          => 'BNI Syariah',
+            'pemegang'      => 'SDIT ASSUNNAH',
+            'nomor'         => '1436 2015 36',
+            'keterangan'    => 'Untuk Jenjang SMP'
+        ]);
+
+        DB::table('rekening')->insert([
+            'nama'          => 'BNI Syariah',
+            'pemegang'      => 'SDIT ASSUNNAH',
+            'nomor'         => '1436 2015 47',
+            'keterangan'    => 'Untuk Jenjang SMA dan TBA'
+        ]);
+
         Model::reguard();
     }
 }

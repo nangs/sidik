@@ -31,6 +31,16 @@ class Psb extends Model
         return $query->where('jenjang', 3);
     }
 
+    public function scopeTDPG($query)
+    {
+        return $query->where('jenjang', 4);
+    }
+
+    public function scopeTAHFIZH($query)
+    {
+        return $query->where('jenjang', 5);
+    }
+
     public function scopeSekarang($query)
     {
         return $query->where('tahun_ajaran', \App\Ta::active()->first()->periode);
@@ -99,6 +109,86 @@ class Psb extends Model
             'Transfer ATM'      => 'Transfer ATM',
             'Intenet Banking'   => 'Internet Banking',
             'SMS Banking'       => 'SMS Banking'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusBayarList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Belum Lunas',
+            '1'     => 'Lunas'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusFormulirList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Belum Lengkap',
+            '1'     => 'Lengkap'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusBerkasList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Belum Lengkap',
+            '1'     => 'Lengkap'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusTestList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Belum Test',
+            '1'     => 'Sudah Test'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusWawancaraList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Belum Wawancara',
+            '1'     => 'Sudah Wawancara'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusWawancaraOrtuList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Belum Wawancara',
+            '1'     => 'Sudah Wawancara'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusTKDList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Belum TKD',
+            '1'     => 'Sudah TKD'
+        ];
+
+        return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function statusPenerimaanList($index = 9999)
+    {
+        $list = [
+            '0'     => 'Tidak Diterima',
+            '1'     => 'Diterima',
         ];
 
         return isset($list[$index]) ? $list[$index] : $list;

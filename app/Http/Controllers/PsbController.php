@@ -24,6 +24,14 @@ use Auth;
 
 class PsbController extends Controller
 {
+    // untuk admin/panitia PSB, pake datatables
+    public function getAdmin()
+    {
+        $user = Auth::user();
+        $psbs = Psb::with('calonSiswa')->sekarang()->get()->sortBy('calonSiswa.nama');
+        return view('psb.admin', ['psbs' => $psbs]);
+    }
+
     // untuk pembelian formulir
     public function getStep1()
     {
@@ -349,7 +357,59 @@ class PsbController extends Controller
 
         $psb->delete();
 
+        return $this->response($psb, $request);
+    }
 
+    public function postKonfirmasiPembayaran(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    public function postKonfirmasiFormulir(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    public function postKonfirmasiBerkas(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    public function postKonfirmasiTest(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    public function postKonfirmasiWawancara(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    public function postKonfirmasiWawancaraOrtu(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    public function postKonfirmasiTKD(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    public function postKonfirmasiPenerimaan(Psb $psb, Request $request)
+    {
+        $psb->update($request->all());
+        return $this->response($psb, $request);
+    }
+
+    protected function response(Psb $psb, Request $request)
+    {
         if ($request->ajax()) {
             return json_encode([
                 'success'   => true,
@@ -364,14 +424,6 @@ class PsbController extends Controller
         else {
             return redirect('/psb/admin');
         }
-    }
-
-    // untuk admin/panitia PSB, pake datatables
-    public function getAdmin()
-    {
-        $user = Auth::user();
-        $psbs = Psb::with('calonSiswa')->sekarang()->get()->sortBy('calonSiswa.nama');
-        return view('psb.admin', ['psbs' => $psbs]);
     }
 
 }
