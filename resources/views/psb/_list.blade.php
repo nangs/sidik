@@ -6,14 +6,15 @@
 				<th>Calon Siswa</th>
 				<th>JK</th>
 				<th>Tingkat</th>
-				<th>Pembayaran</th>
-				<th>Formulir</th>
-				<th>Berkas</th>
-				<th>Test</th>
-				<th>Wawancara</th>
-				<th>Wawancara Orang Tua</th>
-				<th>TKD</th>
-				<th>Diterima</th>
+				<th data-orderable="false">Pembayaran</th>
+				<th data-orderable="false">Formulir</th>
+				<th data-orderable="false">Berkas</th>
+				<th data-orderable="false">Test</th>
+				<th data-orderable="false">Wawancara</th>
+				<th data-orderable="false">Wawancara Orang Tua</th>
+				<th data-orderable="false">TKD</th>
+				<th data-orderable="false">Diterima</th>
+				<th data-orderable="false">Aksi</th>
 			</tr>
 		</thead>
 
@@ -84,6 +85,10 @@
 					@else
 					<span class="fa fa-square-o text-danger"></span>
 					@endif
+				</td>
+				<td>
+					<a href="/psb/edit/{{$s->id}}" class="">Edit</a> |
+					<a href="/psb/delete/{{$s->id}}" class="tombol-hapus">Hapus</a>
 				</td>
 			</tr>
 			@endif

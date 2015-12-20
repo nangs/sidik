@@ -164,6 +164,10 @@ class Psb extends Model
             '/psb/konfirmasiPenerimaan/'        => 'Diterima',
         ];
 
+        $aksi['pendaftaran'] = [
+            null                                => '- Pilih Aksi -',
+        ];
+
         return $aksi[$role];
     }
 

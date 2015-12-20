@@ -13,8 +13,11 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="/home">Beranda</a></li>
+                @if (Auth::check())
+
+                @endif
             </ul>
-            
+
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
                     @if (Auth::user()->role == 'admin')

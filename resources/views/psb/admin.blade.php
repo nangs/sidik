@@ -2,7 +2,10 @@
 
 @section('content')
 
-	<a href="/psb/admin" class="btn btn-success pull-right"><span class="fa fa-refresh"></span> Refresh Daftar</a>
+	<div class="pull-right">
+		<a href="/psb/daftar" class="btn btn-success @if (Auth::user()->role !== 'pendaftaran') hidden @endif"><span class="fa fa-user-plus"></span> Daftarkan Calon Siswa Baru</a>
+		<a href="/psb/admin" class="btn btn-success"><span class="fa fa-refresh"></span> Refresh Data</a>
+	</div>
 
 	<h1>Daftar Calon Satri Baru</h1>
 	<hr />
@@ -22,12 +25,14 @@
 
 	<br />
 
-	{!! Form::open(['class' => 'form-inline']) !!}
-	<strong>Aksi: </strong>
-	{!! Form::select('aksi', App\Psb::aksiList(), null, ['class' => 'form-control']) !!}
-	<a class="btn btn-success tombol-aksi">Submit</a>
-	{!! Form::close() !!}
-	<hr />
+	@if (Auth::user()->role !== 'pendaftar')
+		{!! Form::open(['class' => 'form-inline']) !!}
+			<strong>Aksi: </strong>
+			{!! Form::select('aksi', App\Psb::aksiList(), null, ['class' => 'form-control']) !!}
+			<a class="btn btn-success tombol-aksi">Submit</a>
+		{!! Form::close() !!}
+		<hr />
+	@endif
 
 	<!-- Tab panes -->
 	<div class="tab-content">
@@ -58,10 +63,10 @@
 
 		$('.tombol-aksi').click(function() {
 			if (confirm('Anda yakin?')) {
+
 				var url = $('[name=aksi]').val();
 				var id = $('[name=id]:checked').val();
 				var url = url + id;
-				console.log(url);
 
 				$.ajax({
 					url: url,
@@ -78,8 +83,35 @@
 
 					}
 				});
+
 			}
+
 			return false;
+		});
+
+		$('.tombol-hapus').click(function() {
+
+			if (confirm('Anda yakin?')) {
+
+				$.ajax({
+					url: this.href,
+					type: 'GET',
+					dataType: 'json',
+					success: function(j) {
+
+						if (j.success == true) {
+							$('#list'+j.jenjang).html(j.html);
+							$('#psb-list-'+j.jenjang).DataTable();
+						} else {
+							alert(j.message)
+						}
+
+					}
+				});
+			}
+
+			return false;
+
 		});
 
 		$('#psb-list-1, #psb-list-2, #psb-list-3, #psb-list-4, #psb-list-5').DataTable({"order": [[ 1, "asc" ]]});

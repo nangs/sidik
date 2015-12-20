@@ -11,6 +11,8 @@
 |
 */
 
+use Auth;
+
 Route::group(['middleware' => 'auth'], function() {
 
 	// Route::get('/', function () {
@@ -142,7 +144,7 @@ Route::group(['prefix' => 'psb'], function() {
 
 		// khusus admin
 		Route::get('admin', 'PsbController@getAdmin');
-		Route::post('delete/{psb}', 'PsbController@getDelete');
+		Route::get('delete/{psb}', 'PsbController@getDelete');
 
 		// konfirmasi
 		Route::get('konfirmasiPembayaran/{psb}', 'PsbController@getKonfirmasiPembayaran');

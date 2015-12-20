@@ -216,8 +216,6 @@ class PsbController extends Controller
         User::where('id', $psb->user_id)->delete();
         CalonSiswa::where('psb_id', $psb->id)->delete();
 
-        $jenjang = $psb->jenjang;
-
         $psb->delete();
 
         return $this->response($psb, $request);
