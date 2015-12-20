@@ -1,7 +1,7 @@
 @extends('psb')
 
 @section('content')
-	
+
 	<a href="/psb/admin" class="btn btn-success pull-right"><span class="fa fa-refresh"></span> Refresh Daftar</a>
 
 	<h1>Daftar Calon Satri Baru</h1>
@@ -20,26 +20,34 @@
 		@endforeach
 	</ul>
 
+	<br />
+
+	{!! Form::open(['class' => 'form-inline']) !!}
+	<strong>Aksi: </strong>
+	{!! Form::select('aksi', App\Psb::aksiList(), null, ['class' => 'form-control']) !!}
+	<a class="btn btn-success tombol-aksi">Submit</a>
+	{!! Form::close() !!}
+	<hr />
+
 	<!-- Tab panes -->
 	<div class="tab-content">
 		@foreach (\App\Psb::jenjangList() as $k => $v)
 		@if ($k > 0)
 		<div role="tabpanel" class="tab-pane @if ($k == 1) active @endif" id="{{$k}}">
-			<br />
 			<div id="list{{$k}}">
 				@include('psb._list', ['jenjang' => $k])
 			</div>
 		</div>
 		@endif
 		@endforeach
-	</div>	
+	</div>
 
 @stop
 
 @section('css')
-	
+
 	<link href="/DataTables/datatables.min.css" rel="stylesheet">
-	
+
 @stop
 
 @section('script')
@@ -47,38 +55,28 @@
 	<script type="text/javascript" src="/DataTables/datatables.min.js"></script>
 
 	<script type="text/javascript">
-		
-		var fungsi = function(e) {
-			$(e).click(function() {
-				if(confirm('Anda yakin?')) {
-					// console.log(this.href);
-					$.ajax({
-						url: this.href,
-						type: 'GET',
-						dataType: 'json',
-						success: function(j) {
 
-							if (j.success == true) {
-								$('#list'+j.jenjang).html(j.html);
-								$('#psb-list-'+j.jenjang).DataTable();
-								fungsi('#psb-list-'+j.jenjang+' .tombol-confirm');
-							} else {
-								alert(j.message)
-							}
-							
-						}
-					});
+		$('.tombol-aksi').click(function() {
+			console.log($('[name=id]').val())
+			// $.ajax({
+			// 	url: $('[name=aksi]').value + $('[name=pilih]').value,
+			// 	type: 'GET',
+			// 	dataType: 'json',
+			// 	success: function(j) {
+			//
+			// 		if (j.success == true) {
+			// 			$('#list'+j.jenjang).html(j.html);
+			// 			$('#psb-list-'+j.jenjang).DataTable();
+			// 		} else {
+			// 			alert(j.message)
+			// 		}
+			//
+			// 	}
+			// });
+			return false;
+		});
 
-					return false;
-				};
-
-				return false;
-			});
-		};
-
-		fungsi('.tombol-confirm');
-
-		$('#psb-list-1, #psb-list-2, #psb-list-3, #psb-list-4, #psb-list-5').DataTable();
+		$('#psb-list-1, #psb-list-2, #psb-list-3, #psb-list-4, #psb-list-5').DataTable({"order": [[ 1, "asc" ]]});
 
 		// {pageLength: 3} ==> for datatables
 

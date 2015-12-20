@@ -13,7 +13,9 @@ class Psb extends Model
     	'jenjang', 'tingkat', 'step', 'status', 'keterangan', 'tahun_ajaran',
         'tanggal_pembayaran', 'bank_asal', 'rekening_asal', 'rekening_tujuan_id',
         'pemegang_rekening_asal', 'metode_pembayaran',
-        'jumlah_pembayaran', 'bukti_pembayaran', 'user_id', 'rapor', 'kk', 'akta', 'foto', 'sk_sehat'
+        'jumlah_pembayaran', 'bukti_pembayaran', 'user_id', 'rapor', 'kk', 'akta', 'foto', 'sk_sehat',
+        'status_pembayaran', 'status_formulir', 'status_berkas', 'status_test', 'status_wawancara', 'status_wawancara_ortu',
+        'status_tkd', 'status_penerimaan'
     ];
 
     public function scopeSD($query)
@@ -112,6 +114,56 @@ class Psb extends Model
         ];
 
         return isset($list[$index]) ? $list[$index] : $list;
+    }
+
+    public static function aksiList()
+    {
+        $role = Auth::user()->role;
+
+        $aksi['admin'] = [
+            null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiFormulir/'          => 'Formulir Lengkap',
+            '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
+            '/psb/konfirmasiTest/'              => 'Sudah Test',
+            '/psb/konfirmasiWawancara/'         => 'Sudah Wawancara',
+            '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
+            '/psb/konfirmasiTKD/'               => 'Sudah TKD',
+            '/psb/konfirmasiPenerimaan/'        => 'Diterima',
+        ];
+
+        $aksi['keuangan'] = [
+            null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiPembayaran/'        => 'Lunas',
+        ];
+
+        $aksi['data'] = [
+            null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiFormulir/'          => 'Formulir Lengkap',
+            '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
+        ];
+
+        $aksi['test-wawancara'] = [
+            null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiTest/'              => 'Sudah Test',
+            '/psb/konfirmasiWawancara/'         => 'Sudah Wawancara',
+        ];
+
+        $aksi['wawancara-orangtua'] = [
+            null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
+        ];
+
+        $aksi['tkd'] = [
+            null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiTKD/'               => 'Sudah TKD',
+        ];
+
+        $aksi['seleksi'] = [
+            null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiPenerimaan/'        => 'Diterima',
+        ];
+
+        return $aksi[$role];
     }
 
     public static function statusBayarList($index = 9999)

@@ -190,29 +190,6 @@ class PsbController extends Controller
         return redirect('/psb/step3/'.$psb->id);
     }
 
-    // step 3, silakan test & wawancara
-    public function getDataOk(Psb $psb, Request $request)
-    {
-        $psb->status_verifikasi_data  = 1;
-        $psb->waktu_verifikasi_data   = Carbon::now();
-        $psb->save();
-
-        if ($request->ajax()) {
-            return json_encode([
-                'success'   => true,
-                'jenjang'   => $psb->jenjang,
-                'html'      => view('psb._list', [
-                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
-                    'jenjang'   => $psb->jenjang
-                ])->render(),
-            ]);
-        }
-
-        else {
-            return redirect('/psb/admin');
-        }
-    }
-
     // tampilkan data sedang diverifikasi, jika data sudah diverifikasi tampilkan jadwal test & wawancara
     public function getStep3(Psb $psb)
     {
@@ -221,96 +198,6 @@ class PsbController extends Controller
         }
 
         return view('psb.step3', ['psb' => $psb]);
-    }
-
-    // step 4, tunggu pengumuman
-    public function getTestOk(Psb $psb, Request $request)
-    {
-        $psb->status_test  = 1;
-        $psb->step         = 4;
-        $psb->save();
-
-        if ($request->ajax()) {
-            return json_encode([
-                'success'   => true,
-                'jenjang'   => $psb->jenjang,
-                'html'      => view('psb._list', [
-                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
-                    'jenjang'   => $psb->jenjang
-                ])->render(),
-            ]);
-        }
-
-        else {
-            return redirect('/psb/admin');
-        }
-    }
-
-    // step 4, pengumuman
-    public function getDiterima(Psb $psb, Request $request)
-    {
-        $psb->status  = 1;
-        $psb->save();
-
-        if ($request->ajax()) {
-            return json_encode([
-                'success'   => true,
-                'jenjang'   => $psb->jenjang,
-                'html'      => view('psb._list', [
-                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
-                    'jenjang'   => $psb->jenjang
-                ])->render(),
-            ]);
-        }
-
-        else {
-            return redirect('/psb/admin');
-        }
-    }
-
-    // step 4, pengumuman
-    public function getDiterimaTba(Psb $psb, Request $request)
-    {
-        $psb->status  = 1;
-        $psb->tingkat = 13; // TBA
-        $psb->save();
-
-        if ($request->ajax()) {
-            return json_encode([
-                'success'   => true,
-                'jenjang'   => $psb->jenjang,
-                'html'      => view('psb._list', [
-                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
-                    'jenjang'   => $psb->jenjang
-                ])->render(),
-            ]);
-        }
-
-        else {
-            return redirect('/psb/admin');
-        }
-    }
-
-    // step 4, pengumuman
-    public function getDitolak(Psb $psb, Request $request)
-    {
-        $psb->status  = 2;
-        $psb->save();
-
-        if ($request->ajax()) {
-            return json_encode([
-                'success'   => true,
-                'jenjang'   => $psb->jenjang,
-                'html'      => view('psb._list', [
-                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
-                    'jenjang'   => $psb->jenjang
-                ])->render(),
-            ]);
-        }
-
-        else {
-            return redirect('/psb/admin');
-        }
     }
 
     // tampilkan status selesai, tampilkan pengumuman. TODO : sesuaikan step
