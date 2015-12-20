@@ -32,6 +32,17 @@ class PsbController extends Controller
         return view('psb.admin', ['psbs' => $psbs]);
     }
 
+    public function getEdit(Psb $psb)
+    {
+        return view('psb.edit', ['psb' => $psb]);
+    }
+
+    public function putUpdate(Psb $psb, PsbRequest $request)
+    {
+        $psb->update($request->get('psb'));
+        return redirect('/psb/show/'.$psb->id);
+    }
+
     // untuk pembelian formulir
     public function getStep1()
     {

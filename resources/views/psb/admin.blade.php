@@ -101,7 +101,7 @@
 
 						if (j.success == true) {
 							$('#list'+j.jenjang).html(j.html);
-							$('#psb-list-'+j.jenjang).DataTable();
+							$('#psb-list-'+j.jenjang).DataTable({"order": [[ 1, "asc" ]]});
 						} else {
 							alert(j.message)
 						}

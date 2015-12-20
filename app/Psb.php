@@ -261,5 +261,48 @@ class Psb extends Model
         return $this->belongsTo('App\User');
     }
 
+    public static function provinsi()
+    {
+        return [
+            'Nanggroe Aceh Darussalaam',
+            'Sumatra Utara',
+            'Sumatra Barat',
+            'Riau',
+            'Jambi',
+            'Sumatra Selatan',
+            'Bengkulu',
+            'Lampung',
+            'Kep. Bangka Belitung',
+            'Kep. Riau',
+            'DKI Jakarta',
+            'Jawa Barat',
+            'Jawa Tengah',
+            'DI Yogyakarta',
+            'Jawa Timur',
+            'Banten',
+            'Bali',
+            'Nusa Tenggara Barat',
+            'Nusa Tenggara Timur',
+            'Kalimantan Barat',
+            'Kalimantan Tengah',
+            'Kalimantan Selatan',
+            'Kalimantan Timur',
+            'Sulawesi Utara',
+            'Sulawesi Tengah',
+            'Sulawesi Selatan',
+            'Sulawesi Tenggara',
+            'Gorontalo',
+            'Maluku',
+            'Maluku Utara',
+            'Papua',
+            'Irian Jaya Barat',
+        ];
+    }
+
+    public static function propinsi()
+    {
+        return $this->provinsi();
+    }
+
     // format nomor - pendaftaran : PSB-MIAS-2015/2016-{JENJANG}-{TINGKAT}-{ID}
 }

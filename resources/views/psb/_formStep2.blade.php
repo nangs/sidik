@@ -46,6 +46,11 @@
 			dateFormat: 'yy-mm-dd'
 		});
 
+		$( "[name~=provinsi], [name~=propinsi], [name='asalSekolah[propinsi]'], [name='Ayah[provinsi]'], [name='Ibu[provinsi]'], [name='Wali[provinsi]'], [name='alamatCalonSiswa[provinsi]']" ).autocomplete({
+			source: {!! json_encode(\App\Psb::provinsi()) !!}, // bisa url, bisa array/object
+			minLength: 2,
+		});
+
 		// copy alamat ibu dari ayah
 		// $('input[name=alamatibu]').change(function() {
 		// 	var t = this;
