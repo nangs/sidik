@@ -69,30 +69,6 @@ class PsbController extends Controller
         return redirect('/psb/step2/'.$psb->id);
     }
 
-    // step 2, isi formulir
-    public function getSudahBayar(Psb $psb, Request $request)
-    {
-        $psb->status_pembayaran             = 1;
-        $psb->waktu_verifikasi_pembayaran   = Carbon::now();
-        $psb->save();
-
-        if ($request->ajax()) {
-            return json_encode([
-                'success'   => true,
-                'jenjang'   => $psb->jenjang,
-                'html'      => view('psb._list', [
-                    'psbs'      => Psb::where('jenjang', $psb->jenjang)->sekarang()->get(),
-                    'jenjang'   => $psb->jenjang
-                ])->render(),
-            ]);
-        }
-
-        else {
-            return redirect('/psb/admin');
-        }
-
-    }
-
     // step 2 jika sudah bayar tampilkan formulir lengkap, jika blm tampilkan status pembayaran blm dikonfirmasi
     public function getStep2(Psb $psb)
     {
@@ -247,49 +223,49 @@ class PsbController extends Controller
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiPembayaran(Psb $psb, Request $request)
+    public function getKonfirmasiPembayaran(Psb $psb, Request $request)
     {
         $psb->update(['status_pembayaran' => 1]);
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiFormulir(Psb $psb, Request $request)
+    public function getKonfirmasiFormulir(Psb $psb, Request $request)
     {
         $psb->update(['status_formulir' => 1]);
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiBerkas(Psb $psb, Request $request)
+    public function getKonfirmasiBerkas(Psb $psb, Request $request)
     {
         $psb->update(['status_berkas' => 1]);
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiTest(Psb $psb, Request $request)
+    public function getKonfirmasiTest(Psb $psb, Request $request)
     {
         $psb->update(['status_test' => 1]);
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiWawancara(Psb $psb, Request $request)
+    public function getKonfirmasiWawancara(Psb $psb, Request $request)
     {
         $psb->update(['status_wawancara' => 1]);
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiWawancaraOrtu(Psb $psb, Request $request)
+    public function getKonfirmasiWawancaraOrtu(Psb $psb, Request $request)
     {
         $psb->update(['status_wawancara_ortu' => 1]);
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiTKD(Psb $psb, Request $request)
+    public function getKonfirmasiTKD(Psb $psb, Request $request)
     {
         $psb->update(['status_tkd' => 1]);
         return $this->response($psb, $request);
     }
 
-    public function postKonfirmasiPenerimaan(Psb $psb, Request $request)
+    public function getKonfirmasiPenerimaan(Psb $psb, Request $request)
     {
         $psb->update(['status_penerimaan' => 1]);
         return $this->response($psb, $request);

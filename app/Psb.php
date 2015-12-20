@@ -122,6 +122,7 @@ class Psb extends Model
 
         $aksi['admin'] = [
             null                                => '- Pilih Aksi -',
+            '/psb/konfirmasiPembayaran/'        => 'Lunas',
             '/psb/konfirmasiFormulir/'          => 'Formulir Lengkap',
             '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
             '/psb/konfirmasiTest/'              => 'Sudah Test',

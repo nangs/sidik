@@ -145,14 +145,14 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::post('delete/{psb}', 'PsbController@getDelete');
 
 		// konfirmasi
-		Route::post('konfirmasiPembayaran/{psb}', 'PsbController@postKonfirmasiPembayaran');
-		Route::post('konfirmasiFormulir/{psb}', 'PsbController@postKonfirmasiFormulir');
-		Route::post('konfirmasiBerkas/{psb}', 'PsbController@postKonfirmasiBerkas');
-		Route::post('konfirmasiTest/{psb}', 'PsbController@postKonfirmasiTest');
-		Route::post('konfirmasiWawancara/{psb}', 'PsbController@postKonfirmasiWawancara');
-		Route::post('konfirmasiWawancaraOrtu/{psb}', 'PsbController@postKonfirmasiWawancaraOrtu');
-		Route::post('konfirmasiTKD/{psb}', 'PsbController@postKonfirmasiTKD');
-		Route::post('konfirmasiPenerimaan/{psb}', 'PsbController@postKonfirmasiPenerimaan');
+		Route::get('konfirmasiPembayaran/{psb}', 'PsbController@getKonfirmasiPembayaran');
+		Route::get('konfirmasiFormulir/{psb}', 'PsbController@getKonfirmasiFormulir');
+		Route::get('konfirmasiBerkas/{psb}', 'PsbController@getKonfirmasiBerkas');
+		Route::get('konfirmasiTest/{psb}', 'PsbController@getKonfirmasiTest');
+		Route::get('konfirmasiWawancara/{psb}', 'PsbController@getKonfirmasiWawancara');
+		Route::get('konfirmasiWawancaraOrtu/{psb}', 'PsbController@getKonfirmasiWawancaraOrtu');
+		Route::get('konfirmasiTKD/{psb}', 'PsbController@getKonfirmasiTKD');
+		Route::get('konfirmasiPenerimaan/{psb}', 'PsbController@getKonfirmasiPenerimaan');
 
 	});
 
