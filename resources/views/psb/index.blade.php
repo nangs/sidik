@@ -42,7 +42,15 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<th colspan="9" class="text-right">TOTAL</th>
+			<th class="text-center">TOTAL</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
 			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
 		</tr>
 	</tfoot>
