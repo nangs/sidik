@@ -92,8 +92,10 @@
 				</td>
 				<td>
 					@if (Auth::user()->role == 'admin')
-					<a href="/psb/edit/{{$s->id}}" class="">Edit</a> |
-					<a href="/psb/delete/{{$s->id}}" class="tombol-hapus">Hapus</a>
+						@if ($s->status_progress >= \App\Psb::STATUS_ISI_FORM)
+							<a href="/psb/edit/{{$s->id}}" class="">Edit</a> |
+						@endif
+						<a href="/psb/delete/{{$s->id}}" class="tombol-hapus">Hapus</a>
 					@endif
 				</td>
 			</tr>
