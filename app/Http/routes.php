@@ -144,7 +144,8 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::get('konfirmasiWawancara/{psb}', 'PsbController@getKonfirmasiWawancara');
 		Route::get('konfirmasiWawancaraOrtu/{psb}', 'PsbController@getKonfirmasiWawancaraOrtu');
 		Route::get('konfirmasiTKD/{psb}', 'PsbController@getKonfirmasiTKD');
-		Route::get('konfirmasiPenerimaan/{psb}', 'PsbController@getKonfirmasiPenerimaan');
+		Route::get('konfirmasiDiterima/{psb}', 'PsbController@getKonfirmasiDiterima');
+		Route::get('konfirmasiDitolak/{psb}', 'PsbController@getKonfirmasiDitolak');
 
 	});
 

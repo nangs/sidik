@@ -82,10 +82,12 @@
 					@endif
 				</td>
 				<td>
-					@if ($s->status_penerimaan)
+					@if ($s->status_penerimaan == 1)
 					<span class="fa fa-check-square-o text-success"></span>
-					@else
-					<span class="fa fa-square-o text-danger"></span>
+					@elseif ($s->status_penerimaan == 2)
+					<span class="fa fa-remove text-danger"></span>
+					else
+					<span class="fa fa-square-o"></span>
 					@endif
 				</td>
 				<td>

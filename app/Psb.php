@@ -9,13 +9,25 @@ class Psb extends Model
 {
     protected $table = 'psb';
 
+    const STATUS_DAFTAR             = 1;
+    const STATUS_BAYAR_OK           = 2;
+    const STATUS_ISI_FORM           = 3;
+    const STATUS_FORM_OK            = 4;
+    const STATUS_BERKAS_OK          = 5;
+    const STATUS_TEST_OK            = 6;
+    const STATUS_WAWANCARA_OK       = 7;
+    const STATUS_WAWANCARA_ORTU_OK  = 8;
+    const STATUS_TKD_OK             = 9;
+    const STATUS_DITERIMA           = 10;
+    const STATUS_DITOLAK            = 11;
+
     protected $fillable = [
     	'jenjang', 'tingkat', 'step', 'status', 'keterangan', 'tahun_ajaran',
         'tanggal_pembayaran', 'bank_asal', 'rekening_asal', 'rekening_tujuan_id',
         'pemegang_rekening_asal', 'metode_pembayaran',
         'jumlah_pembayaran', 'bukti_pembayaran', 'user_id', 'rapor', 'kk', 'akta', 'foto', 'sk_sehat',
         'status_pembayaran', 'status_formulir', 'status_berkas', 'status_test', 'status_wawancara', 'status_wawancara_ortu',
-        'status_tkd', 'status_penerimaan'
+        'status_tkd', 'status_penerimaan', 'status_progress'
     ];
 
     public function scopeSD($query)
@@ -129,7 +141,8 @@ class Psb extends Model
             '/psb/konfirmasiWawancara/'         => 'Sudah Wawancara',
             '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
             '/psb/konfirmasiTKD/'               => 'Sudah TKD',
-            '/psb/konfirmasiPenerimaan/'        => 'Diterima',
+            '/psb/konfirmasiDiterima/'          => 'Diterima',
+            '/psb/konfirmasiDitolak/'           => 'Ditolak',
         ];
 
         $aksi['keuangan'] = [
@@ -161,7 +174,8 @@ class Psb extends Model
 
         $aksi['seleksi'] = [
             null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiPenerimaan/'        => 'Diterima',
+            '/psb/konfirmasiDiterima/'          => 'Diterima',
+            '/psb/konfirmasiDitolak/'           => 'Ditolak',
         ];
 
         $aksi['pendaftaran'] = [
@@ -244,7 +258,7 @@ class Psb extends Model
     public static function statusPenerimaanList($index = 9999)
     {
         $list = [
-            '0'     => 'Tidak Diterima',
+            '2'     => 'Tidak Diterima',
             '1'     => 'Diterima',
         ];
 

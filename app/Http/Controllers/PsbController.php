@@ -50,11 +50,17 @@ class PsbController extends Controller
         $psb        = Psb::create($request->get('psb'));
         $calonSiswa = $psb->calonSiswa()->create($request->get('calonSiswa'));
 
+        $psb->update(['status_progress' => Psb::STATUS_DAFTAR]);
+
         return redirect('/psb/admin/');
     }
 
     public function getIsiFormulir(Psb $psb)
     {
+        if ($psb->status < Psb::STATUS_BAYAR_OK) {
+            return 'Belum bayar';
+        }
+
         return view('psb.isiFormulir', [
             'psb'               => $psb,
             'calonSiswa'        => $psb->calonSiswa,
@@ -101,6 +107,8 @@ class PsbController extends Controller
               }
           }
         }
+
+        $psb->update(['status_progress' => Psb::STATUS_ISI_FORM]);
 
         return redirect('/psb/show/'.$psb->id);
     }
@@ -209,49 +217,112 @@ class PsbController extends Controller
 
     public function getKonfirmasiPembayaran(Psb $psb, Request $request)
     {
-        $psb->update(['status_pembayaran' => 1]);
+        $psb->update(['status_pembayaran' => 1, 'status_progress' => Psb::STATUS_BAYAR_OK]);
+
         return $this->response($psb, $request);
     }
 
     public function getKonfirmasiFormulir(Psb $psb, Request $request)
     {
-        $psb->update(['status_formulir' => 1]);
+        if ($psb->status < Psb::STATUS_ISI_FORM) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Formulir belum diisi'
+            ]);
+        }
+
+        $psb->update(['status_formulir' => 1, 'status_progress' => Psb::STATUS_FORM_OK]);
         return $this->response($psb, $request);
     }
 
     public function getKonfirmasiBerkas(Psb $psb, Request $request)
     {
-        $psb->update(['status_berkas' => 1]);
+        if ($psb->status < Psb::STATUS_FORM_OK) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Formulir belum lengkap'
+            ]);
+        }
+
+        $psb->update(['status_berkas' => 1, 'status_progress' => Psb::STATUS_BERKAS_OK]);
         return $this->response($psb, $request);
     }
 
     public function getKonfirmasiTest(Psb $psb, Request $request)
     {
-        $psb->update(['status_test' => 1]);
+        if ($psb->status < Psb::STATUS_BERKAS_OK) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Berkas belum lengkap'
+            ]);
+        }
+
+        $psb->update(['status_test' => 1, 'status_progress' => Psb::STATUS_TEST_OK]);
         return $this->response($psb, $request);
     }
 
     public function getKonfirmasiWawancara(Psb $psb, Request $request)
     {
-        $psb->update(['status_wawancara' => 1]);
+        if ($psb->status < Psb::STATUS_TEST_OK) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Siswa belum melakukan test'
+            ]);
+        }
+
+        $psb->update(['status_wawancara' => 1, 'status_progress' => Psb::STATUS_WAWANCARA_OK]);
         return $this->response($psb, $request);
     }
 
     public function getKonfirmasiWawancaraOrtu(Psb $psb, Request $request)
     {
-        $psb->update(['status_wawancara_ortu' => 1]);
+        if ($psb->status < Psb::STATUS_WAWANCARA_OK) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Siswa belum melakukan wawancara'
+            ]);
+        }
+
+        $psb->update(['status_wawancara_ortu' => 1, 'status_progress' => Psb::STATUS_WAWANCARA_ORTU_OK]);
         return $this->response($psb, $request);
     }
 
     public function getKonfirmasiTKD(Psb $psb, Request $request)
     {
-        $psb->update(['status_tkd' => 1]);
+        if ($psb->status < Psb::STATUS_WAWANCARA_ORTU_OK) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Orang Tua belum melakukan wawancara'
+            ]);
+        }
+
+        $psb->update(['status_tkd' => 1, 'status_progress' => Psb::STATUS_TKD_OK]);
         return $this->response($psb, $request);
     }
 
-    public function getKonfirmasiPenerimaan(Psb $psb, Request $request)
+    public function getKonfirmasiDiterima(Psb $psb, Request $request)
     {
-        $psb->update(['status_penerimaan' => 1]);
+        if ($psb->status < Psb::STATUS_TKD_OK) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Belum melakukan TKD'
+            ]);
+        }
+
+        $psb->update(['status_penerimaan' => 1, 'status_progress' => Psb::STATUS_DITERIMA]);
+        return $this->response($psb, $request);
+    }
+
+    public function getKonfirmasiDitolak(Psb $psb, Request $request)
+    {
+        if ($psb->status < Psb::STATUS_TKD_OK) {
+            return json_encode([
+                'success'   => false,
+                'message'   => 'Belum melakukan TKD'
+            ]);
+        }
+
+        $psb->update(['status_penerimaan' => 2, 'status_progress' => Psb::STATUS_DITOLAK]);
         return $this->response($psb, $request);
     }
 
