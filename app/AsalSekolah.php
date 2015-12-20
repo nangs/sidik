@@ -9,7 +9,7 @@ class AsalSekolah extends Model
     protected $table = 'asal_sekolah';
 
     protected $fillable = [
-    	'nama', 'nss', 'npsn', 'kecamatan', 'kota', 'propinsi'
+    	'nama', 'nss', 'npsn', 'kecamatan', 'kota', 'alamat', 'propinsi'
     ];
 
     public function calonSiswa()

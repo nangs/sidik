@@ -44,7 +44,7 @@ class PsbRequest extends Request
             'calonSiswa.jenis_kelamin'  => 'boolean',
         ];
 
-        $rules['PATCH'] = [
+        $rules['PUT'] = [
             // Data Siswa
             'calonSiswa.nama'           => 'required',
             'calonSiswa.jenis_kelamin'  => 'boolean',

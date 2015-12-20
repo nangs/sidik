@@ -6,6 +6,6 @@
 	<hr />
 
 	@include('_error1')
-	@include('psb/_formEdit', ['method' => 'POST', 'url' => '/psb'])
+	@include('psb/_formEdit', ['method' => 'PUT', 'url' => '/psb/update/'.$psb->id])
 
 @stop

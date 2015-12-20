@@ -114,28 +114,27 @@ Route::controller('auth', 'Auth\AuthController');
 
 Route::group(['prefix' => 'psb'], function() {
 
-	Route::get('/', 'PsbController@getStep1');
-	Route::get('step1', 'PsbController@getStep1');
-	Route::post('step1', 'PsbController@postStep1');
-
 	// Khusus yg sudah login
 	Route::group(['middleware' => 'auth'], function() {
 
 		Route::get('daftar', 'PsbController@getDaftar');
 		Route::post('/', 'PsbController@postDaftar');
-		Route::get('printNomor/{psb}', 'PsbController@getPrintNomor');
-		Route::get('printFormulir/{psb}', 'PsbController@getPrintFormulir');
-		Route::get('step2/{psb}', 'PsbController@getStep2');
-		Route::get('step3/{psb}', 'PsbController@getStep3');
-		Route::get('step4/{psb}', 'PsbController@getStep4');
 		Route::get('show/{psb}', 'PsbController@getShow');
-		Route::patch('step2/{psb}', 'PsbController@patchStep2');
+		Route::get('isiFormulir/{psb}', 'PsbController@getIsiFormulir');
+		Route::put('isiFormulir/{psb}', 'PsbController@putIsiFormulir');
+
+		// Route::get('printNomor/{psb}', 'PsbController@getPrintNomor');
+		// Route::get('printFormulir/{psb}', 'PsbController@getPrintFormulir');
+		// Route::get('step2/{psb}', 'PsbController@getStep2');
+		// Route::get('step3/{psb}', 'PsbController@getStep3');
+		// Route::get('step4/{psb}', 'PsbController@getStep4');
+		// Route::patch('step2/{psb}', 'PsbController@patchStep2');
 
 		// khusus admin
 		Route::get('admin', 'PsbController@getAdmin');
 		Route::get('delete/{psb}', 'PsbController@getDelete');
 		Route::get('edit/{psb}', 'PsbController@getEdit');
-		Route::patch('update/{psb}', 'PsbController@patchUpdate');
+		Route::put('update/{psb}', 'PsbController@putUpdate');
 
 		// konfirmasi
 		Route::get('konfirmasiPembayaran/{psb}', 'PsbController@getKonfirmasiPembayaran');

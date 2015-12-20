@@ -7,7 +7,7 @@
 		<tr><th>Alamat</th><td>: {{ $asalSekolah->alamat }}</td></tr>
 		<tr><th>Kecamatan</th><td>: {{ $asalSekolah->kecamatan }}</td></tr>
 		<tr><th>Kabupaten/Kota</th><td>: {{ $asalSekolah->kota }}</td></tr>
-		<tr><th>Provinsi</th><td>: {{ $asalSekolah->provinsi }}</td></tr>
+		<tr><th>Provinsi</th><td>: {{ $asalSekolah->propinsi }}</td></tr>
 
 	</tbody>
 </table>

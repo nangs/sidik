@@ -13,7 +13,7 @@
 				<th>Nama</th>
 				<th>Email/Username</th>
 				<th>Role</th>
-				<th>Aksi</th>
+				<th data-orderable="false">Aksi</th>
 			</tr>
 		</thead>
 
@@ -36,13 +36,27 @@
 
 @stop
 
+@section('css')
+
+	<link href="/DataTables/datatables.min.css" rel="stylesheet">
+
+@stop
+
 @section('script')
 
+	<script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+
 	<script type="text/javascript">
+
 		$('.delete').click(function() {
 			if(confirm('Anda yakin?')) { return true; };
 			return false;
 		});
+
+		$('table').DataTable({"order": [[ 0, "asc" ]]});
+
+		// {pageLength: 3} ==> for datatables
+
 	</script>
 
 @stop

@@ -55,7 +55,7 @@ class PsbController extends Controller
 
     public function getIsiFormulir(Psb $psb)
     {
-        return view('psb.edit', [
+        return view('psb.isiFormulir', [
             'psb'               => $psb,
             'calonSiswa'        => $psb->calonSiswa,
             'Wali'              => new OrangTuaCalonSiswa(['hubungan' => 'Wali', 'agama' => 'Islam']),
@@ -70,7 +70,7 @@ class PsbController extends Controller
 
     public function putIsiFormulir(Psb $psb, PsbRequest $request)
     {
-        // $psb->update($request->get('psb'));
+        $psb->update($request->get('psb'));
         $psb->calonSiswa()->update($request->get('calonSiswa'));
         $psb->calonSiswa->ortu()->create($request->get('Wali'));
         $psb->calonSiswa->ortu()->create($request->get('Ayah'));
@@ -107,12 +107,86 @@ class PsbController extends Controller
 
     public function getEdit(Psb $psb)
     {
-        return view('psb.edit', ['psb' => $psb]);
+        $wali           = $psb->calonSiswa->ortu()->wali()->first();
+        $ayah           = $psb->calonSiswa->ortu()->ayah()->first();
+        $ibu            = $psb->calonSiswa->ortu()->ibu()->first();
+        $asalSekolah    = $psb->calonSiswa->asalSekolah;
+
+        return view('psb.edit', [
+            'psb'               => $psb,
+            'calonSiswa'        => $psb->calonSiswa,
+            'Wali'              => $wali != null ? $wali : new OrangTuaCalonSiswa(['hubungan' => 'Wali', 'agama' => 'Islam']),
+            'Ayah'              => $ayah != null ? $ayah : new OrangTuaCalonSiswa(['hubungan' => 'Ayah', 'agama' => 'Islam']),
+            'Ibu'               => $ibu != null ? $ibu : new OrangTuaCalonSiswa(['hubungan' => 'Ibu', 'agama' => 'Islam']),
+            'alamatCalonSiswa'  => $psb->calonSiswa->alamat,
+            'asalSekolah'       => $asalSekolah != null ? $asalSekolah : new AsalSekolah,
+            'beasiswa'          => new BeasiswaCalonSiswa,
+            'prestasi'          => new PrestasiCalonSiswa,
+        ]);
     }
 
     public function putUpdate(Psb $psb, PsbRequest $request)
     {
+        $wali           = $psb->calonSiswa->ortu()->wali()->first();
+        $ayah           = $psb->calonSiswa->ortu()->ayah()->first();
+        $ibu            = $psb->calonSiswa->ortu()->ibu()->first();
+        $asalSekolah    = $psb->calonSiswa->asalSekolah;
+
         $psb->update($request->get('psb'));
+        $psb->calonSiswa()->update($request->get('calonSiswa'));
+
+        if ($wali == null) {
+            OrangTuaCalonSiswa::create($request->get('Wali'));
+        } else {
+            $wali->update($request->get('Wali'));
+        }
+
+        if ($ayah == null) {
+            OrangTuaCalonSiswa::create($request->get('Ayah'));
+        } else {
+            $ayah->update($request->get('Ayah'));
+        }
+
+        if ($ibu == null) {
+            OrangTuaCalonSiswa::create($request->get('Ibu'));
+        } else {
+            $ibu->update($request->get('Ibu'));
+        }
+
+        if ($request->get('asalSekolah') && $request->get('asalSekolah')['nama'] !== '') {
+
+            if ($psb->calonSiswa->asalSekolah) {
+                $psb->calonSiswa->asalSekolah()->update($request->get('asalSekolah'));
+            }
+
+            else {
+                $asalSekolah = AsalSekolah::create($request->get('asalSekolah'));
+
+                $dataCalonSiswa = $request->get('calonSiswa');
+                $dataCalonSiswa['asal_sekolah_id'] = $asalSekolah->id;
+                $psb->calonSiswa()->update($dataCalonSiswa);
+            }
+        }
+
+        $psb->calonSiswa->alamat()->update($request->get('alamatCalonSiswa'));
+
+        // data beasiswa & prestasi
+        // if ($request->get('beasiswa') !== null) {
+        //   foreach ($request->get('beasiswa') as $b) {
+        //     if ($b['jenis'] !== '') {
+        //       $psb->calonSiswa->beasiswa()->create($b);
+        //     }
+        //   }
+        // }
+        //
+        // if ($request->get('prestasi') !== null) {
+        //   foreach ($request->get('prestasi') as $b) {
+        //       if ($b['tahun'] !== '') {
+        //           $psb->calonSiswa->prestasi()->create($b);
+        //       }
+        //   }
+        // }
+
         return redirect('/psb/show/'.$psb->id);
     }
 
@@ -121,22 +195,6 @@ class PsbController extends Controller
         return view('psb.show', ['psb' => $psb]);
     }
 
-    public function getPrintNomor(Psb $psb)
-    {
-        return view('psb.printNomor', ['psb' => $psb]);
-    }
-
-    public function getPrintFormulir(Psb $psb)
-    {
-        return view('psb.printFormulir', ['psb' => $psb]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function getDelete(Psb $psb, Request $request)
     {
         OrangTuaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
