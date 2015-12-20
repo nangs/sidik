@@ -21,6 +21,7 @@ use App\Psb;
 use App\Ta;
 use Carbon;
 use Auth;
+use Session;
 
 class PsbController extends Controller
 {
@@ -51,13 +52,14 @@ class PsbController extends Controller
         $calonSiswa = $psb->calonSiswa()->create($request->get('calonSiswa'));
 
         $psb->update(['status_progress' => Psb::STATUS_DAFTAR]);
+        Session::flash('alert', 'Data calon santri telah tersimpan');
 
         return redirect('/psb/admin/');
     }
 
     public function getIsiFormulir(Psb $psb)
     {
-        if ($psb->status < Psb::STATUS_BAYAR_OK) {
+        if ($psb->status_progress < Psb::STATUS_BAYAR_OK) {
             return 'Belum bayar';
         }
 
@@ -224,7 +226,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiFormulir(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_ISI_FORM) {
+        if ($psb->status_progress < Psb::STATUS_ISI_FORM) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Formulir belum diisi'
@@ -237,7 +239,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiBerkas(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_FORM_OK) {
+        if ($psb->status_progress < Psb::STATUS_FORM_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Formulir belum lengkap'
@@ -250,7 +252,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiTest(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_BERKAS_OK) {
+        if ($psb->status_progress < Psb::STATUS_BERKAS_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Berkas belum lengkap'
@@ -263,7 +265,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiWawancara(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_TEST_OK) {
+        if ($psb->status_progress < Psb::STATUS_TEST_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Siswa belum melakukan test'
@@ -276,7 +278,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiWawancaraOrtu(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_WAWANCARA_OK) {
+        if ($psb->status_progress < Psb::STATUS_WAWANCARA_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Siswa belum melakukan wawancara'
@@ -289,7 +291,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiTKD(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_WAWANCARA_ORTU_OK) {
+        if ($psb->status_progress < Psb::STATUS_WAWANCARA_ORTU_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Orang Tua belum melakukan wawancara'
@@ -302,7 +304,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiDiterima(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_TKD_OK) {
+        if ($psb->status_progress < Psb::STATUS_TKD_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Belum melakukan TKD'
@@ -315,7 +317,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiDitolak(Psb $psb, Request $request)
     {
-        if ($psb->status < Psb::STATUS_TKD_OK) {
+        if ($psb->status_progress < Psb::STATUS_TKD_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Belum melakukan TKD'
