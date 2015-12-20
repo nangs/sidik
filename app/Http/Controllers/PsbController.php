@@ -50,7 +50,7 @@ class PsbController extends Controller
         $psb        = Psb::create($request->get('psb'));
         $calonSiswa = $psb->calonSiswa()->create($request->get('calonSiswa'));
 
-        return redirect('/psb/show/'.$psb->id);
+        return redirect('/psb/admin/');
     }
 
     public function getIsiFormulir(Psb $psb)
