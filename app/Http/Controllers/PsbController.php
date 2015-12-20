@@ -249,49 +249,49 @@ class PsbController extends Controller
 
     public function postKonfirmasiPembayaran(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_pembayaran' => 1]);
         return $this->response($psb, $request);
     }
 
     public function postKonfirmasiFormulir(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_formulir' => 1]);
         return $this->response($psb, $request);
     }
 
     public function postKonfirmasiBerkas(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_berkas' => 1]);
         return $this->response($psb, $request);
     }
 
     public function postKonfirmasiTest(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_test' => 1]);
         return $this->response($psb, $request);
     }
 
     public function postKonfirmasiWawancara(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_wawancara' => 1]);
         return $this->response($psb, $request);
     }
 
     public function postKonfirmasiWawancaraOrtu(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_wawancara_ortu' => 1]);
         return $this->response($psb, $request);
     }
 
     public function postKonfirmasiTKD(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_tkd' => 1]);
         return $this->response($psb, $request);
     }
 
     public function postKonfirmasiPenerimaan(Psb $psb, Request $request)
     {
-        $psb->update($request->all());
+        $psb->update(['status_penerimaan' => 1]);
         return $this->response($psb, $request);
     }
 

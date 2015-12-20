@@ -57,22 +57,28 @@
 	<script type="text/javascript">
 
 		$('.tombol-aksi').click(function() {
-			console.log($('[name=id]').val())
-			// $.ajax({
-			// 	url: $('[name=aksi]').value + $('[name=pilih]').value,
-			// 	type: 'GET',
-			// 	dataType: 'json',
-			// 	success: function(j) {
-			//
-			// 		if (j.success == true) {
-			// 			$('#list'+j.jenjang).html(j.html);
-			// 			$('#psb-list-'+j.jenjang).DataTable();
-			// 		} else {
-			// 			alert(j.message)
-			// 		}
-			//
-			// 	}
-			// });
+			if (confirm('Anda yakin?')) {
+				var url = $('[name=aksi]').val();
+				var id = $('[name=id]:checked').val();
+				var url = url + id;
+				console.log(url);
+
+				$.ajax({
+					url: url,
+					type: 'POST',
+					dataType: 'json',
+					success: function(j) {
+
+						if (j.success == true) {
+							$('#list'+j.jenjang).html(j.html);
+							$('#psb-list-'+j.jenjang).DataTable();
+						} else {
+							alert(j.message)
+						}
+
+					}
+				});
+			}
 			return false;
 		});
 
