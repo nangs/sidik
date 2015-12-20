@@ -86,7 +86,7 @@
 					<span class="fa fa-check-square-o text-success"></span>
 					@elseif ($s->status_penerimaan == 2)
 					<span class="fa fa-remove text-danger"></span>
-					else
+					@else
 					<span class="fa fa-square-o"></span>
 					@endif
 				</td>
