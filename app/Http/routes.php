@@ -13,9 +13,6 @@
 
 Route::group(['middleware' => 'auth'], function() {
 
-	Route::get('/', 'PsbController@getIndex');
-	Route::get('/home', 'PsbController@getIndex');
-
 	Route::resource('karyawan', 'KaryawanController');
 	Route::resource('bagian', 'BagianController');
 	Route::resource('wali', 'WaliController');
@@ -111,6 +108,9 @@ Route::group(['middleware' => 'auth'], function() {
 Route::controller('auth', 'Auth\AuthController');
 // Route::controller('password', 'Auth\PasswordController');
 // Route::controller('batik', 'BatikController');
+
+Route::get('/', 'PsbController@getIndex');
+Route::get('/home', 'PsbController@getIndex');
 
 Route::group(['prefix' => 'psb'], function() {
 
