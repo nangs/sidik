@@ -8,18 +8,20 @@
 	<thead>
 		<tr>
 			<th rowspan="2" class="text-center" style="vertical-align:middle;">JENJANG</th>
-			<th colspan="9" class="text-center">PROSES</th>
+			<th colspan="11" class="text-center">PROSES</th>
 		</tr>
 		<tr>
-			<th style="width:10%" class="text-center">Daftar</th>
-			<th style="width:10%" class="text-center">Isi Formulir</th>
-			<th style="width:10%" class="text-center">Test</th>
-			<th style="width:10%" class="text-center">Wawancara</th>
-			<th style="width:10%" class="text-center">Wawancara Orang Tua</th>
-			<th style="width:10%" class="text-center">TKD</th>
-			<th style="width:10%" class="text-center">Diterima</th>
-			<th style="width:10%" class="text-center">Tidak Diterima</th>
-			<th style="width:10%" class="text-center">TOTAL</th>
+			<th style="width:8%" class="text-center">Daftar</th>
+			<th style="width:8%" class="text-center">Isi Formulir</th>
+			<th style="width:8%" class="text-center">Formulir Lengkap</th>
+			<th style="width:8%" class="text-center">Berkas Lengkap</th>
+			<th style="width:8%" class="text-center">Test</th>
+			<th style="width:8%" class="text-center">Wawancara</th>
+			<th style="width:8%" class="text-center">Wawancara Orang Tua</th>
+			<th style="width:8%" class="text-center">TKD</th>
+			<th style="width:8%" class="text-center">Diterima</th>
+			<th style="width:8%" class="text-center">Tidak Diterima</th>
+			<th style="width:8%" class="text-center">TOTAL</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,6 +29,8 @@
 		@if ($k > 0 )
 		<tr>
 			<th class="text-center">{{$v}}</th>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
 			<td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
 			<td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
 			<td class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</td>
@@ -43,6 +47,8 @@
 	<tfoot>
 		<tr>
 			<th class="text-center">TOTAL</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
 			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
 			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
 			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>

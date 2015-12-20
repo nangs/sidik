@@ -14,7 +14,9 @@
 				<th data-orderable="false">Wawancara Orang Tua</th>
 				<th data-orderable="false">TKD</th>
 				<th data-orderable="false">Diterima</th>
+				@if (Auth::user()->role == 'admin')
 				<th data-orderable="false">Aksi</th>
+				@endif
 			</tr>
 		</thead>
 
@@ -87,8 +89,10 @@
 					@endif
 				</td>
 				<td>
+					@if (Auth::user()->role == 'admin')
 					<a href="/psb/edit/{{$s->id}}" class="">Edit</a> |
 					<a href="/psb/delete/{{$s->id}}" class="tombol-hapus">Hapus</a>
+					@endif
 				</td>
 			</tr>
 			@endif
