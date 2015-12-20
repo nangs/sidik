@@ -62,28 +62,28 @@
 	<script type="text/javascript">
 
 		$('.tombol-aksi').click(function() {
-			if (confirm('Anda yakin?')) {
 
-				var url = $('[name=aksi]').val();
-				var id = $('[name=id]:checked').val();
-				var url = url + id;
+			var url = $('[name=aksi]').val();
+			var id = $('[name=id]:checked').val();
+			var url = url + id;
 
-				$.ajax({
-					url: url,
-					type: 'GET',
-					dataType: 'json',
-					success: function(j) {
-
-						if (j.success == true) {
-							$('#list'+j.jenjang).html(j.html);
-							$('#psb-list-'+j.jenjang).DataTable({"order": [[ 1, "asc" ]]});
-						} else {
-							alert(j.message)
+			if (id > 0) {
+				if (confirm('Anda yakin?')) {
+					$.ajax({
+						url: url,
+						type: 'GET',
+						dataType: 'json',
+						success: function(j) {
+							if (j.success == true) {
+								$('#list'+j.jenjang).html(j.html);
+								$('#psb-list-'+j.jenjang).DataTable({"order": [[ 1, "asc" ]]});
+							} else {
+								alert(j.message)
+							}
 						}
+					});
 
-					}
-				});
-
+				}
 			}
 
 			return false;
