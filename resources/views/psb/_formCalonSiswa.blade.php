@@ -1,7 +1,7 @@
 <div class="panel panel-success">
 
 	<div class="panel-heading">
-		<h3 class="panel-title">Data Calon Siswa</h3>
+		<h3 class="panel-title">DATA CALON SISWA</h3>
 	</div>
 
 	<div class="panel-body">
@@ -21,8 +21,8 @@
 				{!! Form::radio('calonSiswa[jenis_kelamin]', 0, $calonSiswa->jenis_kelamin ==  0) !!} Perempuan
 			</div>
 		</div>
-		
-		@if ($step == 2)
+
+		@if ($psb->id > 0)
 		<div class="form-group @if ($errors->has('calonSiswa.nisn')) has-error @endif">
 			{!! Form::label('calonSiswa[nisn]', 'NISN:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">

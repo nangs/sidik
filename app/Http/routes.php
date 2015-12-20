@@ -13,13 +13,8 @@
 
 Route::group(['middleware' => 'auth'], function() {
 
-	// Route::get('/', function () {
- //    	return view('home');
-	// });
-
-	// Route::get('/home', function () {
-	//     return view('home');
-	// });
+	Route::get('/', 'PsbController@getIndex');
+	Route::get('/home', 'PsbController@getIndex');
 
 	Route::resource('karyawan', 'KaryawanController');
 	Route::resource('bagian', 'BagianController');
@@ -117,11 +112,6 @@ Route::controller('auth', 'Auth\AuthController');
 // Route::controller('password', 'Auth\PasswordController');
 // Route::controller('batik', 'BatikController');
 
-// MODUL PSB
-Route::get('/', 'HomeController@getIndex');
-
-Route::get('/home', 'HomeController@getIndex');
-
 Route::group(['prefix' => 'psb'], function() {
 
 	Route::get('/', 'PsbController@getStep1');
@@ -131,7 +121,8 @@ Route::group(['prefix' => 'psb'], function() {
 	// Khusus yg sudah login
 	Route::group(['middleware' => 'auth'], function() {
 
-		// harus login untuk step 2 ke atas
+		Route::get('daftar', 'PsbController@getDaftar');
+		Route::post('/', 'PsbController@postDaftar');
 		Route::get('printNomor/{psb}', 'PsbController@getPrintNomor');
 		Route::get('printFormulir/{psb}', 'PsbController@getPrintFormulir');
 		Route::get('step2/{psb}', 'PsbController@getStep2');

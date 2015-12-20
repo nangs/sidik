@@ -24,11 +24,6 @@ use Auth;
 
 class PsbController extends Controller
 {
-    public function getIndex()
-    {
-        return view('psb.index');
-    }
-
     // untuk admin/panitia PSB, pake datatables
     public function getAdmin()
     {
@@ -37,25 +32,64 @@ class PsbController extends Controller
         return view('psb.admin', ['psbs' => $psbs]);
     }
 
-    public function getDaftar()
+    public function getEdit(Psb $psb)
     {
-        return view('psb.daftar', [
-            'psb'           => new Psb,
+        return view('psb.edit', ['psb' => $psb]);
+    }
+
+    public function putUpdate(Psb $psb, PsbRequest $request)
+    {
+        $psb->update($request->get('psb'));
+        return redirect('/psb/show/'.$psb->id);
+    }
+
+    // untuk pembelian formulir
+    public function getStep1()
+    {
+        return view('psb.step1', [
+            'psb'           => new Psb(['jumlah_pembayaran' => 250000, 'tanggal_pembayaran' => date('Y-m-d')]),
             'calonSiswa'    => new CalonSiswa,
+            'user'          => new User,
+            'step'          => 1
         ]);
     }
 
-    public function postDaftar(PsbRequest $request)
+    // step 1, submit pembelian formulir
+    public function postStep1(PsbRequest $request)
     {
         $psb        = Psb::create($request->get('psb'));
         $calonSiswa = $psb->calonSiswa()->create($request->get('calonSiswa'));
 
-        return redirect('/psb/show/'.$psb->id);
+        // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
+        // Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
+        //     $m->from('hello@app.com', 'Your Application');
+
+        //     $m->to($user->email, $user->name)->subject('Your Reminder!');
+        // });
+
+        $user =  User::create([
+            'name' => $calonSiswa->nama,
+            'email' => $calonSiswa->nama,
+            'password' => bcrypt(strtotime($calonSiswa->created_at)),
+            'role' => 'pendaftar'
+        ]);
+
+        $psb->update(['step' => 2, 'user_id' => $user->id]);
+        Auth::login($user);
+
+        return redirect('/psb/step2/'.$psb->id);
     }
 
-    public function getIsiFormulir(Psb $psb)
+    // step 2 jika sudah bayar tampilkan formulir lengkap, jika blm tampilkan status pembayaran blm dikonfirmasi
+    public function getStep2(Psb $psb)
     {
-        return view('psb.edit', [
+        //  kalo step > 2 arahkan ke step yg sesuai
+
+        if ($psb->step > 2) {
+            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
+        }
+
+        return view('psb.step2', [
             'psb'               => $psb,
             'calonSiswa'        => $psb->calonSiswa,
             'Wali'              => new OrangTuaCalonSiswa(['hubungan' => 'Wali', 'agama' => 'Islam']),
@@ -65,12 +99,17 @@ class PsbController extends Controller
             'asalSekolah'       => new AsalSekolah,
             'beasiswa'          => new BeasiswaCalonSiswa,
             'prestasi'          => new PrestasiCalonSiswa,
+            'step'              => 2
         ]);
     }
 
-    public function putIsiFormulir(Psb $psb, PsbRequest $request)
+    // step 2, submit formulir
+    public function patchStep2(Psb $psb, PsbRequest $request)
     {
-        // $psb->update($request->get('psb'));
+        // dd($request);
+
+        // simpan datanya
+        $psb->update($request->get('psb'));
         $psb->calonSiswa()->update($request->get('calonSiswa'));
         $psb->calonSiswa->ortu()->create($request->get('Wali'));
         $psb->calonSiswa->ortu()->create($request->get('Ayah'));
@@ -102,18 +141,60 @@ class PsbController extends Controller
           }
         }
 
-        return redirect('/psb/show/'.$psb->id);
+        // upload dokumen
+        // $docs = [
+        //     'rapor'     => 'Rapor 2 Semester Terakhir',
+        //     'kk'        => 'Kartu Keluarga',
+        //     'akta'      => 'Akta Kelahiran',
+        //     'foto'      => 'Pas Foto',
+        //     'sk_sehat'  => 'Surat Keterangan Sehat'
+        // ];
+
+        // foreach ($docs as $k => $v) {
+
+        //     if ($request->hasFile($k)) {
+
+        //         $file = $request->file($k);
+
+        //         $fileName = time().'-'.$file->getClientOriginalName();
+        //         $file->move('uploads', $fileName);
+
+        //         $psb->calonSiswa->dokumen()->create(['nama' => $v, 'file' => $fileName]);
+
+        //     }
+
+        // }
+
+        $psb->update(['step' => 3]);
+
+        // TODO : email notifikasi ke panitia psb untuk konfirmasi pembayaran, perlu?
+        // Mail::send('emails.register', ['user' => $user], function ($m) use ($user) {
+        //     $m->from('hello@app.com', 'Your Application');
+
+        //     $m->to($user->email, $user->name)->subject('Your Reminder!');
+        // });
+
+        return redirect('/psb/step3/'.$psb->id);
     }
 
-    public function getEdit(Psb $psb)
+    // tampilkan data sedang diverifikasi, jika data sudah diverifikasi tampilkan jadwal test & wawancara
+    public function getStep3(Psb $psb)
     {
-        return view('psb.edit', ['psb' => $psb]);
+        if ($psb->step > 3) {
+            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
+        }
+
+        return view('psb.step3', ['psb' => $psb]);
     }
 
-    public function putUpdate(Psb $psb, PsbRequest $request)
+    // tampilkan status selesai, tampilkan pengumuman. TODO : sesuaikan step
+    public function getStep4(Psb $psb)
     {
-        $psb->update($request->get('psb'));
-        return redirect('/psb/show/'.$psb->id);
+        if ($psb->step < 4) {
+            return redirect('/psb/step'.$psb->step.'/'.$psb->id);
+        }
+
+        return view('psb.step4', ['psb' => $psb]);
     }
 
     public function getShow(Psb $psb)
@@ -143,7 +224,9 @@ class PsbController extends Controller
         AlamatCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         PrestasiCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
         BeasiswaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->delete();
+        User::where('id', $psb->user_id)->delete();
         CalonSiswa::where('psb_id', $psb->id)->delete();
+
         $psb->delete();
 
         return $this->response($psb, $request);

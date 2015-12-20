@@ -1,12 +1,11 @@
-@extends('app')
+@extends('psb')
 
 @section('content')
-	
-	<a href="/siswa/{{ $siswa->id }}" class="btn btn-success pull-right">Lihat Data Siswa</a>
 
-	<h1>Update Siswa : {{ $siswa->nama }}</h1>
+	<h1>Edit Data PSB</h1>
 	<hr />
 
-	@include('siswa/_form', ['method' => 'PATCH', 'url' => 'siswa/'.$siswa->id])
+	@include('_error1')
+	@include('psb/_formEdit', ['method' => 'POST', 'url' => '/psb'])
 
 @stop

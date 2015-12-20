@@ -1,7 +1,6 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-	<li role="presentation" class="active"><a href="#0" aria-controls="0" role="tab" data-toggle="tab">Data PSB</a></li>
-	<li role="presentation"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Data Calon Siswa</a></li>
+	<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Data Calon Siswa</a></li>
 	<li role="presentation"><a href="#9" aria-controls="9" role="tab" data-toggle="tab">Dokumen</a></li>
 	<li role="presentation"><a href="#5" aria-controls="5" role="tab" data-toggle="tab">Asal Sekolah</a></li>
 	<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Data Ayah</a></li>
@@ -14,12 +13,7 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-	<div role="tabpanel" class="tab-pane active" id="0">
-		<br />
-		@include('psb._psb')
-	</div>
-
-	<div role="tabpanel" class="tab-pane" id="1">
+	<div role="tabpanel" class="tab-pane active" id="1">
 		<br />
 		@include('psb._calonSiswa', ['calonSiswa' => $psb->calonSiswa])
 	</div>
@@ -48,14 +42,14 @@
 		<br />
 		@if ($ibu = $psb->calonSiswa->ortu()->ibu()->first())
 		@include('psb._ortu', ['ortu' => $ibu])
-		@endif;
+		@endif
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="4">
 		<br />
 		@if ($wali = $psb->calonSiswa->ortu()->wali()->first())
 		@include('psb._ortu', ['ortu' => $wali])
-		@endif;
+		@endif
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="6">

@@ -1,6 +1,5 @@
-{!! Form::model($psb, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method, 'files' => true]) !!}
+{!! Form::model($psb, ['url' => $url, 'class' => 'form-horizontal', 'method' => $method]) !!}
 
-	<!-- include('psb._formPsb') -->
 	{!! Form::hidden('psb[jenjang]', $psb->jenjang) !!}
 	@include('psb._formCalonSiswa')
 	@include('psb._formDokumen')
@@ -19,22 +18,14 @@
 	<hr />
 
 	<div  class="text-center">
-		{!! Form::submit('SIMPAN', ['class' => 'btn btn-success btn-lg']) !!}
+		{!! Form::submit('SIMPAN', ['class' => 'btn btn-success']) !!}
 	</div>
 
 {!! Form::close() !!}
 
-
-@section('css')
-<!-- <link href="/select2/dist/css/select2.min.css" rel="stylesheet"> -->
-@stop
-
 @section('script')
 
-<!-- <script type="text/javascript" src="/select2/dist/js/select2.min.js"></script> -->
-
 <script type="text/javascript">
-	// $('select').select2();
 
 	$(function() {
 
@@ -108,6 +99,7 @@
 		});
 
 	});
+
 </script>
 
 @stop

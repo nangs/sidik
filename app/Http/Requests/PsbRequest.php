@@ -29,15 +29,15 @@ class PsbRequest extends Request
             'psb.jenjang'               => 'required|numeric',
             'psb.tingkat'               => 'required|numeric',
             'psb.tahun_ajaran'          => 'required',
-            'psb.metode_pembayaran'     => 'required',
-            'psb.tanggal_pembayaran'    => 'date|required',
-            'psb.jumlah_pembayaran'     => 'required|numeric',
+            // 'psb.metode_pembayaran'     => 'required',
+            // 'psb.tanggal_pembayaran'    => 'date|required',
+            // 'psb.jumlah_pembayaran'     => 'required|numeric',
 
             // Bank
-            'psb.bank_asal'              => 'required_unless:psb.metode_pembayaran,Tunai',
-            'psb.rekening_asal'          => 'required_unless:psb.metode_pembayaran,Tunai',
-            'psb.pemegang_rekening_asal' => 'required_unless:psb.metode_pembayaran,Tunai',
-            'psb.rekening_tujuan_id'     => 'required_unless:psb.metode_pembayaran,Tunai',
+            // 'psb.bank_asal'              => 'required_unless:psb.metode_pembayaran,Tunai',
+            // 'psb.rekening_asal'          => 'required_unless:psb.metode_pembayaran,Tunai',
+            // 'psb.pemegang_rekening_asal' => 'required_unless:psb.metode_pembayaran,Tunai',
+            // 'psb.rekening_tujuan_id'     => 'required_unless:psb.metode_pembayaran,Tunai',
 
             // Data Siswa
             'calonSiswa.nama'           => 'required',
