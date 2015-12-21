@@ -28,6 +28,7 @@ class OrangTuaCalonSiswa extends Model
     {
     	$list = [
     		null => '- Pilih Pendidikan -',
+            0    => '',
     		1	 => 'Tidak Sekolah',
     		2	 => 'Putus SD',
     		3 	 => 'SD Sederajat',
@@ -48,6 +49,7 @@ class OrangTuaCalonSiswa extends Model
     {
     	$list = [
     		null => '- Pilih Pekerjaan -',
+            0    => '',
     		1 	 => 'Tidak Bekerja',
     		2	 => 'Nelayan',
     		3	 => 'Petani',
@@ -70,6 +72,7 @@ class OrangTuaCalonSiswa extends Model
     {
     	$list = [
     		null => '- Pilih Penghasilan Bulanan -',
+            0    => '',
     		1	 => 'Kurang Dari 1.000.000',
     		2	 => '1.000.000 - 2.000.000',
     		3	 => '2.000.000 - 3.000.000',
@@ -84,6 +87,7 @@ class OrangTuaCalonSiswa extends Model
     {
         return [
             null        => '- Pilih Agama -',
+            0           => '',
             'Islam'     => 'Islam',
             'Kristen'   => 'Kristen',
             'Katolik'   => 'Katolik',
