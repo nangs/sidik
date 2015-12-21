@@ -286,7 +286,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiWawancaraOrtu(Psb $psb, Request $request)
     {
-        if ($psb->status_progress < Psb::STATUS_WAWANCARA_OK) {
+        if ($psb->status_progress < Psb::STATUS_BERKAS_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Siswa belum melakukan wawancara'
