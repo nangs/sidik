@@ -23,6 +23,7 @@ class AlamatCalonSiswa extends Model
     {
     	$list = [
     		null    => '- Pilih Alat Transportasi -',
+    		0    => '',
     		1	 => 'Jalan Kaki',
     		2	 => 'Kendaraan Pribadi',
     		3 	 => 'Kendaraan Umum/Angkot/Pete - Pete',
@@ -42,6 +43,7 @@ class AlamatCalonSiswa extends Model
     {
         $list = [
             null => '- Pilih Jenis Tinggal -',
+            0    => '',
             1    => 'Bersama Orang Tua',
             2    => 'Bersama Wali',
             3    => 'Kos',
