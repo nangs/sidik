@@ -30,15 +30,15 @@
 		@if ($k > 0 )
 		<tr>
 			<th class="text-center">{{$v}}</th>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 1)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 2)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 3)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 4)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 5)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 6)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 7)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 8)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '<=', 9)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 1)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 2)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 3)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 4)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 5)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 6)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 7)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 8)->sekarang()->count('id')}}</td>
+			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 9)->sekarang()->count('id')}}</td>
 			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', 10)->sekarang()->count('id')}}</td>
 			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', 11)->sekarang()->count('id')}}</td>
 			<th class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</th>
@@ -49,15 +49,15 @@
 	<tfoot>
 		<tr>
 			<th class="text-center">TOTAL</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 1)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 2)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 3)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 4)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 5)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 6)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 7)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 8)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '<=', 9)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 1)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 2)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 3)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 4)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 5)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 6)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 7)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 8)->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 9)->count('id')}}</th>
 			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', 10)->count('id')}}</th>
 			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', 11)->count('id')}}</th>
 			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
