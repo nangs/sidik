@@ -13,7 +13,7 @@ class Psb extends Model
     const STATUS_BAYAR_OK           = 2;
     const STATUS_ISI_FORM           = 3;
     const STATUS_FORM_OK            = 4;
-    const STATUS_BERKAS_OK          = 5;
+    // const STATUS_BERKAS_OK          = 5;
     const STATUS_TEST_OK            = 6;
     const STATUS_WAWANCARA_OK       = 7;
     const STATUS_WAWANCARA_ORTU_OK  = 8;
@@ -136,7 +136,7 @@ class Psb extends Model
             null                                => '- Pilih Aksi -',
             '/psb/konfirmasiPembayaran/'        => 'Lunas',
             '/psb/konfirmasiFormulir/'          => 'Formulir Lengkap',
-            '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
+            // '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
             '/psb/konfirmasiTest/'              => 'Sudah Test',
             '/psb/konfirmasiWawancara/'         => 'Sudah Wawancara',
             '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
@@ -153,7 +153,7 @@ class Psb extends Model
         $aksi['data'] = [
             null                                => '- Pilih Aksi -',
             '/psb/konfirmasiFormulir/'          => 'Formulir Lengkap',
-            '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
+            // '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
         ];
 
         $aksi['test-wawancara'] = [
@@ -205,15 +205,15 @@ class Psb extends Model
         return isset($list[$index]) ? $list[$index] : $list;
     }
 
-    public static function statusBerkasList($index = 9999)
-    {
-        $list = [
-            '0'     => 'Belum Lengkap',
-            '1'     => 'Lengkap'
-        ];
-
-        return isset($list[$index]) ? $list[$index] : $list;
-    }
+    // public static function statusBerkasList($index = 9999)
+    // {
+    //     $list = [
+    //         '0'     => 'Belum Lengkap',
+    //         '1'     => 'Lengkap'
+    //     ];
+    //
+    //     return isset($list[$index]) ? $list[$index] : $list;
+    // }
 
     public static function statusTestList($index = 9999)
     {
@@ -245,15 +245,15 @@ class Psb extends Model
         return isset($list[$index]) ? $list[$index] : $list;
     }
 
-    public static function statusTKDList($index = 9999)
-    {
-        $list = [
-            '0'     => 'Belum TKD',
-            '1'     => 'Sudah TKD'
-        ];
-
-        return isset($list[$index]) ? $list[$index] : $list;
-    }
+    // public static function statusTKDList($index = 9999)
+    // {
+    //     $list = [
+    //         '0'     => 'Belum TKD',
+    //         '1'     => 'Sudah TKD'
+    //     ];
+    //
+    //     return isset($list[$index]) ? $list[$index] : $list;
+    // }
 
     public static function statusPenerimaanList($index = 9999)
     {

@@ -269,22 +269,22 @@ class PsbController extends Controller
         return $this->response($psb, $request);
     }
 
-    public function getKonfirmasiBerkas(Psb $psb, Request $request)
-    {
-        if ($psb->status_progress < Psb::STATUS_FORM_OK) {
-            return json_encode([
-                'success'   => false,
-                'message'   => 'Formulir belum lengkap'
-            ]);
-        }
-
-        $psb->update(['status_berkas' => 1, 'status_progress' => Psb::STATUS_BERKAS_OK]);
-        return $this->response($psb, $request);
-    }
+    // public function getKonfirmasiBerkas(Psb $psb, Request $request)
+    // {
+    //     if ($psb->status_progress < Psb::STATUS_FORM_OK) {
+    //         return json_encode([
+    //             'success'   => false,
+    //             'message'   => 'Formulir belum lengkap'
+    //         ]);
+    //     }
+    //
+    //     $psb->update(['status_berkas' => 1, 'status_progress' => Psb::STATUS_BERKAS_OK]);
+    //     return $this->response($psb, $request);
+    // }
 
     public function getKonfirmasiTest(Psb $psb, Request $request)
     {
-        if ($psb->status_progress < Psb::STATUS_BERKAS_OK) {
+        if ($psb->status_progress < Psb::STATUS_FORM_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Berkas belum lengkap'
