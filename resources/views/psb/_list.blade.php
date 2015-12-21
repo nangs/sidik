@@ -91,10 +91,12 @@
 					@endif
 				</td>
 				<td>
-					@if (Auth::user()->role == 'admin')
+					@if (Auth::user()->role == 'pendaftaran' || Auth::user()->role == 'admin' || Auth::user()->role == 'data')
 						@if ($s->status_progress >= \App\Psb::STATUS_ISI_FORM)
 							<a href="/psb/edit/{{$s->id}}" class="">Edit</a> |
 						@endif
+					@endif
+					@if (Auth::user()->role == 'admin')
 						<a href="/psb/delete/{{$s->id}}" class="tombol-hapus">Hapus</a>
 					@endif
 				</td>

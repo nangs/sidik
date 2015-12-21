@@ -2,7 +2,7 @@
 
 @section('content')
 
-	@if (Auth::user()->role == 'data' || Auth::user()->role == 'admin')
+	@if (Auth::user()->role == 'data' || Auth::user()->role == 'admin' || Auth::user()->role == 'pendaftaran')
 	<div class="pull-right">
 		@if ($psb->status_progress == \App\Psb::STATUS_BAYAR_OK)
 		<a href="/psb/isiFormulir/{{ $psb->id }}" class="btn btn-success"><span class="fa fa-edit"></span> Isi Formulir</a>
