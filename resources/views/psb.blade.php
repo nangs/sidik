@@ -15,12 +15,12 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
     <link href="/jquery-ui/jquery-ui.min.css" rel="stylesheet">
- 
+
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
 
     @yield('css')
-    
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,11 +30,17 @@
   </head>
 
   <body>
-    
+
     @include('_navPsb')
 
     <div class="container main-content">
 
+        @if (Session::has('alert'))
+    	<div class="alert alert-info text-center">
+    		<strong>{{Session::get('alert')}}</strong>
+    	</div>
+    	@endif
+        
         @yield('content')
 
     </div>
@@ -45,13 +51,13 @@
                 <p>&copy; MIAS {{ date('Y') }} - PSB Online By : <a href="mailto:udibagas@gmail.com">Udibagas</a></p>
             </footer>
         </div>
-    </div>   
+    </div>
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/jquery-ui/jquery-ui.min.js"></script>
 
     @yield('script')
-    
+
   </body>
 </html>

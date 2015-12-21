@@ -60,7 +60,8 @@ class PsbController extends Controller
     public function getIsiFormulir(Psb $psb)
     {
         if ($psb->status_progress < Psb::STATUS_BAYAR_OK) {
-            return 'Belum bayar';
+            Session::flash('alert', 'Pembayaran calon santri terkait belum dikonfirmasi');
+            return redirect('/psb/show/'.$psb->id);
         }
 
         return view('psb.isiFormulir', [

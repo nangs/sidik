@@ -2,14 +2,10 @@
 
 @section('content')
 
-	@if (Session::has('alert'))
-	<div class="alert alert-info text-center">
-		<strong>{{Session::get('alert')}}</strong>
-	</div>
-	@endif
-
 	<div class="pull-right">
-		<a href="/psb/daftar" class="btn btn-success @if (Auth::user()->role !== 'pendaftaran' && Auth::user()->role !== 'admin') hidden @endif"><span class="fa fa-user-plus"></span> Daftarkan Calon Siswa Baru</a>
+		@if (Auth::user()->role == 'admin' || Auth::user()->role == 'pendaftaran' || Auth::user()->role == 'data' )
+		<a href="/psb/daftar" class="btn btn-success"><span class="fa fa-user-plus"></span> Daftarkan Calon Siswa Baru</a>
+		@endif
 		<a href="/psb/admin" class="btn btn-success"><span class="fa fa-refresh"></span> Refresh Data</a>
 	</div>
 
