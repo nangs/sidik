@@ -4,11 +4,9 @@
 	@include('psb._formCalonSiswa')
 	@include('psb._formDokumen')
 
-	@if ($psb->jenjang > 1)
-		@include('psb._formAsalSekolah')
-		@include('psb._formBeasiswa')
-		@include('psb._formPrestasi')
-	@endif
+	@include('psb._formAsalSekolah')
+	@include('psb._formBeasiswa')
+	@include('psb._formPrestasi')
 
 	@include('psb._formOrangTua', ['hubungan' => 'Ayah'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ibu'])
