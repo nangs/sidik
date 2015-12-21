@@ -284,10 +284,10 @@ class PsbController extends Controller
 
     public function getKonfirmasiTest(Psb $psb, Request $request)
     {
-        if ($psb->status_progress < Psb::STATUS_FORM_OK) {
+        if ($psb->status_progress < Psb::STATUS_ISI_FORM) {
             return json_encode([
                 'success'   => false,
-                'message'   => 'Berkas belum lengkap'
+                'message'   => 'Formulir belum diisi'
             ]);
         }
 
@@ -339,7 +339,7 @@ class PsbController extends Controller
         if ($psb->status_progress < Psb::STATUS_WAWANCARA_ORTU_OK) {
             return json_encode([
                 'success'   => false,
-                'message'   => 'Belum melakukan TKD'
+                'message'   => 'Orang tua belum melakukan wawancara'
             ]);
         }
 
@@ -352,7 +352,7 @@ class PsbController extends Controller
         if ($psb->status_progress < Psb::STATUS_WAWANCARA_ORTU_OK) {
             return json_encode([
                 'success'   => false,
-                'message'   => 'Belum melakukan TKD'
+                'message'   => 'Orang tua belum melakukan wawancara'
             ]);
         }
 
