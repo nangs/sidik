@@ -14,6 +14,14 @@
 			</div>
 		</div>
 
+		<div class="form-group @if ($errors->has('calonSiswa.nis')) has-error @endif">
+			{!! Form::label('calonSiswa[nis]', 'NIS/Nomor Pendaftaran:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::text('calonSiswa[nis]', $calonSiswa->nis, ['class' => 'form-control', 'placeholder' => 'NIS/Nomor Pendaftaran']) !!}
+				@if ($errors->has('calonSiswa.nis')) <p class="help-block">{{ $errors->first('calonSiswa.nis') }}</p> @endif
+			</div>
+		</div>
+
 		<div class="form-group @if ($errors->has('calonSiswa.jenis_kelamin')) has-error @endif">
 			{!! Form::label('calonSiswa[jenis_kelamin]', 'Jenis Kelamin:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
@@ -28,14 +36,6 @@
 			<div class="col-md-10">
 				{!! Form::text('calonSiswa[nisn]', $calonSiswa->nisn, ['class' => 'form-control', 'placeholder' => 'NISN']) !!}
 				@if ($errors->has('calonSiswa.nisn')) <p class="help-block">{{ $errors->first('calonSiswa.nisn') }}</p> @endif
-			</div>
-		</div>
-
-		<div class="form-group @if ($errors->has('calonSiswa.nis')) has-error @endif">
-			{!! Form::label('calonSiswa[nis]', 'NIS:', ['class' => 'col-md-2 control-label']) !!}
-			<div class="col-md-10">
-				{!! Form::text('calonSiswa[nis]', $calonSiswa->nis, ['class' => 'form-control', 'placeholder' => 'NIS']) !!}
-				@if ($errors->has('calonSiswa.nis')) <p class="help-block">{{ $errors->first('calonSiswa.nis') }}</p> @endif
 			</div>
 		</div>
 
