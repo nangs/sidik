@@ -129,6 +129,14 @@
 			</div>
 		</div>
 
+		<div class="form-group @if ($errors->has('psb.tanggal_daftar')) has-error @endif">
+			{!! Form::label('psb[tanggal_daftar]', 'Tanggal Daftar:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::text('psb[tanggal_daftar]', $psb->tanggal_daftar, ['class' => 'form-control', 'id' => 'tgldaftar']) !!}
+				@if ($errors->has('psb.tanggal_daftar')) <p class="help-block">{{ $errors->first('psb.tanggal_daftar') }}</p> @endif
+			</div>
+		</div>
+
 	</div>
 
 </div>

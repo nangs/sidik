@@ -12,7 +12,7 @@
         <div id="navbar" class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav">
-                <li><a href="/home">Beranda</a></li>
+                <li><a href="/home"><span class="fa fa-home"></span> Beranda</a></li>
                 @if (Auth::check())
 
                 @endif

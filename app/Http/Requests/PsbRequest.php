@@ -29,6 +29,7 @@ class PsbRequest extends Request
             'psb.jenjang'               => 'required|numeric',
             'psb.tingkat'               => 'required|numeric',
             'psb.tahun_ajaran'          => 'required',
+            'psb.tanggal_daftar'        => 'date|required',
             // 'psb.metode_pembayaran'     => 'required',
             // 'psb.tanggal_pembayaran'    => 'date|required',
             // 'psb.jumlah_pembayaran'     => 'required|numeric',

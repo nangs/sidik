@@ -27,7 +27,7 @@ class Psb extends Model
         'pemegang_rekening_asal', 'metode_pembayaran',
         'jumlah_pembayaran', 'bukti_pembayaran', 'user_id', 'rapor', 'kk', 'akta', 'foto', 'sk_sehat',
         'status_pembayaran', 'status_formulir', 'status_berkas', 'status_test', 'status_wawancara', 'status_wawancara_ortu',
-        'status_tkd', 'status_penerimaan', 'status_progress', 'intern'
+        'status_tkd', 'status_penerimaan', 'status_progress', 'intern', 'tanggal_daftar'
     ];
 
     public function scopeIntern($query)

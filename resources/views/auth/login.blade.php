@@ -1,9 +1,9 @@
 @extends('blank')
 
 @section('content')
-	
+
 	<div class="row">
-		
+
 		<div class="col-md-7 col-md-offset-1">
 			<img src="/images/assunnah1.jpg" style="max-width:100%;" />
 		</div>
@@ -22,7 +22,7 @@
 				<hr />
 
 				<p>
-					{!! Form::submit('Login', ['class' => 'btn btn-success']) !!}
+					<button type="submit" class="btn btn-success"><span class="fa fa-sign-in"></span> Login</button>
 					<a href="/home" class="btn btn-info"><span class="fa fa-home"></span> Beranda</a>
 				</p>
 
@@ -31,6 +31,6 @@
 		</div>
 
 	</div>
-	
+
 
 @stop

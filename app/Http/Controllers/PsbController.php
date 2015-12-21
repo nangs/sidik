@@ -27,6 +27,18 @@ class PsbController extends Controller
 {
     public function getIndex()
     {
+        // select count(id) from psb group by jenjang
+        // select jenjang j, count(id) c, (select count(id) from psb where jenjang=j and status_progress >= 2) as bayar from psb group by jenjang;
+        // $query = 'select jenjang j, count(id) total,
+        //     (select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between :start and :stop) as daftar
+        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
+        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
+        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
+        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
+        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
+        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
+        //     from psb where tanggal_daftar between :start and :stop group by jenjang';
+
         return view('psb.index');
     }
 
@@ -41,7 +53,7 @@ class PsbController extends Controller
     public function getDaftar()
     {
         return view('psb.daftar', [
-            'psb'           => new Psb,
+            'psb'           => new Psb(['tanggal_daftar' => date('Y-m-d')]),
             'calonSiswa'    => new CalonSiswa,
             'url'           => '/psb',
             'action'        => 'create-pendaftaran'

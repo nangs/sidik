@@ -14,6 +14,12 @@
 
 <script type="text/javascript">
 
+		$( "#tgldaftar" ).datepicker({
+			minDate: '-30d',
+			maxDate: '0d',
+			dateFormat: 'yy-mm-dd'
+		});
+
 		$('#jenjang').change(function() {
 
 			if (this.value == 1) {
