@@ -8,11 +8,9 @@
 				<th>Tingkat</th>
 				<th data-orderable="false">Pembayaran</th>
 				<th data-orderable="false">Formulir</th>
-				<th data-orderable="false">Berkas</th>
 				<th data-orderable="false">Test</th>
 				<th data-orderable="false">Wawancara</th>
 				<th data-orderable="false">Wawancara Orang Tua</th>
-				<th data-orderable="false">TKD</th>
 				<th data-orderable="false">Diterima</th>
 				<th data-orderable="false">Aksi</th>
 			</tr>
@@ -45,13 +43,6 @@
 					@endif
 				</td>
 				<td>
-					@if ($s->status_berkas)
-					<span class="fa fa-check-square-o text-success"></span>
-					@else
-					<span class="fa fa-square-o text-danger"></span>
-					@endif
-				</td>
-				<td>
 					@if ($s->status_test)
 					<span class="fa fa-check-square-o text-success"></span>
 					@else
@@ -67,13 +58,6 @@
 				</td>
 				<td>
 					@if ($s->status_wawancara_ortu)
-					<span class="fa fa-check-square-o text-success"></span>
-					@else
-					<span class="fa fa-square-o text-danger"></span>
-					@endif
-				</td>
-				<td>
-					@if ($s->status_tkd)
 					<span class="fa fa-check-square-o text-success"></span>
 					@else
 					<span class="fa fa-square-o text-danger"></span>
@@ -96,7 +80,7 @@
 					@endif
 
 					@if (Auth::user()->role == 'pendaftaran')
-						<a href="/psb/editFormDaftar/{{$s->id}}" class="">Edit</a> 
+						<a href="/psb/editFormDaftar/{{$s->id}}" class="">Edit</a>
 					@endif
 
 					@if (Auth::user()->role == 'admin')
