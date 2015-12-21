@@ -17,7 +17,7 @@ class Psb extends Model
     const STATUS_TEST_OK            = 6;
     const STATUS_WAWANCARA_OK       = 7;
     const STATUS_WAWANCARA_ORTU_OK  = 8;
-    const STATUS_TKD_OK             = 9;
+    // const STATUS_TKD_OK             = 9;
     const STATUS_DITERIMA           = 10;
     const STATUS_DITOLAK            = 11;
 
@@ -140,7 +140,7 @@ class Psb extends Model
             '/psb/konfirmasiTest/'              => 'Sudah Test',
             '/psb/konfirmasiWawancara/'         => 'Sudah Wawancara',
             '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
-            '/psb/konfirmasiTKD/'               => 'Sudah TKD',
+            // '/psb/konfirmasiTKD/'               => 'Sudah TKD',
             '/psb/konfirmasiDiterima/'          => 'Diterima',
             '/psb/konfirmasiDitolak/'           => 'Ditolak',
         ];
@@ -167,10 +167,10 @@ class Psb extends Model
             '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
         ];
 
-        $aksi['tkd'] = [
-            null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiTKD/'               => 'Sudah TKD',
-        ];
+        // $aksi['tkd'] = [
+        //     null                                => '- Pilih Aksi -',
+        //     '/psb/konfirmasiTKD/'               => 'Sudah TKD',
+        // ];
 
         $aksi['seleksi'] = [
             null                                => '- Pilih Aksi -',

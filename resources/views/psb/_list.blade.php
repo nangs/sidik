@@ -14,9 +14,7 @@
 				<th data-orderable="false">Wawancara Orang Tua</th>
 				<th data-orderable="false">TKD</th>
 				<th data-orderable="false">Diterima</th>
-				@if (Auth::user()->role == 'admin')
 				<th data-orderable="false">Aksi</th>
-				@endif
 			</tr>
 		</thead>
 
@@ -91,11 +89,16 @@
 					@endif
 				</td>
 				<td>
-					@if (Auth::user()->role == 'pendaftaran' || Auth::user()->role == 'admin' || Auth::user()->role == 'data')
+					@if (Auth::user()->role == 'admin' || Auth::user()->role == 'data')
 						@if ($s->status_progress >= \App\Psb::STATUS_ISI_FORM)
-							<a href="/psb/edit/{{$s->id}}" class="">Edit</a> |
+							<a href="/psb/edit/{{$s->id}}" class="">Edit</a>
 						@endif
 					@endif
+
+					@if (Auth::user()->role == 'pendaftaran')
+						<a href="/psb/editFormDaftar/{{$s->id}}" class="">Edit</a> 
+					@endif
+
 					@if (Auth::user()->role == 'admin')
 						<a href="/psb/delete/{{$s->id}}" class="tombol-hapus">Hapus</a>
 					@endif

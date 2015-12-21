@@ -43,6 +43,8 @@ class PsbController extends Controller
         return view('psb.daftar', [
             'psb'           => new Psb,
             'calonSiswa'    => new CalonSiswa,
+            'url'           => '/psb',
+            'action'        => 'create-pendaftaran'
         ]);
     }
 
@@ -52,6 +54,26 @@ class PsbController extends Controller
         $calonSiswa = $psb->calonSiswa()->create($request->get('calonSiswa'));
 
         $psb->update(['status_progress' => Psb::STATUS_DAFTAR]);
+        Session::flash('alert', 'Data calon santri telah tersimpan');
+
+        return redirect('/psb/admin/');
+    }
+
+    public function getEditFormDaftar(Psb $psb)
+    {
+        return view('psb.daftar', [
+            'psb'           => $psb,
+            'calonSiswa'    => $psb->calonSiswa,
+            'url'           => '/psb/editFormDaftar/'.$psb->id,
+            'action'        => 'edit-pendaftaran'
+        ]);
+    }
+
+    public function postEditFormDaftar(Psb $psb, PsbRequest $request)
+    {
+        $psb->update($request->get('psb'));
+        $psb->calonSiswa->update($request->get('calonSiswa'));
+
         Session::flash('alert', 'Data calon santri telah tersimpan');
 
         return redirect('/psb/admin/');
@@ -299,22 +321,22 @@ class PsbController extends Controller
         return $this->response($psb, $request);
     }
 
-    public function getKonfirmasiTKD(Psb $psb, Request $request)
-    {
-        if ($psb->status_progress < Psb::STATUS_WAWANCARA_ORTU_OK) {
-            return json_encode([
-                'success'   => false,
-                'message'   => 'Orang Tua belum melakukan wawancara'
-            ]);
-        }
-
-        $psb->update(['status_tkd' => 1, 'status_progress' => Psb::STATUS_TKD_OK]);
-        return $this->response($psb, $request);
-    }
+    // public function getKonfirmasiTKD(Psb $psb, Request $request)
+    // {
+    //     if ($psb->status_progress < Psb::STATUS_WAWANCARA_ORTU_OK) {
+    //         return json_encode([
+    //             'success'   => false,
+    //             'message'   => 'Orang Tua belum melakukan wawancara'
+    //         ]);
+    //     }
+    //
+    //     $psb->update(['status_tkd' => 1, 'status_progress' => Psb::STATUS_TKD_OK]);
+    //     return $this->response($psb, $request);
+    // }
 
     public function getKonfirmasiDiterima(Psb $psb, Request $request)
     {
-        if ($psb->status_progress < Psb::STATUS_TKD_OK) {
+        if ($psb->status_progress < Psb::STATUS_WAWANCARA_ORTU_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Belum melakukan TKD'
@@ -327,7 +349,7 @@ class PsbController extends Controller
 
     public function getKonfirmasiDitolak(Psb $psb, Request $request)
     {
-        if ($psb->status_progress < Psb::STATUS_TKD_OK) {
+        if ($psb->status_progress < Psb::STATUS_WAWANCARA_ORTU_OK) {
             return json_encode([
                 'success'   => false,
                 'message'   => 'Belum melakukan TKD'

@@ -6,6 +6,6 @@
 	<hr />
 
 	@include('_error1')
-	@include('psb/_formDaftar', ['method' => 'POST', 'url' => '/psb'])
+	@include('psb/_formDaftar', ['method' => 'POST', 'url' => $url])
 
 @stop

@@ -30,7 +30,7 @@
 			</div>
 		</div>
 
-		@if ($psb->id > 0)
+		@if ($action != 'edit-pendaftaran' && $action != 'create-pendaftaran')
 		<div class="form-group @if ($errors->has('calonSiswa.nisn')) has-error @endif">
 			{!! Form::label('calonSiswa[nisn]', 'NISN:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">

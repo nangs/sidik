@@ -119,6 +119,10 @@ Route::group(['prefix' => 'psb'], function() {
 
 		Route::get('daftar', 'PsbController@getDaftar');
 		Route::post('/', 'PsbController@postDaftar');
+
+		Route::get('editFormDaftar/{psb}', 'PsbController@getEditFormDaftar');
+		Route::post('editFormDaftar/{psb}', 'PsbController@postEditFormDaftar');
+
 		Route::get('show/{psb}', 'PsbController@getShow');
 		Route::get('isiFormulir/{psb}', 'PsbController@getIsiFormulir');
 		Route::put('isiFormulir/{psb}', 'PsbController@putIsiFormulir');
