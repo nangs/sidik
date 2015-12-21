@@ -9,9 +9,9 @@
 		<div class="form-group">
 			{!! Form::label('', 'Alamat Sama Dengan:', ['class' => 'col-md-2 control-label']) !!}
 			<div class="col-md-10">
-				{!! Form::radio('alamatsiswa', 'ayah', 0) !!}  Ayah &nbsp; &nbsp;
-				{!! Form::radio('alamatsiswa', 'ibu', 0) !!} Ibu &nbsp; &nbsp;
-				{!! Form::radio('alamatsiswa', 'wali', 0) !!} Wali &nbsp; &nbsp;
+				{!! Form::radio('alamatsiswa', 'Ayah', 0) !!}  Ayah &nbsp; &nbsp;
+				{!! Form::radio('alamatsiswa', 'Ibu', 0) !!} Ibu &nbsp; &nbsp;
+				{!! Form::radio('alamatsiswa', 'Wali', 0) !!} Wali &nbsp; &nbsp;
 				{!! Form::radio('alamatsiswa', 'beda', 0) !!} Berbeda
 			</div>
 		</div>
@@ -127,7 +127,7 @@
 				@if ($errors->has('alamatCalonSiswa.email')) <p class="help-block">{{ $errors->first('alamatCalonSiswa.email') }}</p> @endif
 			</div>
 		</div>
-		
+
 	</div>
 
 </div>
