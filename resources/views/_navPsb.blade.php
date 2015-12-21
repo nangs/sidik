@@ -20,13 +20,13 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
+                <li><a href="/psb/daftar"><span class="fa fa-user-plus"></span> Daftarkan Calon Siswa Baru</a></li>
                 <li><a href="/psb/admin">Calon Santri</a></li>
                     @if (Auth::user()->role == 'admin')
                         <li><a href="/ta">Tahun Ajaran</a></li>
                         <!-- <li><a href="/rekening">Daftar Rekening</a></li> -->
                         <li><a href="/user">User</a></li>
                     @endif
-
                 <li><a href="/auth/logout"><span class="fa fa-sign-out"></span> Logout - {{Auth::user()->name}} ({{Auth::user()->role}})</a></li>
                 @endif
 

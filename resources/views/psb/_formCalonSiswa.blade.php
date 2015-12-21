@@ -121,6 +121,14 @@
 			</div>
 		</div>
 
+		<div class="form-group @if ($errors->has('psb.intern')) has-error @endif">
+			{!! Form::label('psb[intern]', 'Intern:', ['class' => 'col-md-2 control-label']) !!}
+			<div class="col-md-10">
+				{!! Form::radio('psb[intern]', 1, $psb->intern ==  1) !!} Ya &nbsp; &nbsp;
+				{!! Form::radio('psb[intern]', 0, $psb->intern ==  0) !!} Tidak
+			</div>
+		</div>
+
 	</div>
 
 </div>

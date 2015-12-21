@@ -27,8 +27,13 @@ class Psb extends Model
         'pemegang_rekening_asal', 'metode_pembayaran',
         'jumlah_pembayaran', 'bukti_pembayaran', 'user_id', 'rapor', 'kk', 'akta', 'foto', 'sk_sehat',
         'status_pembayaran', 'status_formulir', 'status_berkas', 'status_test', 'status_wawancara', 'status_wawancara_ortu',
-        'status_tkd', 'status_penerimaan', 'status_progress'
+        'status_tkd', 'status_penerimaan', 'status_progress', 'intern'
     ];
+
+    public function scopeIntern($query)
+    {
+        return $query->where('intern', 1);
+    }
 
     public function scopeSD($query)
     {
@@ -60,10 +65,10 @@ class Psb extends Model
         return $query->where('tahun_ajaran', \App\Ta::active()->first()->periode);
     }
 
-    public function scopeMine($query)
-    {
-        return $query->where('user_id', Auth::user()->id);
-    }
+    // public function scopeMine($query)
+    // {
+    //     return $query->where('user_id', Auth::user()->id);
+    // }
 
     public function calonSiswa()
     {
