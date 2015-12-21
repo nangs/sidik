@@ -118,10 +118,17 @@ class PsbController extends Controller
 
     public function getEdit(Psb $psb)
     {
+        if ($psb->status_progress < Psb::STATUS_ISI_FORM) {
+            Session::flash('alert', 'Formulir belum diisi');
+            return redirect('/psb/show/'.$psb->id);
+        }
+
         $wali           = $psb->calonSiswa->ortu()->wali()->first();
         $ayah           = $psb->calonSiswa->ortu()->ayah()->first();
         $ibu            = $psb->calonSiswa->ortu()->ibu()->first();
         $asalSekolah    = $psb->calonSiswa->asalSekolah;
+        $beasiswa       = $psb->calonSiswa->beasiswa;
+        $prestasi       = $psb->calonSiswa->prestasi;
 
         return view('psb.edit', [
             'psb'               => $psb,
@@ -129,10 +136,10 @@ class PsbController extends Controller
             'Wali'              => $wali != null ? $wali : new OrangTuaCalonSiswa(['hubungan' => 'Wali', 'agama' => 'Islam']),
             'Ayah'              => $ayah != null ? $ayah : new OrangTuaCalonSiswa(['hubungan' => 'Ayah', 'agama' => 'Islam']),
             'Ibu'               => $ibu != null ? $ibu : new OrangTuaCalonSiswa(['hubungan' => 'Ibu', 'agama' => 'Islam']),
-            'alamatCalonSiswa'  => $psb->calonSiswa->alamat,
+            'alamatCalonSiswa'  => $psb->calonSiswa->alamat ? $psb->calonSiswa->alamat : new AlamatCalonSiswa,
             'asalSekolah'       => $asalSekolah != null ? $asalSekolah : new AsalSekolah,
-            'beasiswa'          => new BeasiswaCalonSiswa,
-            'prestasi'          => new PrestasiCalonSiswa,
+            'beasiswa'          => $beasiswa ? $beasiswa : new BeasiswaCalonSiswa ,
+            'prestasi'          => $prestasi ? $prestasi : new PrestasiCalonSiswa,
         ]);
     }
 
