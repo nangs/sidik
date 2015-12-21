@@ -35,6 +35,11 @@ class Psb extends Model
         return $query->where('intern', 1);
     }
 
+    public function scopeExtern($query)
+    {
+        return $query->where('intern', 0);
+    }
+
     public function scopeSD($query)
     {
         return $query->where('jenjang', 1);
