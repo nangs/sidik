@@ -9,7 +9,7 @@
 		<a href="/psb/admin" class="btn btn-success"><span class="fa fa-refresh"></span> Refresh Data</a>
 	</div>
 
-	<h1>Daftar Calon Satri Baru</h1>
+	<h1>Daftar Calon Santri Baru</h1>
 	<hr />
 
 	<!-- Nav tabs -->
