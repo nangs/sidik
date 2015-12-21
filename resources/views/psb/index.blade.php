@@ -5,12 +5,12 @@
 <h1 class="text-center">Laporan PSB MIAS 2016/2017</h1><hr />
 
 
-<!-- {!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
+{!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
 	<strong>Filter Laporan: </strong>
 	{!! Form::text('start', null, ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
 	{!! Form::text('stop', null, ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
 	<button type="submit" name="button" class="btn btn-success"><span class="fa fa-filter"></span> Filter</button>
-{!! Form::close() !!} -->
+{!! Form::close() !!}
 
 <hr />
 
