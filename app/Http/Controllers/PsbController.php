@@ -74,6 +74,7 @@ class PsbController extends Controller
             'asalSekolah'       => new AsalSekolah,
             'beasiswa'          => new BeasiswaCalonSiswa,
             'prestasi'          => new PrestasiCalonSiswa,
+            'action'            => 'create'
         ]);
     }
 
@@ -140,6 +141,7 @@ class PsbController extends Controller
             'asalSekolah'       => $asalSekolah != null ? $asalSekolah : new AsalSekolah,
             'beasiswa'          => $beasiswa ? $beasiswa : new BeasiswaCalonSiswa ,
             'prestasi'          => $prestasi ? $prestasi : new PrestasiCalonSiswa,
+            'action'            => 'edit'
         ]);
     }
 

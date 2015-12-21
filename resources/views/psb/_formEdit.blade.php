@@ -5,8 +5,18 @@
 	@include('psb._formDokumen')
 
 	@include('psb._formAsalSekolah')
+
+	@if ($action == 'edit')
+	@include('psb._formBeasiswaEdit')
+	@else
 	@include('psb._formBeasiswa')
+	@endif
+
+	@if ($action == 'edit')
+	@include('psb._formPrestasiEdit')
+	@else
 	@include('psb._formPrestasi')
+	@endif
 
 	@include('psb._formOrangTua', ['hubungan' => 'Ayah'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ibu'])
