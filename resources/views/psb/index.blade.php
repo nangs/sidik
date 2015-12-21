@@ -7,23 +7,28 @@
 <table class="table table-hover table-striped table-bordered">
 	<thead>
 		<tr>
-			<th rowspan="2" class="text-center" style="vertical-align:middle;">JENJANG</th>
-			<th colspan="13" class="text-center">PROSES</th>
+			<th rowspan="3" class="text-center" style="vertical-align:middle;">JENJANG</th>
+			<th colspan="12" class="text-center">PROSES</th>
+			<th style="width:6%;vertical-align:middle;" class="text-center" rowspan="3">TOTAL</th>
 		</tr>
 		<tr>
-			<th style="width:6%" class="text-center">Daftar</th>
-			<th style="width:6%" class="text-center">Daftar (Intern)</th>
-			<th style="width:6%" class="text-center">Bayar</th>
-			<th style="width:6%" class="text-center">Bayar (Intern)</th>
-			<th style="width:6%" class="text-center">Isi Formulir</th>
-			<th style="width:6%" class="text-center">Isi Formulir (Intern)</th>
-			<th style="width:6%" class="text-center">Formulir Lengkap</th>
-			<th style="width:6%" class="text-center">Test</th>
-			<th style="width:6%" class="text-center">Wawancara</th>
-			<th style="width:6%" class="text-center">Wawancara Orang Tua</th>
-			<th style="width:6%" class="text-center">Diterima</th>
-			<th style="width:6%" class="text-center">Tidak Diterima</th>
-			<th style="width:6%" class="text-center">TOTAL</th>
+			<th colspan="2" class="text-center">Daftar</th>
+			<th colspan="2" class="text-center">Bayar</th>
+			<th colspan="2" class="text-center">Isi Formulir</th>
+			<th style="width:6%" class="text-center" rowspan="2">Formulir Lengkap</th>
+			<th style="width:6%" class="text-center" rowspan="2">Test</th>
+			<th style="width:6%" class="text-center" rowspan="2">Wawancara</th>
+			<th style="width:6%" class="text-center" rowspan="2">Wawancara Orang Tua</th>
+			<th style="width:6%" class="text-center" rowspan="2">Diterima</th>
+			<th style="width:6%" class="text-center" rowspan="2">Tidak Diterima</th>
+		</tr>
+		<tr>
+			<th style="width:6%" class="text-center">Extern</th>
+			<th style="width:6%" class="text-center">Intern</th>
+			<th style="width:6%" class="text-center">Extern</th>
+			<th style="width:6%" class="text-center">Intern</th>
+			<th style="width:6%" class="text-center">Extern</th>
+			<th style="width:6%" class="text-center">Intern</th>
 		</tr>
 	</thead>
 	<tbody>
