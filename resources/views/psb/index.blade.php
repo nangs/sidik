@@ -6,7 +6,7 @@
 <h3 class="text-center">
 	Laporan per tanggal
 	{{ date('d F Y', strtotime(Request::get('start', '2015-12-10'))) }} s.d
-	{{ date('d F Y', strtotime(Request::get('start', date('Y-m-d')))) }}
+	{{ date('d F Y', strtotime(Request::get('stop', date('Y-m-d')))) }}
 </h3>
 <hr />
 
