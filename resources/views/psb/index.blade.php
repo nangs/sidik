@@ -2,13 +2,18 @@
 
 @section('content')
 
-<h1 class="text-center">Laporan PSB MIAS 2016/2017</h1><hr />
-
+<h1 class="text-center">Laporan PSB MIAS 2016/2017</h1>
+<h3 class="text-center">
+	Laporan per tanggal
+	{{ date('d F Y', strtotime(Request::get('start', '2015-12-21'))) }} s.d
+	{{ date('d F Y', strtotime(Request::get('start', date('Y-m-d')))) }}
+</h3>
+<hr />
 
 {!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
 	<strong>Filter Laporan: </strong>
-	{!! Form::text('start', null, ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
-	{!! Form::text('stop', null, ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
+	{!! Form::text('start', old('start'), ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
+	{!! Form::text('stop', old('stop'), ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
 	<button type="submit" name="button" class="btn btn-success"><span class="fa fa-filter"></span> Filter</button>
 {!! Form::close() !!}
 
@@ -42,43 +47,41 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (\App\Psb::jenjangList() as $k => $v)
-		@if ($k > 0 )
+		@foreach ($data as $d)
 		<tr>
-			<th class="text-center">{{$v}}</th>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 1)->sekarang()->extern()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 1)->sekarang()->intern()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 2)->sekarang()->extern()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 2)->sekarang()->intern()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 3)->sekarang()->extern()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 3)->sekarang()->intern()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 4)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 6)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 7)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', '>=', 8)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', 10)->sekarang()->count('id')}}</td>
-			<td class="text-center">{{\App\Psb::where('jenjang', $k)->where('status_progress', 11)->sekarang()->count('id')}}</td>
-			<th class="text-center">{{\App\Psb::where('jenjang', $k)->sekarang()->count('id')}}</th>
+			<th class="text-center">{{\App\Psb::jenjangList($d->j)}}</th>
+			<td class="text-center">{{$d->daftar_extern}}</td>
+			<td class="text-center">{{$d->daftar_intern}}</td>
+			<td class="text-center">{{$d->bayar_extern}}</td>
+			<td class="text-center">{{$d->bayar_intern}}</td>
+			<td class="text-center">{{$d->isi_form_extern}}</td>
+			<td class="text-center">{{$d->isi_form_intern}}</td>
+			<td class="text-center">{{$d->form_ok}}</td>
+			<td class="text-center">{{$d->test_ok}}</td>
+			<td class="text-center">{{$d->wawancara_ok}}</td>
+			<td class="text-center">{{$d->wawancara_ortu_ok}}</td>
+			<td class="text-center">{{$d->diterima}}</td>
+			<td class="text-center">{{$d->ditolak}}</td>
+			<th class="text-center">{{$d->total}}</th>
 		</tr>
-		@endif
 		@endforeach
 	</tbody>
 	<tfoot>
 		<tr>
 			<th class="text-center">TOTAL</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 1)->extern()->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 1)->intern()->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 2)->extern()->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 2)->intern()->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 3)->extern()->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 3)->intern()->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 4)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 6)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 7)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', '>=', 8)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', 10)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->where('status_progress', 11)->count('id')}}</th>
-			<th class="text-center">{{\App\Psb::sekarang()->count('id')}}</th>
+			<th class="text-center">{{$dataFooter->daftar_extern}}</th>
+			<th class="text-center">{{$dataFooter->daftar_intern}}</th>
+			<th class="text-center">{{$dataFooter->bayar_extern}}</th>
+			<th class="text-center">{{$dataFooter->bayar_intern}}</th>
+			<th class="text-center">{{$dataFooter->isi_form_extern}}</th>
+			<th class="text-center">{{$dataFooter->isi_form_intern}}</th>
+			<th class="text-center">{{$dataFooter->form_ok}}</th>
+			<th class="text-center">{{$dataFooter->test_ok}}</th>
+			<th class="text-center">{{$dataFooter->wawancara_ok}}</th>
+			<th class="text-center">{{$dataFooter->wawancara_ortu_ok}}</th>
+			<th class="text-center">{{$dataFooter->diterima}}</th>
+			<th class="text-center">{{$dataFooter->ditolak}}</th>
+			<th class="text-center">{{$dataFooter->total}}</th>
 		</tr>
 	</tfoot>
 </table>

@@ -22,24 +22,74 @@ use App\Ta;
 use Carbon;
 use Auth;
 use Session;
+use DB;
 
 class PsbController extends Controller
 {
-    public function getIndex()
+    public function getIndex(Request $request)
     {
-        // select count(id) from psb group by jenjang
-        // select jenjang j, count(id) c, (select count(id) from psb where jenjang=j and status_progress >= 2) as bayar from psb group by jenjang;
-        // $query = 'select jenjang j, count(id) total,
-        //     (select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between :start and :stop) as daftar
-        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
-        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
-        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
-        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
-        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
-        //     (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop) as bayar
-        //     from psb where tanggal_daftar between :start and :stop group by jenjang';
+        $query = "select jenjang j, count(id) total,
+            (select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as daftar_extern,
+            (select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between ':start' and ':stop' and intern = 1 and tahun_ajaran = ':ta') as daftar_intern,
+            (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as bayar_extern,
+            (select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between ':start' and ':stop' and intern = 1 and tahun_ajaran = ':ta') as bayar_intern,
+            (select count(id) from psb where jenjang=j and status_progress >= 3 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as isi_form_extern,
+            (select count(id) from psb where jenjang=j and status_progress >= 3 and tanggal_daftar between ':start' and ':stop' and intern = 1 and tahun_ajaran = ':ta') as isi_form_intern,
+            (select count(id) from psb where jenjang=j and status_progress >= 4 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as form_ok,
+            (select count(id) from psb where jenjang=j and status_progress >= 5 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as berkas_ok,
+            (select count(id) from psb where jenjang=j and status_progress >= 6 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as test_ok,
+            (select count(id) from psb where jenjang=j and status_progress >= 7 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as wawancara_ok,
+            (select count(id) from psb where jenjang=j and status_progress >= 8 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as wawancara_ortu_ok,
+            (select count(id) from psb where jenjang=j and status_progress >= 9 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as tkd_ok,
+            (select count(id) from psb where jenjang=j and status_progress >= 10 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as diterima,
+            (select count(id) from psb where jenjang=j and status_progress >= 11 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as ditolak
+            from psb where tanggal_daftar between ':start' and ':stop'  and tahun_ajaran = ':ta' group by jenjang";
 
-        return view('psb.index');
+        $queryFooter = "select count(id) total,
+            (select count(id) from psb where status_progress >= 1 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as daftar_extern,
+            (select count(id) from psb where status_progress >= 1 and tanggal_daftar between ':start' and ':stop' and intern = 1 and tahun_ajaran = ':ta') as daftar_intern,
+            (select count(id) from psb where status_progress >= 2 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as bayar_extern,
+            (select count(id) from psb where status_progress >= 2 and tanggal_daftar between ':start' and ':stop' and intern = 1 and tahun_ajaran = ':ta') as bayar_intern,
+            (select count(id) from psb where status_progress >= 3 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as isi_form_extern,
+            (select count(id) from psb where status_progress >= 3 and tanggal_daftar between ':start' and ':stop' and intern = 1 and tahun_ajaran = ':ta') as isi_form_intern,
+            (select count(id) from psb where status_progress >= 4 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as form_ok,
+            (select count(id) from psb where status_progress >= 5 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as berkas_ok,
+            (select count(id) from psb where status_progress >= 6 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as test_ok,
+            (select count(id) from psb where status_progress >= 7 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as wawancara_ok,
+            (select count(id) from psb where status_progress >= 8 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as wawancara_ortu_ok,
+            (select count(id) from psb where status_progress >= 9 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as tkd_ok,
+            (select count(id) from psb where status_progress >= 10 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as diterima,
+            (select count(id) from psb where status_progress >= 11 and tanggal_daftar between ':start' and ':stop' and tahun_ajaran = ':ta') as ditolak
+            from psb where tanggal_daftar between ':start' and ':stop'  and tahun_ajaran = ':ta'";
+
+        // harusnya gini
+        // $data = DB::select(DB::raw($query, [
+        //     'start' => $request->get('start','2015-12-21'),
+        //     'stop'  => $request->get('stop', date('Y-m-d')),
+        //     'ta'    => Ta::active()->first()->periode
+        // ]));
+
+        $data = DB::select(DB::raw(str_replace(
+            [':start', ':stop', ':ta'],
+            [
+                $request->get('start', '2015-12-21'),
+                $request->get('stop', date('Y-m-d')),
+                Ta::active()->first()->periode
+            ], $query)
+        ));
+
+        $dataFooter = DB::select(DB::raw(str_replace(
+            [':start', ':stop', ':ta'],
+            [
+                $request->get('start', '2015-12-21'),
+                $request->get('stop', date('Y-m-d')),
+                Ta::active()->first()->periode
+            ], $queryFooter)
+        ));
+
+        // dd($dataFooter[0]);
+
+        return view('psb.index', ['data' => $data, 'dataFooter' => $dataFooter[0]]);
     }
 
     // untuk admin/panitia PSB, pake datatables
