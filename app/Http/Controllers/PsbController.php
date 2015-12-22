@@ -72,7 +72,7 @@ class PsbController extends Controller
         $data = DB::select(DB::raw(str_replace(
             [':start', ':stop', ':ta'],
             [
-                $request->get('start', '2015-12-21'),
+                $request->get('start', '2015-12-10'),
                 $request->get('stop', date('Y-m-d')),
                 Ta::active()->first()->periode
             ], $query)
@@ -81,7 +81,7 @@ class PsbController extends Controller
         $dataFooter = DB::select(DB::raw(str_replace(
             [':start', ':stop', ':ta'],
             [
-                $request->get('start', '2015-12-21'),
+                $request->get('start', '2015-12-10'),
                 $request->get('stop', date('Y-m-d')),
                 Ta::active()->first()->periode
             ], $queryFooter)
