@@ -28,6 +28,20 @@ class PsbController extends Controller
 {
     public function getIndex(Request $request)
     {
+        $ta = Ta::active()->first()->periode;
+        // $daftarPalingAwal = Psb::where('ta', $ta)->where()
+        //
+        // $bindings = [
+        //     'start' => $request->get('start',$daftarPalingAwal->tanggal_daftar),
+        //     'stop'  => $request->get('stop', date('Y-m-d')),
+        //     'ta'    => $ta
+        // ];
+        //
+        // $data = DB:table('psb')
+        //         ->select(DB::raw('jenjang j, count(id) as total'))
+        //         ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between :start and :stop and intern = 1 and tahun_ajaran = :ta) as daftar_extern', ['start' => ]))
+        //         ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop and intern = 0 and tahun_ajaran = :ta) as daftar_intern'))
+
         $query = "select jenjang j, count(id) total,
             (select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as daftar_extern,
             (select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between ':start' and ':stop' and intern = 1 and tahun_ajaran = ':ta') as daftar_intern,
@@ -74,7 +88,7 @@ class PsbController extends Controller
             [
                 $request->get('start', '2015-12-10'),
                 $request->get('stop', date('Y-m-d')),
-                Ta::active()->first()->periode
+                $ta
             ], $query)
         ));
 
@@ -83,7 +97,7 @@ class PsbController extends Controller
             [
                 $request->get('start', '2015-12-10'),
                 $request->get('stop', date('Y-m-d')),
-                Ta::active()->first()->periode
+                $ta
             ], $queryFooter)
         ));
 

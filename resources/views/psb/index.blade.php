@@ -14,6 +14,15 @@
 	<strong>Filter Laporan: </strong>
 	{!! Form::text('start', old('start'), ['class' => 'form-control', 'placeholder' => 'Mulai Tanggal']) !!}
 	{!! Form::text('stop', old('stop'), ['class' => 'form-control', 'placeholder' => 'Sampai Tanggal']) !!}
+	{!! Form::select('jenis',
+		[
+			0 	=> '- Pilih Jenis Laporan -',
+			1	=> 'Jenjang, Kelas, Jenis Kelamin',
+			2	=> 'Jenjang, Kelas',
+			3	=> 'Jenjang, Jenis Kelamin',
+			4	=> 'Jenjang',
+		],
+		null, ['class' => 'form-control']) !!}
 	<button type="submit" name="button" class="btn btn-success"><span class="fa fa-filter"></span> Filter</button>
 {!! Form::close() !!}
 
