@@ -29,18 +29,35 @@ class PsbController extends Controller
     public function getIndex(Request $request)
     {
         $ta = Ta::active()->first()->periode;
-        // $daftarPalingAwal = Psb::where('ta', $ta)->where()
+        $daftarPalingAwal = Psb::where('tahun_ajaran', $ta)->orderBy('tanggal_daftar', 'ASC')->first();
+        $awal = $daftarPalingAwal ? $daftarPalingAwal->tanggal_daftar : date('Y-m-d');
+
         //
-        // $bindings = [
-        //     'start' => $request->get('start',$daftarPalingAwal->tanggal_daftar),
-        //     'stop'  => $request->get('stop', date('Y-m-d')),
-        //     'ta'    => $ta
-        // ];
-        //
-        // $data = DB:table('psb')
-        //         ->select(DB::raw('jenjang j, count(id) as total'))
-        //         ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between :start and :stop and intern = 1 and tahun_ajaran = :ta) as daftar_extern', ['start' => ]))
-        //         ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop and intern = 0 and tahun_ajaran = :ta) as daftar_intern'))
+        $bindings = [
+            'start' => $request->get('start',$daftarPalingAwal->tanggal_daftar),
+            'stop'  => $request->get('stop', date('Y-m-d')),
+            'ta'    => $ta
+        ];
+
+        $data = DB::table('psb')
+                ->select(DB::raw('jenjang j, count(id) total'))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between :start and :stop and intern = 1 and tahun_ajaran = :ta) as daftar_extern', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between :start and :stop and intern = 0 and tahun_ajaran = :ta) as daftar_intern', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop and intern = 1 and tahun_ajaran = :ta) as bayar_extern', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 2 and tanggal_daftar between :start and :stop and intern = 0 and tahun_ajaran = :ta) as bayar_intern', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 3 and tanggal_daftar between :start and :stop and intern = 1 and tahun_ajaran = :ta) as isi_form_extern', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 3 and tanggal_daftar between :start and :stop and intern = 0 and tahun_ajaran = :ta) as isi_form_intern', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 4 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as form_ok', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 5 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as berkas_ok', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 6 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as test_ok', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 7 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as wawancara_ok', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 8 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as wawancara_ortu_ok', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 9 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as tkd_ok', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 10 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as diterima', $bindings))
+                ->select(DB::raw('(select count(id) from psb where jenjang=j and status_progress >= 11 and tanggal_daftar between :start and :stop and tahun_ajaran = :ta) as ditolak', $bindings))
+                ->where(DB::raw('tanggal_daftar between :start and :stop and tahun_ajaran = :ta', $bindings))
+                ->groupBy('jenjang')
+                ->get()->toSql();
 
         $query = "select jenjang j, count(id) total,
             (select count(id) from psb where jenjang=j and status_progress >= 1 and tanggal_daftar between ':start' and ':stop' and intern = 0 and tahun_ajaran = ':ta') as daftar_extern,
@@ -83,19 +100,19 @@ class PsbController extends Controller
         //     'ta'    => Ta::active()->first()->periode
         // ]));
 
-        $data = DB::select(DB::raw(str_replace(
-            [':start', ':stop', ':ta'],
-            [
-                $request->get('start', '2015-12-10'),
-                $request->get('stop', date('Y-m-d')),
-                $ta
-            ], $query)
-        ));
+        // $data = DB::select(DB::raw(str_replace(
+        //     [':start', ':stop', ':ta'],
+        //     [
+        //         $request->get('start', $awal),
+        //         $request->get('stop', date('Y-m-d')),
+        //         $ta
+        //     ], $query)
+        // ));
 
         $dataFooter = DB::select(DB::raw(str_replace(
             [':start', ':stop', ':ta'],
             [
-                $request->get('start', '2015-12-10'),
+                $request->get('start', $awal),
                 $request->get('stop', date('Y-m-d')),
                 $ta
             ], $queryFooter)
@@ -103,7 +120,12 @@ class PsbController extends Controller
 
         // dd($dataFooter[0]);
 
-        return view('psb.index', ['data' => $data, 'dataFooter' => $dataFooter[0]]);
+        return view('psb.index', [
+            'data' => $data,
+            'dataFooter' => $dataFooter[0],
+            'awal' => $awal,
+            'ta' => $ta
+        ]);
     }
 
     // untuk admin/panitia PSB, pake datatables
