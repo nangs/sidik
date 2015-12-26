@@ -24,6 +24,8 @@
 		<thead>
 			<tr>
 				<th rowspan="3" class="text-center" style="vertical-align:middle;">JENJANG</th>
+				<th rowspan="3" class="text-center" style="vertical-align:middle;">TINGKAT</th>
+				<th rowspan="3" class="text-center" style="vertical-align:middle;">JK</th>
 				<th colspan="12" class="text-center">PROSES</th>
 				<th style="width:6%;vertical-align:middle;" class="text-center" rowspan="3">TOTAL</th>
 			</tr>
@@ -51,6 +53,8 @@
 			@foreach ($data as $d)
 			<tr>
 				<th class="text-center">{{\App\Psb::jenjangList($d->j)}}</th>
+				<th class="text-center">{{\App\Psb::tingkatList($d->t)}}</th>
+				<th class="text-center">{{$d->jk ? 'L' : 'P'}}</th>
 				<td class="text-center">{{$d->daftar_extern}}</td>
 				<td class="text-center">{{$d->daftar_intern}}</td>
 				<td class="text-center">{{$d->bayar_extern}}</td>
@@ -69,7 +73,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<th class="text-center">TOTAL</th>
+				<th class="text-center" colspan="3">TOTAL</th>
 				<th class="text-center">{{$dataFooter->daftar_extern}}</th>
 				<th class="text-center">{{$dataFooter->daftar_intern}}</th>
 				<th class="text-center">{{$dataFooter->bayar_extern}}</th>
