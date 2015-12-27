@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'role'      => 'admin'
         ]);
 
-        DB::table('ta')->insert(['periode' => '2016/2017', 'avtive' => 1]);
+        DB::table('ta')->insert(['periode' => '2016/2017', 'active' => 1]);
 
         DB::table('rekening')->insert([
             'nama'          => 'BNI Syariah',
