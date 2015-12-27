@@ -5,3 +5,13 @@
     git pull https://github.com/udibagas/sidik.git
     php artisan migrate
 @endtask
+
+@task('up', ['on' => ['lms', 'mias'], 'confirm' => false])
+    cd sidik
+    php artisan up
+@endtask
+
+@task('down', ['on' => ['lms', 'mias'], 'confirm' => false])
+    cd sidik
+    php artisan down
+@endtask

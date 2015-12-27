@@ -9,7 +9,7 @@
 		<tr><th>NIK</th><td>: {{ $calonSiswa->nik }}</td></tr>
 		<tr><th>Tempat, Tanggal Lahir</th><td>: {{ $calonSiswa->tempat_lahir }}, {{ $calonSiswa->tanggal_lahir }}</td></tr>
 		<tr><th>Umur</th><td>: {{ $calonSiswa->umur() }}</td></tr>
-		<tr><th>Jenis Kelamin</th><td>: {{ $calonSiswa->jns_kelamin ? 'Laki - Laki' : 'Perempuan' }}</td></tr>
+		<tr><th>Jenis Kelamin</th><td>: {{ $calonSiswa->jenis_kelamin ? 'Laki - Laki' : 'Perempuan' }}</td></tr>
 		<tr><th>Jumlah Saudara</th><td>: {{ $calonSiswa->jumlah_saudara }} orang</td>
 		<tr><th>Tinggi Badan</th><td>: {{ $calonSiswa->tinggi_badan }} cm</td>
 		<tr><th>Berat Badan</th><td>: {{ $calonSiswa->berat_badan }} kg</td>
