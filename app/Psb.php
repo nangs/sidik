@@ -144,48 +144,48 @@ class Psb extends Model
 
         $aksi['admin'] = [
             null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiPembayaran/'        => 'Lunas',
-            '/psb/konfirmasiFormulir/'          => 'Formulir Lengkap',
-            // '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
-            '/psb/konfirmasiTest/'              => 'Sudah Test',
-            '/psb/konfirmasiWawancara/'         => 'Sudah Wawancara',
-            '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
-            // '/psb/konfirmasiTKD/'               => 'Sudah TKD',
-            '/psb/konfirmasiDiterima/'          => 'Diterima',
-            '/psb/konfirmasiDitolak/'           => 'Ditolak',
+            '/psb/konfirmasi-pembayaran/'        => 'Lunas',
+            '/psb/konfirmasi-formulir/'          => 'Formulir Lengkap',
+            // '/psb/konfirmasi-berkas/'            => 'Berkas Lengkap',
+            '/psb/konfirmasi-test/'              => 'Sudah Test',
+            '/psb/konfirmasi-wawancara/'         => 'Sudah Wawancara',
+            '/psb/konfirmasi-wawancara-ortu/'    => 'Orang Tua Sudah Wawancara',
+            // '/psb/konfirmasi-TKD/'               => 'Sudah TKD',
+            '/psb/konfirmasi-diterima/'          => 'Diterima',
+            '/psb/konfirmasi-ditolak/'           => 'Ditolak',
         ];
 
         $aksi['keuangan'] = [
             null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiPembayaran/'        => 'Lunas',
+            '/psb/konfirmasi-pembayaran/'        => 'Lunas',
         ];
 
         $aksi['data'] = [
             null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiFormulir/'          => 'Formulir Lengkap',
-            // '/psb/konfirmasiBerkas/'            => 'Berkas Lengkap',
+            '/psb/konfirmasi-formulir/'          => 'Formulir Lengkap',
+            // '/psb/konfirmasi-berkas/'            => 'Berkas Lengkap',
         ];
 
         $aksi['test-wawancara'] = [
             null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiTest/'              => 'Sudah Test',
-            '/psb/konfirmasiWawancara/'         => 'Sudah Wawancara',
+            '/psb/konfirmasi-test/'             => 'Sudah Test',
+            '/psb/konfirmasi-wawancara/'        => 'Sudah Wawancara',
         ];
 
         $aksi['wawancara-orangtua'] = [
             null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiWawancaraOrtu/'     => 'Orang Tua Sudah Wawancara',
+            '/psb/konfirmasi-wawancara-ortu/'   => 'Orang Tua Sudah Wawancara',
         ];
 
         // $aksi['tkd'] = [
         //     null                                => '- Pilih Aksi -',
-        //     '/psb/konfirmasiTKD/'               => 'Sudah TKD',
+        //     '/psb/konfirmasi-TKD/'               => 'Sudah TKD',
         // ];
 
         $aksi['seleksi'] = [
             null                                => '- Pilih Aksi -',
-            '/psb/konfirmasiDiterima/'          => 'Diterima',
-            '/psb/konfirmasiDitolak/'           => 'Ditolak',
+            '/psb/konfirmasi-diterima/'          => 'Diterima',
+            '/psb/konfirmasi-ditolak/'           => 'Ditolak',
         ];
 
         $aksi['pendaftaran'] = [

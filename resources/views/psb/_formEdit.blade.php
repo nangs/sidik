@@ -3,21 +3,9 @@
 	{!! Form::hidden('psb[jenjang]', $psb->jenjang) !!}
 	@include('psb._formCalonSiswa')
 	@include('psb._formDokumen')
-
 	@include('psb._formAsalSekolah')
-
-	@if ($action == 'edit')
-	@include('psb._formBeasiswaEdit')
-	@else
 	@include('psb._formBeasiswa')
-	@endif
-
-	@if ($action == 'edit')
-	@include('psb._formPrestasiEdit')
-	@else
 	@include('psb._formPrestasi')
-	@endif
-
 	@include('psb._formOrangTua', ['hubungan' => 'Ayah'])
 	@include('psb._formOrangTua', ['hubungan' => 'Ibu'])
 	@include('psb._formOrangTua', ['hubungan' => 'Wali'])
@@ -36,6 +24,50 @@
 <script type="text/javascript">
 
 	$(function() {
+
+		var i = 0;
+		var j = 0;
+
+		// dynamic form beasiswa
+		$('#add-beasiswa').click(function() {
+			i++;
+			var row = '<tr>' +
+				'<td><select class="form-control" name="beasiswa['+i+'][jenis]"><option value="" selected="selected">- Pilih Jenis Beasiswa -</option><option value="1">Anak Berprestasi</option><option value="2">Anak Miskin</option><option value="3">Pendidikan</option><option value="4">Unggulan</option><option value="5">Lain - Lain</option></select></td>' +
+				'<td><input class="form-control" placeholder="Sumber" name="beasiswa['+i+'][sumber]" type="text"></td>' +
+				'<td><input class="form-control" placeholder="Tahun Mulai" name="beasiswa['+i+'][tahun_mulai]" type="number"></td>' +
+				'<td><input class="form-control" placeholder="Tahun Selesai" name="beasiswa['+i+'][tahun_selesai]" type="number"></td>' +
+				'<td><a href="#" class="remove-beasiswa"><span class="fa fa-remove"></span></a></td>' +
+			'</tr>';
+
+			$('#beasiswa').append(row);
+			return false;
+		});
+
+		$('#beasiswa').on('click', '.remove-beasiswa', function() {
+			$(this).parent().parent().remove();
+			return false;
+		});
+
+		// dynamic form prestasi
+		$('#add-prestasi').click(function() {
+			j++;
+			var row = '<tr>' +
+				'<td><input class="form-control" placeholder="Tahun" name="prestasi['+j+'][tahun]" type="number"></td>' +
+				'<td><input class="form-control" placeholder="Lomba" name="prestasi['+j+'][lomba]" type="text"></td>' +
+				'<td><input class="form-control" placeholder="Juara Ke" name="prestasi['+j+'][juara_ke]" type="number"></td>' +
+				'<td><select class="form-control" name="prestasi['+j+'][tingkat]"><option value="" selected="selected">- Pilih Tingkat -</option><option value="1">Sekolah</option><option value="2">Kecamatan</option><option value="3">Kota/Kabupaten</option><option value="4">Provinsi</option><option value="5">Nasional</option><option value="6">Internasional</option></select></td>' +
+				'<td><select class="form-control" name="prestasi['+j+'][jenis]"><option value="" selected="selected">- Pilih Jenis Prestasi -</option><option value="1">Sain</option><option value="2">Seni</option><option value="3">Olah Raga</option><option value="4">Lain - Lain</option></select></td>' +
+				'<td><a href="#" class="remove-prestasi"><span class="fa fa-remove"></span></a></td>' +
+			'</tr>';
+
+			$('#prestasi').append(row);
+			return false;
+		});
+
+		$('#prestasi').on('click', '.remove-prestasi', function() {
+			$(this).parent().parent().remove();
+			return false;
+		});
 
 		$( "#tgllahir" ).datepicker({
 			changeMonth: true,
@@ -69,9 +101,10 @@
 			    // console.log(o);
 
 			    $.each(o, function(i,v) {
-			    	// var exclude = ['Ayah[nama]', ''];
 			    	$('[name="'+i.replace('Ayah', 'Ibu')+'"]').val(v);
 			    });
+
+				$('[name="Ibu[hubungan]"]').val('Ibu');
 			} else {
 	    		// TODO : kosongin form alamat
 			}

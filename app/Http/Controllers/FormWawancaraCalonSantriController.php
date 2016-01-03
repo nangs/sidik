@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\FormWawancaraCalonSantriRequest;
+use App\JawabanWawancaraCalonSantri;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\FormWawancaraCalonSantri;
+use Request;
 
 class FormWawancaraCalonSantriController extends Controller
 {
@@ -16,7 +19,9 @@ class FormWawancaraCalonSantriController extends Controller
      */
     public function index()
     {
-        //
+        return view('formWawancaraCalonSantri.index', [
+            'formWawancaraCalonSantris' => FormWawancaraCalonSantri::orderBy('id')->get()
+        ]);
     }
 
     /**
@@ -26,7 +31,7 @@ class FormWawancaraCalonSantriController extends Controller
      */
     public function create()
     {
-        //
+        return view('formWawancaraCalonSantri.create', ['formWawancaraCalonSantri' => new FormWawancaraCalonSantri]);
     }
 
     /**
@@ -35,9 +40,15 @@ class FormWawancaraCalonSantriController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormWawancaraCalonSantriRequest $request)
     {
-        //
+        $formWawancaraCalonSantri = FormWawancaraCalonSantri::create($request->all());
+
+        foreach ($request->jawaban as $i => $j) {
+            $formWawancaraCalonSantri->jawaban()->create($j);
+        }
+
+        return redirect('/form-wawancara-calon-santri');
     }
 
     /**
@@ -46,9 +57,9 @@ class FormWawancaraCalonSantriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FormWawancaraCalonSantri $formWawancaraCalonSantri)
     {
-        //
+        return view('formWawancaraCalonSantri.show', ['formWawancaraCalonSantri' => $formWawancaraCalonSantri]);
     }
 
     /**
@@ -57,9 +68,9 @@ class FormWawancaraCalonSantriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FormWawancaraCalonSantri $formWawancaraCalonSantri)
     {
-        //
+        return view('formWawancaraCalonSantri.edit', ['formWawancaraCalonSantri' => $formWawancaraCalonSantri]);
     }
 
     /**
@@ -69,9 +80,27 @@ class FormWawancaraCalonSantriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormWawancaraCalonSantriRequest $request,
+    FormWawancaraCalonSantri $formWawancaraCalonSantri)
     {
-        //
+        $formWawancaraCalonSantri->update($request->all());
+
+        $ids = [];
+
+        foreach ($request->jawaban as $i => $j) {
+            if ($jawaban = JawabanWawancaraCalonSantri::where('id', $i)->where('pertanyaan_id', $formWawancaraCalonSantri->id)->first()) {
+                $jawaban->update($j);
+                $ids[] = $i;
+            } else {
+                $jwb = $formWawancaraCalonSantri->jawaban()->create($j);
+                $ids[] = $jwb->id;
+            }
+
+        }
+
+        JawabanWawancaraCalonSantri::where('pertanyaan_id', $formWawancaraCalonSantri->id)->whereNotIn('id', $ids)->delete();
+
+        return redirect('/form-wawancara-calon-santri');
     }
 
     /**
@@ -80,8 +109,10 @@ class FormWawancaraCalonSantriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FormWawancaraCalonSantri $formWawancaraCalonSantri)
     {
-        //
+        $formWawancaraCalonSantri->delete();
+        JawabanWawancaraCalonSantri::where('pertanyaan_id', $formWawancaraCalonSantri->id)->delete();
+        return redirect('/form-wawancara-calon-santri');
     }
 }

@@ -9,16 +9,16 @@ class CalonSiswa extends Model
     protected $table = 'calon_siswa';
 
     protected $fillable = [
-    	'nis', 
-    	'nisn', 
-    	'nik', 
-    	'nama', 
+    	'nis',
+    	'nisn',
+    	'nik',
+    	'nama',
     	'jenis_kelamin',
-        'tempat_lahir', 
+        'tempat_lahir',
         'tanggal_lahir',
-        'tinggi_badan', 
-        'berat_badan', 
-        'berkebutuhan_khusus', 
+        'tinggi_badan',
+        'berat_badan',
+        'berkebutuhan_khusus',
         'jumlah_saudara',
         'asal_sekolah_id',
         'psb_id'
@@ -47,6 +47,26 @@ class CalonSiswa extends Model
     public function ortu()
     {
     	return $this->hasMany('App\OrangTuaCalonSiswa');
+    }
+
+    public function wawancara()
+    {
+        return $this->hasOne('App\WawancaraCalonSantri', 'siswa_id');
+    }
+
+    public function nilaiWawancara()
+    {
+        return $this->hasMany('App\NilaiWawancaraCalonSantri', 'siswa_id');
+    }
+
+    public function wawancaraOrtu()
+    {
+        return $this->hasOne('App\WawancaraOrangTuaCalonSantri', 'siswa_id');
+    }
+
+    public function nilaiWawancaraOrtu()
+    {
+        return $this->hasMany('App\NilaiWawancaraOrangTuaCalonSantri', 'siswa_id');
     }
 
     // public function wali()

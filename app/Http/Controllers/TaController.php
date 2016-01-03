@@ -37,7 +37,7 @@ class TaController extends Controller
     public function store(TaRequest $request)
     {
         Ta::create($request->all());
-        return redirect('/ta');
+        return redirect('/tahun-ajaran');
     }
 
     /**
@@ -72,7 +72,7 @@ class TaController extends Controller
     public function update(TaRequest $request, Ta $ta)
     {
         $ta->update($request->all());
-        return redirect('/ta');
+        return redirect('/tahun-ajaran');
     }
 
     /**
@@ -84,6 +84,6 @@ class TaController extends Controller
     public function destroy(Ta $ta)
     {
         $ta->delete();
-        return redirect('/ta');
+        return redirect('/tahun-ajaran');
     }
 }

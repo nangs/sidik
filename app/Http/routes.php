@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('ruangan', 'RuanganController');
 	Route::resource('ujian', 'UjianController');
 
-	Route::resource('ta', 'TaController', [
+	Route::resource('tahun-ajaran', 'TaController', [
 		'except' => ['show']
 	]);
 
@@ -103,14 +103,39 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/kalenderAkademik/event', 'KalenderAkademikController@event');
 	Route::get('/kalenderAkademik/kalender', 'KalenderAkademikController@kalender');
 
+	Route::resource('form-wawancara-calon-santri', 'FormWawancaraCalonSantriController', [
+		'except' => 'show'
+	]);
+
+	Route::resource('form-wawancara-orangtua', 'FormWawancaraOrangTuaCalonSantriController', [
+		'except' => 'show'
+	]);
+
+	Route::resource('wawancara-calon-santri', 'WawancaraCalonSantriController', [
+		'except' => 'show'
+	]);
+
+	Route::resource('wawancara-orang-tua', 'WawancaraOrangTuaCalonSantriController', [
+		'except' => 'show'
+	]);
+
+	Route::resource('beasiswa-calon-siswa', 'BeasiswaCalonSiswaController', [
+		'except' => ['index', 'show', 'create', 'edit']
+	]);
+
 });
 
 Route::controller('auth', 'Auth\AuthController');
 // Route::controller('password', 'Auth\PasswordController');
 // Route::controller('batik', 'BatikController');
 
-Route::get('/', 'PsbController@getIndex');
-Route::get('/home', 'PsbController@getIndex');
+Route::get('/', 'PsbController@index');
+Route::get('/home', 'PsbController@index');
+
+// streaming
+Route::get('/streaming', function() {
+	return view('streaming');
+});
 
 Route::group(['prefix' => 'psb'], function() {
 
@@ -120,19 +145,12 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::get('daftar', 'PsbController@getDaftar');
 		Route::post('/', 'PsbController@postDaftar');
 
-		Route::get('editFormDaftar/{psb}', 'PsbController@getEditFormDaftar');
-		Route::post('editFormDaftar/{psb}', 'PsbController@postEditFormDaftar');
+		Route::get('edit-form-daftar/{psb}', 'PsbController@getEditFormDaftar');
+		Route::post('edit-form-daftar/{psb}', 'PsbController@postEditFormDaftar');
 
 		Route::get('show/{psb}', 'PsbController@getShow');
-		Route::get('isiFormulir/{psb}', 'PsbController@getIsiFormulir');
-		Route::put('isiFormulir/{psb}', 'PsbController@putIsiFormulir');
-
-		// Route::get('printNomor/{psb}', 'PsbController@getPrintNomor');
-		// Route::get('printFormulir/{psb}', 'PsbController@getPrintFormulir');
-		// Route::get('step2/{psb}', 'PsbController@getStep2');
-		// Route::get('step3/{psb}', 'PsbController@getStep3');
-		// Route::get('step4/{psb}', 'PsbController@getStep4');
-		// Route::patch('step2/{psb}', 'PsbController@patchStep2');
+		Route::get('isi-formulir/{psb}', 'PsbController@getIsiFormulir');
+		Route::put('isi-formulir/{psb}', 'PsbController@putIsiFormulir');
 
 		// khusus admin
 		Route::get('admin', 'PsbController@getAdmin');
@@ -141,16 +159,15 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::put('update/{psb}', 'PsbController@putUpdate');
 
 		// konfirmasi
-		Route::get('konfirmasiPembayaran/{psb}', 'PsbController@getKonfirmasiPembayaran');
-		Route::get('konfirmasiFormulir/{psb}', 'PsbController@getKonfirmasiFormulir');
-		Route::get('konfirmasiBerkas/{psb}', 'PsbController@getKonfirmasiBerkas');
-		Route::get('konfirmasiTest/{psb}', 'PsbController@getKonfirmasiTest');
-		Route::get('konfirmasiWawancara/{psb}', 'PsbController@getKonfirmasiWawancara');
-		Route::get('konfirmasiWawancaraOrtu/{psb}', 'PsbController@getKonfirmasiWawancaraOrtu');
-		Route::get('konfirmasiTKD/{psb}', 'PsbController@getKonfirmasiTKD');
-		Route::get('konfirmasiDiterima/{psb}', 'PsbController@getKonfirmasiDiterima');
-		Route::get('konfirmasiDitolak/{psb}', 'PsbController@getKonfirmasiDitolak');
-
+		Route::get('konfirmasi-pembayaran/{psb}', 'PsbController@getKonfirmasiPembayaran');
+		Route::get('konfirmasi-formulir/{psb}', 'PsbController@getKonfirmasiFormulir');
+		Route::get('konfirmasi-berkas/{psb}', 'PsbController@getKonfirmasiBerkas');
+		Route::get('konfirmasi-test/{psb}', 'PsbController@getKonfirmasiTest');
+		Route::get('konfirmasi-wawancara/{psb}', 'PsbController@getKonfirmasiWawancara');
+		Route::get('konfirmasi-wawancara-ortu/{psb}', 'PsbController@getKonfirmasiWawancaraOrtu');
+		Route::get('konfirmasi-TKD/{psb}', 'PsbController@getKonfirmasiTKD');
+		Route::get('konfirmasi-diterima/{psb}', 'PsbController@getKonfirmasiDiterima');
+		Route::get('konfirmasi-ditolak/{psb}', 'PsbController@getKonfirmasiDitolak');
 	});
 
 });

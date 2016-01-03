@@ -18,7 +18,7 @@ class CreateFormWawancaraCalonSantri extends Migration
             $table->string('sub_indikator_variable', 50);
             $table->string('pertanyaan');
             $table->string('jawaban');
-            $table->string('nilai', 4);
+            $table->string('nilai', 10);
             $table->timestamps();
         });
 
@@ -27,7 +27,7 @@ class CreateFormWawancaraCalonSantri extends Migration
             $table->string('indikator_variable', 50);
             $table->string('pertanyaan');
             $table->string('jawaban');
-            $table->string('nilai', 4);
+            $table->string('nilai', 10);
             $table->timestamps();
         });
 
@@ -47,16 +47,18 @@ class CreateFormWawancaraCalonSantri extends Migration
           $table->timestamps();
         });
 
-        Schema::create('catatan_wawancara_calon_santri', function (Blueprint $table) {
+        Schema::create('wawancara_calon_santri', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('siswa_id')->unsigned();
+          $table->boolean('hasil_wawancara');
           $table->text('catatan');
           $table->timestamps();
         });
 
-        Schema::create('catatan_wawancara_orangtua_calon_santri', function (Blueprint $table) {
+        Schema::create('wawancara_orangtua_calon_santri', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('siswa_id')->unsigned();
+          $table->boolean('hasil_wawancara');
           $table->text('catatan');
           $table->timestamps();
         });
@@ -69,6 +71,17 @@ class CreateFormWawancaraCalonSantri extends Migration
      */
     public function down()
     {
-        Schema::drop('form_wawancara_calon_santri');
+        $tables = [
+            'form_wawancara_calon_santri',
+            'form_wawancara_orangtua_calon_santri',
+            'nilai_wawancara_calon_santri',
+            'nilai_wawancara_orangtua_calon_santri',
+            'wawancara_calon_santri',
+            'wawancara_orangtua_calon_santri'
+        ];
+
+        foreach ($tables as $tbl) {
+            Schema::drop($tbl);
+        }
     }
 }

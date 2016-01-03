@@ -4,7 +4,7 @@
 
 	<h1>Tambah Tahun Ajaran</h1>
 	<hr />
-
-	@include('ta/_form', ['method' => 'POST', 'url' => 'ta'])
+	@include('_error')
+	@include('ta/_form', ['method' => 'POST', 'url' => 'tahun-ajaran'])
 
 @stop

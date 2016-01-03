@@ -29,9 +29,9 @@ class AddTestWawancaraOnPsb extends Migration
     public function down()
     {
         Schema::table('psb', function (Blueprint $table) {
-            $table->droColumn([
+            $table->dropColumn([
                 'status_test', 'waktu_test', 'waktu_verifikasi_test',
-                'status_wawancara', 'waktu_wawancara', ''
+                'status_wawancara', 'waktu_wawancara',
             ]);
         });
     }

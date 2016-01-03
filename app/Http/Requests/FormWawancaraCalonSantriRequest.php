@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 
 class FormWawancaraCalonSantriRequest extends Request
 {
@@ -13,7 +14,7 @@ class FormWawancaraCalonSantriRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**

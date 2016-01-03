@@ -23,9 +23,15 @@
                 <li><a href="/psb/daftar"><span class="fa fa-user-plus"></span> Daftarkan Calon Siswa Baru</a></li>
                 <li><a href="/psb/admin">Calon Santri</a></li>
                     @if (Auth::user()->role == 'admin')
-                        <li><a href="/ta">Tahun Ajaran</a></li>
-                        <!-- <li><a href="/rekening">Daftar Rekening</a></li> -->
-                        <li><a href="/user">User</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Admin <strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/tahun-ajaran">Tahun Ajaran</a></li>
+                                <li><a href="/rekening">Daftar Rekening</a></li>
+                                <li><a href="/form-wawancara-calon-santri">Form Wawancara Calon Santri</a></li>
+                                <li><a href="/form-wawancara-orangtua">Form Wawancara Orang Tua Calon Santri</a></li>
+                                <li><a href="/user">User</a></li>
+                            </ul>
+                        </li>
                     @endif
                 <li><a href="/auth/logout"><span class="fa fa-sign-out"></span> Logout - {{Auth::user()->name}} ({{Auth::user()->role}})</a></li>
                 @endif

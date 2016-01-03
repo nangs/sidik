@@ -26,7 +26,7 @@ class TaRequest extends Request
     {
         $id = 0;
 
-        if ($ta = $this->route('ta')) {
+        if ($ta = $this->route('tahun-ajaran')) {
             $id = $ta->id;
         }
 

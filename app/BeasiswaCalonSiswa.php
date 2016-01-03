@@ -12,6 +12,13 @@ class BeasiswaCalonSiswa extends Model
     	'calon_siswa_id', 'jenis', 'sumber', 'tahun_mulai', 'tahun_selesai'
     ];
 
+    protected $appends = ['jns'];
+
+    public function getJnsAttribute()
+    {
+        return self::jenisList($this->jenis);
+    }
+
     public function calonSiswa()
     {
     	return $this->belongsTo('App\CalonSiswa');
@@ -27,7 +34,7 @@ class BeasiswaCalonSiswa extends Model
     		4	 => 'Unggulan',
     		5	 => 'Lain - Lain',
     	];
-        
+
         return isset($list[$index]) ? $list[$index] : $list;
     }
 }

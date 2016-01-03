@@ -33,7 +33,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('wali', 'App\Wali');
         $router->model('siswa', 'App\Siswa');
         $router->model('tagihan', 'App\Tagihan');
-        $router->model('ta', 'App\Ta');
+        $router->model('tahun-ajaran', 'App\Ta');
         $router->model('jenjang', 'App\Jenjang');
         $router->model('tingkat', 'App\Tingkat');
         $router->model('kelas', 'App\Kelas');
@@ -56,6 +56,9 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('psb', 'App\Psb');
         $router->model('rekening', 'App\Rekening');
         $router->model('user', 'App\User');
+        $router->model('form-wawancara-calon-santri', 'App\FormWawancaraCalonSantri');
+        $router->model('form-wawancara-orangtua', 'App\FormWawancaraOrangTuaCalonSantri');
+        $router->model('beasiswa-calon-siswa', 'App\BeasiswaCalonSiswa');
     }
 
     /**

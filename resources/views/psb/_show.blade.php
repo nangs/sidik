@@ -3,12 +3,14 @@
 	<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Data Calon Siswa</a></li>
 	<li role="presentation"><a href="#9" aria-controls="9" role="tab" data-toggle="tab">Dokumen</a></li>
 	<li role="presentation"><a href="#5" aria-controls="5" role="tab" data-toggle="tab">Asal Sekolah</a></li>
-	<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Data Ayah</a></li>
-	<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">Data Ibu</a></li>
-	<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">Data Wali</a></li>
+	<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Ayah</a></li>
+	<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">Ibu</a></li>
+	<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">Wali</a></li>
 	<li role="presentation"><a href="#6" aria-controls="6" role="tab" data-toggle="tab">Alamat</a></li>
-	<li role="presentation"><a href="#7" aria-controls="6" role="tab" data-toggle="tab">Beasiswa</a></li>
-	<li role="presentation"><a href="#8" aria-controls="6" role="tab" data-toggle="tab">Prestasi</a></li>
+	<li role="presentation"><a href="#7" aria-controls="7" role="tab" data-toggle="tab">Beasiswa</a></li>
+	<li role="presentation"><a href="#8" aria-controls="8" role="tab" data-toggle="tab">Prestasi</a></li>
+	<li role="presentation"><a href="#10" aria-controls="10" role="tab" data-toggle="tab">Wawancara</a></li>
+	<li role="presentation"><a href="#11" aria-controls="11" role="tab" data-toggle="tab">Wawancara Orang Tua</a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -20,7 +22,6 @@
 
 	<div role="tabpanel" class="tab-pane" id="9">
 		<br />
-		<!-- include('psb._dokumen', ['dokumen' => $psb->calonSiswa->dokumen]) -->
 		@include('psb._dokumen')
 	</div>
 
@@ -71,6 +72,16 @@
 		@if ($psb->calonSiswa->prestasi->count())
 		@include('psb._prestasi', ['prestasi' => $psb->calonSiswa->prestasi])
 		@endif
+	</div>
+
+	<div role="tabpanel" class="tab-pane" id="10">
+		<br />
+		@include('psb._wawancara', ['wawancara' => $psb->calonSiswa->wawancara])
+	</div>
+
+	<div role="tabpanel" class="tab-pane" id="11">
+		<br />
+		@include('psb._wawancaraOrtu', ['wawancara' => $psb->calonSiswa->wawancaraOrtu])
 	</div>
 
 </div>

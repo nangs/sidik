@@ -1,8 +1,8 @@
 @extends('psb')
 
 @section('content')
-	
-	<a href="/ta/create" class="btn btn-success pull-right">Tambah Tahun Ajaran</a>
+
+	<a href="/tahun-ajaran/create" class="btn btn-success pull-right">Tambah Tahun Ajaran</a>
 
 	<h1>Daftar Tahun Ajaran</h1>
 	<hr />
@@ -26,9 +26,9 @@
 				<td>{{ $t->end }}</td>
 				<td>{!! $t->active ? '<span class="label label-success">Y</span>' : '<span class="label label-danger">T</span>' !!}</td>
 				<td>
-					{!! Form::open(['method' => 'DELETE', 'url' => 'ta/'.$t->id]) !!}
+					{!! Form::open(['method' => 'DELETE', 'url' => 'tahun-ajaran/'.$t->id]) !!}
 		        		<!-- <a href="/kalenderAkademik/kalender" class="btn btn-primary btn-xs">Lihat Kalender Akademik</a> -->
-		        		<a href="/ta/{{ $t->id }}/edit" class="btn btn-success btn-xs">Edit</a>
+		        		<a href="/tahun-ajaran/{{ $t->id }}/edit" class="btn btn-success btn-xs">Edit</a>
 		        		{!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-xs delete']) !!}
 	        		{!! Form::close() !!}
 				</td>

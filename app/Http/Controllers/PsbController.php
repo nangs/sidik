@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// use all requests required
 use App\Http\Requests\PsbRequest;
-
 use App\Http\Controllers\Controller;
 
-// use all models required
 use App\PrestasiCalonSiswa;
 use App\BeasiswaCalonSiswa;
 use App\OrangTuaCalonSiswa;
@@ -26,7 +22,7 @@ use DB;
 
 class PsbController extends Controller
 {
-    public function getIndex(Request $request)
+    public function index(Request $request)
     {
         $ta = Ta::active()->first()->periode;
         $daftarPalingAwal = Psb::where('tahun_ajaran', $ta)->orderBy('tanggal_daftar', 'ASC')->first();
@@ -174,9 +170,7 @@ class PsbController extends Controller
             'Ibu'               => new OrangTuaCalonSiswa(['hubungan' => 'Ibu', 'agama' => 'Islam']),
             'alamatCalonSiswa'  => new AlamatCalonSiswa,
             'asalSekolah'       => new AsalSekolah,
-            'beasiswa'          => new BeasiswaCalonSiswa,
-            'prestasi'          => new PrestasiCalonSiswa,
-            'action'            => 'create'
+            'action'            => 'isi-formulir'
         ]);
     }
 
@@ -198,20 +192,12 @@ class PsbController extends Controller
         }
 
         // data beasiswa & prestasi
-        if ($request->get('beasiswa') !== null) {
-          foreach ($request->get('beasiswa') as $b) {
-            if ($b['jenis'] !== '') {
-              $psb->calonSiswa->beasiswa()->create($b);
-            }
-          }
+        foreach ($request->beasiswa as $i => $b) {
+            $psb->calonSiswa->beasiswa()->create($b);
         }
 
-        if ($request->get('prestasi') !== null) {
-          foreach ($request->get('prestasi') as $b) {
-              if ($b['tahun'] !== '') {
-                  $psb->calonSiswa->prestasi()->create($b);
-              }
-          }
+        foreach ($request->prestasi as $i => $b) {
+            $psb->calonSiswa->prestasi()->create($b);
         }
 
         $psb->update(['status_progress' => Psb::STATUS_ISI_FORM]);
@@ -230,8 +216,6 @@ class PsbController extends Controller
         $ayah           = $psb->calonSiswa->ortu()->ayah()->first();
         $ibu            = $psb->calonSiswa->ortu()->ibu()->first();
         $asalSekolah    = $psb->calonSiswa->asalSekolah;
-        $beasiswa       = $psb->calonSiswa->beasiswa;
-        $prestasi       = $psb->calonSiswa->prestasi;
 
         return view('psb.edit', [
             'psb'               => $psb,
@@ -241,9 +225,7 @@ class PsbController extends Controller
             'Ibu'               => $ibu != null ? $ibu : new OrangTuaCalonSiswa(['hubungan' => 'Ibu', 'agama' => 'Islam']),
             'alamatCalonSiswa'  => $psb->calonSiswa->alamat ? $psb->calonSiswa->alamat : new AlamatCalonSiswa,
             'asalSekolah'       => $asalSekolah != null ? $asalSekolah : new AsalSekolah,
-            'beasiswa'          => $beasiswa ? $beasiswa : new BeasiswaCalonSiswa ,
-            'prestasi'          => $prestasi ? $prestasi : new PrestasiCalonSiswa,
-            'action'            => 'edit'
+            'action'            => 'edit-formulir'
         ]);
     }
 
@@ -292,22 +274,35 @@ class PsbController extends Controller
 
         $psb->calonSiswa->alamat()->update($request->get('alamatCalonSiswa'));
 
-        // data beasiswa & prestasi
-        // if ($request->get('beasiswa') !== null) {
-        //   foreach ($request->get('beasiswa') as $b) {
-        //     if ($b['jenis'] !== '') {
-        //       $psb->calonSiswa->beasiswa()->create($b);
-        //     }
-        //   }
-        // }
-        //
-        // if ($request->get('prestasi') !== null) {
-        //   foreach ($request->get('prestasi') as $b) {
-        //       if ($b['tahun'] !== '') {
-        //           $psb->calonSiswa->prestasi()->create($b);
-        //       }
-        //   }
-        // }
+        // beasiswa
+        $idsBeasiswa = [];
+
+        foreach ($request->beasiswa as $i => $b) {
+            if ($beasiswa = BeasiswaCalonSiswa::where('id', $i)->where('calon_siswa_id', $psb->calonSiswa->id)->first()) {
+                $beasiswa->update($b);
+                $idsBeasiswa[] = $i;
+            } else {
+                $beasiswa = $psb->calonSiswa->beasiswa()->create($b);
+                $idsBeasiswa[] = $beasiswa->id;
+            }
+        }
+
+        BeasiswaCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->whereNotIn('id', $idsBeasiswa)->delete();
+
+        // prestasi
+        $idsPrestasi = [];
+
+        foreach ($request->prestasi as $i => $b) {
+            if ($prestasi = PrestasiCalonSiswa::where('id', $i)->where('calon_siswa_id', $psb->calonSiswa->id)->first()) {
+                $prestasi->update($b);
+                $idsPrestasi[] = $i;
+            } else {
+                $prestasi = $psb->calonSiswa->prestasi()->create($b);
+                $idsPrestasi[] = $prestasi->id;
+            }
+        }
+
+        PrestasiCalonSiswa::where('calon_siswa_id', $psb->calonSiswa->id)->whereNotIn('id', $idsPrestasi)->delete();
 
         return redirect('/psb/show/'.$psb->id);
     }
