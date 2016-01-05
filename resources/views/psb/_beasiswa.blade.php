@@ -69,12 +69,17 @@
 					}
 				},
 				error: function(data){
-					// Error...
-					var errors = $.parseJSON(data.responseText);
-					console.log(errors);
-					$.each(errors, function(index, value) {
+				    // Error...
+				    var errors = $.parseJSON(data.responseText);
 
-					});
+				    console.log(errors);
+
+				    // $.each(errors, function(index, value) {
+				    //     $.gritter.add({
+				    //         title: 'Error',
+				    //         text: value
+				    //     });
+				    // });
 				}
 			});
 		});
