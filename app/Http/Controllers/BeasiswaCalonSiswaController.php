@@ -31,9 +31,14 @@ class BeasiswaCalonSiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BeasiswaCalonSiswaRequest $request, BeasiswaCalonSiswa $beasiswa)
     {
-        //
+        $beasiswa->update($request->all());
+        return json_encode([
+            'success'   => true,
+            'message'   => 'Data berhasil diperbarui',
+            'data'      => $beasiswa
+        ]);
     }
 
     /**
@@ -45,7 +50,6 @@ class BeasiswaCalonSiswaController extends Controller
     public function destroy(BeasiswaCalonSiswa $beasiswa)
     {
         $beasiswa->delete();
-
         return json_encode([
             'success'   => true,
             'message'   => 'Data berhasil dihapus'

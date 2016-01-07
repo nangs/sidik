@@ -62,16 +62,12 @@
 
 	<div role="tabpanel" class="tab-pane" id="7">
 		<br />
-		@if ($psb->calonSiswa->beasiswa->count())
 		@include('psb._beasiswa', ['beasiswa' => $psb->calonSiswa->beasiswa])
-		@endif
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="8">
 		<br />
-		@if ($psb->calonSiswa->prestasi->count())
 		@include('psb._prestasi', ['prestasi' => $psb->calonSiswa->prestasi])
-		@endif
 	</div>
 
 	<div role="tabpanel" class="tab-pane" id="10">

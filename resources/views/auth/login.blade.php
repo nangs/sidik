@@ -10,7 +10,7 @@
 
 		<div class="col-md-3">
 
-			<h3>PSB MIAS LOGIN</h3>
+			<h3>{{config('app.name')}} LOGIN</h3>
 			<hr />
 
 			{!! Form::open(['class' => 'form-horizontal']) !!}

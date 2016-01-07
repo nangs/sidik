@@ -37,6 +37,7 @@
 @section('script')
 <script type="text/javascript">
 	$(function() {
+
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -48,7 +49,6 @@
 			var data = $('#form-beasiswa').serialize();
 			$.ajax({
 				type: 'POST',
-				beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 				url: '/beasiswa-calon-siswa',
 				data: data,
 				dataType: 'json',

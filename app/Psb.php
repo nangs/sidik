@@ -21,6 +21,18 @@ class Psb extends Model
     const STATUS_DITERIMA           = 10;
     const STATUS_DITOLAK            = 11;
 
+    protected $appends = ['jenjangText', 'TingkatText'];
+
+    public function getJenjangTextAttribute()
+    {
+        return self::jenjangList($this->jenjang);
+    }
+
+    public function getTingkatTextAttribute()
+    {
+        return self::tingkatList($this->tingkat);
+    }
+
     protected $fillable = [
     	'jenjang', 'tingkat', 'step', 'status', 'keterangan', 'tahun_ajaran',
         'tanggal_pembayaran', 'bank_asal', 'rekening_asal', 'rekening_tujuan_id',
@@ -93,6 +105,8 @@ class Psb extends Model
 
         return isset($list[$index]) ? $list[$index] : $list;
     }
+
+
 
     public static function tingkatList($index = 9999)
     {

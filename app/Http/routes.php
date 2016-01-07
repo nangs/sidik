@@ -120,7 +120,7 @@ Route::group(['middleware' => 'auth'], function() {
 	]);
 
 	Route::resource('beasiswa-calon-siswa', 'BeasiswaCalonSiswaController', [
-		'except' => ['index', 'show', 'create', 'edit']
+		'only' => ['store', 'update', 'destroy']
 	]);
 
 });

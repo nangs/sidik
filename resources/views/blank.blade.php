@@ -9,17 +9,16 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Ma'had Ihya' As Sunnah | @yield('title')</title>
+    <title>{{config('app.name')}} | {{config('app.title')}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
- 
+
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
 
     @yield('css')
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,7 +28,7 @@
   </head>
 
   <body>
-    
+
     <div class="container">
 
         @if (count($errors) > 0)
@@ -42,7 +41,7 @@
             </div>
         @endif
 
-        	
+
         @yield('content')
 
     </div>
@@ -51,6 +50,6 @@
     <script src="/js/bootstrap.min.js"></script>
 
     @yield('script')
-    
+
   </body>
 </html>

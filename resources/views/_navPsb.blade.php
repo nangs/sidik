@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">PSB MIAS {{App\Ta::active()->first()->periode}}</a>
+            <a class="navbar-brand" href="/">{{config('app.name')}} {{App\Ta::active()->first()->periode}}</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 

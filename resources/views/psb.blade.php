@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Ma'had Ihya' As Sunnah | Penerimaan Siswa Baru</title>
+    <title>{{config('app.name')}} | {{config('app.title')}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +21,6 @@
     <link href="/css/app.css" rel="stylesheet">
 
     @yield('css')
-
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -49,7 +48,7 @@
     <div class="footer-end">
         <div class="container">
             <footer>
-                <p>&copy; MIAS {{ date('Y') }} - PSB Online By : <a href="http://www.lintasmandirisurya.net">PT. Lintas Mandiri Surya</a></p>
+                <p>&copy; ANISC {{ date('Y') }} - PSB Online By : <a href="http://www.lintasmandirisurya.net">PT. Lintas Mandiri Surya</a></p>
             </footer>
         </div>
     </div>

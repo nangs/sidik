@@ -9,17 +9,17 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Ma'had As Sunnah |@yield('title')</title>
+    <title>{{config('app.name')}} | {{config('app.title')}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
- 
+
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
 
     @yield('css')
-    
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
   <body>
 
     @include('_nav')
-    
+
     <div class="container main-content">
 
         @if (count($errors) > 0)
@@ -47,7 +47,7 @@
         @yield('content')
 
     </div>
-    
+
     <!-- @include('_footer') -->
 
     <div class="footer-end">
@@ -56,12 +56,12 @@
 				<p>&copy; Ihya' As Sunnah {{ date('Y') }}</p>
 			</footer>
 	    </div>
-    </div>   	
+    </div>
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
     @yield('script')
-    
+
   </body>
 </html>
