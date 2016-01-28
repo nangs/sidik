@@ -80,7 +80,7 @@
 					@endif
 
 					@if (Auth::user()->role == 'pendaftaran')
-						<a href="/psb/editFormDaftar/{{$s->id}}" class="">Edit</a>
+						<a href="/psb/edit-form-daftar/{{$s->id}}" class="">Edit</a>
 					@endif
 
 					@if (Auth::user()->role == 'admin')

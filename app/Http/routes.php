@@ -123,7 +123,12 @@ Route::group(['middleware' => 'auth'], function() {
 		'only' => ['store', 'update', 'destroy']
 	]);
 
+
 });
+
+Route::get('/psb1/data', 'Psb1Controller@data');
+Route::get('/psb1/report', 'Psb1Controller@report');
+Route::resource('psb1', 'Psb1Controller');
 
 Route::controller('auth', 'Auth\AuthController');
 // Route::controller('password', 'Auth\PasswordController');
@@ -131,6 +136,7 @@ Route::controller('auth', 'Auth\AuthController');
 
 Route::get('/', 'PsbController@index');
 Route::get('/home', 'PsbController@index');
+Route::get('/home1', 'HomeController@index');
 
 // streaming
 Route::get('/streaming', function() {
@@ -168,6 +174,12 @@ Route::group(['prefix' => 'psb'], function() {
 		Route::get('konfirmasi-TKD/{psb}', 'PsbController@getKonfirmasiTKD');
 		Route::get('konfirmasi-diterima/{psb}', 'PsbController@getKonfirmasiDiterima');
 		Route::get('konfirmasi-ditolak/{psb}', 'PsbController@getKonfirmasiDitolak');
+
+		// coba2 aja
+		Route::get('test', 'PsbController@testAja');
+		Route::get('test-form', 'PsbController@testForm');
+		Route::get('list', 'PsbController@listPsb');
+		Route::get('main', 'PsbController@main');
 	});
 
 });

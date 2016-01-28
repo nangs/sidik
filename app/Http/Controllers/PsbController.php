@@ -19,6 +19,7 @@ use Carbon;
 use Auth;
 use Session;
 use DB;
+use Response;
 
 class PsbController extends Controller
 {

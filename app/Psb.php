@@ -21,7 +21,7 @@ class Psb extends Model
     const STATUS_DITERIMA           = 10;
     const STATUS_DITOLAK            = 11;
 
-    protected $appends = ['jenjangText', 'TingkatText'];
+    protected $appends = ['jenjangText', 'tingkatText'];
 
     public function getJenjangTextAttribute()
     {
